@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <!-- Icon mark: abstract S/cube with M -->
+  <rect x="4" y="8" width="44" height="44" rx="8" stroke="url(#g1)" stroke-width="2" fill="none"/>
+  <path d="M14 40V20L26 30L38 20V40" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="26" cy="30" r="3" fill="url(#g1)"/>
+
+  <!-- Text: Site Manager -->
+  <text x="60" y="39" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="600" letter-spacing="-0.3" fill="#E4E7EB">Site</text>
+  <text x="60" y="55" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="12" font-weight="400" letter-spacing="0.8" fill="#9BA3AF" textLength="100">MANAGER</text>
+
+  <defs>
+    <linearGradient id="g1" x1="4" y1="8" x2="48" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg>

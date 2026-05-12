@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0A0A0F">
+  <meta name="description" content="Site Manager — Panel de administración Átomo Studio">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <title>Site Manager — Átomo Studio</title>
+  <link rel="stylesheet" href="assets/theme.css">
+  <style>
+    /* Micro-interactions & polish */
+    .nav-item { position: relative; }
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .nav-item:active::after {
+      opacity: 1;
+      background: rgba(99,102,241,0.08);
+    }
+
+    .page-enter {
+      animation: fadeIn 250ms ease, slideUp 300ms ease;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .badge-dot.green { background: var(--success); }
+    .badge-dot.yellow { background: var(--warning); }
+    .badge-dot.red { background: var(--danger); }
+
+    /* Recent changes list */
+    .change-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .change-item:last-child { border: none; }
+    .change-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .change-info { flex: 1; min-width: 0; }
+    .change-title { font-size: var(--font-size-sm); font-weight: 500; color: var(--text-primary); }
+    .change-meta { font-size: var(--font-size-xs); color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Photo gallery layout */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-md);
+    }
+    .photo-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg-tertiary);
+      cursor: pointer;
+      transition: transform var(--transition-fast);
+    }
+    .photo-item:hover { transform: scale(1.02); }
+    .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-sm) var(--space-md);
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .photo-item-name {
+      font-size: var(--font-size-xs);
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Tab nav for sections */
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      background: var(--bg-tertiary);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-lg);
+      overflow-x: auto;
+    }
+    .tab-item {
+      padding: 8px 18px;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+    .tab-item.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .tab-item:hover { color: var(--text-primary); }
+
+    /* Section visibility */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    /* Contact messages list */
+    .msg-item {
+      padding: var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+    }
+    .msg-item.unread { border-left: 3px solid var(--accent-500); }
+    .msg-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-sm);
+    }
+    .msg-sender { font-weight: 600; color: var(--text-primary); }
+    .msg-date { font-size: var(--font-size-xs); color: var(--text-tertiary); }
+    .msg-preview { font-size: var(--font-size-sm); color: var(--text-secondary); }
+    .msg-actions {
+      margin-top: var(--space-sm);
+      display: flex;
+      gap: var(--space-sm);
+    }
+  </style>
+</head>
+<body>
+  <!-- ============================================================ -->
+  <!-- LOGIN SCREEN -->
+  <!-- ============================================================ -->
+  <div id="login-screen" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/logo.svg" alt="Site Manager" style="height:44px">
+      </div>
+      <h1 class="login-title">Bienvenido</h1>
+      <p class="login-subtitle">Inicia sesión en tu panel de administración</p>
+
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Correo electrónico</label>
+          <input type="email" id="login-email" class="form-input" placeholder="tu@atomostudio.com" autocomplete="email" value="admin@atomostudio.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Contraseña</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" value="admin123" required>
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;justify-content:space-between">
+          <label class="toggle-switch">
+            <input type="checkbox" class="toggle-checkbox" checked>
+            <span class="toggle-track"></span>
+            <span style="font-size:var(--font-size-sm);color:var(--text-tertiary)">Recordar sesión</span>
+          </label>
+          <a href="#" style="font-size:var(--font-size-sm)">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:var(--space-md)">
+          Iniciar sesión
+        </button>
+      </form>
+
+      <div class="login-divider">demo</div>
+      <p style="text-align:center;font-size:var(--font-size-xs);color:var(--text-tertiary)">
+        Panel demo — haz clic en "Iniciar sesión" para continuar
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- APP SHELL (visible after login) -->
+  <!-- ============================================================ -->
+  <div id="app-shell" class="app-layout" style="display:none">
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- ====== SIDEBAR ====== -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/logo.svg" alt="Site Manager" class="sidebar-logo">
+        <div>
+          <div class="sidebar-brand">Site Manager</div>
+          <span class="sidebar-brand-sub">Átomo Studio</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">General</div>
+        <a class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+          <svg class="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="7" height="7" rx="1"/>
+            <rect x="11" y="3" width="7" height="4" rx="1"/>
+            <rect x="11" y="9" width="7" height="8" rx="1"/>
+            <rect x="2" y="12" width="7" height="5" rx="1"/>
+          </svg>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a class="nav-item" data-page="productos" onclick="navigateTo('productos')">
+          <svg class="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 6l8-4 8 4-8 4-8-4z"/>
+            <path d="M2 10l8 4 8-4"/>
+            <path d="M2 14l8 4 8-4"/>
+          </svg>
+          <span class="nav-label">Productos</span>
+          <span class="nav-badge">12</span>
+        </a>
+        <a class="nav-item" data-page="textos" onclick="navigateTo('textos')">
+          <svg class="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h12v2H4z"/>
+            <path d="M4 8h10v2H4z"/>
+            <path d="M4 12h8v2H4z"/>
+            <path d="M4 16h6v2H4z"/>
+          </svg>
+          <span class="nav-label">Textos</span>
+        </a>
+        <a class="nav-item" data-page="contacto" onclick="navigateTo('contacto')">
+          <svg class="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+            <path d="M2 7l8 4.5L18 7"/>
+          </svg>
+          <span class="nav-label">Contacto</span>
+          <span class="nav-badge" style="background:var(--danger)">3</span>
+        </a>
+
+        <div style="margin-top:var(--space-lg)"><div class="nav-section-label">Gestión</div></div>
+        <a class="nav-item" data-page="fotos" onclick="navigateTo('fotos')">
+          <svg class="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="16" height="14" rx="2"/>
+            <circle cx="7" cy="8" r="1.5"/>
+            <path d="M2 13l4-3 2 2 3-3 3 3 4-3v3"/>
+          </svg>
+          <span class="nav-label">Fotos</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-menu" onclick="showLogout()">
+          <div class="user-avatar">GL</div>
+          <div class="user-info">
+            <div class="user-name">Guillaume Lagier</div>
+            <div class="user-role">Administrador</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M6 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====== MAIN AREA ====== -->
+    <main class="main-area">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="page-title-area">
+          <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="5" x2="17" y2="5"/>
+              <line x1="3" y1="10" x2="17" y2="10"/>
+              <line x1="3" y1="15" x2="17" y2="15"/>
+            </svg>
+          </button>
+          <div>
+            <h1 id="page-title" class="page-title">Dashboard</h1>
+            <span id="page-subtitle" class="page-subtitle">Resumen del sitio</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-ghost btn-icon" onclick="showToast('info', 'Notificaciones')" title="Notificaciones">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2a6 6 0 00-6 6v3l-1 3h14l-1-3V8a6 6 0 00-6-6z"/>
+              <path d="M8 16a2 2 0 004 0"/>
+            </svg>
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="publishSite()" id="publish-header-btn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12v2h12v-2"/>
+              <path d="M8 2v10"/>
+              <path d="M5 5l3-3 3 3"/>
+            </svg>
+            Publicar
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content" id="page-content">
+        <!-- Pages rendered dynamically by JS -->
+      </div>
+
+      <!-- Publish Bar (sticky bottom) -->
+      <div class="publish-bar" id="publish-bar">
+        <div class="publish-bar-info">
+          <div class="publish-bar-status">
+            <span class="dot dot-unsaved" id="publish-dot"></span>
+            <span id="publish-status-text">Cambios sin guardar</span>
+          </div>
+          <span style="font-size:var(--font-size-xs);color:var(--text-tertiary)" id="publish-time"></span>
+        </div>
+        <button class="btn-publish" onclick="publishSite()" id="publish-main-btn">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12v2h12v-2"/>
+            <path d="M8 2v10"/>
+            <path d="M5 5l3-3 3 3"/>
+          </svg>
+          Publicar sitio web
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT — App Logic -->
+  <!-- ============================================================ -->
+  <script>
+    // ==== State ====
+    const state = {
+      currentPage: 'dashboard',
+      hasUnsavedChanges: false,
+      isDirty: false,
+      publishedAt: null,
+      products: [
+        { id: 1, name: 'Collar Artesanal Luna', price: 24990, status: 'active', image: null },
+        { id: 2, name: 'Aros de Plata Sol', price: 18990, status: 'active', image: null },
+        { id: 3, name: 'Pulsera Tejida Inti', price: 12990, status: 'draft', image: null },
+        { id: 4, name: 'Anillo Mapuche', price: 34990, status: 'active', image: null },
+        { id: 5, name: 'Cinturón Cuero Tallado', price: 45990, status: 'draft', image: null },
+        { id: 6, name: 'Bolso Trenzado Ñandú', price: 52990, status: 'active', image: null },
+        { id: 7, name: 'Poncho Tradicional', price: 79990, status: 'hidden', image: null },
+        { id: 8, name: 'Llavero Cuero Reciclado', price: 6990, status: 'active', image: null },
+        { id: 9, name: 'Cuenco Cerámica Greda', price: 15990, status: 'active', image: null },
+        { id: 10, name: 'Cesto Mimbre Chilote', price: 22990, status: 'draft', image: null },
+        { id: 11, name: 'Manta Alpaca Natural', price: 68990, status: 'active', image: null },
+        { id: 12, name: 'Faja Tejida Aysén', price: 19990, status: 'active', image: null }
+      ],
+      contactMessages: [
+        { id: 1, sender: 'María González', email: 'maria@example.com', date: '2026-05-07', message: 'Hola, me interesa el collar Luna. ¿Tienen disponibilidad en talla mediana?', read: false },
+        { id: 2, sender: 'Carlos Muñoz', email: 'carlos@example.com', date: '2026-05-06', message: 'Buenos días, quisiera consultar por envíos a región de Los Lagos. ¿Hacen despachos?', read: false },
+        { id: 3, sender: 'Ana Soto', email: 'ana@example.com', date: '2026-05-05', message: 'Excelente calidad! Recibí mi pedido y estoy encantada. Gracias!', read: true }
+      ],
+      photos: [
+        { id: 1, name: 'collar-luna-main.jpg', url: null, size: '2.4 MB' },
+        { id: 2, name: 'aros-sol-detalle.jpg', url: null, size: '1.8 MB' },
+        { id: 3, name: 'pulsera-inti-modelo.jpg', url: null, size: '3.1 MB' },
+        { id: 4, name: 'tienda-vitrina.jpg', url: null, size: '4.2 MB' },
+        { id: 5, name: 'taller-artesanal.jpg', url: null, size: '3.6 MB' },
+        { id: 6, name: 'coleccion-verano.jpg', url: null, size: '2.9 MB' }
+      ]
+    };
+
+    // ==== Navigation ====
+    function navigateTo(page) {
+      state.currentPage = page;
+
+      // Update active nav
+      document.querySelectorAll('.nav-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.page === page);
+      });
+
+      // Update header
+      const titles = {
+        dashboard: ['Dashboard', 'Resumen del sitio'],
+        productos: ['Productos', 'Gestiona tu catálogo'],
+        textos: ['Textos', 'Edita el contenido del sitio'],
+        contacto: ['Contacto', 'Mensajes de clientes'],
+        fotos: ['Fotos', 'Galería de imágenes']
+      };
+      const [title, sub] = titles[page] || ['Página', ''];
+      document.getElementById('page-title').textContent = title;
+      document.getElementById('page-subtitle').textContent = sub;
+
+      renderPage(page);
+
+      // Close sidebar on mobile
+      if (window.innerWidth <= 768) toggleSidebar(false);
+    }
+
+    function toggleSidebar(force) {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const isOpen = sidebar.classList.toggle('open', force !== undefined ? force : !sidebar.classList.contains('open'));
+      overlay.classList.toggle('open', isOpen);
+    }
+
+    // ==== Login ====
+    function handleLogin(e) {
+      e.preventDefault();
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app-shell').style.display = 'flex';
+      navigateTo('dashboard');
+      showToast('success', 'Sesión iniciada correctamente');
+      return false;
+    }
+
+    function showLogout() {
+      if (confirm('¿Cerrar sesión?')) {
+        document.getElementById('app-shell').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').classList.remove('open');
+      }
+    }
+
+    // ==== Page Renderers ====
+    function renderPage(page) {
+      const container = document.getElementById('page-content');
+      container.classList.remove('page-enter');
+      void container.offsetWidth;
+
+      switch(page) {
+        case 'dashboard': renderDashboard(container); break;
+        case 'productos': renderProducts(container); break;
+        case 'textos': renderTexts(container); break;
+        case 'contacto': renderContact(container); break;
+        case 'fotos': renderPhotos(container); break;
+      }
+
+      container.classList.add('page-enter');
+    }
+
+    function renderDashboard(container) {
+      const activeProducts = state.products.filter(p => p.status === 'active').length;
+      const draftProducts = state.products.filter(p => p.status === 'draft').length;
+      const totalPhotos = state.photos.length;
+      const unreadMsgs = state.contactMessages.filter(m => !m.read).length;
+
+      // Simple color generation for placeholder images
+      function colorFor(i) {
+        const colors = ['#4F46E5', '#7C3AED', '#EC4899', '#F59E0B', '#10B981', '#3B82F6'];
+        return colors[i % colors.length];
+      }
+
+      const recentProducts = state.products.slice(0, 4);
+
+      container.innerHTML = `
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(99,102,241,0.15);color:var(--accent-400)">📦</div>
+            <span class="stat-label">Productos activos</span>
+            <div class="stat-value">${activeProducts}</div>
+            <div class="stat-change positive">↑ 2 esta semana</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(245,158,11,0.15);color:var(--warning)">✏️</div>
+            <span class="stat-label">Borradores</span>
+            <div class="stat-value">${draftProducts}</div>
+            <div class="stat-change" style="color:var(--text-tertiary)">Pendientes de revisión</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(239,68,68,0.15);color:var(--danger)">💬</div>
+            <span class="stat-label">Mensajes sin leer</span>
+            <div class="stat-value">${unreadMsgs}</div>
+            <div class="stat-change ${unreadMsgs > 0 ? 'negative' : 'positive'}">
+              ${unreadMsgs > 0 ? 'Requieren atención' : 'Todo al día'}
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(16,185,129,0.15);color:var(--success)">🖼️</div>
+            <span class="stat-label">Fotos subidas</span>
+            <div class="stat-value">${totalPhotos}</div>
+            <div class="stat-change positive">${totalPhotos * 3.2} MB usados</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:var(--space-lg);margin-top:var(--space-xl)">
+          <!-- Recent Products -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Últimos productos</div>
+                <div class="card-subtitle">Los 4 más recientes</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="navigateTo('productos')">Ver todos →</button>
+            </div>
+            ${recentProducts.map((p, i) => `
+              <div class="change-item" style="cursor:pointer" onclick="navigateTo('productos')">
+                <div class="change-icon" style="background:${colorFor(i)}30;color:${colorFor(i)};font-size:10px;font-weight:700">
+                  ${p.name.charAt(0)}
+                </div>
+                <div class="change-info">
+                  <div class="change-title">${p.name}</div>
+                  <div class="change-meta">$${p.price.toLocaleString('es-CL')} · ${p.status === 'active' ? 'Publicado' : p.status === 'draft' ? 'Borrador' : 'Oculto'}</div>
+                </div>
+                <span class="badge-dot ${p.status === 'active' ? 'green' : p.status === 'draft' ? 'yellow' : 'red'}"></span>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Recent Changes -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Actividad reciente</div>
+                <div class="card-subtitle">Últimos cambios</div>
+              </div>
+            </div>
+            <div class="change-item">
+              <div class="change-icon" style="background:rgba(99,102,241,0.15);color:var(--accent-400)">📝</div>
+              <div class="change-info">
+                <div class="change-title">Texto de inicio actualizado</div>
+                <div class="change-meta">Hace 2 horas</div>
+              </div>
+            </div>
+            <div class="change-item">
+              <div class="change-icon" style="background:rgba(16,185,129,0.15);color:var(--success)">📦</div>
+              <div class="change-info">
+                <div class="change-title">Collar Luna — Precio actualizado</div>
+                <div class="change-meta">Hace 5 horas</div>
+              </div>
+            </div>
+            <div class="change-item">
+              <div class="change-icon" style="background:rgba(245,158,11,0.15);color:var(--warning)">🖼️</div>
+              <div class="change-info">
+                <div class="change-title">3 fotos nuevas subidas</div>
+                <div class="change-meta">Ayer a las 18:30</div>
+              </div>
+            </div>
+            <div class="change-item">
+              <div class="change-icon" style="background:rgba(239,68,68,0.15);color:var(--danger)">💬</div>
+              <div class="change-info">
+                <div class="change-title">Nuevo mensaje de María González</div>
+                <div class="change-meta">Ayer a las 15:20</div>
+              </div>
+            </div>
+            <div class="change-item">
+              <div class="change-icon" style="background:rgba(59,130,246,0.15);color:var(--info)">🚀</div>
+              <div class="change-info">
+                <div class="change-title">Sitio publicado v2.4</div>
+                <div class="change-meta">Hace 3 días</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProducts(container) {
+      function statusLabel(s) {
+        if (s === 'active') return { class: 'status-active', label: 'Publicado' };
+        if (s === 'draft') return { class: 'status-draft', label: 'Borrador' };
+        return { class: 'status-hidden', label: 'Oculto' };
+      }
+
+      container.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-lg);flex-wrap:wrap;gap:var(--space-md)">
+          <div style="display:flex;gap:var(--space-sm)">
+            <input class="form-input" placeholder="Buscar productos..." style="min-width:260px;min-height:44px;padding:10px 16px" id="product-search" oninput="filterProducts(this.value)">
+            <select class="form-select" style="min-width:140px;min-height:44px;padding:10px 16px" id="product-filter" onchange="filterProducts()">
+              <option value="all">Todos</option>
+              <option value="active">Publicados</option>
+              <option value="draft">Borradores</option>
+              <option value="hidden">Ocultos</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('info', 'Nuevo producto — próximamente')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+            Nuevo producto
+          </button>
+        </div>
+        <div class="card-grid" id="product-grid">
+          ${state.products.map(p => {
+            const stat = statusLabel(p.status);
+            return `
+              <div class="product-card" onclick="editProduct(${p.id})">
+                <div class="product-card-image" style="background:linear-gradient(135deg, #1E1E2C, #2A2A3A)">
+                  <span style="font-size:2rem;opacity:0.4;">🖼️</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="product-card-name">${p.name}</div>
+                  <div class="product-card-price">$${p.price.toLocaleString('es-CL')}</div>
+                  <span class="product-card-status ${stat.class}">${stat.label}</span>
+                </div>
+                <div class="product-card-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();editProduct(${p.id})">Editar</button>
+                  <button class="btn btn-ghost btn-sm" style="color:var(--danger)" onclick="event.stopPropagation();showToast('warning', '¿Eliminar ${p.name}?')">Eliminar</button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    function editProduct(id) {
+      const p = state.products.find(x => x.id === id);
+      if (!p) return;
+
+      const container = document.getElementById('page-content');
+      container.innerHTML = `
+        <div>
+          <button class="btn btn-ghost" onclick="navigateTo('productos')" style="margin-bottom:var(--space-lg)">
+            ← Volver a productos
+          </button>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl)">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Editar producto</div></div>
+              <div class="form-group">
+                <label class="form-label">Nombre del producto <span class="required">*</span></label>
+                <input class="form-input" value="${p.name}" oninput="markDirty()">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Precio <span class="required">*</span></label>
+                  <input class="form-input" type="number" value="${p.price}" oninput="markDirty()">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Estado</label>
+                  <select class="form-select">
+                    <option ${p.status === 'active' ? 'selected' : ''}>Publicado</option>
+                    <option ${p.status === 'draft' ? 'selected' : ''}>Borrador</option>
+                    <option ${p.status === 'hidden' ? 'selected' : ''}>Oculto</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-textarea" rows="4" oninput="markDirty()" placeholder="Describe el producto...">Artesanía hecha a mano con materiales naturales. Cada pieza es única.</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Categoría</label>
+                <select class="form-select">
+                  <option>Accesorios</option>
+                  <option selected>Joyería</option>
+                  <option>Textiles</option>
+                  <option>Decoración</option>
+                </select>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-secondary" onclick="navigateTo('productos')">Cancelar</button>
+                <button class="btn btn-primary" onclick="markSaved(); showToast('success', 'Producto guardado')">Guardar cambios</button>
+              </div>
+            </div>
+
+            <div>
+              <div class="card" style="margin-bottom:var(--space-lg)">
+                <div class="card-header"><div class="card-title">Imagen del producto</div></div>
+                <div class="drop-zone" onclick="showToast('info', 'Subir imagen — próximamente')">
+                  <div class="drop-zone-icon">📸</div>
+                  <div class="drop-zone-text">Arrastra una imagen o haz clic para subir</div>
+                  <div class="drop-zone-hint">Recomendado: 1200×1200px, JPG o PNG</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title">Vista previa</div>
+                </div>
+                <div style="background:var(--bg-tertiary);border-radius:var(--radius-md);padding:var(--space-xl);text-align:center">
+                  <div style="font-size:3rem;margin-bottom:var(--space-md)">🏷️</div>
+                  <div style="font-size:var(--font-size-lg);font-weight:600;color:var(--text-primary)">${p.name}</div>
+                  <div style="font-size:var(--font-size-2xl);font-weight:700;color:var(--accent-400);margin-top:var(--space-sm)">$${p.price.toLocaleString('es-CL')}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function filterProducts(search) {
+      const q = (search || document.getElementById('product-search').value || '').toLowerCase();
+      const filter = document.getElementById('product-filter')?.value || 'all';
+      const grid = document.getElementById('product-grid');
+      if (!grid) return;
+
+      const filtered = state.products.filter(p => {
+        const matchSearch = !q || p.name.toLowerCase().includes(q);
+        const matchFilter = filter === 'all' || p.status === filter;
+        return matchSearch && matchFilter;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state" style="grid-column:1/-1">
+            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-title">Sin resultados</div>
+            <div class="empty-state-text">No se encontraron productos con esos filtros</div>
+          </div>
+        `;
+      } else {
+        grid.innerHTML = filtered.map(p => {
+          const stat = p.status === 'active' ? 'status-active' : p.status === 'draft' ? 'status-draft' : 'status-hidden';
+          const label = p.status === 'active' ? 'Publicado' : p.status === 'draft' ? 'Borrador' : 'Oculto';
+          return `
+            <div class="product-card" onclick="editProduct(${p.id})">
+              <div class="product-card-image" style="background:linear-gradient(135deg, #1E1E2C, #2A2A3A)">
+                <span style="font-size:2rem;opacity:0.4;">🖼️</span>
+              </div>
+              <div class="product-card-body">
+                <div class="product-card-name">${p.name}</div>
+                <div class="product-card-price">$${p.price.toLocaleString('es-CL')}</div>
+                <span class="product-card-status ${stat}">${label}</span>
+              </div>
+              <div class="product-card-actions">
+                <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();editProduct(${p.id})">Editar</button>
+                <button class="btn btn-ghost btn-sm" style="color:var(--danger)" onclick="event.stopPropagation();showToast('warning', '¿Eliminar ${p.name}?')">Eliminar</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function renderTexts(container) {
+      container.innerHTML = `
+        <div class="tab-bar">
+          <button class="tab-item active" data-tab="inicio" onclick="switchTextTab('inicio',this)">Inicio</button>
+          <button class="tab-item" data-tab="nosotros" onclick="switchTextTab('nosotros',this)">Nosotros</button>
+          <button class="tab-item" data-tab="contacto" onclick="switchTextTab('contacto-tab',this)">Contacto</button>
+          <button class="tab-item" data-tab="footer" onclick="switchTextTab('footer',this)">Footer</button>
+        </div>
+
+        <div id="text-tab-content">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Texto de inicio</div>
+                <div class="card-subtitle">Hero y descripción principal</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Título principal (H1)</label>
+              <input class="form-input" value="Artesanía que cuenta historias" oninput="markDirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subtítulo</label>
+              <input class="form-input" value="Descubre piezas únicas hechas a mano por artesanos chilenos" oninput="markDirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Descripción completa</label>
+              <div class="editor-toolbar">
+                <button title="Negrita"><strong>B</strong></button>
+                <button title="Cursiva"><em>I</em></button>
+                <button title="Subrayado"><u>U</u></button>
+                <button title="Lista">•</button>
+              </div>
+              <div class="inline-editor" contenteditable="true" oninput="markDirty()">
+                <p>En <strong>Átomo Studio</strong> creemos en el poder de lo hecho a mano. Cada pieza es el resultado de técnicas tradicionales transmitidas por generaciones, combinadas con diseño contemporáneo.</p>
+                <p>Trabajamos directamente con artesanos de todo Chile para traerte productos auténticos, sostenibles y llenos de significado.</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-secondary" onclick="markSaved();showToast('success', 'Texto guardado')">Guardar</button>
+              <button class="btn btn-primary" onclick="markSaved();showToast('success', 'Texto guardado')">Guardar y publicar</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchTextTab(tab, btn) {
+      document.querySelectorAll('.tab-bar .tab-item').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const content = document.getElementById('text-tab-content');
+      const titles = {
+        'inicio': {
+          name: 'Texto de inicio', sub: 'Hero y descripción principal',
+          heading: 'Artesanía que cuenta historias',
+          subheading: 'Descubre piezas únicas hechas a mano por artesanos chilenos',
+          body: '<p>En <strong>Átomo Studio</strong> creemos en el poder de lo hecho a mano. Cada pieza es el resultado de técnicas tradicionales transmitidas por generaciones, combinadas con diseño contemporáneo.</p><p>Trabajamos directamente con artesanos de todo Chile para traerte productos auténticos, sostenibles y llenos de significado.</p>'
+        },
+        'nosotros': {
+          name: 'Nosotros', sub: 'Nuestra historia y valores',
+          heading: 'Hecho en Chile, con amor',
+          subheading: 'Conoce el equipo detrás de Átomo Studio',
+          body: '<p>Somos un equipo apasionado por la artesanía chilena. Nacimos en 2020 con la misión de conectar a artesanos locales con el mundo.</p><p>Creemos en el comercio justo, la sostenibilidad y la preservación de técnicas ancestrales.</p>'
+        },
+        'contacto-tab': {
+          name: 'Contacto', sub: 'Formulario e información',
+          heading: '¿Hablamos?',
+          subheading: 'Estamos aquí para ayudarte',
+          body: '<p>Puedes escribirnos a <strong>hola@atomostudio.com</strong> o visitarnos en nuestra tienda en Santiago.</p><p>Horario: Lun-Vie 10:00-19:00, Sáb 10:00-14:00</p>'
+        },
+        'footer': {
+          name: 'Footer', sub: 'Pie de página',
+          heading: 'Átomo Studio © 2026',
+          subheading: 'Todos los derechos reservados',
+          body: '<p>Síguenos en redes sociales: Instagram, Facebook, TikTok.</p><p>Envíos a todo Chile. Pagos seguros vía Webpay.</p>'
+        }
+      };
+
+      const t = titles[tab];
+      content.innerHTML = `
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">${t.name}</div>
+              <div class="card-subtitle">${t.sub}</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Título principal (H1)</label>
+            <input class="form-input" value="${t.heading}" oninput="markDirty()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtítulo</label>
+            <input class="form-input" value="${t.subheading}" oninput="markDirty()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contenido</label>
+            <div class="editor-toolbar">
+              <button title="Negrita"><strong>B</strong></button>
+              <button title="Cursiva"><em>I</em></button>
+              <button title="Subrayado"><u>U</u></button>
+              <button title="Lista">•</button>
+            </div>
+            <div class="inline-editor" contenteditable="true" oninput="markDirty()">${t.body}</div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" onclick="markSaved();showToast('success', 'Texto guardado')">Guardar</button>
+            <button class="btn btn-primary" onclick="markSaved();showToast('success', 'Texto guardado')">Guardar y publicar</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderContact(container) {
+      container.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl)">
+          <div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Mensajes (${state.contactMessages.length})</div>
+              </div>
+              ${state.contactMessages.map(m => `
+                <div class="msg-item ${m.read ? '' : 'unread'}">
+                  <div class="msg-header">
+                    <span class="msg-sender">${m.sender} ${m.read ? '' : '<span class="badge-dot" style="background:var(--accent-500);margin-left:6px"></span>'}</span>
+                    <span class="msg-date">${m.date}</span>
+                  </div>
+                  <div class="msg-preview">${m.message}</div>
+                  <div class="msg-actions">
+                    <button class="btn btn-sm btn-ghost" onclick="showToast('info', 'Responder a ${m.sender}')">Responder</button>
+                    <button class="btn btn-sm btn-ghost" onclick="showToast('success', 'Marcado como leído')">${m.read ? 'Leído' : 'Marcar leído'}</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Información de contacto</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email de contacto</label>
+              <input class="form-input" value="hola@atomostudio.com" oninput="markDirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input class="form-input" value="+56 9 1234 5678" oninput="markDirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Dirección (tienda)</label>
+              <input class="form-input" value="Av. Providencia 1234, Santiago" oninput="markDirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Horario</label>
+              <input class="form-input" value="Lun-Vie 10:00-19:00, Sáb 10:00-14:00" oninput="markDirty()">
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" onclick="markSaved();showToast('success', 'Información actualizada')">Guardar cambios</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPhotos(container) {
+      const colors = ['#4F46E5', '#7C3AED', '#EC4899', '#F59E0B', '#10B981', '#3B82F6'];
+
+      container.innerHTML = `
+        <div class="card" style="margin-bottom:var(--space-lg)">
+          <div class="card-header">
+            <div class="card-title">Subir fotos</div>
+          </div>
+          <div class="drop-zone" id="drop-zone" onclick="showToast('info', 'Subir imagen — próximamente')">
+            <div class="drop-zone-icon">📁</div>
+            <div class="drop-zone-text">Arrastra tus imágenes aquí o haz clic para seleccionar</div>
+            <div class="drop-zone-hint">Formatos: JPG, PNG, WebP · Máximo 10MB cada una</div>
+          </div>
+          <div class="preview-grid" id="photo-preview">
+            <div class="preview-item" style="background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;border:2px dashed var(--border-default);cursor:pointer" onclick="showToast('info', 'Subir imagen')">
+              <span style="font-size:2rem">+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Galería actual</div>
+              <div class="card-subtitle">${state.photos.length} imágenes</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('info', 'Ordenar galería')">Ordenar</button>
+          </div>
+          <div class="photo-gallery">
+            ${state.photos.map((photo, i) => `
+              <div class="photo-item">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg, ${colors[i % colors.length]}40, ${colors[(i+1) % colors.length]}20);display:flex;align-items:center;justify-content:center">
+                  <span style="font-size:2.5rem">🖼️</span>
+                </div>
+                <div class="photo-item-overlay">
+                  <span class="photo-item-name">${photo.name}</span>
+                  <span style="font-size:10px;color:rgba(255,255,255,0.7)">${photo.size}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // Drag & drop events
+      setTimeout(() => {
+        const zone = document.getElementById('drop-zone');
+        if (!zone) return;
+        zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+        zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+        zone.addEventListener('drop', e => {
+          e.preventDefault();
+          zone.classList.remove('drag-over');
+          showToast('success', `${e.dataTransfer.files.length} archivos recibidos`);
+        });
+      }, 100);
+    }
+
+    // ==== Publish ====
+    function publishSite() {
+      const now = new Date();
+      const timeStr = now.toLocaleString('es-CL', { hour: '2-digit', minute: '2-digit' });
+      const dateStr = now.toLocaleDateString('es-CL');
+      state.publishedAt = `${dateStr} ${timeStr}`;
+      state.hasUnsavedChanges = false;
+      state.isDirty = false;
+
+      document.getElementById('publish-dot').className = 'dot dot-published';
+      document.getElementById('publish-status-text').textContent = 'Publicado';
+      document.getElementById('publish-time').textContent = `Última publicación: ${state.publishedAt}`;
+      showToast('success', '¡Sitio publicado correctamente! 🚀');
+      document.getElementById('publish-header-btn').innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12v2h12v-2"/><path d="M8 2v10"/><path d="M5 5l3-3 3 3"/></svg>
+        Publicado
+      `;
+    }
+
+    // ==== Dirty State ====
+    function markDirty() {
+      if (!state.isDirty) {
+        state.isDirty = true;
+        state.hasUnsavedChanges = true;
+        document.getElementById('publish-dot').className = 'dot dot-unsaved';
+        document.getElementById('publish-status-text').textContent = 'Cambios sin guardar';
+        document.getElementById('publish-header-btn').innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12v2h12v-2"/><path d="M8 2v10"/><path d="M5 5l3-3 3 3"/></svg>
+          Publicar
+        `;
+      }
+    }
+
+    function markSaved() {
+      state.isDirty = false;
+      state.hasUnsavedChanges = true;
+      document.getElementById('publish-dot').className = 'dot dot-saved';
+      document.getElementById('publish-status-text').textContent = 'Guardado — pendiente de publicación';
+    }
+
+    // ==== Toast ====
+    function showToast(type, message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `
+        <span style="flex:1;font-size:var(--font-size-sm);color:var(--text-primary)">${message}</span>
+        <button class="toast-close" onclick="this.parentElement.remove()">✕</button>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => { if (toast.parentElement) toast.remove(); }, 4000);
+    }
+  </script>
+</body>
+</html>

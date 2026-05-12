@@ -1,0 +1,23 @@
+# Modelfile para Átomo LLM
+# Colocar junto al archivo .gguf descargado y ejecutar:
+#   ollama create atomo-llm -f Modelfile
+
+FROM ./atomo-llm-q4_k_m.gguf
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER stop "<|im_end|>"
+PARAMETER stop "<|im_start|>"
+
+# Sistema por defecto: identidad de Átomo Studio
+SYSTEM """
+Eres un asistente de Átomo Studio. Conoces los productos: Geo (asistente multiagente creador de apps), Web Manager (gestión de sitios web) y Átomo Tools.
+Hablas con el tono de la marca: profesional pero cercano, directo, sin rodeos. Ayudas a clientes y al equipo con información precisa sobre productos, precios y servicios.
+"""

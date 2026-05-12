@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Átomo Studio — Sitios web profesionales, tiendas online e IA para PYMEs chilenas. Landing desde $79.900. Sin comisiones, sin letra chica. Entregamos en 72h.">
+<title data-i18n="átomo_studio_web_ia_para_pymes_chilenas">Átomo Studio · Web & IA para PYMEs Chilenas</title>
+<meta property="og:title" content="Átomo Studio · Web & IA para PYMEs Chilenas">
+<meta property="og:description" content="Sitios web profesionales, tiendas online e IA para PYMEs chilenas. Landing desde $79.900. Sin comisiones, entregamos en 72h.">
+<meta property="og:image" content="https://atomostudio.dev/img/og-image.webp">
+<meta property="og:url" content="https://atomostudio.dev">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════
+   ÁTOMO STUDIO — Variables & Reset
+═══════════════════════════════════════════════ */
+:root{
+  --bg:#06060c;
+  --bg2:#0a0a14;
+  --card:#0f0f1e;
+  --card2:#141428;
+  --blue:#3b82f6;
+  --purple:#8b5cf6;
+  --cyan:#06b6d4;
+  --green:#10b981;
+  --gold:#f59e0b;
+  --text:#eeeef2;
+  --muted:#6b7280;
+  --border:rgba(255,255,255,0.06);
+  --border-blue:rgba(59,130,246,0.2);
+  --border-purple:rgba(139,92,246,0.2);
+  --grad-main:linear-gradient(135deg,#3b82f6,#8b5cf6);
+  --grad-geos:linear-gradient(135deg,#06b6d4,#3b82f6,#8b5cf6);
+  --shadow-blue:0 20px 60px rgba(59,130,246,0.15);
+  --shadow-purple:0 20px 60px rgba(139,92,246,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;line-height:1.6;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:3px}
+
+/* ─── SCROLL PROGRESS ─── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;z-index:9999;
+  background:var(--grad-main);width:0%;transition:width .1s;
+}
+
+/* ─── BACKGROUND ─── */
+.bg-grid{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,0.02) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.orb{
+  position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;
+  opacity:.6;
+}
+.orb-1{
+  width:600px;height:600px;
+  background:rgba(59,130,246,0.08);
+  top:-200px;right:-100px;
+  animation:orbFloat1 20s ease-in-out infinite;
+}
+.orb-2{
+  width:500px;height:500px;
+  background:rgba(139,92,246,0.07);
+  bottom:-150px;left:-100px;
+  animation:orbFloat2 25s ease-in-out infinite;
+}
+.orb-3{
+  width:300px;height:300px;
+  background:rgba(6,182,212,0.05);
+  top:50%;left:50%;
+  animation:orbFloat3 18s ease-in-out infinite;
+}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:64px;
+  background:rgba(6,6,12,0.85);
+  backdrop-filter:blur(24px) saturate(1.5);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 32px;
+  transition:all .3s;
+}
+nav.scrolled{
+  background:rgba(6,6,12,0.97);
+  box-shadow:0 4px 32px rgba(0,0,0,0.3);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;
+  background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.3px;
+}
+.nav-logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:#fff;-webkit-text-fill-color:#fff;
+  flex-shrink:0;
+}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{
+  font-size:13px;font-weight:500;padding:7px 14px;border-radius:8px;
+  color:rgba(238,238,242,.6);transition:.25s;
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.nav-links a.active{color:var(--blue)}
+.nav-cta{
+  background:var(--grad-main);color:#fff;
+  padding:9px 22px;border-radius:10px;
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;
+  transition:.3s;box-shadow:0 4px 20px rgba(59,130,246,.25);
+  display:flex;align-items:center;gap:7px;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(59,130,246,.35)}
+.nav-mobile{display:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.nav-mobile span{display:block;width:22px;height:2px;background:var(--text);border-radius:1px;transition:.3s}
+.mobile-menu{
+  display:none;position:fixed;top:64px;left:0;right:0;
+  background:rgba(10,10,20,.98);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:20px 24px;z-index:490;
+  flex-direction:column;gap:4px;
+}
+.mobile-menu a{
+  display:block;padding:12px 16px;border-radius:8px;
+  font-size:15px;color:rgba(238,238,242,.7);transition:.2s;
+}
+.mobile-menu a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+
+/* ─── UTILITIES ─── */
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section{padding:100px 0;position:relative;z-index:1}
+.section-sm{padding:64px 0;position:relative;z-index:1}
+.label{
+  font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;color:var(--blue);
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;
+}
+.label::before{content:'';width:16px;height:1px;background:var(--blue)}
+.label-purple{color:var(--purple)}
+.label-purple::before{background:var(--purple)}
+.label-cyan{color:var(--cyan)}
+.label-cyan::before{background:var(--cyan)}
+.label-gold{color:var(--gold)}
+.label-gold::before{background:var(--gold)}
+.h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(44px,5vw,80px);font-weight:700;
+  line-height:1.05;letter-spacing:-2px;
+}
+.h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,3.5vw,54px);font-weight:700;
+  line-height:1.1;letter-spacing:-1.5px;
+}
+.h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(22px,2.5vw,32px);font-weight:600;
+  line-height:1.2;
+}
+.grad{background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.grad-geos{background:var(--grad-geos);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.text-muted{color:var(--muted)}
+.text-center{text-align:center}
+
+/* ─── BUTTONS ─── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;border-radius:12px;font-family:'Space Grotesk',sans-serif;
+  font-weight:600;font-size:14px;cursor:pointer;transition:.3s;border:none;
+}
+.btn-primary{
+  background:var(--grad-main);color:#fff;
+  box-shadow:0 4px 25px rgba(59,130,246,.25);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(59,130,246,.35)}
+.btn-ghost{
+  background:rgba(255,255,255,.04);color:var(--text);
+  border:1px solid var(--border);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
+.btn-geos{
+  background:var(--grad-geos);color:#fff;
+  box-shadow:0 4px 30px rgba(6,182,212,.2);
+}
+.btn-geos:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(6,182,212,.35)}
+.btn-lg{padding:16px 36px;font-size:15px;border-radius:14px}
+
+/* ─── CARDS ─── */
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:32px;transition:.4s;
+  position:relative;overflow:hidden;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-blue);
+  border-color:var(--border-blue);
+}
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:var(--grad-main);opacity:0;transition:.4s;
+  pointer-events:none;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  padding:1px;
+}
+.card:hover::after{opacity:.15}
+
+/* ─── FADE ANIMATIONS ─── */
+.fu{opacity:0;transform:translateY(40px);transition:.7s cubic-bezier(.4,0,.2,1)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.fl{opacity:0;transform:translateX(-40px);transition:.7s cubic-bezier(.4,0,.2,1)}
+.fl.vis{opacity:1;transform:translateX(0)}
+.fr{opacity:0;transform:translateX(40px);transition:.7s cubic-bezier(.4,0,.2,1)}
+.fr.vis{opacity:1;transform:translateX(0)}
+.fscale{opacity:0;transform:scale(.9);transition:.7s cubic-bezier(.4,0,.2,1)}
+.fscale.vis{opacity:1;transform:scale(1)}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:64px;position:relative;overflow:hidden;
+}
+.hero-content{
+  max-width:1280px;margin:0 auto;padding:80px 32px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  width:100%;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);
+  padding:6px 16px;border-radius:20px;margin-bottom:24px;
+  font-size:12px;font-weight:500;color:var(--blue);letter-spacing:.5px;
+}
+.hero-eyebrow::before{content:'⚡';font-size:14px}
+.hero-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(48px,5.5vw,88px);font-weight:700;
+  line-height:.97;letter-spacing:-3px;margin-bottom:24px;
+}
+.hero-title .line1{display:block;color:var(--text)}
+.hero-title .line2{display:block;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-title .line3{display:block;color:rgba(238,238,242,.35);font-size:.7em}
+.hero-desc{
+  font-size:17px;line-height:1.75;color:rgba(238,238,242,.6);
+  margin-bottom:36px;max-width:520px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.hero-stats{
+  display:flex;gap:32px;padding-top:32px;
+  border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.stat-item{}
+.stat-num{
+  font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;
+  background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;
+}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.3px}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-ring{
+  width:460px;height:460px;border-radius:50%;
+  border:1px solid rgba(59,130,246,.15);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;animation:ringPulse 4s ease-in-out infinite;
+}
+.hero-ring-2{
+  width:340px;height:340px;border-radius:50%;
+  border:1px solid rgba(139,92,246,.1);
+  position:absolute;animation:ringPulse 4s ease-in-out infinite reverse;
+}
+.hero-ring-3{
+  width:220px;height:220px;border-radius:50%;
+  border:1px solid rgba(6,182,212,.1);
+  position:absolute;animation:ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse{
+  0%,100%{transform:scale(1);opacity:.8}
+  50%{transform:scale(1.04);opacity:.4}
+}
+.hero-core{
+  width:160px;height:160px;border-radius:50%;
+  background:var(--grad-main);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 80px rgba(59,130,246,.4),0 0 120px rgba(139,92,246,.2);
+  position:relative;z-index:2;animation:corePulse 3s ease-in-out infinite;
+}
+@keyframes corePulse{
+  0%,100%{box-shadow:0 0 60px rgba(59,130,246,.4),0 0 100px rgba(139,92,246,.2)}
+  50%{box-shadow:0 0 100px rgba(59,130,246,.5),0 0 160px rgba(139,92,246,.3)}
+}
+.hero-core-logo{
+  font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;
+}
+.hero-core-sub{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:2px;margin-top:2px}
+.hero-orbit-item{
+  position:absolute;width:48px;height:48px;border-radius:12px;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
+  animation:orbit 20s linear infinite;
+}
+.hero-orbit-item:nth-child(1){animation-delay:0s;top:0;left:50%;transform:translateX(-50%)}
+.hero-orbit-item:nth-child(2){animation-delay:-5s}
+.hero-orbit-item:nth-child(3){animation-delay:-10s}
+.hero-orbit-item:nth-child(4){animation-delay:-15s}
+.floating-badge{
+  position:absolute;background:var(--card2);border:1px solid var(--border-blue);
+  border-radius:12px;padding:10px 16px;font-size:12px;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
+  animation:floatBadge 6s ease-in-out infinite;
+}
+.fb-1{top:60px;left:-20px;animation-delay:0s}
+.fb-2{bottom:80px;right:-20px;animation-delay:2s}
+.fb-3{bottom:20px;left:20px;animation-delay:4s}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ════════════════════════════════════════════
+   MARQUEE
+════════════════════════════════════════════ */
+.marquee-section{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:14px 0;overflow:hidden;background:rgba(10,10,20,.5);
+  position:relative;z-index:2;
+}
+.marquee-track{
+  display:flex;gap:48px;animation:marquee 30s linear infinite;white-space:nowrap;
+}
+.marquee-item{
+  display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500;
+  color:rgba(238,238,242,.4);letter-spacing:.5px;
+  flex-shrink:0;
+}
+.marquee-item i{color:var(--blue);font-size:12px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ════════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════════ */
+.services-section{background:var(--bg)}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.svc-card{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:36px;transition:.4s;position:relative;overflow:hidden;
+}
+.svc-card::before{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:var(--grad-main);opacity:0;transition:.4s;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;padding:1px;
+}
+.svc-card:hover::before{opacity:1}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 24px 64px rgba(59,130,246,.12)}
+.svc-card.featured{
+  background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.06));
+  border-color:rgba(59,130,246,.2);
+  grid-column:1/-1;
+}
+.svc-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:20px;
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.2);
+  margin-bottom:20px;
+}
+.svc-badge.new{background:rgba(16,185,129,.1);color:var(--green);border-color:rgba(16,185,129,.2)}
+.svc-badge.hot{background:rgba(245,158,11,.1);color:var(--gold);border-color:rgba(245,158,11,.2)}
+.svc-icon{
+  width:52px;height:52px;border-radius:14px;background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:20px;
+}
+.svc-name{
+  font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;
+  color:var(--text);margin-bottom:10px;
+}
+.svc-desc{
+  font-size:14px;line-height:1.75;color:var(--muted);margin-bottom:20px;
+}
+.svc-features{list-style:none;margin-bottom:24px}
+.svc-features li{
+  font-size:13px;color:rgba(238,238,242,.65);padding:6px 0;
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,.03);
+}
+.svc-features li:last-child{border:none}
+.svc-features li::before{content:'✓';color:var(--blue);font-size:11px;font-weight:700;flex-shrink:0}
+.svc-price{
+  font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);
+  padding:10px 0;border-top:1px solid var(--border);margin-top:auto;
+  display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;
+}
+.svc-price-current{
+  font-size:20px;font-weight:700;
+  background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.svc-price-original{
+  font-size:12px;color:rgba(238,238,242,.3);text-decoration:line-through;order:-1;
+}
+.svc-price-promo{
+  display:block;width:100%;font-size:10px;color:var(--gold);
+  background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);
+  border-radius:4px;padding:2px 6px;letter-spacing:.3px;
+}
+.svc-price strong{color:var(--blue)}
+.svc-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--grad-main);color:#fff;padding:11px 24px;
+  border-radius:10px;font-family:'Space Grotesk',sans-serif;
+  font-size:13px;font-weight:600;transition:.3s;margin-top:16px;
+}
+.svc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,.3)}
+
+/* ════════════════════════════════════════════
+   GEOS 2.1 — HERO PRODUCT
+════════════════════════════════════════════ */
+.geos-section{
+  background:var(--bg2);position:relative;overflow:hidden;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.geos-bg-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(6,182,212,.06) 0%,rgba(59,130,246,.04) 40%,transparent 70%);
+  pointer-events:none;animation:geosGlow 8s ease-in-out infinite;
+}
+@keyframes geosGlow{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.15)}
+}
+.geos-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  padding:100px 0;
+}
+.geos-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,rgba(6,182,212,.1),rgba(59,130,246,.08));
+  border:1px solid rgba(6,182,212,.2);padding:8px 20px;border-radius:24px;
+  font-size:12px;font-weight:600;color:var(--cyan);margin-bottom:20px;letter-spacing:.5px;
+}
+.geos-badge::before{content:'◆';animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.geos-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(48px,5vw,78px);font-weight:700;
+  line-height:.95;letter-spacing:-2px;margin-bottom:20px;
+}
+.geos-title .name{
+  display:block;
+  background:var(--grad-geos);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  font-size:1.2em;
+}
+.geos-tagline{
+  font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;
+  color:rgba(238,238,242,.5);margin-bottom:24px;font-style:italic;
+}
+.geos-desc{
+  font-size:16px;line-height:1.8;color:rgba(238,238,242,.65);margin-bottom:16px;
+}
+.geos-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0}
+.pillar{
+  background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);
+  border-radius:12px;padding:16px;
+}
+.pillar-icon{font-size:22px;margin-bottom:8px}
+.pillar-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
+.pillar-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.geos-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+/* GEOS VISUAL */
+.geos-visual{
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  position:relative;
+}
+.geos-orb{
+  width:280px;height:280px;border-radius:50%;
+  background:var(--grad-geos);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 120px rgba(6,182,212,.3),0 0 200px rgba(59,130,246,.15);
+  animation:geosOrb 4s ease-in-out infinite;
+  position:relative;
+}
+@keyframes geosOrb{
+  0%,100%{box-shadow:0 0 100px rgba(6,182,212,.3),0 0 180px rgba(59,130,246,.15)}
+  50%{box-shadow:0 0 150px rgba(6,182,212,.45),0 0 250px rgba(59,130,246,.25)}
+}
+.geos-orb-inner{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#fff}
+.geos-orb-sub{font-size:11px;color:rgba(255,255,255,.8);letter-spacing:3px;margin-top:4px}
+.geos-rings{
+  position:absolute;inset:-40px;border-radius:50%;
+  border:1px solid rgba(6,182,212,.2);animation:geosSpin 15s linear infinite;
+}
+.geos-rings-2{
+  position:absolute;inset:-80px;border-radius:50%;
+  border:1px dashed rgba(59,130,246,.1);animation:geosSpin 25s linear infinite reverse;
+}
+@keyframes geosSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.geos-chat{
+  width:100%;max-width:380px;
+  background:var(--card);border:1px solid var(--border-blue);border-radius:16px;
+  padding:20px;margin-top:16px;
+}
+.chat-msg{
+  display:flex;gap:10px;margin-bottom:16px;
+  animation:msgAppear .5s ease forwards;opacity:0;
+}
+@keyframes msgAppear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-avatar{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:var(--grad-geos);display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:#fff;font-weight:700;
+}
+.chat-avatar.user{background:rgba(255,255,255,.08)}
+.chat-bubble{
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.12);
+  border-radius:12px;padding:10px 14px;font-size:13px;line-height:1.5;
+  color:rgba(238,238,242,.8);
+}
+.chat-bubble.user{background:rgba(255,255,255,.04);border-color:var(--border)}
+.geos-tag{
+  position:absolute;
+  background:var(--card);border:1px solid rgba(6,182,212,.2);
+  border-radius:10px;padding:8px 14px;font-size:11px;
+  display:flex;align-items:center;gap:6px;color:var(--cyan);font-weight:500;
+  animation:floatBadge 5s ease-in-out infinite;
+}
+.gt-1{top:-10px;right:-20px;animation-delay:0s}
+.gt-2{bottom:120px;left:-30px;animation-delay:2.5s}
+.gt-3{top:80px;right:-40px;animation-delay:1.5s}
+
+/* GEOS FEATURES STRIP */
+.geos-features{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  padding:64px 0;border-top:1px solid var(--border);
+}
+.geos-feat{
+  text-align:center;padding:24px 16px;
+  border-right:1px solid var(--border);
+}
+.geos-feat:last-child{border-right:none}
+.geos-feat-icon{font-size:32px;margin-bottom:12px;display:block}
+.geos-feat-title{
+  font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;
+  margin-bottom:6px;
+}
+.geos-feat-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* GEOS STORY */
+.geos-story{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;
+  padding:80px 0;border-top:1px solid var(--border);align-items:center;
+}
+.story-card{
+  background:var(--card2);border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;
+}
+.story-card-img{height:260px;overflow:hidden;position:relative}
+.story-card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.story-card:hover .story-card-img img{transform:scale(1.05)}
+.story-card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,20,.9) 0%,transparent 50%);
+}
+.story-card-body{padding:28px}
+.story-block{
+  display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;
+  padding-bottom:24px;border-bottom:1px solid var(--border);
+}
+.story-block:last-child{border:none;margin:0;padding:0}
+.story-step{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--grad-geos);display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#fff;
+  flex-shrink:0;
+}
+.story-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:6px}
+.story-desc{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ════════════════════════════════════════════
+   AI MODELS
+════════════════════════════════════════════ */
+.models-section{background:var(--bg)}
+.models-intro{max-width:640px;margin-bottom:56px}
+.models-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;
+}
+.model-card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:24px;transition:.4s;position:relative;overflow:hidden;cursor:default;
+}
+.model-card::before{
+  content:'';position:absolute;top:0;left:-100%;width:200%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.5),transparent);
+  animation:shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+.model-card:hover{transform:translateY(-4px);border-color:var(--border-blue)}
+.model-card.geos-model{
+  background:linear-gradient(135deg,rgba(6,182,212,.08),rgba(59,130,246,.06),rgba(139,92,246,.05));
+  border-color:rgba(6,182,212,.25);
+  grid-column:span 2;
+}
+.model-card.geos-model::before{
+  background:linear-gradient(90deg,transparent,rgba(6,182,212,.6),transparent);
+}
+.model-provider{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.model-logo{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:12px;font-weight:700;font-family:'Space Grotesk',sans-serif;
+}
+.model-name{
+  font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;
+  margin-bottom:6px;
+}
+.model-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.model-tags{display:flex;gap:4px;flex-wrap:wrap}
+.model-tag{
+  font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;
+  background:rgba(59,130,246,.08);color:rgba(59,130,246,.8);
+  border:1px solid rgba(59,130,246,.12);
+}
+.model-tag.green{background:rgba(16,185,129,.08);color:rgba(16,185,129,.8);border-color:rgba(16,185,129,.12)}
+.model-tag.gold{background:rgba(245,158,11,.08);color:rgba(245,158,11,.8);border-color:rgba(245,158,11,.12)}
+.model-tag.cyan{background:rgba(6,182,212,.08);color:rgba(6,182,212,.8);border-color:rgba(6,182,212,.12)}
+.model-tag.purple{background:rgba(139,92,246,.08);color:rgba(139,92,246,.8);border-color:rgba(139,92,246,.12)}
+.model-our{
+  position:absolute;top:12px;right:12px;
+  background:var(--grad-geos);color:#fff;
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 10px;border-radius:20px;
+}
+.models-note{
+  font-size:13px;color:var(--muted);
+  background:rgba(255,255,255,.02);border:1px solid var(--border);
+  border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:10px;
+}
+
+/* ════════════════════════════════════════════
+   GEO APP
+════════════════════════════════════════════ */
+.app-section{background:var(--bg2);border-top:1px solid var(--border)}
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.app-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+.app-feat{
+  background:rgba(59,130,246,.04);border:1px solid var(--border-blue);
+  border-radius:12px;padding:20px;transition:.3s;
+}
+.app-feat:hover{background:rgba(59,130,246,.07);border-color:rgba(59,130,246,.3)}
+.app-feat-icon{font-size:24px;margin-bottom:8px}
+.app-feat-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px}
+.app-feat-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.app-screen{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;position:relative;
+}
+.app-screen-bar{
+  display:flex;align-items:center;gap:8px;padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.02);
+}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot-r{background:#ff5f57}
+.dot-y{background:#ffbd2e}
+.dot-g{background:#28c941}
+.app-screen-title{
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;
+  margin-left:auto;margin-right:auto;color:var(--muted);
+}
+.app-screen-body{padding:20px}
+.chat-demo{display:flex;flex-direction:column;gap:12px}
+.chat-in,.chat-out{display:flex;gap:10px;align-items:flex-start}
+.chat-out{flex-direction:row-reverse}
+.chat-demo-avatar{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+}
+.chat-demo-avatar.geo{background:var(--grad-geos);color:#fff}
+.chat-demo-avatar.user{background:rgba(255,255,255,.08);color:var(--text)}
+.chat-demo-bubble{
+  font-size:12px;line-height:1.6;padding:10px 14px;border-radius:12px;
+  max-width:260px;
+}
+.chat-in .chat-demo-bubble{
+  background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.12);color:rgba(238,238,242,.85);
+}
+.chat-out .chat-demo-bubble{
+  background:rgba(255,255,255,.04);border:1px solid var(--border);color:rgba(238,238,242,.65);
+}
+.typing{display:flex;gap:4px;align-items:center;padding:2px 0}
+.typing span{
+  width:6px;height:6px;border-radius:50%;background:var(--cyan);
+  animation:typingDot 1.4s ease-in-out infinite;
+}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* ════════════════════════════════════════════
+   ECOMMERCE
+════════════════════════════════════════════ */
+.ecom-section{background:var(--bg)}
+.ecom-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ecom-features{display:grid;grid-template-columns:1fr;gap:14px;margin-top:32px}
+.ecom-feat{
+  display:flex;gap:16px;align-items:flex-start;padding:20px;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;transition:.3s;
+}
+.ecom-feat:hover{border-color:var(--border-blue);background:rgba(59,130,246,.03)}
+.ecom-feat-icon{
+  width:44px;height:44px;border-radius:12px;background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.ecom-feat-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
+.ecom-feat-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.ecom-plans{display:grid;grid-template-columns:1fr;gap:16px}
+.ecom-plan{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:24px;transition:.3s;
+}
+.ecom-plan.featured{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.04)}
+.ecom-plan:hover{transform:translateY(-2px);border-color:var(--border-blue)}
+.ecom-plan-name{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.ecom-plan-desc{font-size:13px;color:var(--muted);margin-bottom:12px}
+.ecom-plan-feats{display:flex;flex-wrap:wrap;gap:6px}
+.efeat{
+  font-size:11px;padding:3px 10px;border-radius:20px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:rgba(238,238,242,.6);
+}
+.ecom-dashboard{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;
+}
+.dash-header{
+  background:rgba(255,255,255,.02);padding:14px 20px;
+  border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;
+}
+.dash-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600}
+.dash-status{
+  font-size:11px;color:var(--green);background:rgba(16,185,129,.1);
+  padding:3px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.2);
+}
+.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.dash-stat{background:var(--card);padding:20px;text-align:center}
+.dash-stat-val{
+  font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;
+  background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.dash-stat-lbl{font-size:11px;color:var(--muted);margin-top:4px}
+.dash-orders{padding:16px 20px}
+.dash-order{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:13px;
+}
+.dash-order:last-child{border:none}
+.order-id{color:var(--blue);font-weight:500}
+.order-status{
+  font-size:10px;padding:2px 8px;border-radius:20px;
+  background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2);
+}
+.order-status.pending{background:rgba(245,158,11,.1);color:var(--gold);border-color:rgba(245,158,11,.2)}
+
+/* ════════════════════════════════════════════
+   PORTFOLIO
+════════════════════════════════════════════ */
+.portfolio-section{background:var(--bg2);border-top:1px solid var(--border)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.port-card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;transition:.4s;
+}
+.port-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4);border-color:var(--border-blue)}
+.port-img{
+  height:180px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,var(--card2),rgba(59,130,246,.05));
+  display:flex;align-items:center;justify-content:center;
+}
+.port-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.port-card:hover .port-img img{transform:scale(1.08)}
+.port-emoji{font-size:48px}
+.port-type{
+  position:absolute;top:12px;left:12px;
+  background:rgba(6,6,12,.8);backdrop-filter:blur(8px);
+  font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--blue);padding:4px 10px;border-radius:20px;border:1px solid var(--border-blue);
+}
+.port-body{padding:20px}
+.port-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px}
+.port-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.port-tags{display:flex;gap:6px;flex-wrap:wrap}
+.port-tag{
+  font-size:10px;padding:3px 9px;border-radius:20px;
+  background:rgba(59,130,246,.07);color:rgba(59,130,246,.8);
+  border:1px solid rgba(59,130,246,.12);
+}
+
+/* ════════════════════════════════════════════
+   WHY / ABOUT
+════════════════════════════════════════════ */
+.about-section{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-img img{
+  width:100%;height:460px;object-fit:cover;border-radius:20px;
+  filter:brightness(.85) saturate(1.1);
+}
+.about-img::after{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(139,92,246,.1));
+  pointer-events:none;
+}
+.about-stat-pill{
+  position:absolute;bottom:24px;left:24px;
+  background:rgba(6,6,12,.85);backdrop-filter:blur(16px);
+  border:1px solid var(--border-blue);border-radius:14px;padding:16px 20px;
+}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.value{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:.3s;
+}
+.value:hover{border-color:var(--border-blue)}
+.value-icon{font-size:24px;margin-bottom:8px}
+.value-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px}
+.value-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ════════════════════════════════════════════
+   CONTACT
+════════════════════════════════════════════ */
+.contact-section{
+  background:var(--bg2);border-top:1px solid var(--border);
+}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info-items{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+.ci{
+  display:flex;gap:16px;align-items:flex-start;padding:20px;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+}
+.ci-icon{
+  width:44px;height:44px;border-radius:12px;background:var(--grad-main);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0;
+}
+.ci-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ci-val{font-size:15px;font-weight:500}
+.contact-form{
+  background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;
+}
+.form-group{margin-bottom:20px}
+.form-label{
+  display:block;font-size:12px;font-weight:500;color:var(--muted);
+  letter-spacing:.5px;margin-bottom:8px;
+}
+.form-input,.form-textarea{
+  width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:10px;padding:13px 16px;color:var(--text);font-family:'Inter',sans-serif;
+  font-size:14px;transition:.3s;outline:none;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--border-blue);background:rgba(59,130,246,.04)}
+.form-textarea{height:140px;resize:vertical}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wa-cta{
+  display:flex;align-items:center;gap:12px;margin-top:16px;padding:14px 20px;
+  background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);
+  border-radius:12px;font-size:14px;font-weight:500;color:#25D366;transition:.3s;
+}
+.wa-cta:hover{background:rgba(37,211,102,.15)}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+footer{
+  background:#040408;border-top:1px solid var(--border);
+  padding:60px 32px 40px;position:relative;z-index:1;
+}
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;
+}
+.footer-brand-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px;max-width:280px}
+.footer-col h4{
+  font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3px;font-weight:600;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;
+}
+.footer-col a{
+  display:block;font-size:13px;color:rgba(238,238,242,.45);
+  margin-bottom:10px;transition:.25s;
+}
+.footer-col a:hover{color:var(--blue)}
+.footer-bottom{
+  max-width:1280px;margin:40px auto 0;padding-top:24px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:12px;color:rgba(238,238,242,.2)}
+.footer-social{display:flex;gap:12px}
+.social-btn{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--muted);transition:.3s;
+}
+.social-btn:hover{background:rgba(59,130,246,.1);border-color:var(--border-blue);color:var(--blue)}
+
+/* WA FLOAT */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:400;
+  width:56px;height:56px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:#fff;box-shadow:0 4px 24px rgba(37,211,102,.4);
+  transition:.3s;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 36px rgba(37,211,102,.5)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero-content,.geos-hero,.app-grid,.ecom-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .geos-visual{margin-top:40px}
+  .services-intro{grid-template-columns:1fr}
+  .models-grid{grid-template-columns:1fr 1fr}
+  .portfolio-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .geos-story{grid-template-columns:1fr}
+  .geos-features{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .container{padding:0 20px}
+  .section{padding:64px 0}
+  .h1{font-size:40px;letter-spacing:-1.5px}
+  .h2{font-size:28px}
+  .services-grid{grid-template-columns:1fr}
+  .svc-card.featured{grid-column:1}
+  .app-features{grid-template-columns:1fr}
+  .models-grid{grid-template-columns:1fr}
+  .model-card.geos-model{grid-column:1}
+  .portfolio-grid{grid-template-columns:1fr}
+  .geos-pillars{grid-template-columns:1fr}
+  .geos-features{grid-template-columns:1fr}
+  .about-values{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-mobile{display:flex}
+  .hero-title{letter-spacing:-1px}
+  .geos-title{letter-spacing:-1px}
+}
+@media(max-width:480px){
+  nav{padding:0 16px}
+  .hero-content{padding:60px 20px}
+  .hero-btns{flex-direction:column}
+  .hero-stats{gap:20px}
+}
+</style>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JLHLYHGHDT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JLHLYHGHDT');
+</script>
+
+  <!-- hreflang for SEO multi-language -->
+  <link rel="alternate" hreflang="es-CL" href="https://atomostudio.dev/">
+  <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/?lang=en_US">
+  <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/?lang=fr_FR">
+  <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/?lang=pt_BR">
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- BACKGROUND -->
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ═══════════════════════════
+     NAV
+═══════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo" data-i18n="átomo_studio">
+      <div class="nav-logo-icon">⚡</div>
+      Átomo Studio
+    </a>
+    <div class="nav-links">
+      <a href="#servicios" data-i18n="servicios">Servicios</a>
+      <a href="#geos" data-i18n="geos_2_1">Geos 2.1</a>
+      <a href="#modelos" data-i18n="modelos_ia">Modelos IA</a>
+      <a href="#geo-app" data-i18n="geo_app">Geo App</a>
+      <a href="#ecommerce" data-i18n="e_commerce">E-commerce</a>
+      <a href="foto-ia.html" data-i18n="foto_ia">📸 Foto IA</a>
+      <a href="#portafolio" data-i18n="portafolio">Portafolio</a>
+      <a href="#contacto" data-i18n="contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Quiero%20info" target="_blank" class="nav-cta" data-i18n="hablemos">
+      <i class="fab fa-whatsapp"></i> Hablemos
+    </a>
+    <div class="nav-mobile" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()" data-i18n="servicios">Servicios</a>
+  <a href="#geos" onclick="closeMobile()" data-i18n="geos_2_1">Geos 2.1</a>
+  <a href="#modelos" onclick="closeMobile()" data-i18n="modelos_ia">Modelos IA</a>
+  <a href="#geo-app" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
+  <a href="foto-ia.html" onclick="closeMobile()" data-i18n="foto_ia">📸 Foto IA</a>
+  <a href="#ecommerce" onclick="closeMobile()" data-i18n="e_commerce">E-commerce</a>
+  <a href="#portafolio" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="#contacto" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
+</div>
+
+<!-- ═══════════════════════════
+     HERO
+═══════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow" data-i18n="para_pymes_chilenas_que_quieren_crecer_de_verdad">Para PYMEs chilenas que quieren crecer de verdad</div>
+      <h1 class="hero-title">
+        <span class="line1" data-i18n="tu_negocio_merece">Tu negocio merece</span>
+        <span class="line2" data-i18n="una_web_profesional">una web profesional</span>
+        <span class="line3" data-i18n="sin_pagar_una_fortuna">sin pagar una fortuna</span>
+      </h1>
+      <p class="hero-desc" data-i18n="en_chile_tener_presencia_digital_no_debería_ser_caro_ni_com">
+        En Chile, tener presencia digital no debería ser caro ni complicado. Creamos sitios web, 
+        tiendas online e inteligencia artificial para PYMEs que necesitan resultados reales 
+        — sin comisiones, sin letra chica, sin esperar semanas.
+      </p>
+      <div class="hero-btns">
+        <a href="#servicios" class="btn btn-primary btn-lg" data-i18n="ver_nuestros_servicios">
+          <i class="fas fa-rocket"></i> Ver nuestros servicios
+        </a>
+        <a href="#geos" class="btn btn-ghost btn-lg" data-i18n="geos_2_1">
+          Conocer Geos 2.1 <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num" data-target="3">0</div>
+          <div class="stat-lbl" data-i18n="productos_propios_activos">Productos propios activos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="17">0</div>
+          <div class="stat-lbl" data-i18n="proyectos_entregados">Proyectos entregados</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-i18n="100">100%</div>
+          <div class="stat-lbl" data-i18n="el_sitio_es_tuyo_sin_comisiones">El sitio es tuyo, sin comisiones</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-i18n="24h">24h</div>
+          <div class="stat-lbl" data-i18n="tiempo_de_respuesta_promedio">Tiempo de respuesta promedio</div>
+        </div>
+      </div>
+    </div>
+    <!-- HERO VISUAL -->
+    <div class="hero-visual">
+      <div class="hero-ring">
+        <div class="hero-ring-2"></div>
+        <div class="hero-ring-3"></div>
+        <div class="hero-core">
+          <div class="hero-core-logo">Á</div>
+          <div class="hero-core-sub" data-i18n="studio">STUDIO</div>
+        </div>
+      </div>
+      <div class="floating-badge fb-1" data-i18n="sitio_listo_en_72h">
+        <span>⚡</span> Sitio listo en 72h
+      </div>
+      <div class="floating-badge fb-2" data-i18n="3_proyectos_en_proceso">
+        <span style="color:var(--green)">●</span> 3 proyectos en proceso
+      </div>
+      <div class="floating-badge fb-3" data-i18n="geos2_1_online">
+        <span>🤖</span> Geos2.1 online
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item" data-i18n="sitios_web_profesionales"><i class="fas fa-globe"></i> Sitios Web Profesionales</div>
+    <div class="marquee-item" data-i18n="inteligencia_artificial"><i class="fas fa-robot"></i> Inteligencia Artificial</div>
+    <div class="marquee-item" data-i18n="e_commerce"><i class="fas fa-shopping-cart"></i> E-commerce Omnicanal</div>
+    <div class="marquee-item" data-i18n="automatizaciones"><i class="fas fa-bolt"></i> Automatizaciones</div>
+    <div class="marquee-item" data-i18n="geos_2_1"><i class="fas fa-brain"></i> Modelo Geos 2.1</div>
+    <div class="marquee-item" data-i18n="desarrollo_a_medida"><i class="fas fa-code"></i> Desarrollo a Medida</div>
+    <div class="marquee-item" data-i18n="reportes_analytics"><i class="fas fa-chart-line"></i> Reportes & Analytics</div>
+    <div class="marquee-item" data-i18n="integración_whatsapp"><i class="fab fa-whatsapp"></i> Integración WhatsApp</div>
+    <!-- duplicate for infinite -->
+    <div class="marquee-item" data-i18n="sitios_web_profesionales"><i class="fas fa-globe"></i> Sitios Web Profesionales</div>
+    <div class="marquee-item" data-i18n="inteligencia_artificial"><i class="fas fa-robot"></i> Inteligencia Artificial</div>
+    <div class="marquee-item" data-i18n="e_commerce"><i class="fas fa-shopping-cart"></i> E-commerce Omnicanal</div>
+    <div class="marquee-item" data-i18n="automatizaciones"><i class="fas fa-bolt"></i> Automatizaciones</div>
+    <div class="marquee-item" data-i18n="geos_2_1"><i class="fas fa-brain"></i> Modelo Geos 2.1</div>
+    <div class="marquee-item" data-i18n="desarrollo_a_medida"><i class="fas fa-code"></i> Desarrollo a Medida</div>
+    <div class="marquee-item" data-i18n="reportes_analytics"><i class="fas fa-chart-line"></i> Reportes & Analytics</div>
+    <div class="marquee-item" data-i18n="integración_whatsapp"><i class="fab fa-whatsapp"></i> Integración WhatsApp</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     SERVICES
+═══════════════════════════ -->
+<section class="section services-section" id="servicios">
+  <div class="container">
+    <div class="services-intro">
+      <div>
+        <div class="label fu" data-i18n="lo_que_hacemos">Lo que hacemos</div>
+        <h2 class="h2 fu" style="transition-delay:.1s">
+          Soluciones digitales<br>
+          que hacen crecer<br>
+          <span class="grad" data-i18n="tu_negocio">tu negocio</span>
+        </h2>
+      </div>
+      <div class="fu" style="transition-delay:.2s">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:20px" data-i18n="no_importa_si_tienes_una_pequeña_tienda_de_barrio_o_un_negoc">
+          No importa si tienes una pequeña tienda de barrio o un negocio en expansión — 
+          tenemos la solución digital exacta para ti. Creamos desde landing pages simples 
+          hasta plataformas de venta online con inteligencia artificial incluida.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted)" data-i18n="todo_lo_que_construimos_es_100_tuyo_no_cobramos_comisiones">
+          Todo lo que construimos es 100% tuyo: no cobramos comisiones por ventas, 
+          no hay plataformas de terceros de por medio, no hay letra chica.
+        </p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <!-- LANDING -->
+      <div class="svc-card fu">
+        <div class="svc-badge hot" data-i18n="más_pedido">📱 Más pedido</div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-name" data-i18n="landing_page_profesional">Landing Page Profesional</div>
+        <p class="svc-desc" data-i18n="una_sola_página_poderosa_y_bien_diseñada_puede_ser_todo_lo_q">
+          Una sola página poderosa y bien diseñada puede ser todo lo que tu negocio necesita para captar clientes. 
+          Ideal para empezar en el mundo digital con el pie derecho.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="diseño_profesional_a_medida_no_plantillas_genéricas">Diseño profesional a medida (no plantillas genéricas)</li>
+          <li data-i18n="completamente_adaptada_a_celulares_y_tablets">Completamente adaptada a celulares y tablets</li>
+          <li data-i18n="botón_de_whatsapp_y_google_maps_integrados">Botón de WhatsApp y Google Maps integrados</li>
+          <li data-i18n="posicionamiento_básico_en_google_seo">Posicionamiento básico en Google (SEO)</li>
+          <li data-i18n="hosting_gratuito_por_1_año_incluido">Hosting gratuito por 1 año incluido</li>
+          <li data-i18n="entregada_en_máximo_72_horas">Entregada en máximo 72 horas</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-original" data-i18n="120_000">$120.000</span>
+          <strong class="svc-price-current" data-i18n="79_900">$79.900</strong>
+          <span class="svc-price-promo" data-i18n="promo_lanzamiento_mayo_2026">🎉 Promo lanzamiento — mayo 2026</span>
+        </div>
+        <a href="https://wa.me/56973994504?text=Quiero%20la%20Landing%20Page%20en%20promo%20de%20%2479.900" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
+          <i class="fab fa-whatsapp"></i> Quiero esta promo
+        </a>
+      </div>
+      <!-- WEB -->
+      <div class="svc-card fu" style="transition-delay:.1s">
+        <div class="svc-badge" data-i18n="recomendado">⭐ Recomendado</div>
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-name" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</div>
+        <p class="svc-desc" data-i18n="un_sitio_web_completo_con_todas_las_secciones_que_tu_negocio">
+          Un sitio web completo con todas las secciones que tu negocio necesita: inicio, 
+          servicios, productos, galería y contacto. Hecho para durar y para crecer contigo.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="sitio_completo_de_5_a_15_páginas">Sitio completo de 5 a 15 páginas</li>
+          <li data-i18n="galería_de_productos_o_servicios_con_precios">Galería de productos o servicios con precios</li>
+          <li data-i18n="formulario_de_contacto_whatsapp_integrado">Formulario de contacto + WhatsApp integrado</li>
+          <li data-i18n="seo_avanzado_para_aparecer_en_google">SEO avanzado para aparecer en Google</li>
+          <li data-i18n="panel_simple_para_actualizar_tu_contenido">Panel simple para actualizar tu contenido</li>
+          <li data-i18n="hosting_incluido_por_1_año">Hosting incluido por 1 año</li>
+          <li data-i18n="foto_y_videos_para_tu_negocio">Foto y videos para tu negocio</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-original" data-i18n="250_000">$250.000</span>
+          <strong class="svc-price-current" data-i18n="149_900">$149.900</strong>
+          <span class="svc-price-promo" data-i18n="promo_lanzamiento_mayo_2026">🎉 Promo lanzamiento — mayo 2026 · Valor regular: $380.000</span>
+        </div>
+        <a href="https://wa.me/56973994504?text=Quiero%20el%20sitio%20web%20multi-p%C3%A1gina%20en%20promo%20de%20%24149.900" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
+          <i class="fab fa-whatsapp"></i> Quiero esta promo
+        </a>
+      </div>
+      <!-- UPDATE -->
+      <div class="svc-card fu" style="transition-delay:.2s">
+        <div class="svc-badge" data-i18n="soporte">🔄 Soporte</div>
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name" data-i18n="actualización_mantenimiento_web">Actualización & Mantenimiento Web</div>
+        <p class="svc-desc" data-i18n="ya_tienes_un_sitio_pero_está_desactualizado_te_lo_renovamo">
+          ¿Ya tienes un sitio pero está desactualizado? Te lo renovamos con precios, 
+          productos y fotos nuevas. También hacemos mejoras técnicas y soporte continuo.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="actualización_de_precios_y_productos">Actualización de precios y productos</li>
+          <li data-i18n="agregar_o_quitar_secciones_y_categorías">Agregar o quitar secciones y categorías</li>
+          <li data-i18n="nuevas_fotos_con_descripciones_optimizadas">Nuevas fotos con descripciones optimizadas</li>
+          <li data-i18n="soporte_técnico_continuo_vía_whatsapp">Soporte técnico continuo vía WhatsApp</li>
+          <li data-i18n="mejoras_de_velocidad_y_rendimiento">Mejoras de velocidad y rendimiento</li>
+        </ul>
+        <div class="svc-price">
+          <span data-i18n="plan_mensual_o_por_servicio">Plan mensual o por servicio</span>
+          <strong data-i18n="consultar_precio">Consultar precio</strong>
+        </div>
+        <a href="https://wa.me/56973994504?text=Necesito%20actualizar%20mi%20sitio%20web" target="_blank" class="svc-cta" data-i18n="consultar_precio">
+          <i class="fab fa-whatsapp"></i> Consultar precio
+        </a>
+      </div>
+      <!-- ECOMMERCE FEATURED -->
+      <div class="svc-card featured fu" style="transition-delay:.3s">
+        <div class="svc-badge new" data-i18n="nuevo_producto">🏪 Nuevo Producto</div>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start">
+          <div>
+            <div class="svc-icon">🛒</div>
+            <div class="svc-name" data-i18n="e_commerce_omnicanal_con_ia">E-commerce Omnicanal con IA</div>
+            <p class="svc-desc" style="max-width:600px" data-i18n="transforma_tu_negocio_en_una_tienda_online_completa_vende_p">
+              Transforma tu negocio en una tienda online completa. Vende por web, 
+              gestiona tu inventario con escáner de código de barras, recibe pagos con Webpay 
+              y deja que un agente con IA atienda y venda por WhatsApp mientras duermes.
+            </p>
+            <div style="display:flex;gap:32px;flex-wrap:wrap">
+              <ul class="svc-features" style="flex:1;min-width:200px">
+                <li data-i18n="carrito_de_compras_webpay_plus">Carrito de compras + Webpay Plus</li>
+                <li data-i18n="panel_de_gestión_de_pedidos_en_tiempo_real">Panel de gestión de pedidos en tiempo real</li>
+                <li data-i18n="control_de_inventario_y_bodega">Control de inventario y bodega</li>
+                <li data-i18n="alertas_cuando_el_stock_esté_por_agotarse">Alertas cuando el stock esté por agotarse</li>
+              </ul>
+              <ul class="svc-features" style="flex:1;min-width:200px">
+                <li data-i18n="escaneo_de_productos_con_cámara_del_celular">Escaneo de productos con cámara del celular</li>
+                <li data-i18n="agente_vendedor_con_ia_en_whatsapp">Agente vendedor con IA en WhatsApp</li>
+                <li data-i18n="reconocimiento_de_facturas_con_fotos_ocr">Reconocimiento de facturas con fotos (OCR)</li>
+                <li data-i18n="reportes_de_ventas_y_analytics_detallados">Reportes de ventas y analytics detallados</li>
+              </ul>
+            </div>
+            <a href="ecommerce.html" class="svc-cta" style="background:var(--grad-main)" data-i18n="ver_producto_completo">
+              <i class="fas fa-store"></i> Ver producto completo
+            </a>
+          </div>
+          <div style="text-align:right;min-width:120px">
+            <div style="font-size:48px">🛒</div>
+            <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:8px" data-i18n="ecommerce">ECOMMERCE<br>OMNICANAL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     GEOS 2.1
+═══════════════════════════ -->
+<section class="geos-section" id="geos">
+  <div class="geos-bg-glow"></div>
+  <div class="container">
+    <!-- HERO GEOS -->
+    <div class="geos-hero">
+      <div>
+        <div class="geos-badge fu" data-i18n="modelo_propio_primera_versión_pública">Modelo propio · Primera versión pública</div>
+        <h2 class="geos-title fu" style="transition-delay:.1s" data-i18n="geos_2_1">
+          Conoce
+          <span class="name" data-i18n="geos_2_1">Geos 2.1</span>
+          Tu IA personal
+        </h2>
+        <p class="geos-tagline fu" style="transition-delay:.2s" data-i18n="no_es_solo_una_herramienta_es_tu_socio_de_crecimiento">
+          "No es solo una herramienta. Es tu socio de crecimiento."
+        </p>
+        <p class="geos-desc fu" style="transition-delay:.25s">
+          Geos 2.1 es el primer modelo de inteligencia artificial latinoamericano pensado 
+          <strong data-i18n="específicamente_para_ti">específicamente para ti</strong>: aprende cómo piensas, recuerda tus metas, 
+          entiende tu situación económica y te ayuda activamente a mejorarla. Cada conversación 
+          lo hace más inteligente <em data-i18n="para_ti">para ti</em>.
+        </p>
+        <p class="geos-desc fu" style="transition-delay:.3s" data-i18n="imagina_tener_a_tu_lado_a_alguien_que_jamás_olvida_lo_que_le">
+          Imagina tener a tu lado a alguien que jamás olvida lo que le has contado, que entiende 
+          en qué está tu negocio, qué sueños tienes, qué obstáculos enfrentas — y que cada día 
+          te da ideas concretas para avanzar. Eso es Geos 2.1.
+        </p>
+        <div class="geos-pillars fu" style="transition-delay:.35s">
+          <div class="pillar">
+            <div class="pillar-icon">🧠</div>
+            <div class="pillar-title" data-i18n="aprende_de_ti">Aprende de ti</div>
+            <div class="pillar-desc" data-i18n="recuerda_cada_conversación_y_adapta_sus_respuestas_a_cómo_tú">Recuerda cada conversación y adapta sus respuestas a cómo tú piensas y qué necesitas</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📈</div>
+            <div class="pillar-title" data-i18n="te_impulsa_económicamente">Te impulsa económicamente</div>
+            <div class="pillar-desc" data-i18n="no_te_da_respuestas_genéricas_te_ayuda_a_tomar_decisiones_r">No te da respuestas genéricas: te ayuda a tomar decisiones reales que mejoran tus ingresos</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🌱</div>
+            <div class="pillar-title" data-i18n="crece_contigo">Crece contigo</div>
+            <div class="pillar-desc" data-i18n="no_es_una_ia_estática_con_cada_interacción_se_vuelve_mejor">No es una IA estática. Con cada interacción se vuelve mejor, más precisa y más útil para tu vida</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-title" data-i18n="tu_compañero_no_tu_herramienta">Tu compañero, no tu herramienta</div>
+            <div class="pillar-desc" data-i18n="la_diferencia_entre_usar_una_calculadora_y_tener_un_socio_de">La diferencia entre usar una calculadora y tener un socio de confianza que te conoce de verdad</div>
+          </div>
+        </div>
+        <div class="geos-btns fu" style="transition-delay:.4s">
+          <a href="geo-app-completa.html" class="btn btn-geos btn-lg" data-i18n="geos_2_1">
+            <i class="fas fa-robot"></i> Probar Geos 2.1 ahora
+          </a>
+          <a href="https://wa.me/56973994504?text=Quiero%20saber%20más%20de%20Geos%202.1" target="_blank" class="btn btn-ghost btn-lg" data-i18n="más_información">
+            Más información
+          </a>
+        </div>
+      </div>
+      <!-- VISUAL -->
+      <div class="geos-visual fr">
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:20px">
+          <!-- GEOS TAGS -->
+          <div class="geos-tag gt-1" data-i18n="aprendizaje_continuo"><span>🔗</span> Aprendizaje continuo</div>
+          <div class="geos-tag gt-2" data-i18n="modelo_propio"><span>🧬</span> Modelo propio</div>
+          <div class="geos-tag gt-3" data-i18n="hecho_en_chile"><span>🇨🇱</span> Hecho en Chile</div>
+          <!-- ORB -->
+          <div class="geos-orb">
+            <div class="geos-rings"></div>
+            <div class="geos-rings-2"></div>
+            <div class="geos-orb-inner">G</div>
+            <div class="geos-orb-sub" data-i18n="eos_2_1">EOS 2.1</div>
+          </div>
+          <!-- CHAT DEMO -->
+          <div class="geos-chat">
+            <div style="font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:1px" data-i18n="conversación_en_vivo">◆ CONVERSACIÓN EN VIVO</div>
+            <div class="chat-demo">
+              <div class="chat-in" style="animation-delay:.5s">
+                <div class="chat-avatar user">TÚ</div>
+                <div class="chat-bubble user" data-i18n="cómo_puedo_aumentar_las_ventas_de_mi_almacén_este_mes">¿Cómo puedo aumentar las ventas de mi almacén este mes?</div>
+              </div>
+              <div class="chat-in" style="animation-delay:1.5s">
+                <div class="chat-avatar">G</div>
+                <div class="chat-bubble" data-i18n="basándome_en_lo_que_me_has_contado_sobre_tu_negocio_en_conch">
+                  Basándome en lo que me has contado sobre tu negocio en Conchalí: 
+                  te sugiero 3 acciones concretas para esta semana que según tu perfil tienen 
+                  alta probabilidad de funcionar... 🎯
+                </div>
+              </div>
+              <div class="chat-in" style="animation-delay:3s">
+                <div class="chat-avatar">G</div>
+                <div class="chat-bubble">
+                  <div class="typing"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES STRIP -->
+    <div class="geos-features fu">
+      <div class="geos-feat">
+        <span class="geos-feat-icon">🔐</span>
+        <div class="geos-feat-title" data-i18n="privacidad_total">Privacidad total</div>
+        <div class="geos-feat-desc" data-i18n="tus_datos_son_tuyos_nunca_se_venden_ni_comparten_puedes_bo">Tus datos son tuyos. Nunca se venden ni comparten. Puedes borrar todo en un clic.</div>
+      </div>
+      <div class="geos-feat">
+        <span class="geos-feat-icon">🌐</span>
+        <div class="geos-feat-title" data-i18n="multi_modelo">Multi-modelo</div>
+        <div class="geos-feat-desc" data-i18n="usa_los_mejores_modelos_de_ia_del_mundo_combinados_en_un_sol">Usa los mejores modelos de IA del mundo combinados en un solo lugar.</div>
+      </div>
+      <div class="geos-feat">
+        <span class="geos-feat-icon">📱</span>
+        <div class="geos-feat-title" data-i18n="en_tu_celular">En tu celular</div>
+        <div class="geos-feat-desc" data-i18n="disponible_en_android_ios_y_web_geos_2_1_está_siempre_cont">Disponible en Android, iOS y web. Geos 2.1 está siempre contigo donde lo necesites.</div>
+      </div>
+      <div class="geos-feat">
+        <span class="geos-feat-icon">💬</span>
+        <div class="geos-feat-title" data-i18n="habla_con_voz">Habla con voz</div>
+        <div class="geos-feat-desc" data-i18n="convérsale_por_audio_te_escucha_entiende_y_responde_con_vo">Convérsale por audio. Te escucha, entiende y responde con voz claro y natural.</div>
+      </div>
+    </div>
+
+    <!-- GEOS STORY -->
+    <div class="geos-story">
+      <div>
+        <div class="label label-cyan fu" data-i18n="por_qué_geos_2_1_es_diferente">¿Por qué Geos 2.1 es diferente?</div>
+        <h3 class="h3 fu" style="transition-delay:.1s;margin-bottom:24px">
+          La IA que <span class="grad-geos">crece contigo</span>,<br>
+          no solo responde tus preguntas
+        </h3>
+        <div class="story-block fu" style="transition-delay:.2s">
+          <div class="story-step">1</div>
+          <div>
+            <div class="story-title" data-i18n="te_conoce_de_verdad">Te conoce de verdad</div>
+            <p class="story-desc" data-i18n="geos_2_1_construye_un_perfil_profundo_de_ti_tus_metas_tu_f">
+              Geos 2.1 construye un perfil profundo de ti: tus metas, tu forma de hablar, 
+              tus desafíos económicos, lo que te emociona y lo que te bloquea. No empieza desde cero 
+              cada vez que abres la app.
+            </p>
+          </div>
+        </div>
+        <div class="story-block fu" style="transition-delay:.3s">
+          <div class="story-step">2</div>
+          <div>
+            <div class="story-title" data-i18n="aprende_de_cada_conversación">Aprende de cada conversación</div>
+            <p class="story-desc" data-i18n="cada_vez_que_le_cuentas_algo_geos_2_1_lo_incorpora_si_le_d">
+              Cada vez que le cuentas algo, Geos 2.1 lo incorpora. Si le dices que tienes 
+              un negocio nuevo, que cambiaste de trabajo o que quieres ahorrar más — lo recuerda 
+              y adapta sus consejos en consecuencia.
+            </p>
+          </div>
+        </div>
+        <div class="story-block fu" style="transition-delay:.4s">
+          <div class="story-step">3</div>
+          <div>
+            <div class="story-title" data-i18n="te_ayuda_a_tomar_decisiones_reales">Te ayuda a tomar decisiones reales</div>
+            <p class="story-desc" data-i18n="no_te_da_frases_motivacionales_genéricas_te_da_planes_concr">
+              No te da frases motivacionales genéricas. Te da planes concretos, cálculos reales 
+              y estrategias que tienen sentido para tu situación específica. Porque te conoce, 
+              sus consejos funcionan.
+            </p>
+          </div>
+        </div>
+        <div class="story-block fu" style="transition-delay:.5s">
+          <div class="story-step">4</div>
+          <div>
+            <div class="story-title" data-i18n="evoluciona_con_el_tiempo">Evoluciona con el tiempo</div>
+            <p class="story-desc" data-i18n="geos_2_1_es_un_modelo_vivo_que_seguimos_entrenando_y_mejoran">
+              Geos 2.1 es un modelo vivo que seguimos entrenando y mejorando. Cada versión es más 
+              inteligente que la anterior. Tú creces, él crece. Es una relación de largo plazo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="story-card fu" style="transition-delay:.2s">
+          <div class="story-card-img">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&q=85" alt="Geos 2.1 — modelo de inteligencia artificial latinoamericano de Átomo Studio con interfaz de IA generativa">
+            <div style="position:absolute;bottom:16px;left:16px;z-index:2">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff" data-i18n="geos_2_1">Geos 2.1</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.6)" data-i18n="modelo_en_crecimiento_activo">Modelo en crecimiento activo</div>
+            </div>
+          </div>
+          <div class="story-card-body">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite"></div>
+              <span style="font-size:12px;color:var(--green);font-weight:500" data-i18n="aprendiendo_activamente">Aprendiendo activamente</span>
+            </div>
+            <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px" data-i18n="geos_2_1_no_es_un_producto_terminado_es_un_modelo_que_crec">
+              Geos 2.1 no es un producto terminado — es un modelo que crece con cada interacción 
+              de cada usuario. Mientras más lo uses, más inteligente se vuelve para ti y para todos.
+            </p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);color:var(--cyan)">🧬 Aprendizaje continuo</span>
+              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);color:var(--green)" data-i18n="evolución_constante">🌱 Evolución constante</span>
+              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:var(--purple)" data-i18n="personalizado_para_ti">🎯 Personalizado para ti</span>
+            </div>
+          </div>
+        </div>
+        <div class="card fu" style="margin-top:16px;transition-delay:.35s;background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(59,130,246,.04))">
+          <div style="font-size:32px;margin-bottom:12px">💬</div>
+          <p style="font-size:15px;font-style:italic;color:rgba(238,238,242,.7);line-height:1.7;margin-bottom:12px" data-i18n="no_vine_a_reemplazarte_vine_a_hacer_equipo_contigo_cada_v">
+            "No vine a reemplazarte. Vine a hacer equipo contigo. Cada vez que hablamos, 
+            aprendo algo nuevo de ti — y cada vez que aprendes algo nuevo, crecemos juntos."
+          </p>
+          <div style="font-size:11px;color:var(--cyan);letter-spacing:1px" data-i18n="eos_2_1">— GEOS 2.1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     GEOS 2.1 — CASOS DE USO
+═══════════════════════════ -->
+<div style="background:var(--bg);border-top:1px solid var(--border);padding:48px 0">
+  <div class="container">
+    <div class="label fu" style="text-align:center;justify-content:center" data-i18n="casos_de_uso_reales">Casos de uso reales</div>
+    <h2 class="h2 fu" style="transition-delay:.1s;text-align:center;margin-bottom:48px" data-i18n="geos_2_1">
+      Cómo Geos 2.1 ayuda a <span class="grad" data-i18n="negocios_como_el_tuyo">negocios como el tuyo</span>
+    </h2>
+    <div class="portfolio-grid" style="margin-top:0">
+      <div class="port-card fu">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">💬</div>
+          <div class="port-name" data-i18n="atención_al_cliente_24_7">Atención al cliente 24/7</div>
+          <div class="port-desc" data-i18n="geos_responde_consultas_de_tus_clientes_en_whatsapp_automáti">Geos responde consultas de tus clientes en WhatsApp automáticamente: precios, horarios, disponibilidad. Aprende tu catálogo y no se equivoca.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="whatsapp">WhatsApp</span>
+            <span class="port-tag" data-i18n="automático">Automático</span>
+            <span class="port-tag" data-i18n="sin_turnos">Sin turnos</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.1s">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">💰</div>
+          <div class="port-name" data-i18n="finanzas_personales_del_negocio">Finanzas personales del negocio</div>
+          <div class="port-desc" data-i18n="registra_tus_gastos_geos_analiza_patrones_y_te_sugiere_dónd">Registra tus gastos, Geos analiza patrones y te sugiere dónde ahorrar. Te avisa cuando un gasto se sale de lo normal y proyecta tus ingresos.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="finanzas">Finanzas</span>
+            <span class="port-tag" data-i18n="análisis">Análisis</span>
+            <span class="port-tag" data-i18n="ahorro">Ahorro</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.2s">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">📦</div>
+          <div class="port-name" data-i18n="control_de_inventario_simple">Control de inventario simple</div>
+          <div class="port-desc" data-i18n="dile_a_geos_se_vendieron_3_cajas_de_leche_y_él_lleva_la_cu">Dile a Geos "se vendieron 3 cajas de leche" y él lleva la cuenta. Te avisa cuándo reponer y qué productos se venden más.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="inventario">Inventario</span>
+            <span class="port-tag" data-i18n="alertas">Alertas</span>
+            <span class="port-tag" data-i18n="voz">Voz</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.1s">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">📝</div>
+          <div class="port-name" data-i18n="redacción_de_contenido">Redacción de contenido</div>
+          <div class="port-desc" data-i18n="geos_escribe_posts_para_tus_redes_sociales_descripciones_de">Geos escribe posts para tus redes sociales, descripciones de productos y respuestas a clientes. En el tono de tu negocio, no genérico.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="redes_sociales">Redes sociales</span>
+            <span class="port-tag" data-i18n="contenido">Contenido</span>
+            <span class="port-tag" data-i18n="marketing">Marketing</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.2s">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">🤝</div>
+          <div class="port-name" data-i18n="mentor_de_emprendimiento">Mentor de emprendimiento</div>
+          <div class="port-desc" data-i18n="geos_te_guía_paso_a_paso_para_formalizar_tu_negocio_calcula">Geos te guía paso a paso para formalizar tu negocio, calcular costos, fijar precios y armar un plan de crecimiento. Sabe cómo funciona Chile.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="emprendedor">Emprendedor</span>
+            <span class="port-tag" data-i18n="guía">Guía</span>
+            <span class="port-tag" data-i18n="chile">Chile</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.3s">
+        <div class="port-body">
+          <div style="font-size:40px;margin-bottom:12px">📊</div>
+          <div class="port-name" data-i18n="analista_de_ventas">Analista de ventas</div>
+          <div class="port-desc" data-i18n="conecta_geos_con_tus_ventas_del_día_y_te_responde_esta_sem">Conecta Geos con tus ventas del día y te responde: "esta semana vendiste 15% más que la anterior, el producto estrella fue..."</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="analytics">Analytics</span>
+            <span class="port-tag" data-i18n="reportes">Reportes</span>
+            <span class="port-tag" data-i18n="ventas">Ventas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     AI MODELS
+═══════════════════════════ -->
+<section class="section models-section" id="modelos">
+  <div class="container">
+    <div class="models-intro">
+      <div class="label fu" data-i18n="nuestra_flota_de_modelos">Nuestra flota de modelos</div>
+      <h2 class="h2 fu" style="transition-delay:.1s">
+        Usamos los mejores<br>modelos de IA <span class="grad" data-i18n="del_mundo">del mundo</span>
+      </h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin-top:16px" class="fu" style="transition-delay:.2s" data-i18n="en_átomo_studio_no_nos_casamos_con_una_sola_tecnología_usam">
+        En Átomo Studio no nos casamos con una sola tecnología. Usamos el modelo correcto 
+        para cada tarea — y además hemos creado el nuestro propio, pensado específicamente 
+        para el usuario latinoamericano.
+      </p>
+    </div>
+    <div class="models-grid">
+      <!-- GEOS FEATURED -->
+      <div class="model-card geos-model fu">
+        <div class="model-our" data-i18n="nuestro_modelo">NUESTRO MODELO</div>
+        <div class="model-provider" data-i18n="átomo_studio_chile">Átomo Studio · Chile</div>
+        <div class="model-logo" style="background:var(--grad-geos);color:#fff;font-size:22px">G</div>
+        <div class="model-name" style="font-size:20px;background:var(--grad-geos);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="geos_2_1">Geos 2.1</div>
+        <p class="model-desc" style="font-size:13px" data-i18n="el_primer_modelo_ia_latinoamericano_enfocado_en_el_crecimien">
+          El primer modelo IA latinoamericano enfocado en el crecimiento personal y económico del usuario. 
+          Aprende de cada conversación, te conoce profundamente y se adapta a tu situación real. 
+          No es solo una IA — es tu socio de vida.
+        </p>
+        <div class="model-tags">
+          <span class="model-tag cyan" data-i18n="aprendizaje_continuo">Aprendizaje continuo</span>
+          <span class="model-tag green" data-i18n="crecimiento_personal">Crecimiento personal</span>
+          <span class="model-tag gold">Hecho en Chile 🇨🇱</span>
+          <span class="model-tag purple" data-i18n="multi_agente">Multi-agente</span>
+          <span class="model-tag cyan" data-i18n="memoria_persistente">Memoria persistente</span>
+          <span class="model-tag" data-i18n="beta_activa">Beta activa</span>
+        </div>
+      </div>
+      <!-- CLAUDE SONNET -->
+      <div class="model-card fu" style="transition-delay:.1s">
+        <div class="model-provider" data-i18n="anthropic">Anthropic</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#d97706,#92400e);color:#fff">A</div>
+        <div class="model-name" data-i18n="claude_sonnet_4_6">Claude Sonnet 4.6</div>
+        <p class="model-desc" data-i18n="el_modelo_más_equilibrado_de_anthropic_rápido_preciso_y_ex">El modelo más equilibrado de Anthropic. Rápido, preciso y excelente para escritura, análisis y tareas complejas del día a día.</p>
+        <div class="model-tags">
+          <span class="model-tag" data-i18n="análisis_de_texto">Análisis de texto</span>
+          <span class="model-tag green" data-i18n="muy_rápido">Muy rápido</span>
+          <span class="model-tag" data-i18n="razonamiento">Razonamiento</span>
+        </div>
+      </div>
+      <!-- CLAUDE OPUS -->
+      <div class="model-card fu" style="transition-delay:.15s">
+        <div class="model-provider" data-i18n="anthropic">Anthropic</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#b45309,#78350f);color:#fff">A</div>
+        <div class="model-name" data-i18n="claude_opus_4_7">Claude Opus 4.7</div>
+        <p class="model-desc" data-i18n="el_modelo_más_poderoso_de_anthropic_para_tareas_que_requier">El modelo más poderoso de Anthropic. Para tareas que requieren razonamiento profundo, análisis experto y respuestas de altísima calidad.</p>
+        <div class="model-tags">
+          <span class="model-tag gold" data-i18n="alta_potencia">Alta potencia</span>
+          <span class="model-tag" data-i18n="razonamiento_profundo">Razonamiento profundo</span>
+          <span class="model-tag purple" data-i18n="experto">Experto</span>
+        </div>
+      </div>
+      <!-- GPT-4o -->
+      <div class="model-card fu" style="transition-delay:.2s">
+        <div class="model-provider" data-i18n="openai">OpenAI</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#059669,#065f46);color:#fff">O</div>
+        <div class="model-name" data-i18n="gpt_4o">GPT-4o</div>
+        <p class="model-desc" data-i18n="el_modelo_multimodal_de_openai_ve_imágenes_escucha_audios">El modelo multimodal de OpenAI: ve imágenes, escucha audios y razona con texto. Ideal para tareas que combinan diferentes tipos de contenido.</p>
+        <div class="model-tags">
+          <span class="model-tag green" data-i18n="multimodal">Multimodal</span>
+          <span class="model-tag" data-i18n="visión">Visión</span>
+          <span class="model-tag" data-i18n="audio">Audio</span>
+        </div>
+      </div>
+      <!-- GPT-4.1 -->
+      <div class="model-card fu" style="transition-delay:.25s">
+        <div class="model-provider" data-i18n="openai">OpenAI</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#047857,#064e3b);color:#fff">O</div>
+        <div class="model-name" data-i18n="gpt_4_1">GPT-4.1</div>
+        <p class="model-desc" data-i18n="versión_actualizada_de_la_familia_gpt_4_con_mejor_rendimient">Versión actualizada de la familia GPT-4 con mejor rendimiento en código, matemáticas y seguimiento preciso de instrucciones complejas.</p>
+        <div class="model-tags">
+          <span class="model-tag green" data-i18n="código">Código</span>
+          <span class="model-tag" data-i18n="matemáticas">Matemáticas</span>
+          <span class="model-tag gold" data-i18n="actualizado_2025">Actualizado 2025</span>
+        </div>
+      </div>
+      <!-- DEEPSEEK V3 -->
+      <div class="model-card fu" style="transition-delay:.3s">
+        <div class="model-provider" data-i18n="deepseek">DeepSeek</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#1d4ed8,#1e40af);color:#fff">D</div>
+        <div class="model-name" data-i18n="deepseek_v3">DeepSeek V3</div>
+        <p class="model-desc" data-i18n="uno_de_los_modelos_de_código_abierto_más_potentes_del_mundo">Uno de los modelos de código abierto más potentes del mundo. Excelente relación calidad-precio para tareas de razonamiento y programación.</p>
+        <div class="model-tags">
+          <span class="model-tag" data-i18n="código_abierto">Código abierto</span>
+          <span class="model-tag cyan" data-i18n="eficiente">Eficiente</span>
+          <span class="model-tag" data-i18n="programación">Programación</span>
+        </div>
+      </div>
+      <!-- DEEPSEEK R1 -->
+      <div class="model-card fu" style="transition-delay:.35s">
+        <div class="model-provider" data-i18n="deepseek">DeepSeek</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff">D</div>
+        <div class="model-name" data-i18n="deepseek_r1">DeepSeek R1</div>
+        <p class="model-desc" data-i18n="el_modelo_de_razonamiento_de_deepseek_piensa_paso_a_paso_an">El modelo de razonamiento de DeepSeek. Piensa paso a paso antes de responder, lo que lo hace ideal para problemas complejos de lógica y matemáticas.</p>
+        <div class="model-tags">
+          <span class="model-tag purple" data-i18n="razonamiento">Razonamiento</span>
+          <span class="model-tag" data-i18n="chain_of_thought">Chain-of-Thought</span>
+          <span class="model-tag" data-i18n="lógica">Lógica</span>
+        </div>
+      </div>
+      <!-- GROQ LLAMA -->
+      <div class="model-card fu" style="transition-delay:.4s">
+        <div class="model-provider" data-i18n="groq_meta">Groq · Meta</div>
+        <div class="model-logo" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff">⚡</div>
+        <div class="model-name" data-i18n="llama_3_3_via_groq">Llama 3.3 via Groq</div>
+        <p class="model-desc" data-i18n="el_modelo_de_meta_acelerado_por_groq_respuestas_casi_instan">El modelo de Meta acelerado por Groq: respuestas casi instantáneas a velocidades de hasta 750 tokens por segundo. Para cuando la velocidad es crítica.</p>
+        <div class="model-tags">
+          <span class="model-tag purple" data-i18n="ultra_rápido">Ultra rápido</span>
+          <span class="model-tag" data-i18n="open_source">Open Source</span>
+          <span class="model-tag cyan" data-i18n="700_tok_s">700 tok/s</span>
+        </div>
+      </div>
+    </div>
+    <div class="models-note fu" style="transition-delay:.5s">
+      <i class="fas fa-info-circle" style="color:var(--blue)"></i>
+      <span data-i18n="geo_app">
+        <strong data-i18n="por_qué_usar_múltiples_modelos">¿Por qué usar múltiples modelos?</strong> Cada modelo tiene fortalezas diferentes. 
+        Geo App selecciona automáticamente el mejor modelo para cada tipo de tarea — así siempre 
+        obtienes la mejor respuesta al menor costo posible.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     GEO APP
+═══════════════════════════ -->
+<section class="section app-section" id="geo-app">
+  <div class="container">
+    <div class="app-grid">
+      <div>
+        <div class="label label-purple fu" data-i18n="producto_estrella">Producto estrella</div>
+        <h2 class="h2 fu" style="transition-delay:.1s">
+          Geo App —<br>Tu <span class="grad" data-i18n="asistente_personal">asistente personal</span><br>con IA
+        </h2>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:8px" class="fu" style="transition-delay:.2s" data-i18n="geo_es_una_aplicación_móvil_y_web_que_pone_en_tus_manos_el_p">
+          Geo es una aplicación móvil y web que pone en tus manos el poder de 
+          todos los mejores modelos de inteligencia artificial del mundo — en un solo lugar, 
+          en español, diseñada para personas reales, no para expertos en tecnología.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:24px" class="fu" style="transition-delay:.25s" data-i18n="escríbele_háblale_mándale_fotos_geo_entiende_lo_que_neces">
+          Escríbele, háblale, mándale fotos. Geo entiende lo que necesitas y te ayuda 
+          a resolverlo: desde redactar un mensaje importante hasta planificar tu mes financiero.
+        </p>
+        <div class="app-features fu" style="transition-delay:.3s">
+          <div class="app-feat">
+            <div class="app-feat-icon">💬</div>
+            <div class="app-feat-title" data-i18n="chat_con_los_mejores_modelos_ia">Chat con los mejores modelos IA</div>
+            <div class="app-feat-desc" data-i18n="claude_gpt_deepseek_groq_y_geos2_1_en_un_solo_lugar">Claude, GPT, DeepSeek, Groq y Geos2.1 en un solo lugar</div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">🧠</div>
+            <div class="app-feat-title" data-i18n="memoria_persistente">Memoria persistente</div>
+            <div class="app-feat-desc" data-i18n="recuerda_todo_lo_que_le_has_contado_y_aprende_de_ti">Recuerda todo lo que le has contado y aprende de ti</div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">🎤</div>
+            <div class="app-feat-title" data-i18n="voz_a_texto_y_texto_a_voz">Voz a texto y texto a voz</div>
+            <div class="app-feat-desc" data-i18n="habla_geo_escucha_y_te_responde_con_su_voz">Habla, Geo escucha y te responde con su voz</div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">📷</div>
+            <div class="app-feat-title" data-i18n="ve_imágenes_documentos">Ve imágenes & documentos</div>
+            <div class="app-feat-desc" data-i18n="mándala_fotos_fotos_de_texto_pdfs_y_facturas">Mándala fotos, fotos de texto, PDFs y facturas</div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">📊</div>
+            <div class="app-feat-title" data-i18n="control_de_consumo">Control de consumo</div>
+            <div class="app-feat-desc" data-i18n="ve_exactamente_cuánto_usas_y_cuánto_te_cuesta">Ve exactamente cuánto usas y cuánto te cuesta</div>
+          </div>
+          <div class="app-feat">
+            <div class="app-feat-icon">🔐</div>
+            <div class="app-feat-title" data-i18n="modo_incógnito">Modo incógnito</div>
+            <div class="app-feat-desc" data-i18n="conversa_sin_que_nada_quede_guardado">Conversa sin que nada quede guardado</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu" style="transition-delay:.4s">
+          <a href="geo-app-completa.html" class="btn btn-primary" data-i18n="geo_app">
+            <i class="fas fa-external-link-alt"></i> Abrir Geo App
+          </a>
+          <a href="https://play.google.com" target="_blank" class="btn btn-ghost" data-i18n="google_play">
+            <i class="fab fa-google-play"></i> Google Play
+          </a>
+        </div>
+      </div>
+      <!-- APP SCREEN MOCKUP -->
+      <div class="fr">
+        <div class="app-screen">
+          <div class="app-screen-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+            <div class="app-screen-title" data-i18n="geo_asistente_ia">◆ Geo · Asistente IA</div>
+          </div>
+          <div class="app-screen-body">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;padding:10px;background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);border-radius:10px">
+              <div style="font-size:11px;color:var(--cyan);font-weight:500" data-i18n="modelo_activo">Modelo activo:</div>
+              <div style="font-size:11px;color:var(--text);background:rgba(6,182,212,.1);padding:2px 10px;border-radius:20px">Geos 2.1 ✨</div>
+            </div>
+            <div class="chat-demo">
+              <div class="chat-in">
+                <div class="chat-demo-avatar user">Y</div>
+                <div class="chat-demo-bubble user" data-i18n="tengo_50_000_para_invertir_en_mi_negocio_qué_me_recomiend">Tengo $50.000 para invertir en mi negocio. ¿Qué me recomiendas?</div>
+              </div>
+              <div class="chat-in">
+                <div class="chat-demo-avatar geo">G</div>
+                <div class="chat-demo-bubble" data-i18n="buena_pregunta_recuerdo_que_me_contaste_que_tienes_un_alma">
+                  ¡Buena pregunta! Recuerdo que me contaste que tienes un almacén en Conchalí 
+                  con buen flujo de clientes los fines de semana. Con esos $50k, yo invertiría así... 💡
+                </div>
+              </div>
+              <div class="chat-in">
+                <div class="chat-demo-avatar user">Y</div>
+                <div class="chat-demo-bubble user" data-i18n="y_si_en_vez_de_eso_lo_ahorro">¿Y si en vez de eso lo ahorro?</div>
+              </div>
+              <div class="chat-in">
+                <div class="chat-demo-avatar geo">G</div>
+                <div class="chat-demo-bubble">
+                  También tiene sentido. Basado en tus metas de enero, aquí hay una comparación real entre las dos opciones:
+                  <div class="typing" style="margin-top:6px"><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px">
+            <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--muted)" data-i18n="escribe_o_habla_con_geo">Escribe o habla con Geo...</div>
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--grad-geos);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">↑</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     ECOMMERCE
+═══════════════════════════ -->
+<section class="section ecom-section" id="ecommerce">
+  <div class="container">
+    <div class="ecom-grid">
+      <!-- DASHBOARD MOCKUP -->
+      <div class="fl">
+        <div class="ecom-dashboard">
+          <div class="dash-header">
+            <div class="dash-title" data-i18n="dashboard_mi_tienda_online">🏪 Dashboard — Mi Tienda Online</div>
+            <div class="dash-status" data-i18n="en_línea">● En línea</div>
+          </div>
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <div class="dash-stat-val" data-i18n="847k">$847k</div>
+              <div class="dash-stat-lbl" data-i18n="ventas_este_mes">Ventas este mes</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-val" data-i18n="234">234</div>
+              <div class="dash-stat-lbl" data-i18n="pedidos_recibidos">Pedidos recibidos</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-val">98%</div>
+              <div class="dash-stat-lbl" data-i18n="satisfacción">Satisfacción</div>
+            </div>
+          </div>
+          <div class="dash-orders">
+            <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:8px" data-i18n="pedidos_recientes">PEDIDOS RECIENTES</div>
+            <div class="dash-order">
+              <span class="order-id" data-i18n="1042">#1042</span>
+              <span style="color:rgba(238,238,242,.6);font-size:12px" data-i18n="cerveza_artesanal_x6">Cerveza artesanal x6</span>
+              <span class="order-status" data-i18n="entregado">Entregado</span>
+            </div>
+            <div class="dash-order">
+              <span class="order-id" data-i18n="1041">#1041</span>
+              <span style="color:rgba(238,238,242,.6);font-size:12px" data-i18n="pack_veggie_x2">Pack veggie x2</span>
+              <span class="order-status pending" data-i18n="en_camino">En camino</span>
+            </div>
+            <div class="dash-order">
+              <span class="order-id" data-i18n="1040">#1040</span>
+              <span style="color:rgba(238,238,242,.6);font-size:12px" data-i18n="empanadas_x12">Empanadas x12</span>
+              <span class="order-status" data-i18n="entregado">Entregado</span>
+            </div>
+            <div class="dash-order">
+              <span class="order-id" data-i18n="1039">#1039</span>
+              <span style="color:rgba(238,238,242,.6);font-size:12px" data-i18n="torta_personalizada">Torta personalizada</span>
+              <span class="order-status pending" data-i18n="preparando">Preparando</span>
+            </div>
+          </div>
+          <div style="padding:16px 20px;border-top:1px solid var(--border);background:rgba(16,185,129,.04)">
+            <div style="font-size:11px;color:var(--green);margin-bottom:4px" data-i18n="agente_ia_activo">🤖 Agente IA activo</div>
+            <div style="font-size:12px;color:var(--muted)" data-i18n="atendí_18_consultas_hoy_y_cerré_5_ventas_automáticamente">"Atendí 18 consultas hoy y cerré 5 ventas automáticamente"</div>
+          </div>
+        </div>
+      </div>
+      <!-- TEXT -->
+      <div>
+        <div class="label fu" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</div>
+        <h2 class="h2 fu" style="transition-delay:.1s">
+          Tu negocio vende<br>
+          <span class="grad" data-i18n="24_7_solo">24/7, solo</span>,<br>
+          sin que estés presente
+        </h2>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:24px" class="fu" style="transition-delay:.2s" data-i18n="imagina_que_tu_tienda_está_atendiendo_clientes_a_las_3_de_la">
+          Imagina que tu tienda está atendiendo clientes a las 3 de la mañana, 
+          gestionando pedidos, cobrando con Webpay y enviando confirmaciones — todo automático. 
+          Eso es lo que te damos con nuestro E-commerce Omnicanal.
+        </p>
+        <div class="ecom-features fu" style="transition-delay:.3s">
+          <div class="ecom-feat">
+            <div class="ecom-feat-icon">🛒</div>
+            <div>
+              <div class="ecom-feat-title" data-i18n="carrito_de_compras_webpay">Carrito de compras + Webpay</div>
+              <div class="ecom-feat-desc" data-i18n="tus_clientes_pagan_con_débito_crédito_o_prepago_los_pagos">Tus clientes pagan con débito, crédito o prepago. Los pagos van directo a tu cuenta bancaria, sin intermediarios.</div>
+            </div>
+          </div>
+          <div class="ecom-feat">
+            <div class="ecom-feat-icon">📊</div>
+            <div>
+              <div class="ecom-feat-title" data-i18n="panel_de_control_en_tiempo_real">Panel de control en tiempo real</div>
+              <div class="ecom-feat-desc" data-i18n="ve_cada_pedido_al_instante_actualiza_el_estado_y_mantén_a_t">Ve cada pedido al instante, actualiza el estado y mantén a tus clientes informados automáticamente.</div>
+            </div>
+          </div>
+          <div class="ecom-feat">
+            <div class="ecom-feat-icon">📷</div>
+            <div>
+              <div class="ecom-feat-title" data-i18n="escaneo_de_productos_con_tu_celular">Escaneo de productos con tu celular</div>
+              <div class="ecom-feat-desc" data-i18n="apunta_la_cámara_al_código_de_barras_y_el_producto_entra_dir">Apunta la cámara al código de barras y el producto entra directo a tu inventario. Cero tipeo manual.</div>
+            </div>
+          </div>
+          <div class="ecom-feat">
+            <div class="ecom-feat-icon">🤖</div>
+            <div>
+              <div class="ecom-feat-title" data-i18n="agente_vendedor_con_ia_en_whatsapp">Agente vendedor con IA en WhatsApp</div>
+              <div class="ecom-feat-desc" data-i18n="whatsapp">Un asistente inteligente atiende a tus clientes, responde preguntas y cierra ventas por WhatsApp — sin que muevas un dedo.</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu" style="transition-delay:.4s">
+          <a href="ecommerce.html" class="btn btn-primary" data-i18n="ver_producto_completo">
+            <i class="fas fa-store"></i> Ver producto completo
+          </a>
+          <a href="https://wa.me/56973994504?text=Quiero%20info%20del%20ecommerce" target="_blank" class="btn btn-ghost" data-i18n="cotizar">
+            Cotizar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     PORTFOLIO
+═══════════════════════════ -->
+<section class="section portfolio-section" id="portafolio">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-bottom:8px">
+      <div>
+        <div class="label fu" data-i18n="trabajos_recientes">Trabajos recientes</div>
+        <h2 class="h2 fu" style="transition-delay:.1s">
+          Lo que hemos<br>construido para <span class="grad" data-i18n="negocios_reales">negocios reales</span>
+        </h2>
+      </div>
+      <a href="#contacto" class="btn btn-ghost fu" style="white-space:nowrap" data-i18n="ver_todos">Ver todos →</a>
+    </div>
+    <p style="font-size:15px;color:var(--muted);max-width:600px;margin-bottom:0" class="fu" data-i18n="cada_proyecto_es_único_diseñamos_y_construimos_sitios_pensa">
+      Cada proyecto es único. Diseñamos y construimos sitios pensando en el negocio específico, 
+      sus clientes y sus objetivos — nada de plantillas genéricas.
+    </p>
+    <p style="font-size:0.85rem;color:var(--muted);font-style:italic;margin-bottom:32px;opacity:0.7;" data-i18n="proyectos_conceptuales_ejemplos_representativos_de_lo_qu">
+      ⚡ Proyectos conceptuales — ejemplos representativos de lo que podemos hacer por tu negocio.
+    </p>
+    <div class="portfolio-grid">
+      <div class="port-card fu">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Diseño de sitio web para El Fogoncito Restobar — bar con luces cálidas y ambiente acogedor">
+          <div class="port-type" data-i18n="restaurante">Restaurante</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="el_fogoncito_restobar">El Fogoncito Restobar</div>
+          <div class="port-desc" data-i18n="sitio_multi_página_para_restobar_chileno_venezolano_con_cart">Sitio multi-página para restobar chileno-venezolano con carta digital, pedidos por WhatsApp y galería de platos.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="multi_página">Multi-página</span>
+            <span class="port-tag" data-i18n="whatsapp">WhatsApp</span>
+            <span class="port-tag" data-i18n="carta_digital">Carta digital</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.1s">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Diseño web para KABA Salón de Belleza — estación de maquillaje profesional con espejo iluminado">
+          <div class="port-type" data-i18n="belleza">Belleza</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="kaba_salón_de_belleza">KABA Salón de Belleza</div>
+          <div class="port-desc" data-i18n="sitio_elegante_para_salón_profesional_con_agenda_online_gal">Sitio elegante para salón profesional con agenda online, galería de trabajos y precios de servicios.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="landing">Landing</span>
+            <span class="port-tag" data-i18n="agenda_online">Agenda online</span>
+            <span class="port-tag" data-i18n="galería">Galería</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.2s">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="E-commerce para Carnes Super Willy — mostrador de carnicería con cortes de carne frescos">
+          <div class="port-type" data-i18n="comercio">Comercio</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="carnes_super_willy">Carnes Super Willy</div>
+          <div class="port-desc" data-i18n="e_commerce_con_15_páginas_catálogo_de_productos_precios_y">E-commerce con 15 páginas, catálogo de productos, precios y pedidos directo por WhatsApp para carnicería en Conchalí.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="e_commerce">E-commerce</span>
+            <span class="port-tag" data-i18n="15_páginas">15 páginas</span>
+            <span class="port-tag" data-i18n="catálogo">Catálogo</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.1s">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Sitio web para Centro Fitness Gym — equipamiento de gimnasio moderno con pesas y mancuernas">
+          <div class="port-type" data-i18n="fitness">Fitness</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="centro_fitness_gym">Centro Fitness Gym</div>
+          <div class="port-desc" data-i18n="sitio_para_gimnasio_con_planes_de_membresía_galería_horari">Sitio para gimnasio con planes de membresía, galería, horarios de clases y botón de inscripción directo.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="multi_página">Multi-página</span>
+            <span class="port-tag" data-i18n="planes">Planes</span>
+            <span class="port-tag" data-i18n="galería">Galería</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.2s">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Landing page para Redhouse Comida Rápida — hamburguesa artesanal con ingredientes frescos">
+          <div class="port-type" data-i18n="gastronomía">Gastronomía</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="redhouse_comida_rápida">Redhouse Comida Rápida</div>
+          <div class="port-desc" data-i18n="landing_de_comida_rápida_con_menú_completo_delivery_por_wha">Landing de comida rápida con menú completo, delivery por WhatsApp y galería de productos.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="delivery">Delivery</span>
+            <span class="port-tag" data-i18n="menú_digital">Menú digital</span>
+            <span class="port-tag" data-i18n="whatsapp">WhatsApp</span>
+          </div>
+        </div>
+      </div>
+      <div class="port-card fu" style="transition-delay:.3s">
+        <div class="port-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Tienda online para Silvana Porcelana Fría — figuras artesanales pintadas a mano sobre mesa de trabajo">
+          <div class="port-type" data-i18n="artesanía">Artesanía</div>
+        </div>
+        <div class="port-body">
+          <div class="port-name" data-i18n="silvana_porcelana_fría">Silvana — Porcelana Fría</div>
+          <div class="port-desc" data-i18n="tienda_de_figuras_artesanales_con_galería_de_productos_cate">Tienda de figuras artesanales con galería de productos, categorías, envíos a todo Chile y contacto directo.</div>
+          <div class="port-tags">
+            <span class="port-tag" data-i18n="tienda">Tienda</span>
+            <span class="port-tag" data-i18n="galería">Galería</span>
+            <span class="port-tag" data-i18n="envíos_chile">Envíos Chile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     ABOUT / WHY US
+═══════════════════════════ -->
+<section class="section about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fl">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=85" alt="Equipo de desarrollo de Átomo Studio trabajando en software inteligente para PYMEs chilenas — oficina moderna con pantallas y pizarrón">
+          <div class="about-stat-pill">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent">17+</div>
+            <div style="font-size:12px;color:var(--muted)">proyectos entregados</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="label label-purple fu" data-i18n="quiénes_somos">Quiénes somos</div>
+        <h2 class="h2 fu" style="transition-delay:.1s">
+          Un estudio que construye<br>
+          con propósito, no<br>
+          <span class="grad" data-i18n="solo_con_código">solo con código</span>
+        </h2>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:20px;margin-bottom:16px" class="fu" style="transition-delay:.2s" data-i18n="átomo_studio_nació_en_chile_con_una_misión_clara_democratiz">
+          Átomo Studio nació en Chile con una misión clara: democratizar el acceso al software 
+          inteligente para pequeños y medianos negocios latinoamericanos. Creemos que no hace 
+          falta ser una gran empresa para tener tecnología de primer nivel.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:32px" class="fu" style="transition-delay:.25s" data-i18n="no_somos_una_agencia_de_cientos_de_personas_somos_un_equipo">
+          No somos una agencia de cientos de personas. Somos un equipo pequeño, 
+          apasionado y muy bueno en lo que hace — y eso se nota en cada proyecto que entregamos. 
+          Cuando trabajas con nosotros, tratas directamente con los que construyen.
+        </p>
+        <div class="about-values fu" style="transition-delay:.3s">
+          <div class="value">
+            <div class="value-icon">⚡</div>
+            <div class="value-title" data-i18n="velocidad_real">Velocidad real</div>
+            <div class="value-desc" data-i18n="landing_page_en_72h_sitio_completo_en_1_semana_sin_vueltas">Landing page en 72h. Sitio completo en 1 semana. Sin vueltas ni demoras innecesarias.</div>
+          </div>
+          <div class="value">
+            <div class="value-icon">🎯</div>
+            <div class="value-title" data-i18n="sin_letra_chica">Sin letra chica</div>
+            <div class="value-desc" data-i18n="precios_claros_sin_comisiones_ocultas_el_sitio_es_tuyo_al">Precios claros, sin comisiones ocultas. El sitio es tuyo al 100% desde el día uno.</div>
+          </div>
+          <div class="value">
+            <div class="value-icon">🤝</div>
+            <div class="value-title" data-i18n="soporte_real">Soporte real</div>
+            <div class="value-desc" data-i18n="tienes_nuestro_whatsapp_y_te_respondemos_no_hay_tickets_ni">Tienes nuestro WhatsApp y te respondemos. No hay tickets ni sistemas de soporte fríos.</div>
+          </div>
+          <div class="value">
+            <div class="value-icon">🧠</div>
+            <div class="value-title" data-i18n="ia_de_verdad">IA de verdad</div>
+            <div class="value-desc" data-i18n="no_ponemos_ia_en_el_nombre_para_sonar_moderno_realmente_i">No ponemos "IA" en el nombre para sonar moderno. Realmente integramos IA útil en cada producto.</div>
+          </div>
+        </div>
+        <div style="margin-top:32px;text-align:left" class="fu" style="transition-delay:.4s">
+          <a href="https://wa.me/56973994504?text=Hola%20%C3%81tomo%20Studio!%20Estoy%20listo%20para%20empezar" target="_blank" class="btn btn-primary" data-i18n="listo_para_empezar_tu_proyecto">
+            <i class="fab fa-whatsapp"></i> ¿Listo para empezar tu proyecto?
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     CONTACT
+═══════════════════════════ -->
+<section class="section contact-section" id="contacto">
+  <div class="container">
+    <div style="text-align:center;max-width:560px;margin:0 auto 64px">
+      <div class="label fu" style="justify-content:center" data-i18n="hablemos">Hablemos</div>
+      <h2 class="h2 fu" style="transition-delay:.1s">
+        Cuéntanos tu proyecto<br>y te respondemos<br><span class="grad" data-i18n="en_menos_de_24h">en menos de 24h</span>
+      </h2>
+      <p style="font-size:15px;color:var(--muted);margin-top:16px" class="fu" style="transition-delay:.2s" data-i18n="no_importa_si_tienes_todo_claro_o_solo_una_idea_vaga_contá">
+        No importa si tienes todo claro o solo una idea vaga — contáctanos y 
+        lo desarrollamos juntos sin costo ni compromiso.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="label label-cyan" data-i18n="contacto_directo">Contacto directo</div>
+        <h3 class="h3" style="margin-top:8px;margin-bottom:8px">¿Prefieres<br>hablar directamente?</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px" data-i18n="escríbenos_por_whatsapp_y_te_respondemos_al_tiro_es_la_form">
+          Escríbenos por WhatsApp y te respondemos al tiro. Es la forma más rápida de 
+          arrancar con tu proyecto.
+        </p>
+        <div class="contact-info-items">
+          <div class="ci">
+            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="ci-label" data-i18n="whatsapp">WhatsApp</div>
+              <div class="ci-val" data-i18n="56_9_escríbenos_ahora">+56 9 — Escríbenos ahora</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="ci-label" data-i18n="email">Email</div>
+              <div class="ci-val" data-i18n="hola_atomostudio_cl">hola@atomostudio.cl</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="ci-label" data-i18n="dónde_estamos">Dónde estamos</div>
+              <div class="ci-val" data-i18n="santiago_chile">Santiago, Chile 🇨🇱<br>Atendemos a toda LATAM</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="ci-label" data-i18n="horario_de_respuesta">Horario de respuesta</div>
+              <div class="ci-val" data-i18n="lunes_a_viernes_09_00_20_00_hrs">Lunes a Viernes: 09:00 – 20:00 hrs<br>Respuesta promedio: menos de 24h</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Quiero%20conversar%20sobre%20un%20proyecto" target="_blank" class="wa-cta">
+          <i class="fab fa-whatsapp" style="font-size:20px"></i>
+          <span data-i18n="escribir_por_whatsapp_ahora">Escribir por WhatsApp ahora</span>
+        </a>
+      </div>
+      <div class="contact-form fu" style="transition-delay:.2s">
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px" data-i18n="cuéntanos_tu_proyecto">
+          Cuéntanos tu proyecto
+        </h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:28px" data-i18n="te_respondemos_en_menos_de_24_horas">Te respondemos en menos de 24 horas.</p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" data-i18n="tu_nombre">Tu nombre</label>
+            <input type="text" class="form-input" placeholder="María González">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="whatsapp_o_email">WhatsApp o email</label>
+            <input type="text" class="form-input" placeholder="+56 9 XXXX XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="qué_tipo_de_proyecto_necesitas">¿Qué tipo de proyecto necesitas?</label>
+          <select class="form-input" style="cursor:pointer">
+            <option value="" data-i18n="selecciona_una_opción">— Selecciona una opción —</option>
+            <option data-i18n="landing_page_1_página">Landing Page (1 página)</option>
+            <option>Sitio web multi-página</option>
+            <option data-i18n="e_commerce_con_webpay">E-commerce con Webpay</option>
+            <option data-i18n="actualización_de_sitio_existente">Actualización de sitio existente</option>
+            <option data-i18n="geo_app_asistente_ia">Geo App / Asistente IA</option>
+            <option data-i18n="geos_2_1_modelo_personalizado">Geos 2.1 / Modelo personalizado</option>
+            <option data-i18n="otro_no_sé_necesito_orientación">Otro / No sé, necesito orientación</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="cuéntanos_más_opcional">Cuéntanos más (opcional)</label>
+          <textarea class="form-textarea" placeholder="Tengo un negocio de... / Necesito... / Mi presupuesto es..."></textarea>
+        </div>
+        <button onclick="sendContact()" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px" data-i18n="enviar_mensaje">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     FOOTER
+═══════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff">⚡</div>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
+      </div>
+      <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">
+        Creamos software inteligente, sitios web profesionales y el primer modelo IA 
+        latinoamericano enfocado en tu crecimiento personal y económico.
+      </p>
+      <div style="margin-top:20px;display:flex;gap:8px">
+        <a href="https://instagram.com/atomostudio" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/atomostudio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="servicios">Servicios</h4>
+      <a href="#servicios" data-i18n="landing_page">Landing Page</a>
+      <a href="#servicios" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</a>
+      <a href="ecommerce.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="#servicios" data-i18n="actualización_web">Actualización Web</a>
+      <a href="#contacto" data-i18n="presupuesto_gratis">Presupuesto gratis</a>
+    </div>
+      <a href="foto-ia.html" data-i18n="foto_ia">📸 Foto IA — Catálogo</a>
+    <div class="footer-col">
+      <h4 data-i18n="productos_ia">Productos IA</h4>
+      <a href="#geos" data-i18n="geos_2_1">Geos 2.1</a>
+      <a href="geo-app-completa.html" data-i18n="geo_app">Geo App</a>
+      <a href="#modelos" data-i18n="modelos_disponibles">Modelos disponibles</a>
+      <a href="#modelos" data-i18n="claude_gpt_deepseek">Claude · GPT · DeepSeek</a>
+      <a href="#modelos" data-i18n="groq_llama">Groq · Llama</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="empresa">Empresa</h4>
+      <a href="#portafolio" data-i18n="portafolio">Portafolio</a>
+      <a href="#contacto" data-i18n="contacto">Contacto</a>
+      <a href="privacidad.html" data-i18n="política_de_privacidad">Política de Privacidad</a>
+      <a href="#contacto" data-i18n="hola_atomostudio_cl">hola@atomostudio.cl</a>
+      <a href="https://wa.me/56973994504" target="_blank" data-i18n="whatsapp">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="2026_átomo_studio_santiago_chile_todos_los_derecho">© 2026 Átomo Studio · Santiago, Chile 🇨🇱 · Todos los derechos reservados</p>
+    <div class="footer-social" data-i18n="hecho_con_y_mucha_ia">
+      <span style="font-size:12px;color:rgba(238,238,242,.2)" data-i18n="hecho_con_y_mucha_ia">Hecho con ❤️ y mucha IA</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20su%20web" target="_blank" class="wa-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// ─── SCROLL PROGRESS ───
+window.addEventListener('scroll',()=>{
+  const el=document.getElementById('progress-bar');
+  const t=document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  el.style.width=(t/h*100)+'%';
+  // Nav
+  const nav=document.getElementById('navbar');
+  nav.classList.toggle('scrolled',t>50);
+});
+
+// ─── MOBILE MENU ───
+const menuToggle=document.getElementById('menuToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+let menuOpen=false;
+menuToggle.addEventListener('click',()=>{
+  menuOpen=!menuOpen;
+  mobileMenu.style.display=menuOpen?'flex':'none';
+});
+function closeMobile(){mobileMenu.style.display='none';menuOpen=false}
+
+// ─── INTERSECTION OBSERVER ───
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fu,.fl,.fr,.fscale').forEach((el,i)=>{
+  el.style.transitionDelay=el.style.transitionDelay||`${(i%4)*0.08}s`;
+  io.observe(el);
+});
+
+// ─── COUNTER ANIMATION ───
+function animateCounter(el){
+  const target=parseInt(el.dataset.target)||0;
+  if(!target)return;
+  const suffix=el.textContent.includes('+')?' +':'';
+  let start=0;
+  const dur=1500;
+  const step=timestamp=>{
+    if(!start)start=timestamp;
+    const prog=Math.min((timestamp-start)/dur,1);
+    const ease=1-Math.pow(1-prog,3);
+    el.textContent=Math.floor(ease*target)+suffix;
+    if(prog<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&e.target.dataset.target){
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
+
+// ─── CHAT ANIMATION ───
+const chatMsgs=document.querySelectorAll('.chat-msg');
+chatMsgs.forEach((msg,i)=>{msg.style.animationDelay=`${i*0.8+0.5}s`});
+
+// ─── ACTIVE NAV LINK ───
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const sectionObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      navLinks.forEach(l=>{
+        l.classList.toggle('active',l.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+},{threshold:.3,rootMargin:'-64px 0px 0px 0px'});
+sections.forEach(s=>sectionObs.observe(s));
+
+// ─── CONTACT FORM ───
+function sendContact(){
+  const inputs=document.querySelectorAll('.form-input,.form-textarea');
+  let msg='Hola Átomo Studio!%0A%0A';
+  const labels=['Nombre','Contacto','Tipo de proyecto'];
+  inputs.forEach((inp,i)=>{
+    if(inp.value&&i<4){
+      if(inp.tagName==='SELECT'){
+        msg+=`Proyecto: ${inp.value}%0A`;
+      } else if(i===0){
+        msg+=`Nombre: ${inp.value}%0A`;
+      } else if(i===1){
+        msg+=`Contacto: ${inp.value}%0A`;
+      } else {
+        msg+=`Mensaje: ${inp.value}%0A`;
+      }
+    }
+  });
+  window.open(`https://wa.me/56973994504?text=${msg}`,'_blank');
+}
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href==="#")return;
+    const target=document.querySelector(href);
+    if(target){
+      e.preventDefault();
+      const navH=64;
+      const top=target.getBoundingClientRect().top+window.pageYOffset-navH;
+      window.scrollTo({top,behavior:'smooth'});
+    }
+  });
+});
+</script>
+
+<script src="js/i18n.js"></script>
+</body>
+</html>

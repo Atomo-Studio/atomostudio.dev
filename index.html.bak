@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Átomo Studio · Desarrollo con IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+tailwind.config = {
+ theme: { extend: { colors: { 'at-bg':'#06060c','at-surface':'#0e0e18','at-card':'#121220','at-border':'rgba(255,255,255,0.05)','at-blue':'#3b82f6','at-purple':'#8b5cf6','at-cyan':'#06b6d4','at-muted':'#555568' },
+ fontFamily: { orbitron:['Orbitron','sans-serif'], grotesk:['Space Grotesk','sans-serif'], inter:['Inter','sans-serif'] } } } }
+</script>
+<style>
+ html{scroll-behavior:smooth;scroll-padding-top:80px}*{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Inter',sans-serif;background:#06060c;color:#eeeef2;overflow-x:hidden}
+ ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#06060c}
+ ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:3px}
+ .bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+ .bg-orb{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
+ .nav-glass{background:rgba(6,6,12,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.04)}
+ .nav-link{position:relative;font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);transition:color .3s;padding:6px 0;cursor:pointer;text-decoration:none}
+ .nav-link:hover,.nav-link.active{color:rgba(255,255,255,0.95)}
+ .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);transition:width .3s}
+ .nav-link:hover::after,.nav-link.active::after{width:100%}
+ .gradient-text{background:linear-gradient(135deg,#fff 0%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+ .gradient-accent{background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+ .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;border:none;border-radius:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .3s;box-shadow:0 4px 25px rgba(59,130,246,0.25);text-decoration:none}
+ .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(59,130,246,0.35)}
+ .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(255,255,255,0.04);color:#eeeef2;border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .3s;text-decoration:none}
+ .btn-secondary:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px)}
+ .btn-sm{padding:10px 22px;font-size:13px;border-radius:10px}
+ .section-label{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#3b82f6;display:inline-flex;align-items:center;gap:10px}
+ .section-label::before{content:'';width:20px;height:1px;background:#3b82f6}
+ .feature-card{background:#121220;border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:36px;transition:all .4s;position:relative;overflow:hidden}
+ .feature-card::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(59,130,246,0.15),transparent,rgba(139,92,246,0.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .4s}
+ .feature-card:hover::before{opacity:1}
+ .feature-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+ .portfolio-card{background:#121220;border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:32px;transition:all .4s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit;display:block}
+ .portfolio-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+ .portfolio-card::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,rgba(59,130,246,0.15),transparent,rgba(139,92,246,0.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .4s}
+ .portfolio-card:hover::before{opacity:1}
+ .pricing-card{background:#0e0e18;border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:36px;transition:all .4s;position:relative}
+ .pricing-card.popular{border-color:rgba(59,130,246,0.25);background:linear-gradient(180deg,rgba(59,130,246,0.06) 0%,#0e0e18 40%)}
+ .pricing-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+ .tech-card{background:#0e0e18;border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:28px;transition:all .3s}
+ .tech-card:hover{border-color:rgba(59,130,246,0.15);background:#121220}
+ .fade-up{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+ .fade-up.visible{opacity:1;transform:translateY(0)}
+ .form-input{width:100%;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;color:#eeeef2;font-family:'Inter',sans-serif;font-size:14px;transition:all .3s;outline:none}
+ .form-input:focus{border-color:rgba(59,130,246,0.4);background:rgba(59,130,246,0.03);box-shadow:0 0 0 3px rgba(59,130,246,0.08)}
+ textarea.form-input{resize:vertical;min-height:120px}
+ .deco-line{height:1px;background:linear-gradient(90deg,transparent,rgba(59,130,246,0.15),rgba(139,92,246,0.15),transparent)}
+ .popular-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:6px 20px;border-radius:0 0 10px 10px}
+ @media(max-width:768px){.feature-card,.portfolio-card,.pricing-card{padding:24px}}
+ @keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,100px)}}
+ @keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,-80px)}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb" style="width:600px;height:600px;background:rgba(59,130,246,0.08);top:-250px;right:-150px;animation:orb1 20s ease-in-out infinite"></div>
+<div class="bg-orb" style="width:500px;height:500px;background:rgba(139,92,246,0.06);bottom:-200px;left:-120px;animation:orb2 25s ease-in-out infinite"></div>
+
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+ <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+ <a href="#inicio" class="flex items-center gap-3 text-decoration-none">
+ <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)"><span class="font-orbitron text-[10px] font-bold text-white">GL</span></div>
+ <span class="font-grotesk font-semibold text-sm text-white">Átomo Studio</span></a>
+ <div class="hidden md:flex items-center gap-8">
+ <a href="#inicio" class="nav-link active">Inicio</a>
+ <a href="#productos" class="nav-link">Productos</a>
+ <a href="#portafolio" class="nav-link">Portafolio</a>
+ <a href="#tecnologia" class="nav-link">Tecnología</a>
+ <a href="#precios" class="nav-link">Precios</a>
+ <a href="#contacto" class="nav-link">Contacto</a>
+ </div>
+ <a href="#precios" class="btn-primary btn-sm hidden md:inline-flex">Comenzar <i class="fas fa-arrow-right text-xs"></i></a>
+ </div>
+</nav>
+
+<section id="inicio" class="relative min-h-screen flex items-center pt-16" style="z-index:1">
+ <canvas id="hero-particles" style="position:absolute;inset:0;pointer-events:none;z-index:1"></canvas>
+ <div class="max-w-6xl mx-auto px-6 py-20 relative z-10 w-full">
+ <div class="max-w-3xl">
+ <div class="fade-up"><div class="section-label mb-5">🚀 Átomo Studio · Desarrollo con IA</div></div>
+ <h1 class="font-orbitron text-4xl md:text-6xl lg:text-7xl font-bold leading-tight fade-up" style="transition-delay:.1s">
+ <span class="gradient-text">Creamos software</span><br>
+ <span class="gradient-accent">inteligente.</span>
+ </h1>
+ <p class="text-lg md:text-xl mt-6 leading-relaxed fade-up" style="color:rgba(255,255,255,0.5);max-width:600px;transition-delay:.2s">Aplicaciones, sitios web, automatizaciones y sistemas multiagente. Desde tu idea hasta el producto final, impulsado por inteligencia artificial.</p>
+ <div class="flex flex-wrap gap-4 mt-10 fade-up" style="transition-delay:.3s">
+ <a href="#precios" class="btn-primary">Ver Planes <i class="fas fa-arrow-right text-xs"></i></a>
+ <a href="#portafolio" class="btn-secondary">Ver trabajos <i class="fas fa-arrow-down text-xs"></i></a>
+ </div>
+ </div>
+ </div>
+</section>
+
+<div class="deco-line max-w-6xl mx-auto"></div>
+
+<!-- Productos -->
+<section id="productos" style="padding:96px 0;z-index:1;position:relative">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16 fade-up"><div class="section-label justify-center mb-4">Creaciones</div>
+<h2 class="font-orbitron text-2xl md:text-4xl font-bold gradient-text">Productos Átomo Studio</h2></div>
+
+<div class="feature-card mb-6 fade-up">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:rgba(59,130,246,0.1)">⚡</div>
+<div><h3 class="font-grotesk text-xl font-bold">Geo</h3><span class="text-xs font-orbitron gradient-accent font-semibold">ASISTENTE MULTIAGENTE</span></div></div>
+<p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55)">Un asistente personal con stack de herramientas impulsada por IA. Geo planifica, construye, prueba y entrega aplicaciones funcionales.</p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="text-[11px] px-3 py-1.5 rounded-full font-medium" style="background:rgba(59,130,246,0.08);color:rgba(59,130,246,0.8);border:1px solid rgba(59,130,246,0.12)">Creación de Apps</span>
+<span class="text-[11px] px-3 py-1.5 rounded-full font-medium" style="background:rgba(139,92,246,0.08);color:rgba(139,92,246,0.8);border:1px solid rgba(139,92,246,0.12)">Multiagente</span>
+<span class="text-[11px] px-3 py-1.5 rounded-full font-medium" style="background:rgba(6,182,212,0.08);color:rgba(6,182,212,0.8);border:1px solid rgba(6,182,212,0.12)">Google Play</span>
+</div></div>
+<div class="w-full md:w-72 flex-shrink-0">
+<div class="rounded-xl overflow-hidden" style="background:rgba(0,0,0,0.3);aspect-ratio:1;display:flex;align-items:center;justify-content:center">
+<canvas id="geo-preview" width="240" height="240"></canvas>
+</div></div></div></div>
+
+<div class="grid md:grid-cols-2 gap-6">
+<div class="feature-card fade-up" style="transition-delay:.1s">
+<div class="flex items-center gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:rgba(6,182,212,0.1)">🌐</div>
+<div><h3 class="font-grotesk text-xl font-bold">Web Manager</h3><span class="text-xs font-orbitron" style="color:rgba(6,182,212,0.7);font-weight:600">GESTIÓN WEB</span></div></div>
+<p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55)">Gestión inteligente de sitios web. Monitorea, administra y optimiza tus sitios desde un panel centralizado.</p>
+</div>
+<div class="feature-card fade-up" style="transition-delay:.2s">
+<div class="flex items-center gap-4 mb-5">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" style="background:rgba(139,92,246,0.1)">🔧</div>
+<div><h3 class="font-grotesk text-xl font-bold">Átomo Tools</h3><span class="text-xs font-orbitron" style="color:rgba(139,92,246,0.7);font-weight:600">PRODUCTIVIDAD IA</span></div></div>
+<p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55)">Herramientas de productividad basadas en IA. Próximamente.</p>
+</div></div>
+</div></section>
+
+<div class="deco-line max-w-6xl mx-auto"></div>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" style="padding:96px 0;z-index:1;position:relative">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-12 fade-up">
+<div class="section-label justify-center mb-4">Portafolio</div>
+<h2 class="font-orbitron text-2xl md:text-4xl font-bold gradient-text">Trabajos recientes</h2>
+<p class="text-sm mt-4" style="color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto">M&aacute;s de 25 sitios web profesionales creados para negocios en Conchal&iacute; y Chile.</p>
+</div>
+
+<!-- Gastronom&iacute;a -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x1F354; Gastronom&iacute;a</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://redhouse.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F354;</div><h3 class="font-grotesk font-bold text-base mb-1">Redhouse</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Comida r&aacute;pida en Conchal&iacute;</p></a>
+<a href="https://pizza.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.05s"><div style="font-size:36px;margin-bottom:8px">&#x1F355;</div><h3 class="font-grotesk font-bold text-base mb-1">La Casa de la Pizza</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Pizzer&iacute;a artesanal</p></a>
+<a href="https://frutas-y-verduras.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.1s"><div style="font-size:36px;margin-bottom:8px">&#x1F96C;</div><h3 class="font-grotesk font-bold text-base mb-1">Frutas y Verduras</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Productos frescos</p></a>
+<a href="https://carnes-17.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.15s"><div style="font-size:36px;margin-bottom:8px">&#x1F969;</div><h3 class="font-grotesk font-bold text-base mb-1">Carnes 17</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Carnicer&iacute;a</p></a>
+<a href="https://carnes-super-willy.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.2s"><div style="font-size:36px;margin-bottom:8px">&#x1F969;</div><h3 class="font-grotesk font-bold text-base mb-1">Carnes Super Willy</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Carnicer&iacute;a</p></a>
+</div>
+
+<!-- Belleza -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x2702;&#xFE0F; Belleza &amp; Barber&iacute;a</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://kaba.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F487;</div><h3 class="font-grotesk font-bold text-base mb-1">KABA Sal&oacute;n</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Sal&oacute;n de belleza</p></a>
+<a href="https://casa-del-barbero.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.05s"><div style="font-size:36px;margin-bottom:8px">&#x2702;&#xFE0F;</div><h3 class="font-grotesk font-bold text-base mb-1">Casa del Barbero</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Peluquer&iacute;a y barber&iacute;a</p></a>
+<a href="https://anny-makeup-hair.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.1s"><div style="font-size:36px;margin-bottom:8px">&#x1F484;</div><h3 class="font-grotesk font-bold text-base mb-1">Anny Makeup Hair</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Maquillaje y peinados</p></a>
+</div>
+
+<!-- Fitness -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x1F4AA; Fitness</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://fitness-gym.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F4AA;</div><h3 class="font-grotesk font-bold text-base mb-1">Centro Fitness Gym</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Gimnasio en Conchal&iacute;</p></a>
+</div>
+
+<!-- Industrial -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x2699;&#xFE0F; Industrial</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://camilo-ferron.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x26A1;</div><h3 class="font-grotesk font-bold text-base mb-1">Camilo Ferron</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Suministros el&eacute;ctricos</p></a>
+<a href="https://ferreteria-conchali.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.05s"><div style="font-size:36px;margin-bottom:8px">&#x1F527;</div><h3 class="font-grotesk font-bold text-base mb-1">Ferreter&iacute;a Conchal&iacute;</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Ferreter&iacute;a local</p></a>
+<a href="https://hortec.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.1s"><div style="font-size:36px;margin-bottom:8px">&#x2699;&#xFE0F;</div><h3 class="font-grotesk font-bold text-base mb-1">Hortec</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Maquinaria industrial</p></a>
+<a href="https://gaffchile.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.15s"><div style="font-size:36px;margin-bottom:8px">&#x1F529;</div><h3 class="font-grotesk font-bold text-base mb-1">Gaffchile</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Reparaci&oacute;n industrial</p></a>
+<a href="https://aces-ltda.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.2s"><div style="font-size:36px;margin-bottom:8px">&#x1F527;</div><h3 class="font-grotesk font-bold text-base mb-1">Aces Ltda.</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Servicios t&eacute;cnicos</p></a>
+<a href="https://maestranza-jemo.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.25s"><div style="font-size:36px;margin-bottom:8px">&#x1F528;</div><h3 class="font-grotesk font-bold text-base mb-1">Maestranza Jemo</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Maestranza industrial</p></a>
+<a href="https://mch-ltda.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.3s"><div style="font-size:36px;margin-bottom:8px">&#x1F3ED;</div><h3 class="font-grotesk font-bold text-base mb-1">MCH Ltda.</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Servicios industriales</p></a>
+<a href="https://sam-chile.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.35s"><div style="font-size:36px;margin-bottom:8px">&#x2699;&#xFE0F;</div><h3 class="font-grotesk font-bold text-base mb-1">Sam Chile</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Soluciones industriales</p></a>
+<a href="https://bobbo-chile.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.4s"><div style="font-size:36px;margin-bottom:8px">&#x1F527;</div><h3 class="font-grotesk font-bold text-base mb-1">Bobbo Chile</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Servicios especializados</p></a>
+<a href="https://petrohue.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.45s"><div style="font-size:36px;margin-bottom:8px">&#x1F527;</div><h3 class="font-grotesk font-bold text-base mb-1">Petrohue</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Servicio t&eacute;cnico</p></a>
+</div>
+
+<!-- Comercio -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x1F3EA; Comercio Local</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://almacen-annie.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F3EA;</div><h3 class="font-grotesk font-bold text-base mb-1">Almac&eacute;n Annie</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Almac&eacute;n de barrio</p></a>
+<a href="https://mc-almacen.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.05s"><div style="font-size:36px;margin-bottom:8px">&#x1F3EA;</div><h3 class="font-grotesk font-bold text-base mb-1">M'C Almac&eacute;n</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Almac&eacute;n de confianza</p></a>
+<a href="https://rincon-de-la-luna.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.1s"><div style="font-size:36px;margin-bottom:8px">&#x1F319;</div><h3 class="font-grotesk font-bold text-base mb-1">Rinc&oacute;n de la Luna</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Tienda local</p></a>
+</div>
+
+<!-- Artesan&iacute;a -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x1F3A8; Artesan&iacute;a</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://silvana.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F3A8;</div><h3 class="font-grotesk font-bold text-base mb-1">Silvana Sep&uacute;lveda</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Porcelana fr&iacute;a, Los Andes</p></a>
+<a href="https://vitra.atomostudio.dev" target="_blank" class="portfolio-card fade-up" style="transition-delay:.05s"><div style="font-size:36px;margin-bottom:8px">&#x1F33F;</div><h3 class="font-grotesk font-bold text-base mb-1">EcoOrigen Chile</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Tienda ecol&oacute;gica</p></a>
+</div>
+
+<!-- Personal -->
+<div class="mb-4 fade-up"><h3 class="font-grotesk text-lg font-semibold" style="color:rgba(255,255,255,0.7)">&#x1F464; Personal</h3></div>
+<div class="grid md:grid-cols-3 gap-4 mb-10 max-w-5xl mx-auto">
+<a href="https://guillaume.atomostudio.dev" target="_blank" class="portfolio-card fade-up"><div style="font-size:36px;margin-bottom:8px">&#x1F468;&#x200D;&#x1F4BB;</div><h3 class="font-grotesk font-bold text-base mb-1">Guillaume Lagier</h3><p class="text-xs" style="color:rgba(255,255,255,0.55)">Desarrollador IA</p></a>
+</div>
+
+</div></section><div class="deco-line max-w-6xl mx-auto"></div>
+
+<!-- Tecnología -->
+<section id="tecnologia" style="padding:96px 0;z-index:1;position:relative">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16 fade-up"><div class="section-label justify-center mb-4">Tecnología</div>
+<h2 class="font-orbitron text-2xl md:text-4xl font-bold gradient-text">Construido sobre lo mejor</h2>
+<p class="text-sm mt-4" style="color:rgba(255,255,255,0.5)">Integramos modelos de IA de clase mundial.</p></div>
+<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+<div class="tech-card fade-up">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center font-orbitron text-xs font-bold" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff">Z</div>
+<div><h3 class="font-grotesk font-semibold text-sm">Plataforma Z.ai</h3><p class="text-[11px] text-at-muted">Infraestructura de IA</p></div></div>
+<p class="text-xs leading-relaxed mb-4" style="color:rgba(255,255,255,0.45)">Infraestructura de alto rendimiento que potencia nuestra arquitectura multiagente.</p>
+</div>
+<div class="tech-card fade-up" style="transition-delay:.1s">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center font-orbitron text-xs font-bold" style="background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:#fff">DS</div>
+<div><h3 class="font-grotesk font-semibold text-sm">DeepSeek Models</h3><p class="text-[11px] text-at-muted">Modelos de lenguaje</p></div></div>
+<p class="text-xs leading-relaxed mb-4" style="color:rgba(255,255,255,0.45)">Modelos de última generación para razonamiento profundo y generación de código.</p>
+</div></div></div></section>
+
+<div class="deco-line max-w-6xl mx-auto"></div>
+
+<!-- Pricing & Contact (simplificado del original Guillaume) -->
+<section id="precios" style="padding:96px 0;z-index:1;position:relative">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-6 fade-up"><div class="section-label justify-center mb-4">Servicios</div>
+<h2 class="font-orbitron text-2xl md:text-4xl font-bold gradient-text">Presencia web profesional</h2></div>
+<p class="text-center text-sm fade-up" style="color:rgba(255,255,255,0.5);max-width:500px;margin:0 auto 56px">Tu negocio merece una p&aacute;gina web profesional. Dise&ntilde;o moderno, dominio incluido y posicionamiento en Google.</p>
+<div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+<div class="fade-up" style="background:#0e0e18;border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:36px;transition:all .4s">
+<h3 class="font-grotesk font-bold text-lg mb-1">P&aacute;gina Web</h3>
+<div class="flex items-baseline gap-1 mt-2 mb-4"><span class="font-orbitron text-3xl font-bold">$120.000</span></div>
+<p class="text-xs mb-6" style="color:rgba(255,255,255,0.4)">Precio &uacute;nico. Incluye hosting y dominio por 1 a&ntilde;o.</p>
+<ul class="space-y-3 text-sm" style="color:rgba(255,255,255,0.65)">
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Dise&ntilde;o web profesional adaptado a tu negocio</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Dominio + hosting por 1 a&ntilde;o incluido</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Posicionamiento en Google</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Enlace directo por WhatsApp</li>
+</ul>
+<a href="#contacto" class="btn-secondary w-full justify-center mt-6" style="display:flex">Solicitar</a>
+</div>
+<div class="fade-up" style="transition-delay:.1s;background:linear-gradient(180deg,rgba(59,130,246,0.06) 0%,#0e0e18 40%);border:1px solid rgba(59,130,246,0.25);border-radius:20px;padding:36px;position:relative">
+<div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:6px 20px;border-radius:0 0 10px 10px">RECOMENDADO</div>
+<h3 class="font-grotesk font-bold text-lg mb-1" style="margin-top:4px">Actualizaci&oacute;n Mensual</h3>
+<div class="flex items-baseline gap-1 mt-2 mb-4"><span class="font-orbitron text-3xl font-bold">$30.000</span><span class="text-sm" style="color:rgba(255,255,255,0.4)">/mes</span></div>
+<p class="text-xs mb-6" style="color:rgba(255,255,255,0.4)">Mant&eacute;n tu p&aacute;gina siempre actualizada. Contrato por 6 meses.</p>
+<ul class="space-y-3 text-sm" style="color:rgba(255,255,255,0.65)">
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Actualizaci&oacute;n de fotos y contenido</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Modificaciones de precios y horarios</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Soporte t&eacute;cnico permanente</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Renovaci&oacute;n de dominio incluida</li>
+<li style="color:rgba(255,255,255,0.55)"><i class="fas fa-tag text-xs" style="color:#f59e0b;margin-right:8px"></i>$25.000/mes si contratas el a&ntilde;o completo</li>
+</ul>
+<a href="#contacto" class="btn-primary w-full justify-center mt-6" style="display:flex">✦ Contratar</a>
+</div>
+<div class="fade-up" style="transition-delay:.2s;background:#0e0e18;border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:36px">
+<h3 class="font-grotesk font-bold text-lg mb-1">Landing Page</h3>
+<div class="flex items-baseline gap-1 mt-2 mb-4"><span class="font-orbitron text-3xl font-bold">$80.000</span></div>
+<p class="text-xs mb-6" style="color:rgba(255,255,255,0.4)">Ideal para promocionar un producto o servicio espec&iacute;fico.</p>
+<ul class="space-y-3 text-sm" style="color:rgba(255,255,255,0.65)">
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Dise&ntilde;o en una sola p&aacute;gina</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Hosting incluido</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Enlace directo por WhatsApp</li>
+<li><i class="fas fa-check text-xs" style="color:#34d399;margin-right:8px"></i>Posicionamiento b&aacute;sico en Google</li>
+</ul>
+<a href="#contacto" class="btn-secondary w-full justify-center mt-6" style="display:flex">Solicitar</a>
+</div></div>
+
+<div class="text-center mt-12 fade-up">
+<div class="inline-flex items-start gap-3 text-left p-5 rounded-xl max-w-2xl mx-auto" style="background:rgba(59,130,246,0.04);border:1px solid rgba(59,130,246,0.08)">
+<i class="fas fa-info-circle" style="color:#3b82f6;margin-top:2px"></i>
+<p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.5)">
+  <strong style="color:rgba(255,255,255,0.75)">&iquest;Tienes tu propio dominio?</strong><br>
+  Si ya tienes dominio, podemos hospedar tu p&aacute;gina igual. Consulta por descuento.
+</p>
+</div>
+</div>
+</div></section>
+
+<div class="deco-line max-w-6xl mx-auto"></div>
+
+<!-- Contacto -->
+<section id="contacto" style="padding:96px 0;z-index:1;position:relative">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16 fade-up"><div class="section-label justify-center mb-4">Contacto</div>
+<h2 class="font-orbitron text-2xl md:text-4xl font-bold gradient-text">Hablemos</h2>
+<p class="text-sm mt-4" style="color:rgba(255,255,255,0.5)">Cuéntanos tu proyecto y te respondemos en 24h.</p></div>
+<div class="max-w-md mx-auto fade-up">
+<form onsubmit="showToast('Mensaje enviado');return false" class="space-y-5">
+<input type="text" placeholder="Tu nombre" class="form-input" required>
+<input type="email" placeholder="tu@email.com" class="form-input" required>
+<textarea placeholder="Describe tu proyecto..." class="form-input" required></textarea>
+<button type="submit" class="btn-primary w-full justify-center" style="display:flex"><i class="fas fa-paper-plane"></i> Enviar</button>
+</form>
+<p class="text-xs text-center mt-6" style="color:rgba(255,255,255,0.3)">o escríbenos a <a href="mailto:contact@atomostudio.dev" style="color:#3b82f6;text-decoration:none">contact@atomostudio.dev</a></p>
+</div></div></section>
+
+<footer style="border-top:1px solid rgba(255,255,255,0.04);padding:48px 0">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<p class="text-xs" style="color:rgba(255,255,255,0.4)">© 2026 Átomo Studio. Todos los derechos reservados.</p></div></footer>
+
+<div id="toast" style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:linear-gradient(135deg,#1e3a5f,#2d1b69);color:#fff;padding:14px 28px;border-radius:14px;font-size:14px;z-index:999;display:flex;align-items:center;gap:10px;box-shadow:0 10px 40px rgba(0,0,0,0.5);transition:all .5s;opacity:0;border:1px solid rgba(59,130,246,0.15)"><i class="fas fa-check-circle" style="color:#34d399"></i><span id="toast-msg"></span></div>
+
+<script>
+function showToast(m){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=m;t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(100px)'},3000);}
+const obs=new IntersectionObserver(e=>{e.forEach(e=>e.isIntersecting&&e.target.classList.add('visible'))},{threshold:.08});
+document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
+
+// Hero particles
+(function(){const c=document.getElementById('hero-particles');if(!c)return;const ctx=c.getContext('2d');let W,H;
+function resize(){const hero=document.getElementById('inicio');W=c.width=hero.offsetWidth;H=c.height=hero.offsetHeight}
+resize();window.addEventListener('resize',resize);
+const p=[];for(let i=0;i<60;i++){p.push({x:Math.random()*2000,y:Math.random()*1200,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:1+Math.random()*1.5,a:0.04+Math.random()*0.08})}
+function draw(){ctx.clearRect(0,0,W,H);p.forEach(pp=>{pp.x+=pp.vx;pp.y+=pp.vy;if(pp.x<0)pp.x=W;if(pp.x>W)pp.x=0;if(pp.y<0)pp.y=H;if(pp.y>H)pp.y=0;ctx.beginPath();ctx.arc(pp.x,pp.y,pp.r,0,Math.PI*2);ctx.fillStyle='#3b82f6';ctx.globalAlpha=pp.a;ctx.fill()});ctx.lineWidth=0.5;for(let i=0;i<p.length;i++){for(let j=i+1;j<p.length;j++){const dx=p[i].x-p[j].x,dy=p[i].y-p[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<140){ctx.beginPath();ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(p[j].x,p[j].y);ctx.strokeStyle='#3b82f6';ctx.globalAlpha=0.015*(1-d/140);ctx.stroke()}}}ctx.globalAlpha=1;requestAnimationFrame(draw)}
+if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)draw()})();
+
+// Geo preview canvas
+(function(){const c=document.getElementById('geo-preview');if(!c)return;const ctx=c.getContext('2d'),w=c.width,h=c.height;
+const bg=ctx.createRadialGradient(w*0.4,h*0.35,0,w*0.5,h*0.5,w*0.7);bg.addColorStop(0,'#141425');bg.addColorStop(1,'#0a0a14');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ctx.strokeStyle='rgba(255,255,255,0.02)';ctx.lineWidth=0.5;for(let x=0;x<w;x+=20){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}
+for(let y=0;y<h;y+=20){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+const g=ctx.createRadialGradient(w*0.5,h*0.4,0,w*0.5,h*0.4,80);g.addColorStop(0,'rgba(59,130,246,0.2)');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+function hex(hx,hy,hr,rot,a){ctx.beginPath();for(let i=0;i<6;i++){const ang=Math.PI/3*i+rot;const px=hx+hr*Math.cos(ang),py=hy+hr*Math.sin(ang);i===0?ctx.moveTo(px,py):ctx.lineTo(px,py)}ctx.closePath();ctx.strokeStyle='#3b82f6';ctx.globalAlpha=a;ctx.lineWidth=0.8;ctx.stroke();ctx.globalAlpha=1}
+hex(w*0.8,h*0.2,22,0.2,0.08);hex(w*0.15,h*0.85,18,-0.3,0.06);hex(w*0.85,h*0.75,14,0.5,0.07);
+ctx.font='800 48px Orbitron,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+const tg=ctx.createLinearGradient(w*0.3,0,w*0.7,0);tg.addColorStop(0,'#3b82f6');tg.addColorStop(1,'#8b5cf6');ctx.fillStyle=tg;
+ctx.shadowColor='rgba(59,130,246,0.3)';ctx.shadowBlur=15;ctx.fillText('Geo',w*0.5,h*0.38);
+ctx.shadowBlur=0;ctx.font='400 9px Inter,sans-serif';ctx.fillStyle='rgba(160,170,190,0.5)';ctx.fillText('MULTIAGENTE AI',w*0.5,h*0.54);
+const lg=ctx.createLinearGradient(w*0.3,0,w*0.7,0);lg.addColorStop(0,'transparent');lg.addColorStop(0.5,'#3b82f6');lg.addColorStop(1,'transparent');
+ctx.strokeStyle=lg;ctx.lineWidth=0.8;ctx.globalAlpha=0.3;ctx.beginPath();ctx.moveTo(w*0.25,h*0.6);ctx.lineTo(w*0.75,h*0.6);ctx.stroke();ctx.globalAlpha=1;
+[[0.3,0.72],[0.45,0.78],[0.6,0.72],[0.7,0.8]].forEach(a=>{ctx.beginPath();ctx.arc(a[0]*w,a[1]*h,3,0,Math.PI*2);ctx.fillStyle='#3b82f6';ctx.globalAlpha=0.4;ctx.fill();ctx.globalAlpha=1})})();
+</script>
+</body>
+</html>
