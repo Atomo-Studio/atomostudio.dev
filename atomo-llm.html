@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>atómo-llm — Modelo de lenguaje latinoamericano · Átomo Studio</title>
+  <meta property="og:title" content="atómo-llm 🦙 · Modelo de IA propio de Átomo Studio">
+  <meta name="description" content="atómo-llm es un modelo de lenguaje propio, construido sobre LLaMA y entrenado en corpus latinoamericano. El motor detrás de Geos 2.1 y Geo App.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #090909;
+      --surface:  #111111;
+      --border:   rgba(255,255,255,0.08);
+      --accent:   #3b82f6;
+      --accent-dim: rgba(59,130,246,0.12);
+      --text:     #F0EBE0;
+      --muted:    #666;
+      --muted2:   #999;
+      --mono:     'Space Grotesk', sans-serif;
+      --sans:     'Space Grotesk', sans-serif;
+      --display:  'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 60px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9,9,9,0.85);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links{display:flex;gap:4px;align-items:center}
+    .nav-links a{font-size:13px;font-weight:500;padding:7px 14px;border-radius:8px;color:rgba(238,238,242,.6);transition:.25s}
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active{color:var(--blue)}
+    .nav-cta {
+      font-size: 13px;
+      padding: 7px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--grad-main); color: #fff; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(232,160,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,160,0,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp .6s ease .1s forwards;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: .96;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .7s ease .2s forwards;
+    }
+    h1 .accent { color: var(--accent); }
+    h1 .muted-word { color: var(--muted); }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted2);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp .7s ease .35s forwards;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .7s ease .45s forwards;
+    }
+    .btn-primary {
+      padding: 12px 28px;
+      background: var(--grad-main);
+      color: #000;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .9; box-shadow: 0 4px 20px rgba(59,130,246,.3); }
+    .btn-secondary {
+      padding: 12px 28px;
+      border: 1px solid var(--border);
+      color: var(--muted2);
+      font-size: 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+
+    .hero-status {
+      margin-top: 64px;
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp .7s ease .55s forwards;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 6px #3b82f6;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    /* SECTIONS */
+    section { padding: 96px 48px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .section-desc {
+      font-size: 17px;
+      color: var(--muted2);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 60px;
+    }
+
+    /* WHAT IS */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .what-cell {
+      background: var(--surface);
+      padding: 40px;
+    }
+    .what-cell-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .what-cell h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .what-cell p {
+      font-size: 15px;
+      color: var(--muted2);
+      line-height: 1.6;
+    }
+
+    /* STACK */
+    .stack-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stack-visual {
+      display: flex; flex-direction: column; gap: 3px;
+      max-width: 700px; margin: 0 auto;
+    }
+    .stack-layer {
+      display: flex; align-items: center;
+      padding: 20px 28px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color .2s;
+      cursor: default;
+    }
+    .stack-layer:hover { border-color: rgba(255,255,255,0.2); }
+    .stack-layer.highlighted {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .stack-layer-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 20px;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .stack-layer.highlighted .stack-layer-icon {
+      background: rgba(59,130,246,0.2);
+    }
+    .stack-layer:not(.highlighted) .stack-layer-icon {
+      background: rgba(255,255,255,0.05);
+    }
+    .stack-layer-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+    .stack-layer.highlighted .stack-layer-name { color: var(--accent); }
+    .stack-layer-desc { font-size: 13px; color: var(--muted); }
+    .stack-layer-tag {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .stack-layer.highlighted .stack-layer-tag {
+      color: var(--accent);
+      border-color: rgba(59,130,246,0.3);
+      background: rgba(59,130,246,0.08);
+    }
+    .stack-connector {
+      display: flex; justify-content: center;
+      color: var(--muted);
+      font-size: 18px;
+      padding: 4px 0;
+    }
+
+    /* WHY */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .why-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      transition: border-color .2s;
+    }
+    .why-card:hover { border-color: rgba(255,255,255,0.15); }
+    .why-icon {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .why-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .why-card p { font-size: 14px; color: var(--muted2); line-height: 1.65; }
+
+    /* COMPARISON */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .compare-table th {
+      text-align: left;
+      padding: 14px 20px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table th.highlight { color: var(--accent); }
+    .compare-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--muted2);
+      vertical-align: top;
+    }
+    .compare-table td.col-feature {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 13px;
+    }
+    .compare-table td.highlight {
+      color: var(--text);
+      background: var(--accent-dim);
+    }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .compare-table tr:hover td.highlight { background: rgba(59,130,246,0.18); }
+    .check { color: var(--accent); }
+    .cross { color: var(--muted); }
+
+    /* TECH SPECS */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .spec-item {
+      background: var(--surface);
+      padding: 28px 32px;
+    }
+    .spec-key {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .spec-val {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .spec-val.code {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    /* AUDIENCES */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .audience-card {
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    .audience-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .audience-card .tagline {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-family: var(--mono);
+    }
+    .audience-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 32px;
+    }
+    .audience-list li {
+      font-size: 14px;
+      color: var(--muted2);
+      padding-left: 18px;
+      position: relative;
+    }
+    .audience-list li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+    .audience-cta {
+      display: inline-block;
+      padding: 10px 22px;
+      font-size: 13px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .cta-accent { background: var(--grad-main); color: #fff; }
+    .cta-accent:hover { opacity: .85; }
+    .cta-outline {
+      border: 1px solid var(--border);
+      color: var(--muted2);
+    }
+    .cta-outline:hover { border-color: rgba(255,255,255,.25); color: var(--text); }
+
+    /* API COMING SOON */
+    .api-section {
+      background: linear-gradient(135deg, rgba(59,130,246,0.05), transparent 60%);
+      border: 1px solid rgba(59,130,246,0.15);
+      border-radius: 16px;
+      padding: 64px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .api-left { max-width: 560px; }
+    .api-left h2 { margin-bottom: 12px; }
+    .api-left p { font-size: 16px; color: var(--muted2); margin-bottom: 0; }
+    .api-code-preview {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      flex-shrink: 0;
+      min-width: 340px;
+    }
+    .code-comment { color: var(--muted); }
+    .code-key { color: #7ec8e3; }
+    .code-str { color: #f0a500; }
+    .code-num { color: #a8d8a8; }
+    .coming-soon-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(59,130,246,0.12);
+      color: var(--accent);
+      border-radius: 99px;
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+    .waitlist-form {
+      display: flex; gap: 8px; margin-top: 20px;
+    }
+    .waitlist-input {
+      flex: 1;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--sans);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .waitlist-input::placeholder { color: var(--muted); }
+    .waitlist-input:focus { border-color: var(--accent); }
+    .waitlist-btn {
+      padding: 10px 20px;
+      background: var(--grad-main);
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: opacity .2s;
+    }
+    .waitlist-btn:hover { opacity: .85; }
+
+    /* FOOTER */
+    footer {
+      padding: 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .footer-logo span { color: var(--accent); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links{display:flex;gap:4px;align-items:center}
+      section { padding: 64px 24px; }
+      .hero { padding: 100px 24px 64px; }
+      .what-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .api-section { padding: 40px 28px; }
+      .api-code-preview { min-width: 0; width: 100%; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-mobile{display:flex!important}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Átomo Studio",
+  "image": "https://atomostudio.dev/img/logo-og.png",
+  "url": "https://atomostudio.dev",
+  "telephone": "+56973994504",
+  "email": "contact@atomostudio.dev",
+  "description": "Sitios web profesionales, tiendas online e IA para PYMEs chilenas.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CL"
+  },
+  "areaServed": "Chile",
+  "priceRange": "$140.000 - $1.200.000",
+  "sameAs": [
+    "https://instagram.com/atomo.studio.chile",
+    "https://linkedin.com/company/atomostudio",
+    "https://github.com/Atomo-Studio"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
+      <div class="nav-logo-icon">⚡</div>
+      Átomo Studio
+    </a>
+    <div class="nav-links">
+        <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
+        <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
+        <a href="atomo-llm.html" class="active" data-i18n="atomo_llm">atómo-llm</a>
+        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="contacto.html" data-i18n="contacto">Contacto</a>
+    </div>
+      <div class="nav-mobile" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
+  <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
+  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
+  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <p class="hero-eyebrow">atómo-llm · v1 · Átomo Studio · Chile</p>
+
+  <h1>
+    El modelo de lenguaje<br>
+    <span class="accent">diseñado</span>
+    <span class="muted-word"> para</span><br>
+    Latinoamérica
+  </h1>
+
+  <p class="hero-sub">
+    Un modelo propio, construido sobre <strong>LLaMA</strong> y entrenado en corpus latinoamericano.
+    Entiende el contexto local: economía chilena, modismos regionales,
+    negocios PYME, cultura de negocio. No es un wrapper — es entrenamiento propio.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#audiencias" class="btn-primary" style="background:var(--grad-main);color:#fff">Ver para quién es</a>
+    <a href="#stack" class="btn-secondary">Ver la arquitectura →</a>
+  </div>
+
+  <div class="hero-status">
+    <span class="status-dot"></span>
+    Activo · disponible en Geo App · API en desarrollo
+  </div>
+</section>
+
+<!-- LATAM-GPT REFERENCE -->
+<section style="padding:0 24px;max-width:1100px;margin:-24px auto 0;position:relative;z-index:2">
+  <div style="padding:14px 20px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);border-radius:12px;font-size:13px;color:rgba(238,238,242,.6);line-height:1.7">
+    🌎 <strong style="color:#10b981">Contexto regional:</strong> En febrero 2026, el gobierno chileno presentó 
+    <strong style="color:#e8ecf4">Latam-GPT</strong>, el primer gran modelo de lenguaje público latinoamericano, 
+    con 1.500 millones de parámetros y entrenado en datasets regionales. 
+    En Átomo Studio compartimos esa visión — por eso construimos <strong style="color:#e8ecf4">atómo-llm 🦙</strong>, 
+    nuestro modelo propio fine-tuneado en Chile, pensado para el usuario latinoamericano real.
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label reveal">Qué es</p>
+    <h2 class="reveal">Un fine-tune propio,<br>no un wrapper.</h2>
+    <p class="section-desc reveal">
+      La diferencia importa. Un wrapper llama a la API de otro modelo. Un fine-tune modifica el modelo mismo.
+      atómo-llm es lo segundo.
+    </p>
+    <div class="what-grid reveal">
+      <div class="what-cell">
+        <div class="what-cell-label">Base</div>
+        <h3>Construido sobre LLaMA</h3>
+        <p>Meta's LLaMA es el mismo punto de partida de modelos como Mistral, Vicuna y Llama 3. Es open-source, producción-ready, y permite fine-tuning sin restricciones. Tomamos esa base y la especializamos.</p>
+      </div>
+      <div class="what-cell">
+        <div class="what-cell-label">Especialización</div>
+        <h3>Entrenado en corpus latinoamericano</h3>
+        <p>El fine-tuning expone el modelo a texto en español latinoamericano: documentos legales chilenos, contenido de negocios PYME, variaciones regionales del idioma, contexto económico local. El modelo aprende lo que los modelos genéricos ignoran.</p>
+      </div>
+      <div class="what-cell">
+        <div class="what-cell-label">Resultado</div>
+        <h3>Mejor en contexto local</h3>
+        <p>Entiende una boleta vs una factura en Chile. Conoce la diferencia entre AFP y fondo de pensión. No traduce "startup" al chileno como lo hace un modelo entrenado solo en inglés. Responde con contexto real, no con generalidades.</p>
+      </div>
+      <div class="what-cell">
+        <div class="what-cell-label">Acceso actual</div>
+        <h3>Disponible vía Geo App</h3>
+        <p>Hoy, atómo-llm funciona como el motor de Geos 2.1, el asistente dentro de Geo App. El acceso directo via API está en desarrollo activo. Si te interesa acceso anticipado, puedes unirte a la lista más abajo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack-section" id="stack">
+  <div class="section-inner">
+    <p class="section-label reveal">Arquitectura del producto</p>
+    <h2 class="reveal">Tres capas, tres conceptos distintos.</h2>
+    <p class="section-desc reveal">La confusión entre estos tres niveles es comprensible — pero son cosas diferentes. Una frase lo resume todo:</p>
+    <p style="font-family: var(--mono); font-size: 14px; color: var(--muted2); max-width: 680px; margin: -36px auto 48px; text-align: center; line-height: 1.8;" class="reveal">
+      "<span style="color:var(--text)">Geo App</span> usa <span style="color:var(--text)">Geos 2.1</span>, nuestro asistente con memoria y personalidad,<br>construido sobre <span style="color:var(--accent)">atómo-llm</span>, nuestro modelo propio entrenado en Chile."
+    </p>
+    <div class="stack-visual reveal">
+      <div class="stack-layer">
+        <div class="stack-layer-icon">📱</div>
+        <div>
+          <div class="stack-layer-name">Geo App</div>
+          <div class="stack-layer-desc">La app que el usuario descarga. Contenedor mobile/web multi-modelo.</div>
+        </div>
+        <div class="stack-layer-tag">interfaz</div>
+      </div>
+      <div class="stack-connector">↓</div>
+      <div class="stack-layer">
+        <div class="stack-layer-icon">🧠</div>
+        <div>
+          <div class="stack-layer-name">Geos 2.1</div>
+          <div class="stack-layer-desc">El asistente con memoria, personalidad y contexto persistente. No es el modelo: es la experiencia.</div>
+        </div>
+        <div class="stack-layer-tag">experiencia</div>
+      </div>
+      <div class="stack-connector">↓</div>
+      <div class="stack-layer highlighted">
+        <div class="stack-layer-icon">⚡</div>
+        <div>
+          <div class="stack-layer-name">atómo-llm</div>
+          <div class="stack-layer-desc">El modelo de lenguaje real. Fine-tune propio entrenado en corpus latinoamericano sobre LLaMA.</div>
+        </div>
+        <div class="stack-layer-tag">el modelo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT MATTERS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label reveal">Por qué importa</p>
+    <h2 class="reveal">Lo que los modelos genéricos no pueden darte.</h2>
+    <p class="section-desc reveal">ChatGPT y Claude son excelentes. Pero están entrenados mayoritariamente en inglés, con contexto anglosajón. Cuando el negocio es latinoamericano, el modelo debería serlo también.</p>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon">01 / idioma</div>
+        <h3>Español latinoamericano, no traducido</h3>
+        <p>No es español de España. No es español que suena traducido del inglés. Es el español que hablan tus clientes, tus proveedores y tus contratos.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">02 / contexto</div>
+        <h3>Instituciones y economía local</h3>
+        <p>SII, AFP, IVA chileno, Boletas vs facturas, Ley de Pymes, SAG, FONASA. Contexto que un modelo genérico no tiene — o tiene mal.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">03 / empresas</div>
+        <h3>Fine-tuning sobre tus datos</h3>
+        <p>¿Quieres un modelo entrenado específicamente en los documentos, procesos y lenguaje de tu empresa? Eso es lo que ofrecemos para clientes Enterprise.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">04 / privacidad</div>
+        <h3>Procesamiento en nuestros servidores</h3>
+        <p>Tus conversaciones no pasan por OpenAI ni Anthropic. El modelo es nuestro, la infraestructura es nuestra.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">05 / open source</div>
+        <h3>Base abierta, transparente</h3>
+        <p>LLaMA es open-source. Puedes verificar la arquitectura base. No hay caja negra en los fundamentos del modelo.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">06 / latam</div>
+        <h3>El primer LLM propio con foco en crecimiento personal latinoamericano</h3>
+        <p>No "el primero en Latinoamérica" — eso lo debatimos. Sí el primero con foco específico en el crecimiento personal del usuario latinoamericano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <p class="section-label reveal">Comparativa honesta</p>
+    <h2 class="reveal">atómo-llm vs modelos genéricos</h2>
+    <p class="section-desc reveal">No somos mejores en todo. Somos mejores en lo que importa para Latinoamérica.</p>
+    <div class="reveal" style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width: 35%">Capacidad</th>
+            <th>GPT-4 / Claude</th>
+            <th class="highlight">atómo-llm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-feature">Español latinoamericano nativo</td>
+            <td><span class="cross">Parcial</span> — entrenado en inglés, traduce</td>
+            <td class="highlight"><span class="check">✓</span> Corpus latinoamericano directo</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Contexto institucional chileno</td>
+            <td><span class="cross">Limitado</span> — conocimiento genérico</td>
+            <td class="highlight"><span class="check">✓</span> SII, AFP, normas locales</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Fine-tuning con datos propios</td>
+            <td><span class="cross">Solo Enterprise (API cara)</span></td>
+            <td class="highlight"><span class="check">✓</span> Ofrecido a clientes directos</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Privacidad de datos</td>
+            <td><span class="cross">Datos en servidores de EE.UU.</span></td>
+            <td class="highlight"><span class="check">✓</span> Servidores propios</td>
+          </tr>
+          <tr>
+            <td class="col-feature">Capacidades generales (código, ciencia)</td>
+            <td><span class="check">✓</span> Muy superiores</td>
+            <td class="highlight"><span class="cross">No es el objetivo</span></td>
+          </tr>
+          <tr>
+            <td class="col-feature">Multilingüe (inglés, chino, etc.)</td>
+            <td><span class="check">✓</span> Muy superiores</td>
+            <td class="highlight"><span class="cross">Foco en español latinoamericano</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 13px; color: var(--muted); margin-top: 16px; text-align: right;" class="reveal">
+      Para código, matemáticas, o capacidades generales: usa GPT-4 o Claude. Para negocios latinoamericanos: atómo-llm.
+    </p>
+  </div>
+</section>
+
+<!-- TECHNICAL SPECS -->
+<section>
+  <div class="section-inner">
+    <p class="section-label reveal">Especificaciones técnicas</p>
+    <h2 class="reveal">Qué hay bajo el capó</h2>
+    <div class="specs-grid reveal">
+      <div class="spec-item">
+        <div class="spec-key">Arquitectura base</div>
+        <div class="spec-val code">LLaMA (Meta)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Tipo de entrenamiento</div>
+        <div class="spec-val">Fine-tuning supervisado</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Corpus de entrenamiento</div>
+        <div class="spec-val">Español latinoamericano · contexto chileno</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Acceso actual</div>
+        <div class="spec-val">Geo App (vía Geos 2.1)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Acceso API</div>
+        <div class="spec-val code">en desarrollo — Q3 2025</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-key">Desarrollado en</div>
+        <div class="spec-val">Chile 🇨🇱 · Átomo Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section id="audiencias" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <p class="section-label reveal">¿Para quién?</p>
+    <h2 class="reveal">Dos razones para usar atómo-llm</h2>
+    <p class="section-desc reveal">Una para empresas que quieren IA con contexto local. Otra para developers que quieren integrarlo.</p>
+    <div class="audience-grid reveal">
+      <div class="audience-card">
+        <h3>Empresas</h3>
+        <p class="tagline">// Para PYMEs y corporaciones chilenas</p>
+        <ul class="audience-list">
+          <li>Automatiza atención al cliente en español real, no traducido</li>
+          <li>Procesa documentos con contexto legal y tributario chileno</li>
+          <li>Fine-tuning sobre el lenguaje y datos de tu empresa</li>
+          <li>Mantiene tus datos fuera de servidores extranjeros</li>
+          <li>Integración con tus sistemas existentes</li>
+        </ul>
+        <a href="mailto:contact@atomostudio.dev?subject=atomo-llm%20para%20mi%20empresa" class="audience-cta cta-accent">Conversemos</a>
+      </div>
+      <div class="audience-card">
+        <h3>Developers</h3>
+        <p class="tagline">// Para builders latinoamericanos</p>
+        <ul class="audience-list">
+          <li>Integra un LLM con contexto chileno en tu producto</li>
+          <li>API REST simple, misma sintaxis que OpenAI (próximamente)</li>
+          <li>Precios en CLP, sin conversión de divisas</li>
+          <li>Base open-source (LLaMA) — auditable y transparente</li>
+          <li>Soporte en español, por latinoamericanos</li>
+        </ul>
+        <a href="#waitlist" class="audience-cta cta-outline">Unirse a la lista de acceso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- API COMING SOON -->
+<section id="waitlist">
+  <div class="section-inner">
+    <div class="api-section reveal">
+      <div class="api-left">
+        <div class="coming-soon-badge">API · próximamente</div>
+        <h2>Acceso directo al modelo</h2>
+        <p>La API de atómo-llm está en desarrollo. Misma sintaxis que la API de OpenAI. Precios en CLP. Documentación en español.</p>
+        <div class="waitlist-form">
+          <input type="email" class="waitlist-input" placeholder="tu@email.com">
+          <button class="waitlist-btn" onclick="joinWaitlist()">Quiero acceso</button>
+        </div>
+        <p style="font-size: 12px; color: var(--muted); margin-top: 10px;">Sin spam. Te avisamos cuando esté disponible.</p>
+      </div>
+      <div class="api-code-preview" aria-label="Preview de cómo se verá la API de atómo-llm">
+        <div class="code-comment"># próximamente · atómo-llm API</div>
+        <br>
+        <span class="code-key">curl</span> https://api.atomostudio.dev/v1/chat \<br>
+        &nbsp;&nbsp;-H <span class="code-str">"Authorization: Bearer sk-atomo-..."</span> \<br>
+        &nbsp;&nbsp;-d <span class="code-str">'{'</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"model"</span>: <span class="code-str">"atomo-llm-v1"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"messages"</span>: [{<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"role"</span>: <span class="code-str">"user"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-str">"content"</span>: <span class="code-str">"¿Qué es el F29 del SII?"</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}]<br>
+        &nbsp;&nbsp;<span class="code-str">'}'</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo" style="display:flex;align-items:center;gap:8px"><div style="width:24px;height:24px;border-radius:5px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff">⚡</div>Átomo Studio</div>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
+    <a href="index.html">Inicio</a>
+    <a href="geo-app.html">Geo App</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="geos.html">Geos 2.1</a>
+    <a href="geo-pricing.html">Precios</a>
+    <a href="modelos.html">Modelos IA</a>
+    <a href="ecommerce.html">E-commerce</a>
+    <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="portafolio.html">Proyectos</a>
+    <a href="portafolio.html">Proyectos</a>
+    <a href="mailto:contact@atomostudio.dev">Contacto</a>
+  </div>
+  <div>© 2026 Átomo Studio · Santiago, Chile</div>
+</footer>
+
+<script>
+  // Intersection observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Waitlist form
+  function joinWaitlist() {
+    const input = document.querySelector('.waitlist-input');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = 'rgba(255,80,80,0.5)';
+      setTimeout(() => input.style.borderColor = '', 1500);
+      return;
+    }
+    const btn = document.querySelector('.waitlist-btn');
+    btn.textContent = '✓ Registrado';
+    btn.style.background = 'var(--grad-main)';
+    btn.style.color = '#000';
+    btn.disabled = true;
+    input.disabled = true;
+    input.value = email;
+  }
+</script>
+</body>
+</html>
