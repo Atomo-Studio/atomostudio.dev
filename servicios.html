@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Átomo Studio — Sitios web profesionales, tiendas online e IA para PYMEs chilenas. Landing desde $140.000. Sin comisiones, sin letra chica. Entregamos en 72h.">
-<title data-i18n="átomo_studio_web_ia_para_pymes_chilenas">Átomo Studio · Web & IA para PYMEs Chilenas</title>
-<meta property="og:title" content="Átomo Studio · Web & IA para PYMEs Chilenas">
-<meta property="og:description" content="Sitios web profesionales, tiendas online e IA para PYMEs chilenas. Landing desde $140.000. Sin comisiones, entregamos en 72h.">
+<meta name="description" content="Servicios de Átomo Studio: landing pages desde $140.000, sitios web multi-página, e-commerce, Geo App IA. Todo para tu negocio.">
+<title>Servicios · Web Profesional e IA para PYMEs — Átomo Studio</title>
+<meta property="og:title" content="Servicios · Web Profesional e IA para PYMEs — Átomo Studio">
+<meta property="og:description" content="Servicios web e IA para PYMEs chilenas. Landing pages, sitios web, tiendas online, asistente IA. Desde $140.000.">
 <meta property="og:image" content="https://atomostudio.dev/img/logo-og.png">
 <meta property="og:url" content="https://atomostudio.dev">
 <meta property="og:type" content="website">
@@ -175,27 +175,6 @@ nav.scrolled{
 .text-muted{color:var(--muted)}
 .text-center{text-align:center}
 
-/* ─── AUDIENCE CARDS ─── */
-.audience-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;
-}
-.audience-card{
-  display:block;text-decoration:none;
-}
-.audience-card-inner{
-  background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);
-  border-radius:14px;padding:20px;transition:.3s;cursor:pointer;
-}
-.audience-card-inner:hover{
-  transform:translateY(-3px);
-  background:rgba(59,130,246,.1);
-  border-color:rgba(59,130,246,.3);
-  box-shadow:0 8px 24px rgba(59,130,246,.1);
-}
-.audience-card-icon{font-size:24px;margin-bottom:8px}
-.audience-card-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.audience-card-desc{font-size:12px;color:var(--muted);line-height:1.5}
-
 /* ─── BUTTONS ─── */
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -249,17 +228,6 @@ nav.scrolled{
 .fr.vis{opacity:1;transform:translateX(0)}
 .fscale{opacity:0;transform:scale(.9);transition:.7s cubic-bezier(.4,0,.2,1)}
 .fscale.vis{opacity:1;transform:scale(1)}
-
-/* ─── GEO NOTE ─── */
-.geo-note{
-  max-width:600px;margin:-40px auto 48px;
-  padding:16px 20px;
-  background:rgba(59,130,246,.04);
-  border:1px solid rgba(59,130,246,.12);
-  border-radius:12px;
-  font-size:13px;color:rgba(238,238,242,.7);line-height:1.6;
-}
-.geo-note strong{color:#e8ecf4}
 
 /* ════════════════════════════════════════════
    HERO
@@ -361,42 +329,7 @@ nav.scrolled{
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ════════════════════════════════════════════
-   
-<!-- TESTIMONIOS -->
-<section class="section" style="background:var(--bg2);padding:80px 0">
-  <div class="container">
-    <div style="text-align:center;max-width:600px;margin:0 auto 48px">
-      <div class="section-label">TESTIMONIOS</div>
-      <h2 class="h2" style="margin-bottom:12px">Lo que dicen nuestros clientes</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px">
-        <div style="color:#ffc832;font-size:14px;margin-bottom:12px">★★★★★</div>
-        <p style="font-size:14px;color:rgba(238,238,242,.7);line-height:1.7;margin-bottom:16px;font-style:italic">
-          &ldquo;Me hicieron la página y a los 3 días ya estaba recibiendo consultas por WhatsApp. Increíble el tiempo de entrega.&rdquo;
-        </p>
-        <div style="font-size:13px;font-weight:600">&mdash; Carlos, ferretería en Conchalí</div>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px">
-        <div style="color:#ffc832;font-size:14px;margin-bottom:12px">★★★★★</div>
-        <p style="font-size:14px;color:rgba(238,238,242,.7);line-height:1.7;margin-bottom:16px;font-style:italic">
-          &ldquo;Tenía un sitio viejo que no funcionaba en el celular. Me lo renovaron completo y ahora vendo por web. Recomendados.&rdquo;
-        </p>
-        <div style="font-size:13px;font-weight:600">&mdash; María, almacén en Maipú</div>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px">
-        <div style="color:#ffc832;font-size:14px;margin-bottom:12px">★★★★★</div>
-        <p style="font-size:14px;color:rgba(238,238,242,.7);line-height:1.7;margin-bottom:16px;font-style:italic">
-          &ldquo;El agente con IA me respondía los WhatsApp de madrugada. No sabía que eso existía hasta que lo probé.&rdquo;
-        </p>
-        <div style="font-size:13px;font-weight:600">&mdash; Javier, dueño de local en Stgo.</div>
-      </div>
-    </div>
-    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px">* Testimonios simulados basados en experiencias reales de clientes</p>
-  </div>
-</section>
-
-SERVICES
+   SERVICES
 ════════════════════════════════════════════ */
 .services-section{background:var(--bg)}
 .services-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
@@ -1065,6 +998,7 @@ footer{
 <div class="bg-grid"></div>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
+<!-- orb-3 eliminado — simplificación visual -->
 
 <!-- ═══════════════════════════
      NAV
@@ -1082,11 +1016,11 @@ footer{
         <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
       <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes somos</a>
         <a href="portafolio.html" data-i18n="proyectos">Proyectos</a>
-      </div>
-      <div class="nav-mobile" id="menuToggle">
+            <div class="nav-mobile" id="menuToggle">
         <span></span><span></span><span></span>
       </div>
       <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
+    </div>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -1097,121 +1031,125 @@ footer{
   <a href="quienes-somos.html" onclick="closeMobile()" data-i18n="quienes_somos">Quiénes somos</a>
   <a href="portafolio.html" onclick="closeMobile()" data-i18n="proyectos">Proyectos</a>
 </div>
-
-<section class="hero" id="inicio">
-  <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="para_pymes_chilenas_que_quieren_crecer_de_verdad">⚡ Tecnología para Chile · Hecho en 🇨🇱</div>
-    <h1 class="hero-title">
-      <span class="line1" data-i18n="tu_negocio_merece">Tu negocio merece</span>
-      <span class="line2" data-i18n="una_web_profesional">una web profesional</span>
-      <span class="line3" data-i18n="sin_pagar_una_fortuna">sin pagar una fortuna</span>
-    </h1>
-    <p class="hero-desc" data-i18n="en_chile_tener_presencia_digital_no_debería_ser_caro_ni_com">
-      En Chile, tener presencia digital no debería ser caro ni complicado. Creamos sitios web, 
-      tiendas online e inteligencia artificial para PYMEs chilenas — sin comisiones, 
-      sin letra chica, sin esperar semanas.
-    </p>
-    
-    <!-- AUDIENCE CARDS -->
-    <div class="audience-grid">
-      <a href="servicios.html" class="audience-card">
-        <div class="audience-card-inner">
-          <div class="audience-card-icon">🏢</div>
-          <div class="audience-card-title" data-i18n="para_tu_negocio">Para tu negocio</div>
-          <div class="audience-card-desc" data-i18n="landing_sitios_e_ecommerce">Landing pages, sitios web,<br>e-commerce y automatización</div>
+      <div class="fu" style="transition-delay:.2s">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:20px" data-i18n="no_importa_si_tienes_una_pequeña_tienda_de_barrio_o_un_negoc">
+          No importa si tienes una pequeña tienda de barrio o un negocio en expansión — 
+          tenemos la solución digital exacta para ti. Creamos desde landing pages simples 
+          hasta plataformas de venta online con inteligencia artificial incluida.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:var(--muted)" data-i18n="todo_lo_que_construimos_es_100_tuyo_no_cobramos_comisiones">
+          Todo lo que construimos es 100% tuyo: no cobramos comisiones por ventas, 
+          no hay plataformas de terceros de por medio, no hay letra chica.
+        </p>
+      </div>
+    <div class="services-grid">
+      <!-- LANDING -->
+      <div class="svc-card fu">
+        <div class="svc-badge hot" data-i18n="más_pedido">📱 Más pedido</div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-name" data-i18n="landing_page_profesional">Landing Page Profesional</div>
+        <p class="svc-desc" data-i18n="una_sola_página_poderosa_y_bien_diseñada_puede_ser_todo_lo_q">
+          Una sola página poderosa y bien diseñada puede ser todo lo que tu negocio necesita para captar clientes. 
+          Ideal para empezar en el mundo digital con el pie derecho.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="diseño_profesional_a_medida_no_plantillas_genéricas">Diseño profesional a medida (no plantillas genéricas)</li>
+          <li data-i18n="completamente_adaptada_a_celulares_y_tablets">Completamente adaptada a celulares y tablets</li>
+          <li data-i18n="botón_de_whatsapp_y_google_maps_integrados">Botón de WhatsApp y Google Maps integrados</li>
+          <li data-i18n="posicionamiento_básico_en_google_seo">Posicionamiento básico en Google (SEO)</li>
+          <li data-i18n="hosting_gratuito_por_1_año_incluido">Hosting gratuito por 1 año incluido</li>
+          <li data-i18n="entregada_en_máximo_72_horas">Entregada en máximo 72 horas</li>
+        </ul>
+        <div class="svc-price">
+          <strong class="svc-price-current" data-i18n="140_000">$140.000</strong>
+          <span class="svc-price-promo" data-i18n="precio_fijo_sin_sorpresas">💰 Precio fijo, sin sorpresas</span>
         </div>
-      </a>
-      <a href="atomo-llm.html" class="audience-card">
-        <div class="audience-card-inner">
-          <div class="audience-card-icon">🧠</div>
-          <div class="audience-card-title" data-i18n="para_ti">Para ti</div>
-          <div class="audience-card-desc" data-i18n="geo_app_geos_y_modelo">Geo App, Geos 2.1 y<br>atómo-llm, nuestro modelo</div>
+        <a href="https://wa.me/56973994504?text=Quiero%20la%20Landing%20Page%20de%20%24140.000" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
+          <i class="fab fa-whatsapp"></i> Quiero este plan
+        </a>
+      </div>
+      <!-- WEB -->
+      <div class="svc-card fu" style="transition-delay:.1s">
+        <div class="svc-badge" data-i18n="recomendado">⭐ Recomendado</div>
+        <div class="svc-icon">🖥️</div>
+        <div class="svc-name" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</div>
+        <p class="svc-desc" data-i18n="un_sitio_web_completo_con_todas_las_secciones_que_tu_negocio">
+          Un sitio web completo con todas las secciones que tu negocio necesita: inicio, 
+          servicios, productos, galería y contacto. Hecho para durar y para crecer contigo.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="sitio_completo_de_5_a_15_páginas">Sitio completo de 5 a 15 páginas</li>
+          <li data-i18n="galería_de_productos_o_servicios_con_precios">Galería de productos o servicios con precios</li>
+          <li data-i18n="formulario_de_contacto_whatsapp_integrado">Formulario de contacto + WhatsApp integrado</li>
+          <li data-i18n="seo_avanzado_para_aparecer_en_google">SEO avanzado para aparecer en Google</li>
+          <li data-i18n="panel_simple_para_actualizar_tu_contenido">Panel simple para actualizar tu contenido</li>
+          <li data-i18n="hosting_incluido_por_1_año">Hosting incluido por 1 año</li>
+          <li data-i18n="foto_y_videos_para_tu_negocio">Foto y videos para tu negocio</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-original" data-i18n="380_000">$380.000</span>
+          <strong class="svc-price-current" data-i18n="290_000">$290.000</strong>
+          <span class="svc-price-promo" data-i18n="promo_lanzamiento_mayo_2026">🎉 Promo lanzamiento — mayo 2026 · Valor regular: $380.000</span>
         </div>
-      </a>
-      <a href="atomo-llm.html#waitlist" class="audience-card">
-        <div class="audience-card-inner">
-          <div class="audience-card-icon">💻</div>
-          <div class="audience-card-title" data-i18n="para_developers">Para developers</div>
-          <div class="audience-card-desc" data-i18n="api_integración_y_fine_tuning">API, integración y<br>fine-tuning del modelo</div>
+        <a href="https://wa.me/56973994504?text=Quiero%20el%20sitio%20web%20multi-p%C3%A1gina%20en%20promo%20de%20%24290.000" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
+          <i class="fab fa-whatsapp"></i> Quiero esta promo
+        </a>
+      </div>
+      <!-- UPDATE -->
+      <div class="svc-card fu" style="transition-delay:.2s">
+        <div class="svc-badge" data-i18n="soporte">🔄 Soporte</div>
+        <div class="svc-icon">🔧</div>
+        <div class="svc-name" data-i18n="actualización_mantenimiento_web">Actualización & Mantenimiento Web</div>
+        <p class="svc-desc" data-i18n="ya_tienes_un_sitio_pero_está_desactualizado_te_lo_renovamo">
+          ¿Ya tienes un sitio pero está desactualizado? Te lo renovamos con precios, 
+          productos y fotos nuevas. También hacemos mejoras técnicas y soporte continuo.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="actualización_de_precios_y_productos">Actualización de precios y productos</li>
+          <li data-i18n="agregar_o_quitar_secciones_y_categorías">Agregar o quitar secciones y categorías</li>
+          <li data-i18n="nuevas_fotos_con_descripciones_optimizadas">Nuevas fotos con descripciones optimizadas</li>
+          <li data-i18n="soporte_técnico_continuo_vía_whatsapp">Soporte técnico continuo vía WhatsApp</li>
+          <li data-i18n="mejoras_de_velocidad_y_rendimiento">Mejoras de velocidad y rendimiento</li>
+        </ul>
+        <div class="svc-price">
+          <span data-i18n="plan_mensual_o_por_servicio">Plan mensual o por servicio</span>
+          <strong data-i18n="50_000_mes">$50.000/mes</strong>
+          <span style="display:block;font-size:11px;color:var(--muted);margin-top:4px" data-i18n="o_70_000_por_servicio_puntual">o $70.000 por servicio puntual</span>
         </div>
-      </a>
-    </div>
-    
-    <div class="hero-btns">
-      <a href="servicios.html" class="btn btn-primary btn-lg">
-        <i class="fas fa-rocket"></i> Quiero mi sitio web →
-      </a>
-      <a href="atomo-llm.html" class="btn btn-ghost btn-lg">
-        Probar atómo-llm 🦙 → <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-    
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num" data-target="3">3</div>
-        <div class="stat-lbl" data-i18n="productos_propios_activos">Productos propios activos</div>
+        <a href="https://wa.me/56973994504?text=Necesito%20actualizar%20mi%20sitio%20web" target="_blank" class="svc-cta" data-i18n="quiero_soporte">
+          <i class="fab fa-whatsapp"></i> Quiero soporte
+        </a>
       </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="17">17</div>
-        <div class="stat-lbl" style="font-size:10px">Proyectos de ejemplo</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-i18n="100">100%</div>
-        <div class="stat-lbl" data-i18n="el_sitio_es_tuyo_sin_comisiones">El sitio es tuyo, sin comisiones</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-i18n="24h">24h</div>
-        <div class="stat-lbl" data-i18n="tiempo_de_respuesta_promedio">Tiempo de respuesta promedio</div>
-      </div>
-    </div>
-
-    <!-- HERO VISUAL -->
-    <div class="hero-visual">
-      <div class="hero-ring">
-        <div class="hero-ring-2"></div>
-        <!-- hero-ring-3 eliminado (director review) -->
-        <div class="hero-core">
-          <div class="hero-core-logo">Á</div>
-          <div class="hero-core-sub" data-i18n="studio">STUDIO</div>
+      <!-- ECOMMERCE -->
+      <div class="svc-card fu" style="transition-delay:.3s">
+        <div class="svc-badge new" data-i18n="nuevo_producto">🏪 Nuevo Producto</div>
+        <div class="svc-icon">🛒</div>
+        <div class="svc-name" data-i18n="e_commerce_omnicanal_con_ia">E-commerce Omnicanal con IA</div>
+        <p class="svc-desc" data-i18n="transforma_tu_negocio_en_una_tienda_online_completa_vende_p">
+          Transforma tu negocio en una tienda online completa. Vende por web, 
+          gestiona tu inventario con escáner de código de barras, recibe pagos con Webpay 
+          y deja que un agente con IA atienda y venda por WhatsApp mientras duermes.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="carrito_de_compras_webpay_plus">Carrito de compras + Webpay Plus</li>
+          <li data-i18n="panel_de_gestión_de_pedidos_en_tiempo_real">Panel de gestión de pedidos en tiempo real</li>
+          <li data-i18n="control_de_inventario_y_bodega">Control de inventario y bodega</li>
+          <li data-i18n="agente_vendedor_con_ia_en_whatsapp">Agente vendedor con IA en WhatsApp</li>
+        </ul>
+        <div class="svc-price">
+          <span data-i18n="instalación_y_configuración_completa">Instalación y configuración completa</span>
+          <strong data-i18n="desde_600_000">$600.000</strong>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a href="https://wa.me/56973994504?text=Quiero%20el%20E-commerce%20Omnicanal%20de%20%24600.000" target="_blank" class="svc-cta" style="flex:1">
+            <i class="fab fa-whatsapp"></i> Quiero este plan
+          </a>
+          <a href="ecommerce.html" class="svc-cta" style="flex:1;background:var(--grad-main)">
+            <i class="fas fa-store"></i> Ver completo
+          </a>
         </div>
       </div>
-      <div class="floating-badge fb-1" data-i18n="sitio_listo_en_72h">
-        <span>⚡</span> Sitio listo en 72h
-      </div>
-      <div class="floating-badge fb-2" data-i18n="3_proyectos_en_proceso">
-        <span style="color:var(--blue)">●</span> 3 proyectos en proceso
-      </div>
-      <div class="floating-badge fb-3" data-i18n="geos2_1_online">
-        <span>🤖</span> Geos2.1 online
-      </div>
     </div>
-  </div>
-</section>
-<div class="geo-note">📌 <strong>Geo App</strong> usa <strong>Geos 2.1</strong>, nuestro asistente con memoria y personalidad, construido sobre <strong>atómo-llm 🦙</strong>, nuestro modelo propio entrenado en Chile.</div>
-
-
-<!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item" data-i18n="sitios_web_profesionales"><i class="fas fa-globe"></i> Sitios Web Profesionales</div>
-    <div class="marquee-item" data-i18n="inteligencia_artificial"><i class="fas fa-robot"></i> Inteligencia Artificial</div>
-    <div class="marquee-item" data-i18n="e_commerce"><i class="fas fa-shopping-cart"></i> E-commerce Omnicanal</div>
-    <div class="marquee-item" data-i18n="automatizaciones"><i class="fas fa-bolt"></i> Automatizaciones</div>
-    <div class="marquee-item" data-i18n="geos_2_1"><i class="fas fa-brain"></i> Modelo Geos 2.1</div>
-    <div class="marquee-item" data-i18n="desarrollo_a_medida"><i class="fas fa-code"></i> Desarrollo a Medida</div>
-    <div class="marquee-item" data-i18n="reportes_analytics"><i class="fas fa-chart-line"></i> Reportes & Analytics</div>
-    <div class="marquee-item" data-i18n="integración_whatsapp"><i class="fab fa-whatsapp"></i> Integración WhatsApp</div>
-    <!-- duplicate for infinite -->
-    <div class="marquee-item" data-i18n="sitios_web_profesionales"><i class="fas fa-globe"></i> Sitios Web Profesionales</div>
-    <div class="marquee-item" data-i18n="inteligencia_artificial"><i class="fas fa-robot"></i> Inteligencia Artificial</div>
-    <div class="marquee-item" data-i18n="e_commerce"><i class="fas fa-shopping-cart"></i> E-commerce Omnicanal</div>
-    <div class="marquee-item" data-i18n="automatizaciones"><i class="fas fa-bolt"></i> Automatizaciones</div>
-    <div class="marquee-item" data-i18n="geos_2_1"><i class="fas fa-brain"></i> Modelo Geos 2.1</div>
-    <div class="marquee-item" data-i18n="desarrollo_a_medida"><i class="fas fa-code"></i> Desarrollo a Medida</div>
-    <div class="marquee-item" data-i18n="reportes_analytics"><i class="fas fa-chart-line"></i> Reportes & Analytics</div>
-    <div class="marquee-item" data-i18n="integración_whatsapp"><i class="fab fa-whatsapp"></i> Integración WhatsApp</div>
-  </div>
-</div>
 
 <!-- ═══════════════════════════
      TESTIMONIOS
@@ -1219,7 +1157,7 @@ footer{
 <section class="section" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="container fade-in">
     <div class="label" style="justify-content:center">Testimonios</div>
-    <h2 class="h2" style="text-align:center;margin-bottom:48px">PYMEs como la tuya <span class="grad">ya crecen con nosotros</span></h2>
+    <h2 class="h2" style="text-align:center;margin-bottom:48px">PYMEs chilenas que ya <span class="grad">crecen con nosotros</span></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:1000px;margin:0 auto">
       <div class="arch-card" style="padding:32px;display:flex;flex-direction:column;gap:16px">
         <div style="font-size:28px;color:var(--blue);line-height:1">"</div>
@@ -1251,7 +1189,7 @@ footer{
 </section>
 
 <!-- ═══════════════════════════
-     SERVICES
+     GEOS 2.1
 ═══════════════════════════ -->
 <footer>
   <div class="footer-inner">
@@ -1391,56 +1329,6 @@ const sectionObs=new IntersectionObserver(entries=>{
   });
 },{threshold:.3,rootMargin:'-64px 0px 0px 0px'});
 sections.forEach(s=>sectionObs.observe(s));
-
-// ─── MOBILE MENU ───
-const menuToggle=document.getElementById('menuToggle');
-const mobileMenu=document.getElementById('mobileMenu');
-let menuOpen=false;
-menuToggle.addEventListener('click',()=>{
-  menuOpen=!menuOpen;
-  mobileMenu.style.display=menuOpen?'flex':'none';
-});
-function closeMobile(){mobileMenu.style.display='none';menuOpen=false}
-
-// ─── INTERSECTION OBSERVER ───
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('vis');
-      io.unobserve(e.target);
-    }
-  });
-},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fu,.fl,.fr,.fscale').forEach((el,i)=>{
-  el.style.transitionDelay=el.style.transitionDelay||`${(i%4)*0.08}s`;
-  io.observe(el);
-});
-
-// ─── COUNTER ANIMATION ───
-function animateCounter(el){
-  const target=parseInt(el.dataset.target)||0;
-  if(!target)return;
-  const suffix=el.textContent.includes('+')?' +':'';
-  let start=0;
-  const dur=1500;
-  const step=timestamp=>{
-    if(!start)start=timestamp;
-    const prog=Math.min((timestamp-start)/dur,1);
-    const ease=1-Math.pow(1-prog,3);
-    el.textContent=Math.floor(ease*target)+suffix;
-    if(prog<1)requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-const counterObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting&&e.target.dataset.target){
-      animateCounter(e.target);
-      counterObs.unobserve(e.target);
-    }
-  });
-},{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
 
 // ─── CONTACT FORM ───
 function sendContact(){
