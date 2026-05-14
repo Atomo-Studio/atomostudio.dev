@@ -105,7 +105,7 @@ footer a:hover{color:var(--blue)}
       catálogo o e-commerce. Sin cámara cara, sin fotógrafo.
     </p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="#planes" class="btn btn-primary"><i class="fas fa-rocket"></i> Ver planes</a>
+      <span class="btn btn-primary" style="cursor:default;opacity:.8"><i class="fas fa-hard-hat"></i> Próximamente</span>
       <a href="index.html" class="btn btn-ghost"><i class="fas fa-home"></i> Volver al inicio</a>
     </div>
   </div>
@@ -137,57 +137,43 @@ footer a:hover{color:var(--blue)}
   </div>
 </section>
 
-<!-- PLANES -->
-<section class="section" id="planes">
+<!-- PRÓXIMAMENTE -->
+<section class="section" id="proximamente" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="container" style="text-align:center">
-    <div class="label">Planes</div>
-    <h2 style="font-size:32px;margin-bottom:8px">Inversión clara,<br><span class="grad">sin sorpresas</span></h2>
-    <p style="color:var(--muted);max-width:500px;margin:0 auto 8px">Precio único. Sin mensualidades. El resultado es tuyo.</p>
-    <div class="plans">
-      <div class="plan">
-        <div class="plan-name">📱 Básico</div>
-        <div class="plan-desc">Para landing page o catálogo pequeño</div>
-        <div class="plan-price grad">$50.000</div>
-        <div class="plan-label">pago único</div>
-        <ul class="plan-feats">
-          <li>10 fotos profesionales</li>
-          <li>Fondo blanco/oscuro</li>
-          <li>Corrección de color</li>
-          <li>Entrega en 48h</li>
-        </ul>
-        <a href="https://wa.me/56973994504?text=Quiero%20el%20pack%20b%C3%A1sico%20de%20Foto%20IA%20($50.000)" class="btn btn-ghost plan-cta" style="width:100%;justify-content:center"><i class="fab fa-whatsapp"></i> Lo quiero</a>
+    <div style="font-size:64px;margin-bottom:16px">🚧</div>
+    <div class="label">Lanzamiento</div>
+    <h2 style="font-size:32px;margin-bottom:12px">Fotos IA · <span class="grad">Próximamente</span></h2>
+    <p style="color:var(--muted);max-width:600px;margin:0 auto 24px;font-size:16px;line-height:1.7">
+      Estamos ajustando los últimos detalles del servicio. La tecnología ya funciona — 
+      eliminación de fondo, corrección de color y upscaling. <strong>Déjanos tu contacto</strong> 
+      y te avisamos en cuanto esté listo con un descuento especial de lanzamiento.
+    </p>
+    <div style="max-width:480px;margin:0 auto">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <input type="email" id="notifyEmail" placeholder="tu@email.com" style="flex:1;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:.3s">
+        <button onclick="sendNotify()" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Avisarme</button>
       </div>
-      <div class="plan popular">
-        <div style="font-size:10px;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">⭐ Más vendido</div>
-        <div class="plan-name">📦 Medio</div>
-        <div class="plan-desc">Para tienda online o e-commerce</div>
-        <div class="plan-price grad">$120.000</div>
-        <div class="plan-label">pago único</div>
-        <ul class="plan-feats">
-          <li>30 fotos profesionales</li>
-          <li>Fondo blanco/oscuro/sutil</li>
-          <li>Corrección de color + sombra</li>
-          <li>Upscaling 2x (mayor resolución)</li>
-          <li>Entrega en 48h</li>
-        </ul>
-        <a href="https://wa.me/56973994504?text=Quiero%20el%20pack%20medio%20de%20Foto%20IA%20($120.000)" class="btn btn-primary plan-cta" style="width:100%;justify-content:center"><i class="fab fa-whatsapp"></i> Lo quiero</a>
+      <p id="notifyStatus" style="font-size:12px;color:var(--muted);margin-top:10px">💡 Te avisamos por WhatsApp + email cuando lancemos</p>
+      <p style="font-size:11px;color:var(--muted);margin-top:6px">Sin spam. Solo un aviso cuando esté listo.</p>
+    </div>
+    <!-- Precios de referencia (info no interactiva) -->
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px;opacity:.6;pointer-events:none">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center">
+        <div style="font-size:12px;color:var(--muted)">Desde</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">$90.000</div>
+        <div style="font-size:10px;color:var(--muted)">10 fotos · pago único</div>
       </div>
-      <div class="plan">
-        <div class="plan-name">🏪 Completo</div>
-        <div class="plan-desc">Para catálogo completo de productos</div>
-        <div class="plan-price grad">$350.000</div>
-        <div class="plan-label">pago único</div>
-        <ul class="plan-feats">
-          <li>100 fotos profesionales</li>
-          <li>Todos los tipos de fondo</li>
-          <li>Corrección de color + sombra</li>
-          <li>Upscaling 4K</li>
-          <li>Entrega en 72h</li>
-        </ul>
-        <a href="https://wa.me/56973994504?text=Quiero%20el%20pack%20completo%20de%20Foto%20IA%20($350.000)" class="btn btn-ghost plan-cta" style="width:100%;justify-content:center"><i class="fab fa-whatsapp"></i> Lo quiero</a>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center">
+        <div style="font-size:12px;color:var(--muted)">Más vendido</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">$190.000</div>
+        <div style="font-size:10px;color:var(--muted)">30 fotos · pago único</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center">
+        <div style="font-size:12px;color:var(--muted)">Completo</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">$490.000</div>
+        <div style="font-size:10px;color:var(--muted)">100 fotos · pago único</div>
       </div>
     </div>
-    <p style="font-size:11px;color:var(--muted);margin-top:20px">💡 Los packs son acumulables con nuestros servicios de desarrollo web.</p>
   </div>
 </section>
 
@@ -246,18 +232,38 @@ footer a:hover{color:var(--blue)}
 <!-- CTA -->
 <section class="section cta-section">
   <div class="container">
-    <h2>¿Listo para tener fotos<br><span class="grad">que vendan por ti?</span></h2>
-    <p>Hoy mismo puedes tener las primeras fotos de prueba. Sin compromiso, sin costo.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20probar%20el%20servicio%20de%20Foto%20IA" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Probar ahora</a>
-      <a href="index.html" class="btn btn-ghost">Conocer otros servicios</a>
+    <h2>🚧 Foto IA llegará pronto<br><span class="grad">¿Quieres ser de los primeros?</span></h2>
+    <p>Déjanos tu email y te avisamos con un <strong>descuento especial de lanzamiento</strong>.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:440px;margin:0 auto">
+      <input type="email" id="ctaEmail" placeholder="tu@email.com" style="flex:1;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:.3s">
+      <button onclick="sendNotify()" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Avisarme</button>
     </div>
+    <p id="ctaStatus" style="font-size:12px;color:var(--muted);margin-top:12px"></p>
   </div>
 </section>
 
 <footer>
   <p>© 2026 <a href="index.html">Átomo Studio</a> · Santiago, Chile 🇨🇱 · <a href="privacidad.html">Privacidad</a></p>
 </footer>
+
+<script>
+function sendNotify() {
+  const email = (document.getElementById('notifyEmail')?.value || document.getElementById('ctaEmail')?.value || '').trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    const status = document.getElementById('notifyStatus') || document.getElementById('ctaStatus');
+    if (status) status.textContent = '❌ Ingresa un email válido';
+    return;
+  }
+  const msg = encodeURIComponent('🚀 *Foto IA — Quiero ser avisado*\n\n📧 Email: ' + email + '\n\nAvísame cuando esté disponible 🙌');
+  window.open('https://wa.me/56973994504?text=' + msg, '_blank');
+  const status = document.getElementById('notifyStatus') || document.getElementById('ctaStatus');
+  if (status) {
+    status.textContent = '✅ ¡Gracias! Te avisaremos por WhatsApp cuando lancemos';
+    status.style.color = '#10b981';
+  }
+}
+</script>
 
 <script src="js/i18n.js"></script>
 </body>

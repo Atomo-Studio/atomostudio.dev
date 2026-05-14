@@ -19,6 +19,8 @@
    ÁTOMO STUDIO — Variables & Reset
 ═══════════════════════════════════════════════ */
 :root{
+  --green:var(--cyan);
+  --gold:var(--purple);
   --bg:#06060c;
   --bg2:#0a0a14;
   --card:#0f0f1e;
@@ -1049,26 +1051,25 @@ footer{
       Átomo Studio
     </a>
     <div class="nav-links">
-        <a href="index.html" data-i18n="inicio">Inicio</a>
-        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
-        <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
         <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
-      <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes somos</a>
-        <a href="portafolio.html" data-i18n="proyectos">Proyectos</a>
-      </div>
+        <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
+        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
+        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="contacto.html" data-i18n="contacto">Contacto</a>
+    </div>
       <div class="nav-mobile" id="menuToggle">
         <span></span><span></span><span></span>
       </div>
       <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="closeMobile()" data-i18n="inicio">Inicio</a>
-  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
-  <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
   <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
-  <a href="quienes-somos.html" onclick="closeMobile()" data-i18n="quienes_somos">Quiénes somos</a>
-  <a href="portafolio.html" onclick="closeMobile()" data-i18n="proyectos">Proyectos</a>
+  <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
+  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
+  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
 </div>
 
 <section class="hero" id="inicio">
@@ -1112,21 +1113,21 @@ footer{
     
     <div class="hero-btns">
       <a href="servicios.html" class="btn btn-primary btn-lg">
-        <i class="fas fa-rocket"></i> Quiero mi sitio web →
+        <i class="fas fa-rocket"></i> Quiero una web para mi negocio
       </a>
-      <a href="atomo-llm.html" class="btn btn-ghost btn-lg">
-        Probar atómo-llm 🦙 → <i class="fas fa-arrow-right"></i>
+      <a href="geo-app.html" class="btn btn-ghost btn-lg">
+        Descubrir Geo App → <i class="fas fa-arrow-right"></i>
       </a>
     </div>
     
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num" data-target="3">3</div>
+        <div class="stat-num" data-target="2">2</div>
         <div class="stat-lbl" data-i18n="productos_propios_activos">Productos propios activos</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" data-target="17">17</div>
-        <div class="stat-lbl" style="font-size:10px">Proyectos de ejemplo</div>
+        <div class="stat-num" data-target="3">3</div>
+        <div class="stat-lbl" style="font-size:10px">Proyectos completados</div>
       </div>
       <div class="stat-item">
         <div class="stat-num" data-i18n="100">100%</div>
@@ -1288,6 +1289,24 @@ footer{
         </div>
         <a href="https://wa.me/56973994504?text=Necesito%20actualizar%20mi%20sitio%20web" target="_blank" class="svc-cta" data-i18n="consultar_precio">
           <i class="fab fa-whatsapp"></i> Consultar precio
+        </a>
+      </div>
+      <!-- ATOMO-LLM -->
+      <div class="svc-card fu" style="transition-delay:.2s">
+        <div class="svc-badge new" data-i18n="modelo_propio">🧬 Modelo propio</div>
+        <div class="svc-icon">🦙</div>
+        <div class="svc-name" data-i18n="atomo_llm">atómo-llm</div>
+        <p class="svc-desc" data-i18n="atomo_llm_desc">
+          Nuestro modelo de inteligencia artificial propio, entrenado en corpus latinoamericano. Diseñado para entender el contexto, la cultura y las necesidades de la región — no una traducción de un modelo en inglés.
+        </p>
+        <ul class="svc-features">
+          <li data-i18n="entrenado_en_corpus_latinoamericano">Entrenado en corpus latinoamericano</li>
+          <li data-i18n="comprende_contexto_local">Comprende contexto y cultura local</li>
+          <li data-i18n="optimizado_para_español">Optimizado para español latino</li>
+          <li data-i18n="modelo_propio_sin_dependencias">Modelo propio, sin dependencias externas</li>
+        </ul>
+        <a href="atomo-llm.html" class="svc-cta" style="background:var(--grad-main)" data-i18n="conocer_atomo_llm">
+          <i class="fas fa-brain"></i> Conocer atómo-llm
         </a>
       </div>
       <!-- ECOMMERCE FEATURED -->
@@ -1516,8 +1535,8 @@ footer{
           </div>
           <div class="story-card-body">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite"></div>
-              <span style="font-size:12px;color:var(--green);font-weight:500" data-i18n="aprendiendo_activamente">Aprendiendo activamente</span>
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite"></div>
+              <span style="font-size:12px;color:var(--cyan);font-weight:500" data-i18n="aprendiendo_activamente">Aprendiendo activamente</span>
             </div>
             <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px" data-i18n="geos_2_1_no_es_un_producto_terminado_es_un_modelo_que_crec">
               Geos 2.1 no es un producto terminado — es un modelo que crece con cada interacción 
@@ -1525,7 +1544,7 @@ footer{
             </p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);color:var(--cyan)">🧬 Aprendizaje continuo</span>
-              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);color:var(--green)" data-i18n="evolución_constante">🌱 Evolución constante</span>
+              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);color:var(--cyan)" data-i18n="evolución_constante">🌱 Evolución constante</span>
               <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:var(--purple)" data-i18n="personalizado_para_ti">🎯 Personalizado para ti</span>
             </div>
           </div>
@@ -1828,7 +1847,7 @@ footer{
             </div>
           </div>
           <div style="padding:16px 20px;border-top:1px solid var(--border);background:rgba(16,185,129,.04)">
-            <div style="font-size:11px;color:var(--green);margin-bottom:4px" data-i18n="agente_ia_activo">🤖 Agente IA activo</div>
+            <div style="font-size:11px;color:var(--cyan);margin-bottom:4px" data-i18n="agente_ia_activo">🤖 Agente IA activo</div>
             <div style="font-size:12px;color:var(--muted)" data-i18n="atendí_18_consultas_hoy_y_cerré_5_ventas_automáticamente">"Atendí 18 consultas hoy y cerré 5 ventas automáticamente"</div>
           </div>
         </div>
@@ -2205,8 +2224,7 @@ TESTIMONIOS
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
       </div>
       <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">
-        Creamos software inteligente, sitios web profesionales y el primer modelo IA 
-        latinoamericano enfocado en tu crecimiento personal y económico.
+        Creamos software inteligente, sitios web profesionales y un modelo IA propio, entrenado en corpus latinoamericano, enfocado en tu crecimiento personal y económico.
       </p>
       <div style="margin-top:20px;display:flex;gap:8px">
         <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram"></i></a>
@@ -2225,16 +2243,14 @@ TESTIMONIOS
     </div>
     <div class="footer-col">
       <h4 data-i18n="productos_ia">Productos IA</h4>
+      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
       <a href="geos.html" data-i18n="geos_2_1">Geos 2.1</a>
-      <a href="geo-pricing.html" data-i18n="precios">Precios</a>
-      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm 🦙</a>
       <a href="geo-app-completa.html" data-i18n="geo_app">Geo App</a>
-      <a href="modelos.html" data-i18n="modelos_disponibles">Modelos disponibles</a>
-      <a href="modelos.html" data-i18n="claude_gpt_deepseek">Claude · GPT · DeepSeek</a>
-      <a href="modelos.html" data-i18n="groq_llama">Groq · Llama</a>
+      <a href="geo-pricing.html" data-i18n="precios">Precios</a>
     </div>
     <div class="footer-col">
       <h4 data-i18n="empresa">Empresa</h4>
+      <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes somos</a>
       <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
       <a href="contacto.html" data-i18n="contacto">Contacto</a>
       <a href="privacidad.html" data-i18n="política_de_privacidad">Política de Privacidad</a>
@@ -2359,32 +2375,6 @@ document.querySelectorAll('.fu,.fl,.fr,.fscale').forEach((el,i)=>{
   el.style.transitionDelay=el.style.transitionDelay||`${(i%4)*0.08}s`;
   io.observe(el);
 });
-
-// ─── COUNTER ANIMATION ───
-function animateCounter(el){
-  const target=parseInt(el.dataset.target)||0;
-  if(!target)return;
-  const suffix=el.textContent.includes('+')?' +':'';
-  let start=0;
-  const dur=1500;
-  const step=timestamp=>{
-    if(!start)start=timestamp;
-    const prog=Math.min((timestamp-start)/dur,1);
-    const ease=1-Math.pow(1-prog,3);
-    el.textContent=Math.floor(ease*target)+suffix;
-    if(prog<1)requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-const counterObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting&&e.target.dataset.target){
-      animateCounter(e.target);
-      counterObs.unobserve(e.target);
-    }
-  });
-},{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
 
 // ─── CONTACT FORM ───
 function sendContact(){

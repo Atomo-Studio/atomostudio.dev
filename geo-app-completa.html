@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Geo App — Tu asistente personal con inteligencia artificial. Chat con múltiples modelos IA, memoria persistente, voz y más.">
+<meta property="og:title" content="Geo App · Asistente IA — Átomo Studio">
+  <meta property="og:description" content="Geo App: tu asistente personal con IA. Chat, notas, calendario, QR, OCR y más. Descarga gratis.">
+  <meta property="og:image" content="https://atomostudio.dev/img/logo-og.png">
+  <meta name="description" content="Geo App — Tu asistente personal con inteligencia artificial. Chat con múltiples modelos IA, memoria persistente, voz y más.">
 <title data-i18n="geo_app_asistente_ia_átomo_studio">Geo App · Asistente IA — Átomo Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -67,6 +70,24 @@ footer a:hover{opacity:.8}
   .features{grid-template-columns:1fr}
   .notify-form{flex-direction:column}
 }
+
+/* NAV */
+nav{height:64px;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px}
+.nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;-webkit-text-fill-color:#fff;flex-shrink:0}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;padding:7px 14px;border-radius:8px;color:rgba(238,238,242,.6);transition:.25s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.nav-links a.active{color:var(--blue)}
+.nav-cta{background:var(--grad-main);color:#fff;padding:9px 22px;border-radius:10px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;transition:.3s;box-shadow:0 4px 20px rgba(59,130,246,.25);display:flex;align-items:center;gap:7px}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(59,130,246,.35)}
+.nav-mobile{display:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.nav-mobile span{display:block;width:22px;height:2px;background:var(--text);border-radius:1px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(10,10,20,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 24px;z-index:490;flex-direction:column;gap:4px}
+.mobile-menu a{display:block;padding:12px 16px;border-radius:8px;font-size:15px;color:rgba(238,238,242,.7);transition:.2s}
+.mobile-menu a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+@media(max-width:768px){.nav-links{display:none}.nav-mobile{display:flex}.nav-cta{display:none}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLHLYHGHDT"></script>
@@ -85,18 +106,39 @@ footer a:hover{opacity:.8}
   <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/?lang=fr_FR">
   <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/?lang=pt_BR">
   <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Átomo Studio","url":"https://atomostudio.dev","telephone":"+56973994504","priceRange":"$140.000 - $1.200.000"}
+</script>
 </head>
 <body>
 
-<nav>
+<nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
       <div class="nav-logo-icon">⚡</div>
       Átomo Studio
     </a>
-    <a href="index.html" class="nav-back" data-i18n="volver_al_inicio"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+    <div class="nav-links">
+        <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
+        <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
+        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
+        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="contacto.html" data-i18n="contacto">Contacto</a>
+    </div>
+      <div class="nav-mobile" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
+  <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
+  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
+  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
+</div>
 
 <section class="hero">
   <div class="hero-content">
@@ -109,7 +151,7 @@ footer a:hover{opacity:.8}
     </p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a href="index.html" class="btn btn-primary" data-i18n="volver_al_inicio"><i class="fas fa-home"></i> Volver al inicio</a>
-      <a href="index.html#contacto" class="btn btn-ghost" data-i18n="quiero_ser_beta_tester"><i class="fab fa-whatsapp"></i> Quiero ser beta tester</a>
+      <a href="contacto.html" class="btn btn-ghost" data-i18n="quiero_ser_beta_tester"><i class="fab fa-whatsapp"></i> Quiero ser beta tester</a>
     </div>
     <div class="notify-card">
       <h3 data-i18n="quieres_ser_el_primero_en_probarla">🔔 ¿Quieres ser el primero en probarla?</h3>
