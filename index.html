@@ -2053,6 +2053,7 @@ menuToggle.addEventListener('click',()=>{
 function closeMobile(){mobileMenu.style.display='none';menuOpen=false}
 
 // ─── INTERSECTION OBSERVER ───
+document.addEventListener('DOMContentLoaded',function(){
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -2064,6 +2065,8 @@ const io=new IntersectionObserver((entries)=>{
 document.querySelectorAll('.fu,.fl,.fr,.fscale').forEach((el,i)=>{
   el.style.transitionDelay=el.style.transitionDelay||`${(i%4)*0.08}s`;
   io.observe(el);
+});
+setTimeout(function(){document.querySelectorAll('.fu:not(.vis),.fl:not(.vis),.fr:not(.vis),.fscale:not(.vis)').forEach(function(el){el.classList.add('vis')})},3000);
 });
 
 // ─── COUNTER ANIMATION ───
@@ -2173,5 +2176,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 </script>
 
 <script src="js/i18n.js"></script>
+<script>
+// Fallback reveal — ensures all animated elements become visible
+document.addEventListener('DOMContentLoaded',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.fu:not(.vis),.fl:not(.vis),.fr:not(.vis),.fscale:not(.vis)').forEach(function(el){el.classList.add('vis')});
+  },2000);
+});
+</script>
 </body>
 </html>

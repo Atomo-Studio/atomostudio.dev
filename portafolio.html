@@ -1419,5 +1419,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   ]
 }
 </script>
+<script>
+// Fallback reveal — ensures all animated elements become visible
+document.addEventListener('DOMContentLoaded',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.fu:not(.vis),.fl:not(.vis),.fr:not(.vis),.fscale:not(.vis)').forEach(function(el){el.classList.add('vis')});
+  },2000);
+});
+</script>
 </body>
 </html>
