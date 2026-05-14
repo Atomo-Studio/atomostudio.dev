@@ -1,0 +1,95 @@
+{
+  "default": "xyY5SGPs7iY4Syxvq4Um",
+  "provider": "elevenlabs",
+  "model": "eleven_multilingual_v2",
+  "voices": {
+    "es": {
+      "label": "Español",
+      "options": [
+        {
+          "id": "xyY5SGPs7iY4Syxvq4Um",
+          "name": "Guillaume (tu voz clonada)",
+          "accent": "Chileno",
+          "description": "Voz clonada de Guillaume, chileno-francés",
+          "default": true
+        },
+        {
+          "id": "ZpIgKKrVKlne1vIhKLcK",
+          "name": "Mario",
+          "accent": "Chileno",
+          "description": "Voz profesional masculina, chileno"
+        }
+      ]
+    },
+    "en": {
+      "label": "English",
+      "options": [
+        {
+          "id": "EXAVITQu4vr4xnSDxMaL",
+          "name": "Sarah",
+          "accent": "American",
+          "description": "Professional, confident"
+        },
+        {
+          "id": "pNInz6obpgDQGcFmaJgB",
+          "name": "Adam",
+          "accent": "American",
+          "description": "Dominant, firm"
+        },
+        {
+          "id": "Ijx7SZd8H8IXMAVuNQ8R",
+          "name": "Jennifer",
+          "accent": "American",
+          "description": "Friendly, professional"
+        },
+        {
+          "id": "IKne3meq5aSn9XLyUdCD",
+          "name": "Charlie",
+          "accent": "Australian",
+          "description": "Deep, energetic"
+        },
+        {
+          "id": "JBFqnCBsd6RMkjVDRZzb",
+          "name": "George",
+          "accent": "British",
+          "description": "Warm, captivating"
+        },
+        {
+          "id": "nPczCjzI2devNBz1zQrb",
+          "name": "Brian",
+          "accent": "American",
+          "description": "Deep, resonant"
+        },
+        {
+          "id": "Xb7hH8MSUJpSbSDYk0k2",
+          "name": "Alice",
+          "accent": "British",
+          "description": "Clear, engaging"
+        },
+        {
+          "id": "cgSgspJ2msm6clMCkdW9",
+          "name": "Jessica",
+          "accent": "American",
+          "description": "Playful, bright"
+        },
+        {
+          "id": "TX3LPaxmHKxFdv7VOQHJ",
+          "name": "Liam",
+          "accent": "American",
+          "description": "Energetic, social media"
+        },
+        {
+          "id": "pFZP5JQG7iQjIQuC4Bku",
+          "name": "Lily",
+          "accent": "British",
+          "description": "Velvety actress"
+        }
+      ]
+    },
+    "pt": {
+      "label": "Português",
+      "options": [],
+      "note": "Sin voces disponibles en la cuenta. Agregar desde biblioteca ElevenLabs pendiente."
+    }
+  }
+}

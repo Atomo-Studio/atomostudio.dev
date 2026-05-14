@@ -110,6 +110,7 @@ nav.scrolled{
   background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
   letter-spacing:-.3px;
 }
+.nav-logo-img{width:32px;height:32px;flex-shrink:0}
 .nav-logo-icon{
   width:32px;height:32px;border-radius:8px;
   background:var(--grad-main);
@@ -988,6 +989,16 @@ footer{
   .hero-btns{flex-direction:column}
   .hero-stats{gap:20px}
 }
+
+/* ═══ UTILITY CLASSES ═══ */
+.td1{transition-delay:.1s}
+.td2{transition-delay:.2s}
+.td3{transition-delay:.3s}
+.td4{transition-delay:.4s}
+.td25{transition-delay:.25s}
+.td35{transition-delay:.35s}
+.td45{transition-delay:.45s}
+.td5{transition-delay:.5s}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
@@ -1047,7 +1058,7 @@ footer{
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
-      <div class="nav-logo-icon">⚡</div>
+      <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
@@ -1191,17 +1202,17 @@ footer{
      
 
 <section class="section services-section" id="servicios">
-  <div class="container">
+  <div class="container td1">
     <div class="services-intro">
       <div>
         <div class="label fu" data-i18n="lo_que_hacemos">Lo que hacemos</div>
-        <h2 class="h2 fu" style="transition-delay:.1s">
+        <h2 class="h2 fu" >
           Soluciones digitales<br>
           que hacen crecer<br>
-          <span class="grad" data-i18n="tu_negocio">tu negocio</span>
+          <span class="grad td2" data-i18n="tu_negocio">tu negocio</span>
         </h2>
       </div>
-      <div class="fu" style="transition-delay:.2s">
+      <div class="fu" >
         <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:20px" data-i18n="no_importa_si_tienes_una_pequeña_tienda_de_barrio_o_un_negoc">
           No importa si tienes una pequeña tienda de barrio o un negocio en expansión — 
           tenemos la solución digital exacta para ti. Creamos desde landing pages simples 
@@ -1235,11 +1246,11 @@ footer{
           <strong class="svc-price-current" data-i18n="140_000">$140.000</strong>
         </div>
         <a href="https://wa.me/56973994504?text=Quiero%20la%20Landing%20Page%20de%20%24140.000" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
-          <i class="fab fa-whatsapp"></i> Quiero esta landing
+          <i class="fab fa-whatsapp td1"></i> Quiero esta landing
         </a>
       </div>
       <!-- WEB -->
-      <div class="svc-card fu" style="transition-delay:.1s">
+      <div class="svc-card fu" >
         <div class="svc-badge" data-i18n="recomendado">⭐ Recomendado</div>
         <div class="svc-icon">🖥️</div>
         <div class="svc-name" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</div>
@@ -1260,11 +1271,11 @@ footer{
           <strong class="svc-price-current" data-i18n="290_000">$290.000</strong>
         </div>
         <a href="https://wa.me/56973994504?text=Quiero%20el%20sitio%20web%20multi-p%C3%A1gina%20de%20%24290.000" target="_blank" class="svc-cta" data-i18n="quiero_esta_promo">
-          <i class="fab fa-whatsapp"></i> Quiero este sitio
+          <i class="fab fa-whatsapp td2"></i> Quiero este sitio
         </a>
       </div>
       <!-- UPDATE -->
-      <div class="svc-card fu" style="transition-delay:.2s">
+      <div class="svc-card fu" >
         <div class="svc-badge" data-i18n="soporte">🔄 Soporte</div>
         <div class="svc-icon">🔧</div>
         <div class="svc-name" data-i18n="actualización_mantenimiento_web">Actualización & Mantenimiento Web</div>
@@ -1284,11 +1295,11 @@ footer{
           <strong data-i18n="consultar_precio">Consultar precio</strong>
         </div>
         <a href="https://wa.me/56973994504?text=Necesito%20actualizar%20mi%20sitio%20web" target="_blank" class="svc-cta" data-i18n="consultar_precio">
-          <i class="fab fa-whatsapp"></i> Consultar precio
+          <i class="fab fa-whatsapp td2"></i> Consultar precio
         </a>
       </div>
       <!-- ATOMO-LLM -->
-      <div class="svc-card fu" style="transition-delay:.2s">
+      <div class="svc-card fu" >
         <div class="svc-badge new" data-i18n="modelo_propio">🧬 Modelo propio</div>
         <div class="svc-icon">🦙</div>
         <div class="svc-name" data-i18n="atomo_llm">atómo-llm</div>
@@ -1302,11 +1313,11 @@ footer{
           <li data-i18n="modelo_propio_sin_dependencias">Modelo propio, sin dependencias externas</li>
         </ul>
         <a href="atomo-llm.html" class="svc-cta" style="background:var(--grad-main)" data-i18n="conocer_atomo_llm">
-          <i class="fas fa-brain"></i> Conocer atómo-llm
+          <i class="fas fa-brain td3"></i> Conocer atómo-llm
         </a>
       </div>
       <!-- ECOMMERCE FEATURED -->
-      <div class="svc-card featured fu" style="transition-delay:.3s">
+      <div class="svc-card featured fu" >
         <div class="svc-badge new" data-i18n="nuevo_producto">🏪 Nuevo Producto</div>
         <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start">
           <div>
@@ -1345,367 +1356,119 @@ footer{
   </div>
 </section>
 
-<section class="geos-section" id="geos">
-  <div class="geos-bg-glow"></div>
+<!-- GEOS 2.1 — Resumen con link a geos.html -->
+<section class="section" id="geos" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
   <div class="container">
-    <!-- HERO GEOS -->
-    <div class="geos-hero">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0">
       <div>
-        <div class="geos-badge fu" data-i18n="modelo_propio_primera_versión_pública">Modelo propio · Primera versión pública</div>
-        <h2 class="geos-title fu" style="transition-delay:.1s" data-i18n="geos_2_1">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(6,182,212,.1),rgba(59,130,246,.08));border:1px solid rgba(6,182,212,.2);padding:8px 20px;border-radius:24px;font-size:12px;font-weight:600;color:var(--cyan);margin-bottom:20px;letter-spacing:.5px">◆ Modelo propio · Primera versión pública</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,5vw,78px);font-weight:700;line-height:.95;letter-spacing:-2px;margin-bottom:20px">
           Conoce
-          <span class="name" data-i18n="geos_2_1">Geos 2.1</span>
+          <span style="display:block;background:linear-gradient(135deg,#06b6d4,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.2em">Geos 2.1</span>
           Tu IA personal
         </h2>
-        <p class="geos-tagline fu" style="transition-delay:.2s" data-i18n="no_es_solo_una_herramienta_es_tu_socio_de_crecimiento">
-          "No es solo una herramienta. Es tu socio de crecimiento."
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;color:rgba(238,238,242,.5);margin-bottom:24px;font-style:italic">"No es solo una herramienta. Es tu socio de crecimiento."</p>
+        <p style="font-size:16px;line-height:1.8;color:rgba(238,238,242,.65);margin-bottom:32px">
+          El primer modelo de IA latinoamericano pensado <strong>específicamente para ti</strong>.
+          Aprende cómo piensas, recuerda tus metas, entiende tu situación y te ayuda activamente a mejorarla.
         </p>
-        <p class="geos-desc fu" style="transition-delay:.25s">
-          Geos 2.1 es el primer modelo de inteligencia artificial latinoamericano pensado 
-          <strong data-i18n="específicamente_para_ti">específicamente para ti</strong>: aprende cómo piensas, recuerda tus metas, 
-          entiende tu situación económica y te ayuda activamente a mejorarla. Cada conversación 
-          lo hace más inteligente <em data-i18n="para_ti">para ti</em>.
-        </p>
-        <p class="geos-desc fu" style="transition-delay:.3s" data-i18n="imagina_tener_a_tu_lado_a_alguien_que_jamás_olvida_lo_que_le">
-          Imagina tener a tu lado a alguien que jamás olvida lo que le has contado, que entiende 
-          en qué está tu negocio, qué sueños tienes, qué obstáculos enfrentas — y que cada día 
-          te da ideas concretas para avanzar. Eso es Geos 2.1.
-        </p>
-        <div class="geos-pillars fu" style="transition-delay:.35s">
-          <div class="pillar">
-            <div class="pillar-icon">🧠</div>
-            <div class="pillar-title" data-i18n="aprende_de_ti">Aprende de ti</div>
-            <div class="pillar-desc" data-i18n="recuerda_cada_conversación_y_adapta_sus_respuestas_a_cómo_tú">Recuerda cada conversación y adapta sus respuestas a cómo tú piensas y qué necesitas</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">📈</div>
-            <div class="pillar-title" data-i18n="te_impulsa_económicamente">Te impulsa económicamente</div>
-            <div class="pillar-desc" data-i18n="no_te_da_respuestas_genéricas_te_ayuda_a_tomar_decisiones_r">No te da respuestas genéricas: te ayuda a tomar decisiones reales que mejoran tus ingresos</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">🌱</div>
-            <div class="pillar-title" data-i18n="crece_contigo">Crece contigo</div>
-            <div class="pillar-desc" data-i18n="no_es_una_ia_estática_con_cada_interacción_se_vuelve_mejor">No es una IA estática. Con cada interacción se vuelve mejor, más precisa y más útil para tu vida</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">🤝</div>
-            <div class="pillar-title" data-i18n="tu_compañero_no_tu_herramienta">Tu compañero, no tu herramienta</div>
-            <div class="pillar-desc" data-i18n="la_diferencia_entre_usar_una_calculadora_y_tener_un_socio_de">La diferencia entre usar una calculadora y tener un socio de confianza que te conoce de verdad</div>
-          </div>
-        </div>
-        <div class="geos-btns fu" style="transition-delay:.4s">
-          <a href="geo-app-completa.html" class="btn btn-geos btn-lg" data-i18n="geos_2_1">
-            <i class="fas fa-robot"></i> Probar Geos 2.1 ahora
-          </a>
-          <a href="https://wa.me/56973994504?text=Quiero%20saber%20más%20de%20Geos%202.1" target="_blank" class="btn btn-ghost btn-lg" data-i18n="más_información">
-            Más información
-          </a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="geos.html" style="padding:13px 28px;background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(6,182,212,.25)"><i class="fas fa-robot"></i> Conoce Geos 2.1</a>
+          <a href="geo-pricing.html" style="padding:13px 28px;border:1px solid rgba(6,182,212,.3);color:var(--cyan);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;border-radius:10px;text-decoration:none">Ver precios →</a>
         </div>
       </div>
-      <!-- VISUAL -->
-      <div class="geos-visual fr">
-        <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:20px">
-          <!-- GEOS TAGS -->
-          <div class="geos-tag gt-1" data-i18n="aprendizaje_continuo"><span>🔗</span> Aprendizaje continuo</div>
-          <div class="geos-tag gt-2" data-i18n="modelo_propio"><span>🧬</span> Modelo propio</div>
-          <div class="geos-tag gt-3" data-i18n="hecho_en_chile"><span>🇨🇱</span> Hecho en Chile</div>
-          <!-- ORB -->
-          <div class="geos-orb">
-            <div class="geos-rings"></div>
-            <div class="geos-rings-2"></div>
-            <div class="geos-orb-inner">G</div>
-            <div class="geos-orb-sub" data-i18n="eos_2_1">EOS 2.1</div>
-          </div>
-          <!-- CHAT DEMO -->
-          <div class="geos-chat">
-            <div style="font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:1px" data-i18n="conversación_en_vivo">◆ CONVERSACIÓN EN VIVO</div>
-            <div class="chat-demo">
-              <div class="chat-in" style="animation-delay:.5s">
-                <div class="chat-avatar user">TÚ</div>
-                <div class="chat-bubble user" data-i18n="cómo_puedo_aumentar_las_ventas_de_mi_almacén_este_mes">¿Cómo puedo aumentar las ventas de mi almacén este mes?</div>
-              </div>
-              <div class="chat-in" style="animation-delay:1.5s">
-                <div class="chat-avatar">G</div>
-                <div class="chat-bubble" data-i18n="basándome_en_lo_que_me_has_contado_sobre_tu_negocio_en_conch">
-                  Basándome en lo que me has contado sobre tu negocio en Conchalí: 
-                  te sugiero 3 acciones concretas para esta semana que según tu perfil tienen 
-                  alta probabilidad de funcionar... 🎯
-                </div>
-              </div>
-              <div class="chat-in" style="animation-delay:3s">
-                <div class="chat-avatar">G</div>
-                <div class="chat-bubble">
-                  <div class="typing"><span></span><span></span><span></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;position:relative">
+        <div style="width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#3b82f6,#8b5cf6);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 120px rgba(6,182,212,.3);font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;color:#fff;position:relative">
+          G
+          <span style="font-size:11px;color:rgba(255,255,255,.8);letter-spacing:3px;margin-top:4px;font-family:'Orbitron',sans-serif">EOS 2.1</span>
         </div>
-      </div>
-    </div>
-
-    <!-- FEATURES STRIP -->
-    <div class="geos-features fu">
-      <div class="geos-feat">
-        <span class="geos-feat-icon">🔐</span>
-        <div class="geos-feat-title" data-i18n="privacidad_total">Privacidad total</div>
-        <div class="geos-feat-desc" data-i18n="tus_datos_son_tuyos_nunca_se_venden_ni_comparten_puedes_bo">Tus datos son tuyos. Nunca se venden ni comparten. Puedes borrar todo en un clic.</div>
-      </div>
-      <div class="geos-feat">
-        <span class="geos-feat-icon">🌐</span>
-        <div class="geos-feat-title" data-i18n="multi_modelo">Multi-modelo</div>
-        <div class="geos-feat-desc" data-i18n="usa_los_mejores_modelos_de_ia_del_mundo_combinados_en_un_sol">Usa los mejores modelos de IA del mundo combinados en un solo lugar.</div>
-      </div>
-      <div class="geos-feat">
-        <span class="geos-feat-icon">📱</span>
-        <div class="geos-feat-title" data-i18n="en_tu_celular">En tu celular</div>
-        <div class="geos-feat-desc" data-i18n="disponible_en_android_ios_y_web_geos_2_1_está_siempre_cont">Disponible en Android, iOS y web. Geos 2.1 está siempre contigo donde lo necesites.</div>
-      </div>
-      <div class="geos-feat">
-        <span class="geos-feat-icon">💬</span>
-        <div class="geos-feat-title" data-i18n="habla_con_voz">Habla con voz</div>
-        <div class="geos-feat-desc" data-i18n="convérsale_por_audio_te_escucha_entiende_y_responde_con_vo">Convérsale por audio. Te escucha, entiende y responde con voz claro y natural.</div>
-      </div>
-    </div>
-
-    <!-- GEOS STORY -->
-    <div class="geos-story">
-      <div>
-        <div class="label label-cyan fu" data-i18n="por_qué_geos_2_1_es_diferente">¿Por qué Geos 2.1 es diferente?</div>
-        <h3 class="h3 fu" style="transition-delay:.1s;margin-bottom:24px">
-          La IA que <span class="grad-geos">crece contigo</span>,<br>
-          no solo responde tus preguntas
-        </h3>
-        <div class="story-block fu" style="transition-delay:.2s">
-          <div class="story-step">1</div>
-          <div>
-            <div class="story-title" data-i18n="te_conoce_de_verdad">Te conoce de verdad</div>
-            <p class="story-desc" data-i18n="geos_2_1_construye_un_perfil_profundo_de_ti_tus_metas_tu_f">
-              Geos 2.1 construye un perfil profundo de ti: tus metas, tu forma de hablar, 
-              tus desafíos económicos, lo que te emociona y lo que te bloquea. No empieza desde cero 
-              cada vez que abres la app.
-            </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;width:100%;max-width:380px">
+          <div style="background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);border-radius:12px;padding:16px;text-align:center">
+            <div style="font-size:22px;margin-bottom:8px">🔐</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px">Privacidad</div>
+            <div style="font-size:12px;color:var(--muted)">Tus datos son tuyos</div>
           </div>
-        </div>
-        <div class="story-block fu" style="transition-delay:.3s">
-          <div class="story-step">2</div>
-          <div>
-            <div class="story-title" data-i18n="aprende_de_cada_conversación">Aprende de cada conversación</div>
-            <p class="story-desc" data-i18n="cada_vez_que_le_cuentas_algo_geos_2_1_lo_incorpora_si_le_d">
-              Cada vez que le cuentas algo, Geos 2.1 lo incorpora. Si le dices que tienes 
-              un negocio nuevo, que cambiaste de trabajo o que quieres ahorrar más — lo recuerda 
-              y adapta sus consejos en consecuencia.
-            </p>
+          <div style="background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);border-radius:12px;padding:16px;text-align:center">
+            <div style="font-size:22px;margin-bottom:8px">🧠</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px">Memoria</div>
+            <div style="font-size:12px;color:var(--muted)">Recuerda todo</div>
           </div>
-        </div>
-        <div class="story-block fu" style="transition-delay:.4s">
-          <div class="story-step">3</div>
-          <div>
-            <div class="story-title" data-i18n="te_ayuda_a_tomar_decisiones_reales">Te ayuda a tomar decisiones reales</div>
-            <p class="story-desc" data-i18n="no_te_da_frases_motivacionales_genéricas_te_da_planes_concr">
-              No te da frases motivacionales genéricas. Te da planes concretos, cálculos reales 
-              y estrategias que tienen sentido para tu situación específica. Porque te conoce, 
-              sus consejos funcionan.
-            </p>
+          <div style="background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);border-radius:12px;padding:16px;text-align:center">
+            <div style="font-size:22px;margin-bottom:8px">💬</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px">Voz</div>
+            <div style="font-size:12px;color:var(--muted)">Habla contigo</div>
           </div>
-        </div>
-        <div class="story-block fu" style="transition-delay:.5s">
-          <div class="story-step">4</div>
-          <div>
-            <div class="story-title" data-i18n="evoluciona_con_el_tiempo">Evoluciona con el tiempo</div>
-            <p class="story-desc" data-i18n="geos_2_1_es_un_modelo_vivo_que_seguimos_entrenando_y_mejoran">
-              Geos 2.1 es un modelo vivo que seguimos entrenando y mejorando. Cada versión es más 
-              inteligente que la anterior. Tú creces, él crece. Es una relación de largo plazo.
-            </p>
+          <div style="background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.1);border-radius:12px;padding:16px;text-align:center">
+            <div style="font-size:22px;margin-bottom:8px">📱</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:4px">Multi-plataforma</div>
+            <div style="font-size:12px;color:var(--muted)">Android, iOS, Web</div>
           </div>
-        </div>
-      </div>
-      <div>
-        <div class="story-card fu" style="transition-delay:.2s">
-          <div class="story-card-img">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&q=85" alt="Geos 2.1 — modelo de inteligencia artificial latinoamericano de Átomo Studio con interfaz de IA generativa">
-            <div style="position:absolute;bottom:16px;left:16px;z-index:2">
-              <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff" data-i18n="geos_2_1">Geos 2.1</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.6)" data-i18n="modelo_en_crecimiento_activo">Modelo en crecimiento activo</div>
-            </div>
-          </div>
-          <div class="story-card-body">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite"></div>
-              <span style="font-size:12px;color:var(--cyan);font-weight:500" data-i18n="aprendiendo_activamente">Aprendiendo activamente</span>
-            </div>
-            <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px" data-i18n="geos_2_1_no_es_un_producto_terminado_es_un_modelo_que_crec">
-              Geos 2.1 no es un producto terminado — es un modelo que crece con cada interacción 
-              de cada usuario. Mientras más lo uses, más inteligente se vuelve para ti y para todos.
-            </p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);color:var(--cyan)">🧬 Aprendizaje continuo</span>
-              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);color:var(--cyan)" data-i18n="evolución_constante">🌱 Evolución constante</span>
-              <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:var(--purple)" data-i18n="personalizado_para_ti">🎯 Personalizado para ti</span>
-            </div>
-          </div>
-        </div>
-        <div class="card fu" style="margin-top:16px;transition-delay:.35s;background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(59,130,246,.04))">
-          <div style="font-size:32px;margin-bottom:12px">💬</div>
-          <p style="font-size:15px;font-style:italic;color:rgba(238,238,242,.7);line-height:1.7;margin-bottom:12px" data-i18n="no_vine_a_reemplazarte_vine_a_hacer_equipo_contigo_cada_v">
-            "No vine a reemplazarte. Vine a hacer equipo contigo. Cada vez que hablamos, 
-            aprendo algo nuevo de ti — y cada vez que aprendes algo nuevo, crecemos juntos."
-          </p>
-          <div style="font-size:11px;color:var(--cyan);letter-spacing:1px" data-i18n="eos_2_1">— GEOS 2.1</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section models-section" id="modelos">
+<!-- MODELOS — Resumen con link a modelos.html -->
+<section class="section" id="modelos">
   <div class="container">
-    <div class="models-intro">
+    <div style="max-width:640px;margin-bottom:56px">
       <div class="label fu" data-i18n="nuestra_flota_de_modelos">Nuestra flota de modelos</div>
-      <h2 class="h2 fu" style="transition-delay:.1s">
-        Usamos los mejores<br>modelos de IA <span class="grad" data-i18n="del_mundo">del mundo</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-2px;line-height:1.1;margin-bottom:20px">
+        Usamos los mejores<br>modelos de IA <span style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">del mundo</span>
       </h2>
-      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin-top:16px" class="fu" style="transition-delay:.2s" data-i18n="en_átomo_studio_no_nos_casamos_con_una_sola_tecnología_usam">
-        En Átomo Studio no nos casamos con una sola tecnología. Usamos el modelo correcto 
-        para cada tarea — y además hemos creado el nuestro propio, pensado específicamente 
-        para el usuario latinoamericano.
+      <p style="font-size:16px;color:var(--muted);line-height:1.7">
+        No nos casamos con una sola tecnología. Usamos el modelo correcto para cada tarea — y además creamos el nuestro propio, pensado para el usuario latinoamericano.
       </p>
     </div>
-    <div class="models-grid">
-      <!-- GEOS FEATURED -->
-      <div class="model-card geos-model fu">
-        <div class="model-our" data-i18n="nuestro_modelo">NUESTRO MODELO</div>
-        <div class="model-provider" data-i18n="átomo_studio_chile">Átomo Studio · Chile</div>
-        <div class="model-logo" style="background:var(--grad-geos);color:#fff;font-size:22px">G</div>
-        <div class="model-name" style="font-size:20px;background:var(--grad-geos);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="geos_2_1">Geos 2.1</div>
-        <p class="model-desc" style="font-size:13px" data-i18n="el_primer_modelo_ia_latinoamericano_enfocado_en_el_crecimien">
-          El primer modelo IA latinoamericano enfocado en el crecimiento personal y económico del usuario. 
-          Aprende de cada conversación, te conoce profundamente y se adapta a tu situación real. 
-          No es solo una IA — es tu socio de vida.
-        </p>
-        <div class="model-tags">
-          <span class="model-tag cyan" data-i18n="aprendizaje_continuo">Aprendizaje continuo</span>
-          <span class="model-tag green" data-i18n="crecimiento_personal">Crecimiento personal</span>
-          <span class="model-tag gold">Hecho en Chile 🇨🇱</span>
-          <span class="model-tag purple" data-i18n="multi_agente">Multi-agente</span>
-          <span class="model-tag cyan" data-i18n="memoria_persistente">Memoria persistente</span>
-          <span class="model-tag" data-i18n="beta_activa">Beta activa</span>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px">
+      <div style="background:linear-gradient(135deg,rgba(6,182,212,.08),rgba(59,130,246,.06),rgba(139,92,246,.05));border:1px solid rgba(6,182,212,.25);border-radius:16px;padding:24px;grid-column:span 2;position:relative">
+        <div style="position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#06b6d4,#3b82f6,#8b5cf6);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px">NUESTRO MODELO</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Átomo Studio</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#06b6d4,#3b82f6);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">🧠</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px">atómo-llm / Geos 2.1</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px">Modelo propio, entrenado en corpus latinoamericano. Motor de Geos 2.1.</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap">
+          <span style="font-size:10px;padding:3px 8px;border-radius:20px;background:rgba(6,182,212,.08);color:rgba(6,182,212,.8);border:1px solid rgba(6,182,212,.12)">Español LATAM</span>
+          <span style="font-size:10px;padding:3px 8px;border-radius:20px;background:rgba(16,185,129,.08);color:rgba(16,185,129,.8);border:1px solid rgba(16,185,129,.12)">Privado</span>
         </div>
       </div>
-      <!-- CLAUDE SONNET -->
-      <div class="model-card fu" style="transition-delay:.1s">
-        <div class="model-provider" data-i18n="anthropic">Anthropic</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#d97706,#92400e);color:#fff">A</div>
-        <div class="model-name" data-i18n="claude_sonnet_4_6">Claude Sonnet 4.6</div>
-        <p class="model-desc" data-i18n="el_modelo_más_equilibrado_de_anthropic_rápido_preciso_y_ex">El modelo más equilibrado de Anthropic. Rápido, preciso y excelente para escritura, análisis y tareas complejas del día a día.</p>
-        <div class="model-tags">
-          <span class="model-tag" data-i18n="análisis_de_texto">Análisis de texto</span>
-          <span class="model-tag green" data-i18n="muy_rápido">Muy rápido</span>
-          <span class="model-tag" data-i18n="razonamiento">Razonamiento</span>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">DeepSeek</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">🔷</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px">DeepSeek V3</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">Rápido, eficiente. Ideal para tareas generales.</div>
       </div>
-      <!-- CLAUDE OPUS -->
-      <div class="model-card fu" style="transition-delay:.15s">
-        <div class="model-provider" data-i18n="anthropic">Anthropic</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#b45309,#78350f);color:#fff">A</div>
-        <div class="model-name" data-i18n="claude_opus_4_7">Claude Opus 4.7</div>
-        <p class="model-desc" data-i18n="el_modelo_más_poderoso_de_anthropic_para_tareas_que_requier">El modelo más poderoso de Anthropic. Para tareas que requieren razonamiento profundo, análisis experto y respuestas de altísima calidad.</p>
-        <div class="model-tags">
-          <span class="model-tag gold" data-i18n="alta_potencia">Alta potencia</span>
-          <span class="model-tag" data-i18n="razonamiento_profundo">Razonamiento profundo</span>
-          <span class="model-tag purple" data-i18n="experto">Experto</span>
-        </div>
-      </div>
-      <!-- GPT-4o -->
-      <div class="model-card fu" style="transition-delay:.2s">
-        <div class="model-provider" data-i18n="openai">OpenAI</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#059669,#065f46);color:#fff">O</div>
-        <div class="model-name" data-i18n="gpt_4o">GPT-4o</div>
-        <p class="model-desc" data-i18n="el_modelo_multimodal_de_openai_ve_imágenes_escucha_audios">El modelo multimodal de OpenAI: ve imágenes, escucha audios y razona con texto. Ideal para tareas que combinan diferentes tipos de contenido.</p>
-        <div class="model-tags">
-          <span class="model-tag green" data-i18n="multimodal">Multimodal</span>
-          <span class="model-tag" data-i18n="visión">Visión</span>
-          <span class="model-tag" data-i18n="audio">Audio</span>
-        </div>
-      </div>
-      <!-- GPT-4.1 -->
-      <div class="model-card fu" style="transition-delay:.25s">
-        <div class="model-provider" data-i18n="openai">OpenAI</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#047857,#064e3b);color:#fff">O</div>
-        <div class="model-name" data-i18n="gpt_4_1">GPT-4.1</div>
-        <p class="model-desc" data-i18n="versión_actualizada_de_la_familia_gpt_4_con_mejor_rendimient">Versión actualizada de la familia GPT-4 con mejor rendimiento en código, matemáticas y seguimiento preciso de instrucciones complejas.</p>
-        <div class="model-tags">
-          <span class="model-tag green" data-i18n="código">Código</span>
-          <span class="model-tag" data-i18n="matemáticas">Matemáticas</span>
-          <span class="model-tag gold" data-i18n="actualizado_2025">Actualizado 2025</span>
-        </div>
-      </div>
-      <!-- DEEPSEEK V3 -->
-      <div class="model-card fu" style="transition-delay:.3s">
-        <div class="model-provider" data-i18n="deepseek">DeepSeek</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#1d4ed8,#1e40af);color:#fff">D</div>
-        <div class="model-name" data-i18n="deepseek_v3">DeepSeek V3</div>
-        <p class="model-desc" data-i18n="uno_de_los_modelos_de_código_abierto_más_potentes_del_mundo">Uno de los modelos de código abierto más potentes del mundo. Excelente relación calidad-precio para tareas de razonamiento y programación.</p>
-        <div class="model-tags">
-          <span class="model-tag" data-i18n="código_abierto">Código abierto</span>
-          <span class="model-tag cyan" data-i18n="eficiente">Eficiente</span>
-          <span class="model-tag" data-i18n="programación">Programación</span>
-        </div>
-      </div>
-      <!-- DEEPSEEK R1 -->
-      <div class="model-card fu" style="transition-delay:.35s">
-        <div class="model-provider" data-i18n="deepseek">DeepSeek</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff">D</div>
-        <div class="model-name" data-i18n="deepseek_r1">DeepSeek R1</div>
-        <p class="model-desc" data-i18n="el_modelo_de_razonamiento_de_deepseek_piensa_paso_a_paso_an">El modelo de razonamiento de DeepSeek. Piensa paso a paso antes de responder, lo que lo hace ideal para problemas complejos de lógica y matemáticas.</p>
-        <div class="model-tags">
-          <span class="model-tag purple" data-i18n="razonamiento">Razonamiento</span>
-          <span class="model-tag" data-i18n="chain_of_thought">Chain-of-Thought</span>
-          <span class="model-tag" data-i18n="lógica">Lógica</span>
-        </div>
-      </div>
-      <!-- GROQ LLAMA -->
-      <div class="model-card fu" style="transition-delay:.4s">
-        <div class="model-provider" data-i18n="groq_meta">Groq · Meta</div>
-        <div class="model-logo" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff">⚡</div>
-        <div class="model-name" data-i18n="llama_3_3_via_groq">Llama 3.3 via Groq</div>
-        <p class="model-desc" data-i18n="el_modelo_de_meta_acelerado_por_groq_respuestas_casi_instan">El modelo de Meta acelerado por Groq: respuestas casi instantáneas a velocidades de hasta 750 tokens por segundo. Para cuando la velocidad es crítica.</p>
-        <div class="model-tags">
-          <span class="model-tag purple" data-i18n="ultra_rápido">Ultra rápido</span>
-          <span class="model-tag" data-i18n="open_source">Open Source</span>
-          <span class="model-tag cyan" data-i18n="700_tok_s">700 tok/s</span>
-        </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">OpenAI</div>
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">🟢</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-bottom:6px">GPT-4o / 4.1</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">Poder versátil. Razonamiento avanzado.</div>
       </div>
     </div>
-    <div class="models-note fu" style="transition-delay:.5s">
-      <i class="fas fa-info-circle" style="color:var(--blue)"></i>
-      <span data-i18n="geo_app">
-        <strong data-i18n="por_qué_usar_múltiples_modelos">¿Por qué usar múltiples modelos?</strong> Cada modelo tiene fortalezas diferentes. 
-        Geo App selecciona automáticamente el mejor modelo para cada tipo de tarea — así siempre 
-        obtienes la mejor respuesta al menor costo posible.
-      </span>
+    <div style="text-align:center;margin-top:16px">
+      <a href="modelos.html" style="padding:12px 28px;border:1px solid var(--border-blue);color:var(--blue);font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s">Ver todos los modelos →</a>
     </div>
   </div>
 </section>
-
 <section class="section app-section" id="geo-app">
   <div class="container">
     <div class="app-grid">
       <div>
-        <div class="label label-purple fu" data-i18n="producto_estrella">Producto estrella</div>
-        <h2 class="h2 fu" style="transition-delay:.1s">
+        <div class="label label-purple fu td1" data-i18n="producto_estrella">Producto estrella</div>
+        <h2 class="h2 fu" >
           Geo App —<br>Tu <span class="grad" data-i18n="asistente_personal">asistente personal</span><br>con IA
         </h2>
-        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:8px" class="fu" style="transition-delay:.2s" data-i18n="geo_es_una_aplicación_móvil_y_web_que_pone_en_tus_manos_el_p">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:8px" class="fu td2"  data-i18n="geo_es_una_aplicación_móvil_y_web_que_pone_en_tus_manos_el_p">
           Geo es una aplicación móvil y web que pone en tus manos el poder de 
           todos los mejores modelos de inteligencia artificial del mundo — en un solo lugar, 
           en español, diseñada para personas reales, no para expertos en tecnología.
         </p>
-        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:24px" class="fu" style="transition-delay:.25s" data-i18n="escríbele_háblale_mándale_fotos_geo_entiende_lo_que_neces">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:24px" class="fu td25"  data-i18n="escríbele_háblale_mándale_fotos_geo_entiende_lo_que_neces">
           Escríbele, háblale, mándale fotos. Geo entiende lo que necesitas y te ayuda 
           a resolverlo: desde redactar un mensaje importante hasta planificar tu mes financiero.
         </p>
-        <div class="app-features fu" style="transition-delay:.3s">
+        <div class="app-features fu td3" >
           <div class="app-feat">
             <div class="app-feat-icon">💬</div>
             <div class="app-feat-title" data-i18n="chat_con_los_mejores_modelos_ia">Chat con los mejores modelos IA</div>
@@ -1737,7 +1500,7 @@ footer{
             <div class="app-feat-desc" data-i18n="conversa_sin_que_nada_quede_guardado">Conversa sin que nada quede guardado</div>
           </div>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu" style="transition-delay:.4s">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu td4" >
           <a href="geo-app-completa.html" class="btn btn-primary" data-i18n="geo_app">
             <i class="fas fa-external-link-alt"></i> Abrir Geo App
           </a>
@@ -1850,18 +1613,18 @@ footer{
       </div>
       <!-- TEXT -->
       <div>
-        <div class="label fu" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</div>
-        <h2 class="h2 fu" style="transition-delay:.1s">
+        <div class="label fu td1" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</div>
+        <h2 class="h2 fu" >
           Tu negocio vende<br>
           <span class="grad" data-i18n="24_7_solo">24/7, solo</span>,<br>
           sin que estés presente
         </h2>
-        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:24px" class="fu" style="transition-delay:.2s" data-i18n="imagina_que_tu_tienda_está_atendiendo_clientes_a_las_3_de_la">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:16px;margin-bottom:24px" class="fu td2"  data-i18n="imagina_que_tu_tienda_está_atendiendo_clientes_a_las_3_de_la">
           Imagina que tu tienda está atendiendo clientes a las 3 de la mañana, 
           gestionando pedidos, cobrando con Webpay y enviando confirmaciones — todo automático. 
           Eso es lo que te damos con nuestro E-commerce Omnicanal.
         </p>
-        <div class="ecom-features fu" style="transition-delay:.3s">
+        <div class="ecom-features fu td3" >
           <div class="ecom-feat">
             <div class="ecom-feat-icon">🛒</div>
             <div>
@@ -1891,7 +1654,7 @@ footer{
             </div>
           </div>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu" style="transition-delay:.4s">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px" class="fu td4" >
           <a href="ecommerce.html" class="btn btn-primary" data-i18n="ver_producto_completo">
             <i class="fas fa-store"></i> Ver producto completo
           </a>
@@ -1909,7 +1672,7 @@ footer{
     <div style="display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-bottom:8px">
       <div>
         <div class="label fu" data-i18n="trabajos_recientes">Trabajos recientes</div>
-        <h2 class="h2 fu" style="transition-delay:.1s">
+        <h2 class="h2 fu td1" >
           Lo que hemos<br>construido para <span class="grad" data-i18n="negocios_reales">negocios reales</span>
         </h2>
       </div>
@@ -1938,7 +1701,7 @@ footer{
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.1s">
+      <div class="port-card fu td1" >
         <div class="port-img">
           <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80" alt="Diseño web para KABA Salón de Belleza — estación de maquillaje profesional con espejo iluminado">
           <div class="port-type" data-i18n="belleza">Belleza</div>
@@ -1953,7 +1716,7 @@ footer{
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.2s">
+      <div class="port-card fu td2" >
         <div class="port-img">
           <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="E-commerce para Carnes Super Willy — mostrador de carnicería con cortes de carne frescos">
           <div class="port-type" data-i18n="comercio">Comercio</div>
@@ -1964,11 +1727,11 @@ footer{
           <div class="port-tags">
             <span class="port-tag" data-i18n="e_commerce">E-commerce</span>
             <span class="port-tag" data-i18n="15_páginas">15 páginas</span>
-            <span class="port-tag" data-i18n="catálogo">Catálogo</span>
+            <span class="port-tag td1" data-i18n="catálogo">Catálogo</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.1s">
+      <div class="port-card fu" >
         <div class="port-img">
           <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Sitio web para Centro Fitness Gym — equipamiento de gimnasio moderno con pesas y mancuernas">
           <div class="port-type" data-i18n="fitness">Fitness</div>
@@ -1983,7 +1746,7 @@ footer{
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.2s">
+      <div class="port-card fu td2" >
         <div class="port-img">
           <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Landing page para Redhouse Comida Rápida — hamburguesa artesanal con ingredientes frescos">
           <div class="port-type" data-i18n="gastronomía">Gastronomía</div>
@@ -1994,11 +1757,11 @@ footer{
           <div class="port-tags">
             <span class="port-tag" data-i18n="delivery">Delivery</span>
             <span class="port-tag" data-i18n="menú_digital">Menú digital</span>
-            <span class="port-tag" data-i18n="whatsapp">WhatsApp</span>
+            <span class="port-tag td3" data-i18n="whatsapp">WhatsApp</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.3s">
+      <div class="port-card fu" >
         <div class="port-img">
           <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Tienda online para Silvana Porcelana Fría — figuras artesanales pintadas a mano sobre mesa de trabajo">
           <div class="port-type" data-i18n="artesanía">Artesanía</div>
@@ -2030,23 +1793,23 @@ footer{
         </div>
       </div>
       <div>
-        <div class="label label-purple fu" data-i18n="quiénes_somos">Quiénes somos</div>
-        <h2 class="h2 fu" style="transition-delay:.1s">
+        <div class="label label-purple fu td1" data-i18n="quiénes_somos">Quiénes somos</div>
+        <h2 class="h2 fu" >
           Un estudio que construye<br>
           con propósito, no<br>
           <span class="grad" data-i18n="solo_con_código">solo con código</span>
         </h2>
-        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:20px;margin-bottom:16px" class="fu" style="transition-delay:.2s" data-i18n="átomo_studio_nació_en_chile_con_una_misión_clara_democratiz">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-top:20px;margin-bottom:16px" class="fu td2"  data-i18n="átomo_studio_nació_en_chile_con_una_misión_clara_democratiz">
           Átomo Studio nació en Chile con una misión clara: democratizar el acceso al software 
           inteligente para pequeños y medianos negocios latinoamericanos. Creemos que no hace 
           falta ser una gran empresa para tener tecnología de primer nivel.
         </p>
-        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:32px" class="fu" style="transition-delay:.25s" data-i18n="no_somos_una_agencia_de_cientos_de_personas_somos_un_equipo">
+        <p style="font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:32px" class="fu td25"  data-i18n="no_somos_una_agencia_de_cientos_de_personas_somos_un_equipo">
           No somos una agencia de cientos de personas. Somos un equipo pequeño, 
           apasionado y muy bueno en lo que hace — y eso se nota en cada proyecto que entregamos. 
           Cuando trabajas con nosotros, tratas directamente con los que construyen.
         </p>
-        <div class="about-values fu" style="transition-delay:.3s">
+        <div class="about-values fu td3" >
           <div class="value">
             <div class="value-icon">⚡</div>
             <div class="value-title" data-i18n="velocidad_real">Velocidad real</div>
@@ -2068,7 +1831,7 @@ footer{
             <div class="value-desc" data-i18n="no_ponemos_ia_en_el_nombre_para_sonar_moderno_realmente_i">No ponemos "IA" en el nombre para sonar moderno. Realmente integramos IA útil en cada producto.</div>
           </div>
         </div>
-        <div style="margin-top:32px;text-align:left" class="fu" style="transition-delay:.4s">
+        <div style="margin-top:32px;text-align:left" class="fu td4" >
           <a href="https://wa.me/56973994504?text=Hola%20%C3%81tomo%20Studio!%20Estoy%20listo%20para%20empezar" target="_blank" class="btn btn-primary" data-i18n="listo_para_empezar_tu_proyecto">
             <i class="fab fa-whatsapp"></i> ¿Listo para empezar tu proyecto?
           </a>
@@ -2081,11 +1844,11 @@ footer{
 <section class="section contact-section" id="contacto">
   <div class="container">
     <div style="text-align:center;max-width:560px;margin:0 auto 64px">
-      <div class="label fu" style="justify-content:center" data-i18n="hablemos">Hablemos</div>
-      <h2 class="h2 fu" style="transition-delay:.1s">
-        Cuéntanos tu proyecto<br>y te respondemos<br><span class="grad" data-i18n="en_menos_de_24h">en menos de 24h</span>
+      <div class="label fu td1" style="justify-content:center" data-i18n="hablemos">Hablemos</div>
+      <h2 class="h2 fu" >
+        Cuéntanos tu proyecto<br>y te respondemos<br><span class="grad td2" data-i18n="en_menos_de_24h">en menos de 24h</span>
       </h2>
-      <p style="font-size:15px;color:var(--muted);margin-top:16px" class="fu" style="transition-delay:.2s" data-i18n="no_importa_si_tienes_todo_claro_o_solo_una_idea_vaga_contá">
+      <p style="font-size:15px;color:var(--muted);margin-top:16px" class="fu"  data-i18n="no_importa_si_tienes_todo_claro_o_solo_una_idea_vaga_contá">
         No importa si tienes todo claro o solo una idea vaga — contáctanos y 
         lo desarrollamos juntos sin costo ni compromiso.
       </p>
@@ -2133,7 +1896,7 @@ footer{
           <span data-i18n="escribir_por_whatsapp_ahora">Escribir por WhatsApp ahora</span>
         </a>
       </div>
-      <div class="contact-form fu" style="transition-delay:.2s">
+      <div class="contact-form fu td2" >
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px" data-i18n="cuéntanos_tu_proyecto">
           Cuéntanos tu proyecto
         </h3>
@@ -2216,7 +1979,7 @@ TESTIMONIOS
   <div class="footer-inner">
     <div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="width:32px;height:32px;border-radius:8px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff">⚡</div>
+        <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" style="width:32px;height:32px">
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
       </div>
       <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">

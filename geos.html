@@ -116,6 +116,7 @@ nav.scrolled{
   background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
   letter-spacing:-.3px;
 }
+.nav-logo-img{width:32px;height:32px;flex-shrink:0}
 .nav-logo-icon{
   width:32px;height:32px;border-radius:8px;
   background:var(--grad-main);
@@ -985,6 +986,16 @@ footer{
   .hero-btns{flex-direction:column}
   .hero-stats{gap:20px}
 }
+
+/* ═══ UTILITY CLASSES ═══ */
+.td1{transition-delay:.1s}
+.td2{transition-delay:.2s}
+.td3{transition-delay:.3s}
+.td4{transition-delay:.4s}
+.td25{transition-delay:.25s}
+.td35{transition-delay:.35s}
+.td45{transition-delay:.45s}
+.td5{transition-delay:.5s}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
@@ -1045,7 +1056,7 @@ footer{
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
-      <div class="nav-logo-icon">⚡</div>
+      <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
@@ -1075,34 +1086,35 @@ footer{
 ═══════════════════════════ -->
 
 <section class="geos-section" id="geos">
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Geos 2.1 — Tu asistente personal con memoria y personalidad</h1>
   <div class="geos-bg-glow"></div>
   <div class="container">
     <!-- HERO GEOS -->
     <div class="geos-hero">
       <div>
         <div class="geos-badge fu" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);border:none" data-i18n="asistente_personal_con_memoria_y_personalidad">Asistente personal · Con memoria y personalidad</div>
-        <h2 class="geos-title fu" style="transition-delay:.1s" data-i18n="geos_2_1">
+        <h2 class="geos-title fu td1"  data-i18n="geos_2_1">
           Conoce
-          <span class="name" data-i18n="geos_2_1">Geos 2.1</span>
+          <span class="name td2" data-i18n="geos_2_1">Geos 2.1</span>
           Tu asistente con memoria y personalidad
         </h2>
-        <p class="geos-tagline fu" style="transition-delay:.2s" data-i18n="no_es_solo_una_herramienta_es_tu_socio_de_crecimiento">
+        <p class="geos-tagline fu"  data-i18n="no_es_solo_una_herramienta_es_tu_socio_de_crecimiento">
           "No es solo una herramienta. Es tu socio de crecimiento."
         </p>
-        <p class="geos-desc fu" style="transition-delay:.25s">
+        <p class="geos-desc fu td25" >
           <strong style="color:#64c8ff;font-size:14px">Geo App usa Geos 2.1, nuestro asistente con memoria y personalidad, construido sobre atómo-llm 🦙, nuestro modelo propio entrenado en Chile.</strong>
         </p>
-        <p class="geos-desc fu" style="transition-delay:.3s">
+        <p class="geos-desc fu td3" >
           Geos 2.1 es la experiencia que construimos sobre atómo-llm — aprende cómo piensas, recuerda tus metas, 
           entiende tu situación económica y te ayuda activamente a crecer. Cada conversación 
           lo hace más inteligente <em data-i18n="para_ti">para ti</em>.
         </p>
-        <p class="geos-desc fu" style="transition-delay:.35s" data-i18n="imagina_tener_a_tu_lado_a_alguien_que_jamás_olvida_lo_que_le">
+        <p class="geos-desc fu td35"  data-i18n="imagina_tener_a_tu_lado_a_alguien_que_jamás_olvida_lo_que_le">
           Imagina tener a tu lado a alguien que jamás olvida lo que le has contado, que entiende 
           qué sueños tienes, qué te motiva, qué obstáculos enfrentas — y que cada día 
           te da ideas concretas para avanzar. Eso es Geos 2.1.
         </p>
-        <div class="geos-pillars fu" style="transition-delay:.35s">
+        <div class="geos-pillars fu td35" >
           <div class="pillar">
             <div class="pillar-icon">🧠</div>
             <div class="pillar-title" data-i18n="aprende_de_ti">Aprende de ti</div>
@@ -1124,7 +1136,7 @@ footer{
             <div class="pillar-desc" data-i18n="la_diferencia_entre_usar_una_calculadora_y_tener_un_socio_de">La diferencia entre usar una calculadora y tener un socio de confianza que te conoce de verdad</div>
           </div>
         </div>
-        <div class="geos-btns fu" style="transition-delay:.4s">
+        <div class="geos-btns fu td4" >
           <a href="geo-app-completa.html" class="btn btn-geos btn-lg" data-i18n="geos_2_1">
             <i class="fas fa-robot"></i> Comenzar con Geos 2.1
           </a>
@@ -1238,10 +1250,10 @@ footer{
 </div>
 ¿Por qué Geos 2.1 es diferente?</div>
         <h3 class="h3 fu" style="transition-delay:.1s;margin-bottom:24px">
-          La IA que <span class="grad-geos">crece contigo</span>,<br>
+          La IA que <span class="grad-geos td2">crece contigo</span>,<br>
           no solo responde tus preguntas
         </h3>
-        <div class="story-block fu" style="transition-delay:.2s">
+        <div class="story-block fu" >
           <div class="story-step">1</div>
           <div>
             <div class="story-title" data-i18n="te_conoce_de_verdad">Te conoce de verdad</div>
@@ -1252,7 +1264,7 @@ footer{
             </p>
           </div>
         </div>
-        <div class="story-block fu" style="transition-delay:.3s">
+        <div class="story-block fu td3" >
           <div class="story-step">2</div>
           <div>
             <div class="story-title" data-i18n="aprende_de_cada_conversación">Aprende de cada conversación</div>
@@ -1263,7 +1275,7 @@ footer{
             </p>
           </div>
         </div>
-        <div class="story-block fu" style="transition-delay:.4s">
+        <div class="story-block fu td4" >
           <div class="story-step">3</div>
           <div>
             <div class="story-title" data-i18n="te_ayuda_a_tomar_decisiones_reales">Te ayuda a tomar decisiones reales</div>
@@ -1274,7 +1286,7 @@ footer{
             </p>
           </div>
         </div>
-        <div class="story-block fu" style="transition-delay:.5s">
+        <div class="story-block fu td5" >
           <div class="story-step">4</div>
           <div>
             <div class="story-title" data-i18n="evoluciona_con_el_tiempo">Evoluciona con el tiempo</div>
@@ -1286,7 +1298,7 @@ footer{
         </div>
       </div>
       <div>
-        <div class="story-card fu" style="transition-delay:.2s">
+        <div class="story-card fu td2" >
           <div class="story-card-img">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&q=85" alt="Geos 2.1 — modelo de inteligencia artificial latinoamericano de Átomo Studio con interfaz de IA generativa">
             <div style="position:absolute;bottom:16px;left:16px;z-index:2">
@@ -1341,11 +1353,11 @@ footer{
           <div class="port-tags">
             <span class="port-tag" data-i18n="whatsapp">WhatsApp</span>
             <span class="port-tag" data-i18n="automático">Automático</span>
-            <span class="port-tag" data-i18n="sin_turnos">Sin turnos</span>
+            <span class="port-tag td1" data-i18n="sin_turnos">Sin turnos</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.1s">
+      <div class="port-card fu" >
         <div class="port-body">
           <div style="font-size:40px;margin-bottom:12px">💰</div>
           <div class="port-name" data-i18n="finanzas_personales_del_negocio">Finanzas personales del negocio</div>
@@ -1353,23 +1365,23 @@ footer{
           <div class="port-tags">
             <span class="port-tag" data-i18n="finanzas">Finanzas</span>
             <span class="port-tag" data-i18n="análisis">Análisis</span>
-            <span class="port-tag" data-i18n="ahorro">Ahorro</span>
+            <span class="port-tag td2" data-i18n="ahorro">Ahorro</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.2s">
+      <div class="port-card fu" >
         <div class="port-body">
           <div style="font-size:40px;margin-bottom:12px">📦</div>
           <div class="port-name" data-i18n="control_de_inventario_simple">Control de inventario simple</div>
           <div class="port-desc" data-i18n="dile_a_geos_se_vendieron_3_cajas_de_leche_y_él_lleva_la_cu">Dile a Geos "se vendieron 3 cajas de leche" y él lleva la cuenta. Te avisa cuándo reponer y qué productos se venden más.</div>
           <div class="port-tags">
             <span class="port-tag" data-i18n="inventario">Inventario</span>
-            <span class="port-tag" data-i18n="alertas">Alertas</span>
+            <span class="port-tag td1" data-i18n="alertas">Alertas</span>
             <span class="port-tag" data-i18n="voz">Voz</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.1s">
+      <div class="port-card fu" >
         <div class="port-body">
           <div style="font-size:40px;margin-bottom:12px">📝</div>
           <div class="port-name" data-i18n="redacción_de_contenido">Redacción de contenido</div>
@@ -1377,23 +1389,23 @@ footer{
           <div class="port-tags">
             <span class="port-tag" data-i18n="redes_sociales">Redes sociales</span>
             <span class="port-tag" data-i18n="contenido">Contenido</span>
-            <span class="port-tag" data-i18n="marketing">Marketing</span>
+            <span class="port-tag td2" data-i18n="marketing">Marketing</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.2s">
+      <div class="port-card fu" >
         <div class="port-body">
           <div style="font-size:40px;margin-bottom:12px">🤝</div>
           <div class="port-name" data-i18n="mentor_de_emprendimiento">Mentor de emprendimiento</div>
           <div class="port-desc" data-i18n="geos_te_guía_paso_a_paso_para_formalizar_tu_negocio_calcula">Geos te guía paso a paso para formalizar tu negocio, calcular costos, fijar precios y armar un plan de crecimiento. Sabe cómo funciona Chile.</div>
           <div class="port-tags">
             <span class="port-tag" data-i18n="emprendedor">Emprendedor</span>
-            <span class="port-tag" data-i18n="guía">Guía</span>
+            <span class="port-tag td3" data-i18n="guía">Guía</span>
             <span class="port-tag" data-i18n="chile">Chile</span>
           </div>
         </div>
       </div>
-      <div class="port-card fu" style="transition-delay:.3s">
+      <div class="port-card fu" >
         <div class="port-body">
           <div style="font-size:40px;margin-bottom:12px">📊</div>
           <div class="port-name" data-i18n="analista_de_ventas">Analista de ventas</div>
@@ -1412,11 +1424,24 @@ footer{
 <!-- ═══════════════════════════
      AI MODELS
 ═══════════════════════════ -->
+
+<!-- CTA FINAL -->
+<section class="section" style="background:var(--bg2);border-top:1px solid var(--border)">
+  <div class="section-inner" style="text-align:center;max-width:640px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1.5px;margin-bottom:16px">¿Listo para empezar?</h2>
+    <p style="font-size:17px;color:rgba(238,238,242,.6);margin-bottom:32px;line-height:1.65">Cotiza gratis en menos de 24 horas. Sin compromiso, sin letra chica.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Quiero%20saber%20más" target="_blank" style="padding:14px 28px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(59,130,246,.25)"><i class="fab fa-whatsapp"></i> Cotiza gratis por WhatsApp</a>
+      <a href="contacto.html" style="padding:14px 28px;border:1px solid rgba(255,255,255,.1);color:rgba(238,238,242,.6);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;border-radius:10px;text-decoration:none">Formulario de contacto</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="width:32px;height:32px;border-radius:8px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff">⚡</div>
+        <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" style="width:32px;height:32px">
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
       </div>
       <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">

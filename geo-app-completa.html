@@ -21,6 +21,7 @@ a{text-decoration:none;color:inherit}
 nav{height:64px;background:rgba(6,6,12,0.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 32px;position:fixed;top:0;left:0;right:0;z-index:100}
 .nav-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo-img{width:32px;height:32px;flex-shrink:0}
 .nav-logo-icon{width:32px;height:32px;border-radius:8px;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;-webkit-text-fill-color:#fff;flex-shrink:0}
 .nav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:rgba(238,238,242,.6);transition:.25s;padding:7px 14px;border-radius:8px}
 .nav-back:hover{color:var(--text);background:rgba(255,255,255,.04)}
@@ -115,7 +116,7 @@ nav{height:64px;background:rgba(6,6,12,.95);backdrop-filter:blur(24px);border-bo
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
-      <div class="nav-logo-icon">⚡</div>
+      <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
