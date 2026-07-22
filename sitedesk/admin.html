@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin · SiteDesk · Mario</title>
+<link rel="icon" type="image/svg+xml" href="../atomostudio/img/logo-atomo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .deliv-status { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .deliv-status.prep { background: rgba(245,158,11,0.10); color: var(--draft); border: 1px solid rgba(245,158,11,0.30); }
+  .deliv-status.prod { background: rgba(59,130,246,0.10); color: var(--blue); border: 1px solid var(--border-blue); }
+  .deliv-status.deliv { background: rgba(22,163,74,0.10); color: var(--success); border: 1px solid rgba(22,163,74,0.30); }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-h">
+      <img src="../atomostudio/img/logo-atomo.svg" width="28" height="28" alt="Átomo"/>
+      <div class="sb-h-name">SiteDesk<small>Admin · Mario</small></div>
+    </div>
+    <nav class="sb-nav" style="padding-top: 14px;">
+      <div class="sb-item active"><span class="ico">⊞</span>Sitios<span class="badge" style="background:var(--blue);">3</span></div>
+      <a href="admin-new.html" class="sb-item"><span class="ico">📤</span>Subir sitio nuevo</a>
+      <a href="admin-clients.html" class="sb-item"><span class="ico">👥</span>Clientes</a>
+      <a href="admin-geos-config.html" class="sb-item"><span class="ico">⚛</span>Contexto Geos 2.1</a>
+      <a href="admin-activity.html" class="sb-item"><span class="ico">📋</span>Actividad</a>
+      <div style="height: 12px;"></div>
+      <a href="admin-settings.html" class="sb-item"><span class="ico">⚙</span>Ajustes</a>
+    </nav>
+    <div class="sb-foot">
+      <div class="sb-foot-avatar" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">M</div>
+      <div class="sb-foot-meta"><div class="sb-foot-name">Mario · Átomo</div><div class="sb-foot-role">Admin</div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-title">Sitios</div>
+      <div class="top-actions">
+        <a href="admin-new.html" class="btn btn-primary"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 2v9M2 6.5h9"/></svg>Subir sitio nuevo</a>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-h"><div><h1>Hola Mario 👋</h1><p>Subes sitios ya construidos. Creas el usuario del cliente. El cliente entra y maneja su sitio solo.</p></div></div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Sitios totales</div><div class="stat-num grad">3</div><div class="stat-meta">2 entregados · 1 en preparación</div></div>
+        <div class="stat"><div class="stat-label">Clientes</div><div class="stat-num">3</div><div class="stat-meta">2 con SiteDesk activo</div></div>
+        <div class="stat"><div class="stat-label">Cambios hoy de clientes</div><div class="stat-num">5</div><div class="stat-meta">aplicados por sus dueños</div></div>
+        <div class="stat"><div class="stat-label">Ingreso pago único</div><div class="stat-num" style="color: var(--success);">$890k</div><div class="stat-meta">CLP · 2 sitios entregados</div></div>
+      </div>
+
+      <h2 style="font-size: 17px; font-weight: 700; margin-bottom: 14px;">Sitios de clientes</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px;">
+
+        <!-- Carniceria Rojas - delivered -->
+        <a href="index.html" class="site-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: block; transition: transform .15s, box-shadow .15s;">
+          <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1410, #2d1f15); position: relative; padding: 18px; color: white;">
+            <span class="deliv-status deliv" style="position: absolute; top: 12px; right: 12px;">● Entregado</span>
+            <div style="font-size: 9px; letter-spacing: 0.25em; color: rgba(255,200,150,0.6); margin-top: 30px;">DESDE 1987</div>
+            <div style="font-size: 20px; font-weight: 700; line-height: 1.05; margin-top: 4px;">Cortes premium<br>en Pedro Aguirre Cerda</div>
+          </div>
+          <div style="padding: 14px 16px;">
+            <div style="font-size: 15px; font-weight: 700;">Carnicería Rojas</div>
+            <div style="font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;">carniceriarojas.cl</div>
+            <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+              <span class="biz-chip" style="background: rgba(248,113,113,0.10); color: var(--error); border: 1px solid rgba(248,113,113,0.30); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600;">🥩 Carnicería</span>
+              <span class="chip draft">2 cambios por aprobar</span>
+            </div>
+            <div style="display: flex; gap: 14px; font-size: 11.5px; color: var(--text2); padding-top: 10px; border-top: 1px solid var(--border);">
+              <span>Pago: <strong style="color: var(--text);">$390k</strong></span>
+              <span>Activado: <strong style="color: var(--text);">12 may</strong></span>
+              <span style="margin-left: auto;">cliente: Don Rojas</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- KABA - delivered -->
+        <a href="index.html" class="site-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: block;">
+          <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, #1a0f2e, #2d1b4e); position: relative; padding: 18px; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+            <span class="deliv-status deliv" style="position: absolute; top: 12px; right: 12px;">● Entregado</span>
+            <div style="font-family: 'Times New Roman', serif; font-size: 38px; font-weight: 300; letter-spacing: 0.35em; color: rgba(212,168,67,0.9); padding-left: 0.35em;">KABA</div>
+            <div style="font-size: 9px; letter-spacing: 0.3em; color: rgba(212,168,67,0.55); text-transform: uppercase;">Karla Bastidas</div>
+          </div>
+          <div style="padding: 14px 16px;">
+            <div style="font-size: 15px; font-weight: 700;">KABA Peluquería</div>
+            <div style="font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;">kaba.atomostudio.dev</div>
+            <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+              <span class="biz-chip" style="background: rgba(139,92,246,0.10); color: #a78bfa; border: 1px solid rgba(139,92,246,0.30); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600;">✂ Salón</span>
+              <span class="chip live">Todo al día</span>
+            </div>
+            <div style="display: flex; gap: 14px; font-size: 11.5px; color: var(--text2); padding-top: 10px; border-top: 1px solid var(--border);">
+              <span>Pago: <strong style="color: var(--text);">$500k</strong></span>
+              <span>Activado: <strong style="color: var(--text);">04 may</strong></span>
+              <span style="margin-left: auto;">cliente: Karla</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Don Pancho - in preparation -->
+        <a href="admin-new.html" class="site-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: block;">
+          <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, #1e2a3d, #3a4a5d); position: relative; padding: 18px; color: white;">
+            <span class="deliv-status prep" style="position: absolute; top: 12px; right: 12px;">⏳ En preparación</span>
+            <div style="font-size: 10px; letter-spacing: 0.2em; color: rgba(251,191,36,0.85); margin-top: 30px;">⚡ FERRETERÍA</div>
+            <div style="font-size: 20px; font-weight: 700; line-height: 1.05; margin-top: 4px;">Don Pancho<br>todo lo que necesitas</div>
+          </div>
+          <div style="padding: 14px 16px;">
+            <div style="font-size: 15px; font-weight: 700;">Ferretería Don Pancho</div>
+            <div style="font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;">ferreteriapancho.cl</div>
+            <div style="display: flex; gap: 6px; margin-bottom: 10px;">
+              <span class="biz-chip" style="background: rgba(245,158,11,0.10); color: var(--warning); border: 1px solid rgba(245,158,11,0.30); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600;">🔧 Ferretería</span>
+              <span class="chip" style="background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); color: var(--draft);">Falta: SSL · activar SiteDesk</span>
+            </div>
+            <div style="display: flex; gap: 14px; font-size: 11.5px; color: var(--text2); padding-top: 10px; border-top: 1px solid var(--border);">
+              <span>Sin pago aún</span>
+              <span style="margin-left: auto;">checklist: 3/5</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Add new -->
+        <a href="admin-new.html" class="site-card" style="border: 2px dashed var(--border-strong); background: transparent; display: flex; align-items: center; justify-content: center; min-height: 290px; border-radius: 14px;">
+          <div style="text-align: center;">
+            <div style="width: 52px; height: 52px; border-radius: 14px; background: var(--blue-soft); color: var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 3v20M3 13h20"/></svg>
+            </div>
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 3px;">Subir sitio nuevo</div>
+            <div style="font-size: 12px; color: var(--text2);">para un nuevo cliente</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Pending changes -->
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; margin-top: 32px;">
+        <div class="card" style="padding: 0;">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px;">
+            <h3 style="font-size: 14px; font-weight: 700; flex: 1;">Actividad reciente · todos los sitios</h3>
+            <a href="admin-activity.html" style="font-size: 12px; color: var(--blue);">Ver todo →</a>
+          </div>
+          <div style="padding: 8px 20px;">
+            <div class="timeline">
+              <div class="tl-item">
+                <div class="tl-dot ai"></div>
+                <div class="tl-body">
+                  <div class="tl-msg"><strong>Don Rojas</strong> cambió el precio de Asado Riñón a <strong>$12.990</strong></div>
+                  <div class="tl-meta"><span class="src">⚛ Geos · cliente</span>hace 12 min · Carnicería Rojas · <span class="chip live">Publicado</span></div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot ai"></div>
+                <div class="tl-body">
+                  <div class="tl-msg"><strong>Don Rojas</strong> agregó nuevo corte <strong>Lomo Vetado · $15.000</strong></div>
+                  <div class="tl-meta"><span class="src">⚛ Geos · cliente</span>hace 18 min · Carnicería Rojas · <span class="chip live">Publicado</span></div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot ai"></div>
+                <div class="tl-body">
+                  <div class="tl-msg"><strong>Karla</strong> agregó servicio <em>Balayage babylights · $48.000</em></div>
+                  <div class="tl-meta"><span class="src">⚛ Geos · cliente</span>ayer 18:32 · KABA · <span class="chip live">Publicado</span></div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot ai"></div>
+                <div class="tl-body">
+                  <div class="tl-msg"><strong>Karla</strong> cambió horarios sábado a 09:00-19:00</div>
+                  <div class="tl-meta"><span class="src">⚛ Geos · cliente</span>ayer · KABA · <span class="chip live">Publicado</span></div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot ai"></div>
+                <div class="tl-body">
+                  <div class="tl-msg"><strong>Don Rojas</strong> actualizó número de WhatsApp en footer</div>
+                  <div class="tl-meta"><span class="src">⚛ Geos · cliente</span>22 may · Carnicería Rojas · <span class="chip live">Publicado</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0;">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border);"><h3 style="font-size: 14px; font-weight: 700;">Estado de los sitios</h3></div>
+          <div style="padding: 8px 20px 16px;">
+            <div style="padding: 10px 0; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></span>
+              <div style="flex:1;"><div style="font-size: 13px; font-weight: 600;">carniceriarojas.cl</div><div style="font-size: 10.5px; color: var(--text3);">SSL ✓ · Dominio ✓ · Online</div></div>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--success);">142ms</span>
+            </div>
+            <div style="padding: 10px 0; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border);">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></span>
+              <div style="flex:1;"><div style="font-size: 13px; font-weight: 600;">kaba.atomostudio.dev</div><div style="font-size: 10.5px; color: var(--text3);">SSL ✓ · Subdominio ✓</div></div>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--success);">168ms</span>
+            </div>
+            <div style="padding: 10px 0; display: flex; align-items: center; gap: 10px;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--draft);"></span>
+              <div style="flex:1;"><div style="font-size: 13px; font-weight: 600;">ferreteriapancho.cl</div><div style="font-size: 10.5px; color: var(--text3);">⏳ Esperando SSL</div></div>
+              <a href="admin-new.html" style="font-size: 11px; color: var(--blue); font-weight: 600;">Terminar →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+  <script src="api.js"></script>
+  <script src="verticals.js"></script>
+  <script>
+    if (!SiteDeskAuth.get()) {
+      window.location.href = 'login.html?redirect=admin.html';
+    }
+
+    async function loadAdmin() {
+      try {
+        const [user, siteData] = await Promise.all([
+          SiteDeskApi.me(),
+          SiteDeskApi.site(),
+        ]);
+
+        // Update greeting
+        const name = user.name || user.email || 'Admin';
+        document.querySelector('.page-h h1').textContent = 'Hola ' + name.split(' ')[0] + ' 👋';
+
+        // Update stats
+        if (siteData && siteData.site) {
+          // Update site count (hardcoded for now, single user sees their site)
+          document.querySelectorAll('.stat-num.grad').forEach(el => {
+            el.textContent = siteData.needsSetup ? '0' : '1';
+          });
+        }
+
+        // Update activity section with recent changes
+        try {
+          const historyData = await SiteDeskApi.history();
+          if (historyData && historyData.items) {
+            updateActivity(historyData.items, name);
+          }
+        } catch (e) {
+          console.warn('Could not load history for admin:', e);
+        }
+
+      } catch (err) {
+        if (err.status === 401) {
+          SiteDeskAuth.clear();
+          window.location.href = 'login.html?redirect=admin.html';
+          return;
+        }
+        console.error('Error loading admin:', err);
+      }
+    }
+
+    function updateActivity(items, userName) {
+      const timelineContainers = document.querySelectorAll('.timeline');
+      if (timelineContainers.length === 0 || items.length === 0) return;
+
+      const recentItems = items.slice(0, 5);
+      const container = timelineContainers[0]; // Activity section
+
+      container.innerHTML = recentItems.map(item => {
+        const d = new Date(item.createdAt);
+        const time = d.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+        const detail = typeof item.detail === 'string'
+          ? item.detail.substring(0, 80)
+          : 'Cambio realizado';
+        return `
+          <div class="tl-item">
+            <div class="tl-dot ai"></div>
+            <div class="tl-body">
+              <div class="tl-msg"><strong>${userName}</strong> ${escapeHtml(detail)}</div>
+              <div class="tl-meta">
+                <span class="src">SiteDesk</span>
+                ${time}
+                <span class="chip live">Registrado</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    loadAdmin();
+  </script>
+</body>
+</html>

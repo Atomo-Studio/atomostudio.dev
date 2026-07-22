@@ -1,0 +1,493 @@
+// app.js — SiteDesk shell: auth, sidebar, publicar, páginas cableadas
+(function () {
+  "use strict";
+
+  const PAGE = document.body.dataset.sdPage || "";
+
+  const SECTION_LABELS = {
+    hero: "Hero principal",
+    about: "Bienvenida",
+    contact: "Contacto",
+    hours: "Horarios",
+    social: "Redes sociales",
+    footer: "Pie de página",
+  };
+
+  const state = {
+    user: null,
+    site: null,
+    pendingDrafts: 0,
+    sections: {},
+    conversationId: null,
+  };
+
+  function initials(name) {
+    if (!name) return "??";
+    return name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((w) => w[0].toUpperCase())
+      .join("");
+  }
+
+  function formatRelTime(iso) {
+    if (!iso) return "";
+    const diff = Date.now() - new Date(iso).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return "ahora";
+    if (mins < 60) return `hace ${mins} min`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `hace ${hrs} h`;
+    const days = Math.floor(hrs / 24);
+    if (days === 1) return "ayer";
+    if (days < 7) return `hace ${days} días`;
+    return new Date(iso).toLocaleDateString("es-CL", { day: "numeric", month: "short" });
+  }
+
+  function toast(msg, isError) {
+    let el = document.getElementById("sd-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "sd-toast";
+      el.style.cssText =
+        "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;" +
+        "padding:12px 20px;border-radius:10px;font-size:13.5px;font-weight:500;" +
+        "box-shadow:0 8px 30px rgba(0,0,0,.15);max-width:90vw;text-align:center;";
+      document.body.appendChild(el);
+    }
+    el.style.background = isError ? "#fef2f2" : "#ecfdf5";
+    el.style.color = isError ? "#b91c1c" : "#047857";
+    el.style.border = isError ? "1px solid #fecaca" : "1px solid #a7f3d0";
+    el.textContent = msg;
+    el.hidden = false;
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.hidden = true; }, 4000);
+  }
+
+  async function requireAuth() {
+    if (PAGE === "login") return true;
+    if (!SiteDeskAuth.get()) {
+      const next = encodeURIComponent(location.pathname.split("/").pop() || "index.html");
+      location.href = "login.html?next=" + next;
+      return false;
+    }
+    try {
+      await SiteDeskApi.me();
+      return true;
+    } catch (err) {
+      SiteDeskAuth.clear();
+      location.href = "login.html";
+      return false;
+    }
+  }
+
+  function updateDraftBadges() {
+    const n = state.pendingDrafts || 0;
+    document.querySelectorAll(".sd-drafts-num").forEach((el) => {
+      el.textContent = String(n);
+    });
+    document.querySelectorAll(".sd-drafts-pill").forEach((el) => {
+      el.hidden = n === 0;
+    });
+    document.querySelectorAll(".sb-nav .badge").forEach((el) => {
+      if (n > 0) {
+        el.textContent = String(n);
+        el.hidden = false;
+      } else {
+        el.hidden = true;
+      }
+    });
+    document.querySelectorAll(".sd-pending-banner").forEach((el) => {
+      el.hidden = n === 0;
+    });
+    document.querySelectorAll(".sd-pending-count").forEach((el) => {
+      el.textContent = String(n);
+    });
+  }
+
+  function updateShell() {
+    const site = state.site;
+    const user = state.user;
+    if (!site) return;
+
+    const clientName = site.clientName || user?.name || user?.email || "Cliente";
+    document.querySelectorAll(".sd-site-name").forEach((el) => { el.textContent = site.name || ""; });
+    document.querySelectorAll(".sd-site-url-text").forEach((el) => { el.textContent = site.url || ""; });
+    document.querySelectorAll(".sd-site-thumb").forEach((el) => { el.textContent = initials(site.name); });
+    document.querySelectorAll(".sd-client-name").forEach((el) => { el.textContent = clientName; });
+    document.querySelectorAll(".sd-foot-avatar").forEach((el) => { el.textContent = initials(clientName); });
+    document.querySelectorAll(".sd-greeting").forEach((el) => {
+      el.textContent = "Hola " + clientName + " 👋";
+    });
+    document.querySelectorAll(".sd-preview-url").forEach((el) => { el.textContent = site.url || ""; });
+    document.querySelectorAll(".sd-view-site").forEach((el) => {
+      el.onclick = () => {
+        const url = site.url ? (site.url.startsWith("http") ? site.url : "https://" + site.url) : null;
+        if (url) window.open(url, "_blank");
+        else toast("URL del sitio no configurada.", true);
+      };
+    });
+    updateDraftBadges();
+  }
+
+  function showNeedsSetup() {
+    const main = document.querySelector(".content") || document.querySelector(".main");
+    if (!main) return;
+    main.innerHTML =
+      '<div style="padding:48px 24px;text-align:center;max-width:480px;margin:0 auto;">' +
+      "<h1 style=\"font-size:22px;margin-bottom:12px;\">Sitio pendiente de activación</h1>" +
+      "<p style=\"color:var(--text2);line-height:1.6;\">Tu cuenta aún no tiene un sitio asignado. " +
+      "Contacta a Mario por WhatsApp para activar SiteDesk.</p>" +
+      '<a href="https://wa.me/56973994504" class="btn btn-primary" style="margin-top:20px;display:inline-flex;">📱 WhatsApp a Mario</a>' +
+      "</div>";
+  }
+
+  async function loadSiteContext() {
+    const [user, siteRes] = await Promise.all([SiteDeskApi.me(), SiteDeskApi.site()]);
+    state.user = user;
+    if (siteRes.needsSetup || !siteRes.site) {
+      showNeedsSetup();
+      return false;
+    }
+    state.site = siteRes.site;
+    state.pendingDrafts = siteRes.site.pendingDrafts || 0;
+    updateShell();
+    return true;
+  }
+
+  async function refreshPending() {
+    const siteRes = await SiteDeskApi.site();
+    if (siteRes.site) {
+      state.pendingDrafts = siteRes.site.pendingDrafts || 0;
+      updateDraftBadges();
+    }
+  }
+
+  async function doPublish(btn) {
+    if (btn) btn.disabled = true;
+    try {
+      const res = await SiteDeskApi.publish();
+      const n = (res.publishedSections || []).length;
+      if (n === 0) {
+        toast(res.message || "No hay cambios pendientes para publicar.");
+      } else {
+        toast("Publicado: " + (res.publishedSections || []).join(", "));
+      }
+      await refreshPending();
+      if (PAGE === "index") await loadHistoryPreview();
+      if (PAGE === "contenido") await loadContentForm();
+      if (PAGE === "historial") await loadFullHistory();
+    } catch (err) {
+      toast(apiErrorMessage(err), true);
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  function bindPublishButtons() {
+    document.querySelectorAll(".sd-publish").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        doPublish(btn);
+      });
+    });
+  }
+
+  function renderHistoryItem(item, showRevert) {
+    const sections = (item.sections || []).map((s) => SECTION_LABELS[s] || s).join(", ");
+    const summary = item.summary || ("Publicadas: " + sections);
+    return (
+      '<div class="tl-item">' +
+      '<div class="tl-dot"></div>' +
+      '<div class="tl-body">' +
+      '<div class="tl-msg">' + summary + "</div>" +
+      '<div class="tl-meta">' +
+      '<span class="src manual">✋ SiteDesk</span>' +
+      formatRelTime(item.createdAt) +
+      '<span class="chip live">Publicado</span>' +
+      "</div></div>" +
+      (showRevert ? '<span class="tl-revert" style="opacity:.4;cursor:default;">—</span>' : "") +
+      "</div>"
+    );
+  }
+
+  async function loadHistoryPreview() {
+    const box = document.getElementById("sd-history-preview");
+    if (!box) return;
+    try {
+      const data = await SiteDeskApi.history();
+      const items = (data.items || []).slice(0, 5);
+      if (!items.length) {
+        box.innerHTML = '<p style="padding:16px;color:var(--text2);font-size:13px;">Sin publicaciones aún.</p>';
+        return;
+      }
+      box.innerHTML = '<div class="timeline">' + items.map((i) => renderHistoryItem(i, false)).join("") + "</div>";
+    } catch {
+      box.innerHTML = "";
+    }
+  }
+
+  async function loadFullHistory() {
+    const box = document.getElementById("sd-history-full");
+    if (!box) return;
+    try {
+      const data = await SiteDeskApi.history();
+      const items = data.items || [];
+      if (!items.length) {
+        box.innerHTML = '<p style="padding:24px;color:var(--text2);">Sin historial de publicaciones.</p>';
+        return;
+      }
+      box.innerHTML =
+        '<div class="card" style="padding:0;"><div class="timeline" style="padding:4px 20px;">' +
+        items.map((i) => renderHistoryItem(i, true)).join("") +
+        "</div></div>";
+    } catch (err) {
+      box.innerHTML = '<p style="padding:24px;color:#b91c1c;">' + apiErrorMessage(err) + "</p>";
+    }
+  }
+
+  function sectionFields(section) {
+    const data = state.sections[section];
+    if (!data) return {};
+    return data.hasDraft && data.draft ? data.draft : data.published || {};
+  }
+
+  function setFieldValue(el, value) {
+    if (el.type === "checkbox") el.checked = !!value;
+    else el.value = value != null ? String(value) : "";
+  }
+
+  function readFieldValue(el) {
+    if (el.type === "checkbox") return el.checked;
+    return el.value.trim();
+  }
+
+  async function loadContentForm() {
+    const data = await SiteDeskApi.content();
+    state.sections = data.sections || {};
+
+    document.querySelectorAll(".sd-field").forEach((el) => {
+      const section = el.dataset.section;
+      const field = el.dataset.field;
+      if (!section || !field) return;
+      const fields = sectionFields(section);
+      setFieldValue(el, fields[field]);
+    });
+
+    document.querySelectorAll(".sd-section-card").forEach((card) => {
+      const section = card.dataset.section;
+      const chip = card.querySelector(".sd-draft-chip");
+      if (!chip || !section) return;
+      const sec = state.sections[section];
+      chip.hidden = !(sec && sec.hasDraft);
+    });
+  }
+
+  async function saveSection(section) {
+    const fields = {};
+    document.querySelectorAll('.sd-field[data-section="' + section + '"]').forEach((el) => {
+      fields[el.dataset.field] = readFieldValue(el);
+    });
+    await SiteDeskApi.saveContent({ section, fields });
+    await refreshPending();
+    const data = await SiteDeskApi.content();
+    state.sections = data.sections || {};
+    const card = document.querySelector('.sd-section-card[data-section="' + section + '"]');
+    const chip = card && card.querySelector(".sd-draft-chip");
+    if (chip) chip.hidden = false;
+    toast("Borrador guardado (" + (SECTION_LABELS[section] || section) + ").");
+  }
+
+  function bindContentForm() {
+    document.querySelectorAll(".sd-save-section").forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const section = btn.dataset.section;
+        btn.disabled = true;
+        try {
+          await saveSection(section);
+        } catch (err) {
+          toast(apiErrorMessage(err), true);
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    });
+    document.querySelectorAll(".sd-field").forEach((el) => {
+      el.addEventListener("blur", async () => {
+        const section = el.dataset.section;
+        if (!section) return;
+        clearTimeout(el._saveT);
+        el._saveT = setTimeout(async () => {
+          try {
+            await saveSection(section);
+          } catch (err) {
+            toast(apiErrorMessage(err), true);
+          }
+        }, 300);
+      });
+    });
+  }
+
+  function appendChatMessage(role, text) {
+    const stream = document.querySelector(".sd-chat-stream");
+    if (!stream) return;
+    const isUser = role === "user";
+    const avatar = isUser ? initials(state.user?.name || "Tú") : "Geo";
+    const html =
+      '<div class="msg"' + (isUser ? ' style="flex-direction: row-reverse;"' : "") + ">" +
+      '<div class="msg-avatar' + (isUser ? "" : " ai") + '">' +
+      (isUser ? avatar : '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="1.4" fill="white"/></svg>') +
+      "</div>" +
+      '<div class="msg-body"' + (isUser ? ' style="text-align: right;"' : "") + ">" +
+      '<div class="msg-name">' + (isUser ? "Tú" : "Geo") + "</div>" +
+      '<div class="msg-content"' +
+      (isUser ? ' style="display:inline-block;background:var(--blue-soft);padding:10px 14px;border-radius:14px 14px 4px 14px;text-align:left;"' : "") +
+      ">" + text.replace(/\n/g, "<br>") + "</div></div></div>";
+    stream.insertAdjacentHTML("beforeend", html);
+    stream.scrollTop = stream.scrollHeight;
+  }
+
+  async function sendChatMessage(text) {
+    const input = document.querySelector(".sd-chat-input");
+    appendChatMessage("user", text);
+    if (input) input.value = "";
+    try {
+      const res = await SiteDeskApi.chat({
+        message: text,
+        conversationId: state.conversationId,
+      });
+      if (res.conversationId != null) state.conversationId = res.conversationId;
+      appendChatMessage("assistant", res.reply || "Listo.");
+      await refreshPending();
+    } catch (err) {
+      appendChatMessage("assistant", apiErrorMessage(err));
+    }
+  }
+
+  function bindChat() {
+    const input = document.querySelector(".sd-chat-input");
+    const sendBtn = document.querySelector(".sd-chat-send");
+    const stream = document.querySelector(".sd-chat-stream");
+    if (!input || !stream) return;
+
+    const clientName = () => state.user?.name || state.site?.clientName || "Cliente";
+    stream.innerHTML =
+      '<div class="msg"><div class="msg-avatar ai"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>' +
+      '<div class="msg-body"><div class="msg-name">Geo</div><div class="msg-content">Hola ' +
+      clientName() +
+      " 👋 ¿En qué le ayudo hoy? Puede pedirme cambios de textos, precios o contacto.</div></div></div>";
+
+    const submit = () => {
+      const text = input.value.trim();
+      if (!text) return;
+      sendChatMessage(text);
+    };
+    sendBtn && sendBtn.addEventListener("click", submit);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        submit();
+      }
+    });
+    document.querySelectorAll(".suggestions .sug").forEach((el) => {
+      el.addEventListener("click", () => {
+        const t = el.textContent.replace(/^[^\s]+\s*/, "").trim();
+        input.value = t;
+        input.focus();
+      });
+    });
+    document.querySelector(".chat-head .btn-ghost")?.addEventListener("click", () => {
+      state.conversationId = null;
+      bindChat();
+    });
+  }
+
+  function initLogin() {
+    const form = document.getElementById("sd-login-form");
+    const googleBtn = document.getElementById("sd-google-login");
+    const errEl = document.getElementById("sd-login-error");
+    const params = new URLSearchParams(location.search);
+    const next = params.get("next") || "index.html";
+
+    const hashParams = new URLSearchParams((location.hash || "").replace(/^#/, ""));
+    const oauthToken = hashParams.get("token");
+    const oauthError = hashParams.get("error");
+    if (oauthToken) {
+      SiteDeskAuth.set(decodeURIComponent(oauthToken));
+      history.replaceState({}, "", location.pathname + location.search);
+      location.href = next;
+      return;
+    }
+    if (oauthError) {
+      if (errEl) {
+        errEl.textContent = decodeURIComponent(oauthError.replace(/\+/g, " "));
+        errEl.hidden = false;
+      }
+      history.replaceState({}, "", location.pathname + location.search);
+    }
+
+    if (SiteDeskAuth.get()) {
+      location.href = next;
+      return;
+    }
+
+    if (googleBtn) {
+      googleBtn.addEventListener("click", () => {
+        if (USE_MOCK) {
+          if (errEl) {
+            errEl.textContent = "OAuth no disponible en modo demo.";
+            errEl.hidden = false;
+          }
+          return;
+        }
+        const url = googleOAuthUrl(next);
+        if (url) location.href = url;
+      });
+    }
+
+    if (!form) return;
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      if (errEl) errEl.hidden = true;
+      try {
+        const email = form.email.value.trim();
+        const password = form.password.value;
+        await SiteDeskApi.login({ email, password });
+        location.href = next;
+      } catch (err) {
+        if (errEl) {
+          errEl.textContent = apiErrorMessage(err);
+          errEl.hidden = false;
+        }
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    if (PAGE === "login") {
+      initLogin();
+      return;
+    }
+    if (!(await requireAuth())) return;
+    bindPublishButtons();
+    try {
+      const ok = await loadSiteContext();
+      if (!ok) return;
+      if (PAGE === "index") await loadHistoryPreview();
+      if (PAGE === "contenido") {
+        bindContentForm();
+        await loadContentForm();
+      }
+      if (PAGE === "historial") await loadFullHistory();
+      if (PAGE === "chat") bindChat();
+    } catch (err) {
+      toast(apiErrorMessage(err), true);
+    }
+  });
+})();

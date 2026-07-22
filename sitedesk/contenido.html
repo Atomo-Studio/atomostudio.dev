@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contenido · SiteDesk</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='3' y='4' width='18' height='14' rx='2' fill='url(%23g)'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-h">
+      <svg class="logo" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs><rect x="3" y="6" width="26" height="20" rx="4" fill="url(#lg)"/><path d="M8 13h16M8 17h12" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="17" r="2" fill="white"/></svg>
+      <div class="sb-h-name">SiteDesk<small>by Átomo</small></div>
+    </div>
+    <div class="sb-site">
+      <div class="sb-site-thumb">CR</div>
+      <div class="sb-site-meta"><div class="sb-site-name">Carnicería Rojas</div><div class="sb-site-url"><span class="sb-site-dot"></span> carniceriarojas.cl</div></div>
+    </div>
+    <nav class="sb-nav">
+      <a href="index.html" class="sb-item"><span class="ico">⊞</span>Inicio</a>
+      <div class="sb-item active"><span class="ico">📝</span>Contenido<span class="badge">2</span></div>
+      <a href="productos.html" class="sb-item"><span class="ico">🥩</span>Mis Cortes</a>
+      <a href="galeria.html" class="sb-item"><span class="ico">🖼️</span>Galería</a>
+      <a href="animaciones.html" class="sb-item"><span class="ico">✨</span>Animaciones</a>
+      <a href="chat.html" class="sb-item"><span class="ico">💬</span>Chat con IA</a>
+      <a href="historial.html" class="sb-item"><span class="ico">🕐</span>Historial</a>
+    </nav>
+    <div class="sb-foot">
+      <div class="sb-foot-avatar">DR</div>
+      <div class="sb-foot-meta"><div class="sb-foot-name">Don Rojas</div><div class="sb-foot-role">Carnicería Rojas</div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-title">Contenido</div>
+      <div class="top-actions">
+        <div class="drafts-pill"><span class="num">2</span>Cambios sin publicar</div>
+        <button class="btn btn-primary"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 7 6 11l5-8"/></svg>Publicar ahora</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-h"><div><h1>Textos de mi sitio</h1><p>Edite los textos de cada sección. Lo que escriba aparecerá en su sitio cuando apriete Publicar.</p></div></div>
+
+      <!-- Sections nav -->
+      <div style="display: grid; grid-template-columns: 220px 1fr; gap: 24px;">
+
+        <aside style="position: sticky; top: calc(var(--top-h) + 24px); align-self: start;">
+          <div style="font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; padding: 0 10px;">Secciones</div>
+          <a href="#hero" style="display: block; padding: 9px 12px; font-size: 13px; font-weight: 600; color: var(--blue); background: var(--blue-soft); border-radius: 8px; margin-bottom: 2px;">🎯 Hero principal</a>
+          <a href="#about" style="display: block; padding: 9px 12px; font-size: 13px; color: var(--text2); border-radius: 8px; margin-bottom: 2px;">📖 Bienvenida</a>
+          <a href="#contact" style="display: block; padding: 9px 12px; font-size: 13px; color: var(--text2); border-radius: 8px; margin-bottom: 2px;">📞 Contacto</a>
+          <a href="#hours" style="display: block; padding: 9px 12px; font-size: 13px; color: var(--text2); border-radius: 8px; margin-bottom: 2px;">🕐 Horarios</a>
+          <a href="#social" style="display: block; padding: 9px 12px; font-size: 13px; color: var(--text2); border-radius: 8px; margin-bottom: 2px;">📱 Redes sociales</a>
+          <a href="#footer" style="display: block; padding: 9px 12px; font-size: 13px; color: var(--text2); border-radius: 8px; margin-bottom: 2px;">⬇️ Pie de página</a>
+        </aside>
+
+        <div>
+          <!-- HERO -->
+          <div class="card" id="hero" style="margin-bottom: 18px;">
+            <div class="card-h">
+              <h3>🎯 Hero principal</h3>
+              <span class="chip draft">Sin publicar</span>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Eyebrow<small>El textito chico arriba</small></div>
+              <input class="input" value="CARNICERÍA · DESDE 1987"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Título grande<small>Lo primero que ve el cliente</small></div>
+              <textarea class="textarea">Cortes premium en Pedro Aguirre Cerda</textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Subtítulo<small>Una línea que explica qué hacen</small></div>
+              <textarea class="textarea">Vacuno, cerdo y aves frescos. Pedidos por WhatsApp y despacho a domicilio.</textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Botón principal<small>Texto del botón rojo</small></div>
+              <input class="input" value="📱 Pedir por WhatsApp"/>
+            </div>
+          </div>
+
+          <!-- ABOUT -->
+          <div class="card" id="about" style="margin-bottom: 18px;">
+            <div class="card-h"><h3>📖 Bienvenida / sobre nosotros</h3></div>
+            <div class="form-row">
+              <div class="form-label">Título</div>
+              <input class="input" value="Tres generaciones cortando carne para Santiago"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Texto</div>
+              <textarea class="textarea" style="min-height: 120px;">Desde 1987, la Carnicería Rojas atiende a vecinos de Pedro Aguirre Cerda y comunas vecinas. Carne fresca, cortes a pedido, y un trato cercano que solo da el barrio.</textarea>
+            </div>
+          </div>
+
+          <!-- CONTACT -->
+          <div class="card" id="contact" style="margin-bottom: 18px;">
+            <div class="card-h"><h3>📞 Contacto</h3></div>
+            <div class="form-row">
+              <div class="form-label">Teléfono / WhatsApp</div>
+              <input class="input" value="+56 9 8842 3401"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Email</div>
+              <input class="input" value="hola@carniceriarojas.cl"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Dirección</div>
+              <input class="input" value="Av. Departamental 1240, Pedro Aguirre Cerda"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label">Google Maps<small>Pegue el link aquí</small></div>
+              <input class="input" value="https://maps.google.com/?q=Carniceria+Rojas+PAC" style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px;"/>
+            </div>
+          </div>
+
+          <!-- HOURS -->
+          <div class="card" id="hours" style="margin-bottom: 18px;">
+            <div class="card-h">
+              <h3>🕐 Horarios</h3>
+              <span class="chip draft">Sin publicar</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: grid; grid-template-columns: 100px 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border);">
+                <div style="font-weight: 600; font-size: 13.5px;">Lunes a Viernes</div>
+                <div style="display: flex; gap: 8px;">
+                  <input class="input" value="08:00" style="max-width: 100px;"/>
+                  <span style="align-self: center; color: var(--muted);">a</span>
+                  <input class="input" value="20:00" style="max-width: 100px;"/>
+                </div>
+                <div class="gx-toggle" style="width:36px; height:20px; background: var(--blue); border-radius: 999px; position: relative;"><div style="position:absolute; right:2px; top:2px; width:14px; height:14px; border-radius:999px; background:white;"></div></div>
+              </div>
+              <div style="display: grid; grid-template-columns: 100px 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border);">
+                <div style="font-weight: 600; font-size: 13.5px;">Sábado</div>
+                <div style="display: flex; gap: 8px;">
+                  <input class="input" value="09:00" style="max-width: 100px;"/>
+                  <span style="align-self: center; color: var(--muted);">a</span>
+                  <input class="input" value="18:00" style="max-width: 100px; background: rgba(245,158,11,0.10); border-color: rgba(245,158,11,0.40);"/>
+                </div>
+                <div class="gx-toggle" style="width:36px; height:20px; background: var(--blue); border-radius: 999px; position: relative;"><div style="position:absolute; right:2px; top:2px; width:14px; height:14px; border-radius:999px; background:white;"></div></div>
+              </div>
+              <div style="display: grid; grid-template-columns: 100px 1fr auto; gap: 12px; align-items: center; padding: 8px 0; opacity: 0.6;">
+                <div style="font-weight: 600; font-size: 13.5px;">Domingo</div>
+                <div style="font-size: 12.5px; color: var(--muted);">Cerrado</div>
+                <div class="gx-toggle" style="width:36px; height:20px; background: var(--bg3); border: 1px solid var(--border); border-radius: 999px; position: relative;"><div style="position:absolute; left:2px; top:2px; width:14px; height:14px; border-radius:999px; background: var(--muted);"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SOCIAL -->
+          <div class="card" id="social" style="margin-bottom: 18px;">
+            <div class="card-h"><h3>📱 Redes sociales</h3></div>
+            <div class="form-row">
+              <div class="form-label" style="display: flex; align-items: center; gap: 8px;"><span style="width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg, #f59e0b, #ec4899); display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; font-weight: 700;">IG</span>Instagram</div>
+              <input class="input" value="https://instagram.com/carniceriarojas"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label" style="display: flex; align-items: center; gap: 8px;"><span style="width: 24px; height: 24px; border-radius: 6px; background: #1877f2; display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; font-weight: 700;">f</span>Facebook</div>
+              <input class="input" value="https://facebook.com/carniceriarojas"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label" style="display: flex; align-items: center; gap: 8px;"><span style="width: 24px; height: 24px; border-radius: 6px; background: #25d366; display: flex; align-items: center; justify-content: center; font-size: 14px;">💬</span>WhatsApp</div>
+              <input class="input" value="+56 9 8842 3401"/>
+            </div>
+            <div class="form-row">
+              <div class="form-label" style="display: flex; align-items: center; gap: 8px;"><span style="width: 24px; height: 24px; border-radius: 6px; background: #000; display: flex; align-items: center; justify-content: center; font-size: 14px;">🎵</span>TikTok<small>Opcional</small></div>
+              <input class="input" placeholder="https://tiktok.com/@..."/>
+            </div>
+          </div>
+
+          <!-- Lock notice -->
+          <div style="padding: 14px 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 12px; font-size: 13px;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; color: var(--muted); flex-shrink: 0;">🔒</div>
+            <div style="flex: 1; color: var(--text2);">
+              <strong style="color: var(--text);">¿Y los colores y el diseño?</strong> Eso lo dejó listo Mario cuando armó su sitio. Si necesita cambios de diseño, <a href="https://wa.me/56973994504" style="color: var(--blue); font-weight: 600;">escríbale por WhatsApp</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+  <script src="api.js"></script>
+  <script src="verticals.js"></script>
+  <script>
+    if (!SiteDeskAuth.get()) {
+      window.location.href = 'login.html?redirect=contenido.html';
+    }
+
+    // Section field mappings: which fields each section has and their labels
+    const SECTION_SCHEMA = {
+      hero: {
+        title: 'Hero principal',
+        icon: '🎯',
+        fields: [
+          { key: 'eyebrow', label: 'Eyebrow', hint: 'El textito chico arriba', type: 'input' },
+          { key: 'title', label: 'Título grande', hint: 'Lo primero que ve el cliente', type: 'textarea' },
+          { key: 'subtitle', label: 'Subtítulo', hint: 'Una línea que explica qué hacen', type: 'textarea' },
+          { key: 'cta', label: 'Botón principal', hint: 'Texto del botón', type: 'input' },
+        ],
+      },
+      about: {
+        title: 'Bienvenida',
+        icon: '📖',
+        fields: [
+          { key: 'title', label: 'Título', hint: '', type: 'input' },
+          { key: 'text', label: 'Texto', hint: '', type: 'textarea' },
+        ],
+      },
+      contact: {
+        title: 'Contacto',
+        icon: '📞',
+        fields: [
+          { key: 'phone', label: 'Teléfono / WhatsApp', hint: '', type: 'input' },
+          { key: 'email', label: 'Email', hint: '', type: 'input' },
+          { key: 'address', label: 'Dirección', hint: '', type: 'input' },
+          { key: 'maps', label: 'Google Maps', hint: 'Pegue el link aquí', type: 'input' },
+        ],
+      },
+      hours: {
+        title: 'Horarios',
+        icon: '🕐',
+        fields: [
+          { key: 'weekdays', label: 'Lunes a Viernes', hint: 'ej: 08:00 a 20:00', type: 'input' },
+          { key: 'saturday', label: 'Sábado', hint: 'ej: 09:00 a 18:00', type: 'input' },
+          { key: 'sunday', label: 'Domingo', hint: 'ej: Cerrado', type: 'input' },
+        ],
+      },
+      social: {
+        title: 'Redes sociales',
+        icon: '📱',
+        fields: [
+          { key: 'instagram', label: 'Instagram', hint: '', type: 'input' },
+          { key: 'facebook', label: 'Facebook', hint: '', type: 'input' },
+          { key: 'whatsapp', label: 'WhatsApp', hint: '', type: 'input' },
+          { key: 'tiktok', label: 'TikTok', hint: 'Opcional', type: 'input' },
+        ],
+      },
+      footer: {
+        title: 'Pie de página',
+        icon: '⬇️',
+        fields: [
+          { key: 'text', label: 'Texto del footer', hint: '', type: 'input' },
+        ],
+      },
+    };
+
+    let currentSections = {};
+
+    async function loadContent() {
+      try {
+        // Load site first
+        await SiteDeskApi.site();
+        // Then load content
+        const data = await SiteDeskApi.content();
+        if (data && data.sections) {
+          currentSections = data.sections;
+          renderSections(data.sections);
+        }
+        updateBadge();
+      } catch (err) {
+        if (err.status === 401) {
+          SiteDeskAuth.clear();
+          window.location.href = 'login.html?redirect=contenido.html';
+          return;
+        }
+        console.error('Error loading content:', err);
+        alert('Error al cargar el contenido: ' + apiErrorMessage(err));
+      }
+    }
+
+    function renderSections(sections) {
+      const container = document.querySelector('.content > div[style*="grid-template-columns: 220px 1fr"] > div:last-child');
+      if (!container) return;
+
+      let html = '';
+      for (const [key, schema] of Object.entries(SECTION_SCHEMA)) {
+        const data = sections[key] || {};
+        const hasData = Object.keys(data).length > 0;
+        html += `
+          <div class="card" id="${key}" style="margin-bottom: 18px;">
+            <div class="card-h">
+              <h3>${schema.icon} ${schema.title}</h3>
+              ${hasData ? '<span class="chip live">Cargado</span>' : '<span class="chip" style="opacity:0.5;">Vacío</span>'}
+            </div>
+        `;
+        for (const field of schema.fields) {
+          const value = data[field.key] || '';
+          if (field.type === 'textarea') {
+            html += `
+              <div class="form-row">
+                <div class="form-label">${field.label}${field.hint ? '<small>' + field.hint + '</small>' : ''}</div>
+                <textarea class="textarea" data-section="${key}" data-field="${field.key}">${escapeHtml(value)}</textarea>
+              </div>
+            `;
+          } else {
+            html += `
+              <div class="form-row">
+                <div class="form-label">${field.label}${field.hint ? '<small>' + field.hint + '</small>' : ''}</div>
+                <input class="input" data-section="${key}" data-field="${field.key}" value="${escapeHtml(value)}"/>
+              </div>
+            `;
+          }
+        }
+        html += `
+            <div style="padding-top: 8px;">
+              <button class="btn btn-primary" onclick="saveSection('${key}')" style="font-size: 13px;">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7 6 11l5-8"/></svg>
+                Guardar ${schema.title}
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      // Lock notice
+      html += `
+        <div style="padding: 14px 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 12px; font-size: 13px;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; color: var(--muted); flex-shrink: 0;">🔒</div>
+          <div style="flex: 1; color: var(--text2);">
+            <strong style="color: var(--text);">¿Y los colores y el diseño?</strong> Eso lo dejó listo Mario cuando armó su sitio. Si necesita cambios de diseño, <a href="https://wa.me/56973994504" style="color: var(--blue); font-weight: 600;">escríbale por WhatsApp</a>.
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    window.saveSection = async function(sectionKey) {
+      const fields = {};
+      const inputs = document.querySelectorAll(`[data-section="${sectionKey}"]`);
+      inputs.forEach(el => {
+        fields[el.dataset.field] = el.value;
+      });
+
+      try {
+        await SiteDeskApi.saveContent({ section: sectionKey, fields });
+        // Update badge
+        currentSections[sectionKey] = fields;
+        updateBadge();
+        // Flash feedback
+        const card = document.getElementById(sectionKey);
+        if (card) {
+          const chip = card.querySelector('.chip');
+          if (chip) {
+            chip.textContent = '✅ Guardado';
+            chip.className = 'chip live';
+            setTimeout(() => { chip.textContent = 'Cargado'; }, 2000);
+          }
+        }
+        // Update drafts counter
+        const draftCount = Object.keys(currentSections).filter(k => {
+          const v = currentSections[k];
+          return v && Object.keys(v).length > 0;
+        }).length;
+        const badgeEls = document.querySelectorAll('.badge');
+        badgeEls.forEach(b => { b.textContent = draftCount; });
+        const draftsPills = document.querySelectorAll('.drafts-pill .num');
+        draftsPills.forEach(p => { p.textContent = draftCount; });
+      } catch (err) {
+        alert('Error al guardar: ' + apiErrorMessage(err));
+      }
+    };
+
+    function updateBadge() {
+      const count = Object.keys(currentSections).filter(k => {
+        const v = currentSections[k];
+        return v && Object.keys(v).length > 0;
+      }).length;
+      const badgeEls = document.querySelectorAll('.badge');
+      badgeEls.forEach(b => { b.textContent = count; });
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    loadContent();
+  </script>
+</body>
+</html>

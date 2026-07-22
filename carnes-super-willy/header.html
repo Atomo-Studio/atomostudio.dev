@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Carnes Super Willy · Carnicería en Conchalí</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#c0392b;--red-h:#e74c3c;--bg:#0c0a09;--s2:#141110;--s3:#1c1816;--bd:#2a2420;--tx:#f0ece8;--tx2:#8a8078;--gold:#d4a853}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bd)}
+.top-bar{background:var(--red);color:#fff;padding:8px 24px;font-size:12px;text-align:center}
+.nav{position:sticky;top:0;z-index:100;background:rgba(12,10,9,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--tx);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .e{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--gold));display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13px;color:var(--tx2);text-decoration:none;transition:color .3s;position:relative;padding:4px 0}
+.nav-links a:hover{color:var(--tx)}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--red);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.btn-r{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--red);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:Inter,sans-serif;transition:all .25s}
+.btn-r:hover{background:var(--red-h);transform:translateY(-2px);box-shadow:0 6px 25px rgba(192,57,43,.3)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gold);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;font-family:Inter,sans-serif;transition:all .25s}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(212,168,83,.3)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:8px;font-size:13px;cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-o:hover{border-color:var(--tx2)}
+.hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 40%, rgba(192,57,43,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 60%, rgba(212,168,83,.05) 0%,transparent 50%)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:60px 24px;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:64px;font-weight:700;line-height:1.05;margin-bottom:16px}
+.hero h1 .r{color:var(--red)}.hero h1 .g{color:var(--gold)}
+.hero p{font-size:15px;color:var(--tx2);line-height:1.7;margin-bottom:28px;max-width:460px}
+.hero-img{aspect-ratio:4/3;background:linear-gradient(135deg,#1a0c0a,#0c0a09);border:1px solid var(--bd);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative}
+.hero-img::after{content:'🥩';font-size:120px;opacity:.08}
+.s{max-width:1200px;margin:0 auto;padding:80px 24px;width:100%}
+.sd{background:var(--s2);padding:80px 24px}
+.st{font-size:11px;color:var(--tx2);text-transform:uppercase;letter-spacing:3px;margin-bottom:4px}
+.st2{font-size:40px;font-weight:700;margin-bottom:4px}
+.st2 .r{color:var(--red)}.st2 .g{color:var(--gold)}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.c{background:var(--s3);border:1px solid var(--bd);border-radius:12px;overflow:hidden;transition:all .3s;text-decoration:none;color:inherit;display:block}
+.c:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3);border-color:rgba(192,57,43,.2)}
+.ci{height:160px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:48px}
+.cb{padding:20px}
+.c h3{font-size:20px;font-weight:600;margin-bottom:4px}
+.c p{font-size:13px;color:var(--tx2);line-height:1.5;margin-bottom:8px}
+.c .pr{font-size:16px;font-weight:700;color:var(--gold);font-family:'Cormorant Garamond',serif}
+.c .tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;background:rgba(192,57,43,.1);color:var(--red);margin-right:4px;margin-bottom:4px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:800px;margin:40px auto 0}
+.stat{text-align:center;padding:20px;background:var(--s3);border:1px solid var(--bd);border-radius:10px}
+.stat .num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--gold)}
+.stat .lbl{font-size:11px;color:var(--tx2);margin-top:4px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.test{background:var(--s3);border:1px solid var(--bd);border-radius:10px;padding:24px}
+.test .star{color:#f59e0b;font-size:12px;margin-bottom:8px}
+.test p{font-size:13px;color:var(--tx2);line-height:1.6;margin-bottom:12px;font-style:italic}
+.test .name{font-size:12px;font-weight:600}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.serv{background:var(--s3);border:1px solid var(--bd);border-radius:12px;padding:32px;text-align:center;transition:all .3s}
+.serv:hover{transform:translateY(-3px);border-color:rgba(192,57,43,.15)}
+.serv .ico{font-size:32px;margin-bottom:12px}
+.serv h3{font-size:20px;font-weight:600;margin-bottom:6px}
+.serv p{font-size:13px;color:var(--tx2);line-height:1.5;max-width:280px;margin:0 auto}
+.ct-wrap{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.ct{display:flex;align-items:center;gap:14px;padding:16px 24px;background:var(--s3);border:1px solid var(--bd);border-radius:10px;text-decoration:none}
+.ct i{color:var(--red);font-size:18px}.ct small{display:block;font-size:10px;color:var(--tx2);text-transform:uppercase}
+.ct span{color:var(--tx);font-size:14px}
+.wf{position:fixed;bottom:24px;right:24px;z-index:99;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 25px rgba(37,211,102,.35);transition:all .3s;text-decoration:none;color:#fff;font-size:26px}
+.wf:hover{transform:scale(1.1)}
+.ft{background:var(--s2);border-top:1px solid var(--bd);padding:48px 24px}
+.ft-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.ft h4{font-size:15px;font-weight:600;margin-bottom:12px;font-family:'Cormorant Garamond',serif}
+.ft a{display:block;font-size:13px;color:var(--tx2);text-decoration:none;margin-bottom:6px;transition:color .3s}
+.ft a:hover{color:var(--tx)}
+.ft-bot{max-width:1200px;margin:24px auto 0;padding-top:24px;border-top:1px solid var(--bd);text-align:center;font-size:12px;color:var(--tx2)}
+.fu{opacity:0;transform:translateY(30px);transition:all .7s ease-out}
+.fu.vis{opacity:1;transform:translateY(0)}
+.bread{display:flex;gap:8px;font-size:12px;color:var(--tx2);margin-bottom:24px;align-items:center}
+.bread a{color:var(--tx2);text-decoration:none}.bread a:hover{color:var(--tx)}
+.bread .sep{color:var(--bd)}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero h1{font-size:40px}.cg{grid-template-columns:1fr}.test-grid,.serv-grid,.stat-grid{grid-template-columns:1fr}.ft-inner{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top-bar">🥩 Carne fresca todos los días · Delivery gratis en Conchalí · (2) 2625 7210</div>
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo"><span class="e">SW</span> Carnes Super Willy</a>
+<div class="nav-links"><a href="/">Inicio</a><a href="/cortes/">Cortes</a><a href="/servicios/">Servicios</a><a href="/contacto/">Contacto</a><a href="https://wa.me/56226257210?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="btn-r" style="padding:8px 18px;font-size:12px"><i class="fab fa-whatsapp"></i> Pedir</a></div></div></nav>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /backups/
+
+Sitemap: https://atomostudio.dev/sitemap.xml

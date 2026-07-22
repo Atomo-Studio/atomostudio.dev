@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Precios Geo App · Átomo Studio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Planes Geo App desde gratis. Tu asistente de IA personal con los mejores modelos del mundo. Sin comisiones, sin letra chica.">
@@ -10,10 +11,9 @@
 <meta property="og:url" content="https://atomostudio.dev/geo-pricing.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<title data-i18n="planes_precios_geo_app">Planes y Precios · Geo App — Átomo Studio</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ═══════════════════════════════════════════════
@@ -372,9 +372,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
 <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/geo-pricing.html">
 <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/geo-pricing.html?lang=en_US">
 <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/geo-pricing.html">
+<link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/geo-pricing.html?lang=fr_FR">
+<link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/geo-pricing.html?lang=pt_BR">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Geo App","applicationCategory":"Utilities","operatingSystem":"Android, iOS, Web","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"CLP"},{"@type":"Offer","name":"Pro","price":"9990","priceCurrency":"CLP","billingIncrement":"P1M"},{"@type":"Offer","name":"Max","price":"24990","priceCurrency":"CLP","billingIncrement":"P1M"}]}
 </script>
+    <link rel="canonical" href="https://atomostudio.dev/geo-pricing.html">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
 </head>
 <body>
 
@@ -383,30 +389,33 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
 <!-- ═══════════════════════════
      NAV
 ═══════════════════════════ -->
-<nav id="navbar">
+<nav role="navigation" aria-label="Navegación principal" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
       <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
-        <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
+        <a href="index.html" data-i18n="inicio">Inicio</a>
+        <a href="servicios.html" data-i18n="servicios">Servicios</a>
         <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
-        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
-        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="modelos.html" data-i18n="modelos_ia">Modelos IA</a>
+        <a href="geo-pricing.html" class="active" data-i18n="precios">Precios</a>
         <a href="contacto.html" data-i18n="contacto">Contacto</a>
     </div>
-      <div class="nav-mobile" id="menuToggle">
+      <div class="nav-mobile" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
         <span></span><span></span><span></span>
       </div>
-      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
+      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Cotiza gratis</a>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
+  <a href="index.html" onclick="closeMobile()" data-i18n="inicio">Inicio</a>
+  <a href="servicios.html" onclick="closeMobile()" data-i18n="servicios">Servicios</a>
   <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
-  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
-  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="modelos.html" onclick="closeMobile()" data-i18n="modelos_ia">Modelos IA</a>
+  <a href="geo-pricing.html" class="active" onclick="closeMobile()" data-i18n="precios">Precios</a>
   <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
 </div>
 
@@ -446,7 +455,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
       <ul class="features-list">
         <li><span class="feat-icon">✅</span> Geos 2.1 (atómo-llm)</li>
         <li><span class="feat-icon">✅</span> DeepSeek V3</li>
-        <li><span class="feat-icon feat-no">❌</span> GPT-4o / Claude Sonnet</li>
+        <li><span class="feat-icon feat-no">❌</span> GPT-4o</li>
         <li><span class="feat-icon feat-no">❌</span> Voz (hablar con Geo)</li>
         <li><span class="feat-icon feat-no">❌</span> Visión y documentos</li>
         <li><span class="feat-icon">✅</span> Memoria (últimas 3 conversaciones)</li>
@@ -454,7 +463,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
         <li><span class="feat-icon">✅</span> Soporte comunidad</li>
       </ul>
 
-      <a class="btn-plan btn-free" href="geo-app-completa.html" data-i18n="empezar_gratis">Empezar gratis →</a>
+      <a class="btn-plan btn-free" href="contacto.html" data-i18n="empezar_gratis">Empezar gratis →</a>
     </div>
 
     <!-- PRO -->
@@ -478,7 +487,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
       <ul class="features-list">
         <li><span class="feat-icon">✅</span> Geos 2.1 (atómo-llm)</li>
         <li><span class="feat-icon">✅</span> DeepSeek V3 + R1</li>
-        <li><span class="feat-icon">✅</span> GPT-4o + Claude Sonnet</li>
+        <li><span class="feat-icon">✅</span> GPT-4o</li>
         <li><span class="feat-icon">✅</span> Llama 3.3 vía Groq (ultrarrápido)</li>
         <li><span class="feat-icon">✅</span> <span class="feat-highlight">Voz</span> — habla, Geo escucha</li>
         <li><span class="feat-icon">✅</span> <span class="feat-highlight">Visión</span> — fotos, PDFs, OCR</li>
@@ -510,7 +519,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
 
       <ul class="features-list">
         <li><span class="feat-icon">✅</span> Todo lo de Pro</li>
-        <li><span class="feat-icon">✅</span> <span class="feat-highlight">Claude Opus</span> + GPT-4.1</li>
+        <li><span class="feat-icon">✅</span> <span class="feat-highlight">GPT-4.1</span></li>
         <li><span class="feat-icon">✅</span> Memoria persistente avanzada</li>
         <li><span class="feat-icon">✅</span> Exportar conversaciones</li>
         <li><span class="feat-icon">✅</span> Prioridad de respuesta (sin filas)</li>
@@ -553,7 +562,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
       <div class="rule-icon rule-green">🔒</div>
       <div class="rule-text">
         <h4>Modelos premium = plan premium</h4>
-        <p>Claude Opus y GPT-4.1 solo están disponibles en plan Max. GPT-4o y Claude Sonnet solo en Pro y Max. No hay forma de saltarse esta regla.</p>
+        <p>GPT-4.1 solo está disponible en plan Max. GPT-4o solo en Pro y Max. No hay forma de saltarse esta regla.</p>
       </div>
     </div>
     <div class="rule-card">
@@ -612,18 +621,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
         <td class="check">✅</td>
         <td class="check">✅</td>
       </tr>
-      <tr>
-        <td><span class="model-name">Claude Sonnet</span></td>
-        <td class="cross">—</td>
-        <td class="check">✅</td>
-        <td class="check">✅</td>
-      </tr>
-      <tr>
-        <td><span class="model-name">Claude Opus</span></td>
-        <td class="cross">—</td>
-        <td class="cross">—</td>
-        <td class="check">✅</td>
-      </tr>
+
       <tr>
         <td><span class="model-name">GPT-4.1</span></td>
         <td class="cross">—</td>
@@ -656,7 +654,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
     <div class="faq-a">Sí. Tus datos son tuyos. No los vendemos ni compartimos con terceros. En plan Pro y Max tienes además modo incógnito para conversaciones que no se guardan en ningún servidor.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">¿Qué diferencia a Geos 2.1 de ChatGPT o Claude?</div>
+    <div class="faq-q">¿Qué diferencia a Geos 2.1 de ChatGPT o Llama?</div>
     <div class="faq-a">Geos 2.1 está construido sobre atómo-llm, nuestro modelo propio entrenado en corpus latinoamericano. Entiende el contexto, la cultura y el español de la región — no es una traducción de un modelo en inglés. Además aprende de ti con cada conversación.</div>
   </div>
   <div class="faq-item">
@@ -676,8 +674,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
   <h2>¿Listo para probar Geo App?</h2>
   <p>Empieza gratis hoy. Sin tarjeta. Sin trampas.</p>
   <div class="cta-buttons">
-    <a class="btn-cta-primary" href="geo-app-completa.html"><i class="fas fa-rocket"></i> Probar gratis ahora</a>
-    <a class="btn-cta-secondary" href="https://wa.me/56973994504?text=Tengo%20dudas%20sobre%20los%20planes%20de%20Geo%20App"><i class="fab fa-whatsapp"></i> Tengo dudas, escríbenos</a>
+    <a class="btn-cta-primary" href="contacto.html"><i class="fas fa-rocket" aria-hidden="true"></i> Probar gratis ahora</a>
+    <a class="btn-cta-secondary" href="https://wa.me/56973994504?text=Tengo%20dudas%20sobre%20los%20planes%20de%20Geo%20App"><i class="fab fa-whatsapp" aria-hidden="true"></i> Tengo dudas, escríbenos</a>
   </div>
 </section>
 
@@ -691,37 +689,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
         <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" style="width:32px;height:32px">
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Átomo Studio</span>
       </div>
-      <p class="footer-brand-desc">Creamos software inteligente, sitios web profesionales y el primer modelo IA latinoamericano enfocado en tu crecimiento personal y económico.</p>
+      <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">Creamos software inteligente, sitios web profesionales y un modelo IA propio, hecho en Chile, enfocado en tu crecimiento personal y económico.</p>
       <div style="margin-top:20px;display:flex;gap:8px">
-        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Servicios</h4>
+      <h3>Servicios</h3>
       <a href="servicios.html">Landing Page</a>
       <a href="servicios.html">Sitio Web Multi-página</a>
-      <a href="ecommerce.html">E-commerce Omnicanal</a>
+      <a href="servicios.html">E-commerce Omnicanal</a>
       <a href="servicios.html">Actualización Web</a>
       <a href="contacto.html">Presupuesto gratis</a>
     </div>
     <div class="footer-col">
-      <h4>Productos IA</h4>
-      <a href="geos.html">Geos 2.1</a>
-      <a href="geo-pricing.html">Precios</a>
-      <a href="atomo-llm.html">atómo-llm 🦙</a>
-      <a href="geo-app-completa.html">Geo App</a>
-      <a href="modelos.html">Modelos disponibles</a>
-    </div>
+      <h3>Productos IA</h3>
+      
+      <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes Somos</a>
+      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm 🦙</a>
+      <a href="servicios.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="privacidad.html" data-i18n="privacidad">Privacidad</a></div>
     <div class="footer-col">
-      <h4>Empresa</h4>
-      <a href="portafolio.html">Portafolio</a>
+      <h3>Empresa</h3>
       <a href="contacto.html">Contacto</a>
       <a href="privacidad.html">Política de Privacidad</a>
       <a href="contacto.html">Contact@atomostudio.dev</a>
-      <a href="https://wa.me/56973994504" target="_blank">WhatsApp</a>
+      <a href="https://wa.me/56973994504" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -731,8 +727,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 32p
 </footer>
 
 <!-- WA FLOAT -->
-<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20los%20precios%20de%20Geo%20App" target="_blank" class="wa-float">
-  <i class="fab fa-whatsapp"></i>
+<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20los%20precios%20de%20Geo%20App" target="_blank" rel="noopener noreferrer" class="wa-float">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
 
 <script>
@@ -773,5 +769,7 @@ document.addEventListener('click',(e)=>{
   }
 });
 </script>
+<script src="js/i18n.js"></script>
+<script>setTimeout(function(){document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(function(e){e.style.opacity='1';e.style.transform='translateY(0) translateX(0)'})},2500);</script>
 </body>
 </html>

@@ -49,16 +49,30 @@
     return DEFAULT_LANG;
   }
 
-  /** Load translation JSON for a given lang */
+  /** Load translation JSON — try /locales/ first, fall back to i18n/ */
   async function loadLang(lang) {
+    // Map internal codes to locale file names
+    const codeMap = {
+      'es_CL': 'es', 'es_ES': 'es', 'en_US': 'en',
+      'fr_FR': 'fr', 'pt_BR': 'pt-BR'
+    };
+    const fileName = codeMap[lang] || lang.split('_')[0];
+
+    // Try 1: /locales/ (root-level structure, project-wide)
+    try {
+      const resp = await fetch(`/locales/${fileName}.json?_=${Date.now()}`);
+      if (resp.ok) return await resp.json();
+    } catch (_) {}
+
+    // Try 2: relative i18n/ (per-page fallback, backward compat)
     try {
       const resp = await fetch(`i18n/${lang}.json?_=${Date.now()}`);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      return await resp.json();
+      if (resp.ok) return await resp.json();
     } catch (e) {
       console.warn(`[i18n] Failed to load ${lang}:`, e);
-      return null;
     }
+
+    return null;
   }
 
   /** Translate a text string by looking up the key */
@@ -232,11 +246,11 @@
 
     document.body.appendChild(selector);
 
-    // Insert styles
+    // Insert styles — positioned on the LEFT to avoid conflicting with WhatsApp float button
     const styles = document.createElement('style');
     styles.textContent = `
       #atomo-lang-selector {
-        position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+        position: fixed; bottom: 20px; left: 20px; z-index: 9999;
         font-family: 'Inter', -apple-system, sans-serif;
       }
       #atomo-lang-btn {
@@ -250,7 +264,7 @@
       #atomo-lang-btn:hover { background: rgba(25,25,50,0.98); border-color: rgba(59,130,246,0.3); }
       #atomo-lang-btn .lang-current { min-width: 60px; text-align: left; }
       #atomo-lang-dropdown {
-        position: absolute; bottom: calc(100% + 8px); right: 0;
+        position: absolute; bottom: calc(100% + 8px); left: 0;
         background: rgba(15,15,30,0.98); backdrop-filter: blur(12px);
         border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
         overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.4);
@@ -265,7 +279,7 @@
       #atomo-lang-dropdown button:hover { background: rgba(59,130,246,0.1); color: #eeeef2; }
       #atomo-lang-dropdown button.active { color: #3b82f6; font-weight: 600; }
       @media (max-width: 640px) {
-        #atomo-lang-selector { bottom: 16px; right: 16px; }
+        #atomo-lang-selector { bottom: 16px; left: 16px; }
         #atomo-lang-btn { padding: 6px 10px; font-size: 12px; }
         #atomo-lang-btn .lang-current { display: none; }
         #atomo-lang-dropdown { min-width: 160px; }

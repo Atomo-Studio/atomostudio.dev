@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stock · Inicio</title>
+<link rel="icon" type="image/svg+xml" href="../atomostudio/img/logo-atomo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script src="verticals.js"></script>
+<script src="api.js"></script>
+</head>
+<body data-st-page="dashboard">
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-h">
+      <img class="logo" src="../atomostudio/img/logo-atomo.svg" width="28" height="28" alt=""/>
+      <div class="sb-h-name">Stock<small>by Átomo</small></div>
+    </div>
+    <div class="sb-site">
+      <div class="sb-site-thumb st-business-thumb">—</div>
+      <div class="sb-site-meta">
+        <div class="sb-site-name st-business-name">Mi negocio</div>
+        <div class="sb-site-url st-business-type">—</div>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <a href="app.html" class="sb-item active"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="5" height="5" rx="1"/><rect x="10.5" y="2.5" width="5" height="5" rx="1"/><rect x="2.5" y="10.5" width="5" height="5" rx="1"/><rect x="10.5" y="10.5" width="5" height="5" rx="1"/></svg></span>Inicio</a>
+      <a href="productos.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="12" height="10" rx="1.5"/><path d="M3 8h12"/></svg></span><span class="st-catalog-nav">Catálogo</span></a>
+      <a href="scanner.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h2V4H3v2zm10 0h2V4h-2v2zM3 14h2v-2H3v2zm10 0h2v-2h-2v2z"/><rect x="6" y="7" width="6" height="4" rx="0.5"/></svg></span>Escáner</a>
+      <a href="ventas.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6.5"/><path d="M6 9h6M9 6v6"/></svg></span>Ventas</a>
+      <a href="chat.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5c0-3 2.5-5.5 5.5-5.5h1c3 0 5.5 2.5 5.5 5.5v.5c0 3-2.5 5.5-5.5 5.5H7l-3 2v-2.7a5.5 5.5 0 0 1-.5-2.3v-3z"/></svg></span>Geos</a>
+      <a href="configuracion.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="2.5"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2"/></svg></span>Configuración</a>
+    </nav>
+    <div class="sb-foot">
+      <div class="sb-foot-avatar st-foot-avatar">—</div>
+      <div class="sb-foot-meta">
+        <div class="sb-foot-name st-client-name">—</div>
+        <div class="sb-foot-role st-business-name">—</div>
+      </div>
+      <button type="button" class="btn btn-ghost st-logout" style="padding:6px 10px;font-size:12px;" title="Cerrar sesión">↪</button>
+    </div>
+  </aside>
+  <main class="main st-page-main">
+    <header class="topbar">
+      <div class="top-title">Inicio</div>
+      <div class="top-actions">
+        <a href="scanner.html" class="btn btn-primary">📷 Escanear venta</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="page-h">
+        <div>
+          <h1><span class="st-business-name">Mi negocio</span></h1>
+          <p>Resumen de inventario y ventas de hoy.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-top">
+            <div class="stat-label st-product-plural" style="text-transform:capitalize;">Productos</div>
+            <div class="stat-icon blue">📦</div>
+          </div>
+          <div class="stat-num grad st-product-count">0</div>
+          <div class="stat-meta st-products-ok"></div>
+        </div>
+        <div class="stat">
+          <div class="stat-top">
+            <div class="stat-label">Ventas hoy</div>
+            <div class="stat-icon green">💰</div>
+          </div>
+          <div class="stat-num st-sales-today">$0</div>
+          <div class="stat-meta st-units-today">0 unidades</div>
+        </div>
+        <div class="stat">
+          <div class="stat-top">
+            <div class="stat-label">Stock bajo</div>
+            <div class="stat-icon red">⚠️</div>
+          </div>
+          <div class="stat-num" style="color:var(--error);"><span class="st-low-stock-count">0</span></div>
+          <div class="stat-meta st-low-stock-msg"></div>
+        </div>
+        <div class="stat">
+          <div class="stat-top">
+            <div class="stat-label">Asistente</div>
+            <div class="stat-icon purple">✨</div>
+          </div>
+          <div class="stat-num grad" style="font-size:22px;">Geos 3.1</div>
+          <div class="stat-meta"><a href="chat.html">Abrir chat →</a></div>
+        </div>
+      </div>
+      <div class="quick">
+        <a href="scanner.html" class="quick-card"><div class="quick-icon">📷</div><div class="quick-title">Escanear</div><div class="quick-sub">Buscar por código y vender</div></a>
+        <a href="productos.html" class="quick-card"><div class="quick-icon">📦</div><div class="quick-title st-catalog-nav">Catálogo</div><div class="quick-sub">Ver y editar <span class="st-product-plural">productos</span></div></a>
+        <a href="ventas.html" class="quick-card"><div class="quick-icon">🛍</div><div class="quick-title">Registrar venta</div><div class="quick-sub">Caja manual con stock</div></a>
+        <a href="chat.html" class="quick-card"><div class="quick-icon">✨</div><div class="quick-title">Preguntar a Geo</div><div class="quick-sub st-chat-example"></div></a>
+      </div>
+      <div class="grid-2">
+        <div class="card panel-card">
+          <div class="s-h" style="margin-top:0;"><h3>Últimas ventas</h3><a href="ventas.html">Ver todo</a></div>
+          <div id="st-recent-sales"></div>
+        </div>
+        <div class="card panel-card alert-card">
+          <div class="s-h" style="margin-top:0;"><h3>⚠ Reposición</h3><a href="productos.html?low=1">Ver catálogo</a></div>
+          <div id="st-low-stock-list"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<nav class="mobile-nav" aria-label="Navegación principal">
+  <a href="app.html" data-st-nav="dashboard"><span class="ico">🏠</span>Inicio</a>
+  <a href="productos.html" data-st-nav="productos"><span class="ico">📦</span>Catálogo</a>
+  <a href="scanner.html" data-st-nav="scanner"><span class="ico">📷</span>Escanear</a>
+  <a href="ventas.html" data-st-nav="ventas"><span class="ico">🛍</span>Ventas</a>
+  <a href="chat.html" data-st-nav="chat"><span class="ico">✨</span>Geos</a>
+</nav>
+<script src="app.js"></script>
+</body>
+</html>

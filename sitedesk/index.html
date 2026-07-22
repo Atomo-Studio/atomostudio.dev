@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SiteDesk · Tu sitio en tus manos</title>
+<meta name="description" content="SiteDesk by Átomo Studio — edita tu sitio web sin saber programar. Chat con IA, edición manual, publicación con un click.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='3' y='4' width='18' height='14' rx='2' fill='url(%23g)'/%3E%3Cpath d='M7 9h10M7 12h6' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="auth-loading" style="visibility:hidden;">
+<script>
+(function(){
+  var checkAuth = setInterval(function(){
+    if (window.SiteDeskAuth && SiteDeskAuth.token) {
+      document.body.style.visibility = "visible";
+      document.body.classList.remove("auth-loading");
+      clearInterval(checkAuth);
+    }
+  }, 100);
+  setTimeout(function(){
+    clearInterval(checkAuth);
+    if (!SiteDeskAuth || !SiteDeskAuth.token) {
+      window.location.href = "login.html";
+    }
+  }, 3000);
+})();
+</script>
+<script>
+(function() {
+  var p = new URLSearchParams(window.location.search);
+  var t = p.get('token');
+  if (t) {
+    localStorage.setItem('sitedesk_token', t);
+    window.history.replaceState({}, '', window.location.pathname);
+  }
+})();
+</script>
+
+
+
+<div class="app">
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <aside class="sidebar">
+    <div class="sb-h">
+      <svg class="logo" viewBox="0 0 32 32" fill="none">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+        <rect x="3" y="6" width="26" height="20" rx="4" fill="url(#lg)"/>
+        <path d="M8 13h16M8 17h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="24" cy="17" r="2" fill="white"/>
+      </svg>
+      <div class="sb-h-name">SiteDesk<small>by Átomo</small></div>
+    </div>
+
+    <div class="sb-site" id="sbSite">
+      <div class="sb-site-thumb" id="sbThumb">…</div>
+      <div class="sb-site-meta">
+        <div class="sb-site-name" id="sbSiteName">Cargando…</div>
+        <div class="sb-site-url"><span class="sb-site-dot"></span> <span id="sbSiteUrl">…</span></div>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="sb-item active">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="5" height="5" rx="1"/><rect x="10.5" y="2.5" width="5" height="5" rx="1"/><rect x="2.5" y="10.5" width="5" height="5" rx="1"/><rect x="10.5" y="10.5" width="5" height="5" rx="1"/></svg></span>
+        Inicio
+      </div>
+      <a href="contenido.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4h12M3 8h12M3 12h8"/></svg></span>
+        Contenido
+        <span class="badge">2</span>
+      </a>
+      <a href="productos.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5L9 2l6 3v8l-6 3-6-3V5zM3 5l6 3 6-3M9 8v8"/></svg></span>
+        Mis Cortes
+      </a>
+      <a href="galeria.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="13" height="11" rx="1.5"/><circle cx="7" cy="7" r="1.2"/><path d="m2.5 11 3-3 3 3 2-2 4 4"/></svg></span>
+        Galería
+      </a>
+      <a href="animaciones.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 2v14M2 9h14M5 5l8 8M13 5l-8 8"/></svg></span>
+        Animaciones
+      </a>
+      <a href="chat.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5c0-3 2.5-5.5 5.5-5.5h1c3 0 5.5 2.5 5.5 5.5v.5c0 3-2.5 5.5-5.5 5.5H7l-3 2v-2.7a5.5 5.5 0 0 1-.5-2.3v-3z"/><circle cx="6.5" cy="9" r="0.6" fill="currentColor"/><circle cx="9" cy="9" r="0.6" fill="currentColor"/><circle cx="11.5" cy="9" r="0.6" fill="currentColor"/></svg></span>
+        Chat con IA
+      </a>
+      <a href="historial.html" class="sb-item">
+        <span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="9" r="6.5"/><path d="M9 5v4l3 2"/></svg></span>
+        Historial
+      </a>
+    </nav>
+
+    <div class="sb-foot" id="sbFoot">
+      <div class="sb-foot-avatar" id="sbAvatar">…</div>
+      <div class="sb-foot-meta">
+        <div class="sb-foot-name" id="sbFootName">Cargando…</div>
+        <div class="sb-foot-role" id="sbFootRole">…</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="main">
+    <header class="topbar">
+      <div class="top-title">Inicio</div>
+      <div class="top-actions">
+        <div class="drafts-pill">
+          <span class="num">2</span>
+          Cambios sin publicar
+        </div>
+        <button class="btn btn-ghost">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6.5h9M6.5 2L11 6.5 6.5 11"/></svg>
+          Ver mi sitio
+        </button>
+        <button class="btn btn-primary">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7 6 11l5-8"/></svg>
+          Publicar ahora
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- Greeting -->
+      <div class="page-h">
+        <div>
+          <h1 id="greeting">Hola 👋</h1>
+          <span id="greetingSub">Cargando tu sitio…</span>
+        </div>
+        <div id="siteSelector" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"></div>
+        <style>.site-chip{padding:6px 14px;border-radius:20px;border:1px solid #e0e0e0;background:#fff;font-size:13px;cursor:pointer;transition:all .2s}.site-chip.active{background:#1a73e8;color:#fff;border-color:#1a73e8}.site-chip:hover{opacity:.8}</style>
+        <div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats" id="stats">
+        <div class="stat">
+          <div class="stat-label">Su sitio</div>
+          <div class="stat-num grad" style="display:flex; align-items:center; gap:8px; font-size:18px;">
+            <span style="width:10px; height:10px; border-radius:999px; background:var(--success);"></span>
+            Cargando…
+          </div>
+          <div class="stat-meta">Conectando con el servidor…</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Última actualización</div>
+          <div class="stat-num" id="statLastUpdate">—</div>
+          <div class="stat-meta" id="statLastUpdateMeta">…</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Cambios sin publicar</div>
+          <div class="stat-num" style="color: var(--draft);" id="statDrafts">—</div>
+          <div class="stat-meta">Esperando que apriete "Publicar"</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Tu sitio</div>
+          <div class="stat-num" id="statSiteName" style="font-size: 18px;">—</div>
+          <div class="stat-meta" id="statSiteUrl">…</div>
+        </div>
+      </div>
+
+      <!-- Two columns: Preview + History/Quick -->
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 18px;">
+
+        <!-- LEFT: site preview + quick actions -->
+        <div>
+          <!-- Site preview -->
+          <div class="preview-frame" style="margin-bottom: 18px;">
+            <div class="preview-bar">
+              <div class="preview-dots"><span></span><span></span><span></span></div>
+              <div class="preview-url"></div>
+              <div style="width: 50px; display: flex; justify-content: flex-end;">
+                <button class="btn-icon" style="width: 28px; height: 28px;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 7c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="m9 4 3 3-3 3"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="preview-body" id="previewBody">
+              <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #1a1410, #2d1f15); color: white; padding: 32px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-size: 14px; opacity: 0.6;">Cargando vista previa…</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="card-h" style="margin-bottom: 12px;">
+            <h3>¿Qué quiere hacer hoy?</h3>
+          </div>
+          <div class="quick" id="quickActions">
+            <a href="chat.html" class="quick-card">
+              <div class="quick-icon" style="background: rgba(139,92,246,0.10); color: var(--purple);">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c0-3.3 2.7-6 6-6h2c3.3 0 6 2.7 6 6v.5c0 3.3-2.7 6-6 6H8l-3.5 2.5V14a6 6 0 0 1-1.5-4z"/></svg>
+              </div>
+              <div class="quick-title">Hablar con la IA</div>
+              <div class="quick-sub" id="quickChatExample">"Cámbiame el precio"</div>
+            </a>
+            <a href="productos.html" class="quick-card">
+              <div class="quick-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h14M3 12h14M3 17h14M3 7l3-4h8l3 4"/></svg>
+              </div>
+              <div class="quick-title" id="quickProducts">Agregar un producto</div>
+              <div class="quick-sub" id="quickProductsSub">Sumar al catálogo</div>
+            </a>
+            <a href="galeria.html" class="quick-card">
+              <div class="quick-icon" style="background: rgba(22,163,74,0.10); color: var(--success);">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="14" height="12" rx="1.5"/><circle cx="7" cy="8" r="1.5"/><path d="m3 13 4-4 4 4 3-3 3 3"/></svg>
+              </div>
+              <div class="quick-title">Subir fotos</div>
+              <div class="quick-sub" id="quickGallerySub">A la galería</div>
+            </a>
+            <a href="contenido.html" class="quick-card">
+              <div class="quick-icon" style="background: rgba(245,158,11,0.10); color: var(--warning);">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 11h4"/></svg>
+              </div>
+              <div class="quick-title">Editar mis textos</div>
+              <div class="quick-sub">Horarios, dirección, etc.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Recent changes -->
+        <div class="card" style="padding: 0;">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center;">
+            <h3 style="font-size: 14.5px; font-weight: 700; flex: 1;">Últimos cambios</h3>
+            <a href="historial.html" class="more" style="font-size: 12.5px; color: var(--blue); font-weight: 500;">Ver todo →</a>
+          </div>
+          <div style="padding: 8px 20px 16px;">
+            <div class="timeline" id="timelineWidget">
+              <div class="tl-item">
+                <div class="tl-body">
+                  <div class="tl-msg" style="color: var(--muted);">Cargando historial…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pending changes banner -->
+      <div id="publishBanner" style="margin-top: 24px; padding: 18px 22px; background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02)); border: 1px solid rgba(245,158,11,0.30); border-radius: 14px; display: none; align-items: center; gap: 16px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(245,158,11,0.15); color: var(--draft); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M11 7v4l3 2"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 2px;">Tiene cambios listos para publicar</div>
+          <div style="font-size: 12.5px; color: var(--text2);">Cuando apriete "Publicar ahora", estos cambios aparecerán en su sitio. Mientras tanto, los clientes ven la versión anterior.</div>
+        </div>
+        <a href="historial.html" class="btn btn-ghost">Ver los cambios</a>
+        <button class="btn btn-primary" id="btnPublish" onclick="publishSite()">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7 6 11l5-8"/></svg>
+          Publicar ahora
+        </button>
+      </div>
+
+      <!-- Small help footer -->
+      <div style="margin-top: 28px; padding: 16px 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 14px; font-size: 13px;">
+        <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--bg3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="5.5"/><path d="M8 4v4l2.5 1.5"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <strong>¿Necesita ayuda?</strong>
+          <span style="color: var(--text2);"> Escribimos a Mario por WhatsApp y le respondemos al toque.</span>
+        </div>
+        <a href="https://wa.me/56973994504" class="btn btn-ghost" style="font-size: 12.5px; padding: 6px 12px;">📱 WhatsApp a Mario</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+  <script src="api.js?v=1782864237"></script>
+  <script src="verticals.js"></script>
+  <script src="catalog-widget.js"></script>
+  <script>
+    // Redirect to login if no token
+    if (!SiteDeskAuth.get()) {
+      window.location.href = 'login.html?redirect=index.html';
+    }
+
+
+    function renderSiteSelector(sites, active) {
+      var container = document.getElementById('siteSelector');
+      if (!container) return;
+      container.innerHTML = '';
+      sites.forEach(function(s) {
+        var btn = document.createElement('button');
+        btn.className = 'site-chip' + (s.slug === active.slug ? ' active' : '');
+        btn.textContent = s.name || s.slug;
+        btn.onclick = function() { switchSite(s); };
+        container.appendChild(btn);
+      });
+    }
+    
+    async function switchSite(site) {
+      SiteDeskActiveSite.set(site);
+      // Recargar datos
+      try {
+        const [siteData, historyData] = await Promise.all([
+          SiteDeskApi.site(site.slug),
+          SiteDeskApi.history(),
+        ]);
+        renderSiteData(siteData, historyData);
+        renderSiteSelector(
+          (await SiteDeskApi.sites()).sites || [],
+          site
+        );
+      } catch(e) {
+        console.error('Error switching site:', e);
+      }
+    }
+    
+    function renderSiteData(siteData, historyData) {
+      if (siteData && siteData.site) {
+        var s = siteData.site;
+        document.getElementById('sbSiteName').textContent = s.name || 'Mi Sitio';
+        document.getElementById('sbSiteUrl').textContent = s.url || '—';
+        document.getElementById('statSiteName').textContent = s.name || '—';
+        document.getElementById('statSiteUrl').textContent = s.url || '—';
+      }
+    }
+
+    async function loadIndex() {
+      try {
+        if (!SiteDeskAuth.token) {
+          window.location.href = 'login.html?redirect=index.html';
+          return;
+        }
+        // Cargar usuario + lista de sitios
+        const [user, sitesData] = await Promise.all([
+          SiteDeskApi.me(),
+          SiteDeskApi.sites(),
+        ]);
+        
+        // Determinar sitio activo
+        var activeSite = SiteDeskActiveSite.get();
+        var sites = sitesData.sites || [];
+        
+        if (sites.length === 0) {
+          document.getElementById('greetingSub').textContent = 'No tenés un sitio asignado todavía.';
+          return;
+        }
+        
+        // Si no hay sitio activo o el activo no está en la lista, usar el primero
+        if (!activeSite || !sites.find(function(s) { return s.slug === activeSite.slug; })) {
+          activeSite = sites[0];
+          SiteDeskActiveSite.set(activeSite);
+        }
+        
+        renderSiteSelector(sites, activeSite);
+        
+        // Cargar datos del sitio activo
+        const [siteData, historyData] = await Promise.all([
+          SiteDeskApi.site(activeSite.slug),
+          SiteDeskApi.history(),
+        ]);
+
+        // User info
+        const name = user.name || user.email || 'Usuario';
+        const initials = (name || 'U').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        document.getElementById('greeting').textContent = 'Hola ' + name.split(' ')[0] + ' 👋';
+        document.getElementById('greetingSub').textContent = 'Esto es lo que está pasando con su sitio hoy.';
+        document.getElementById('sbFootName').textContent = name;
+        document.getElementById('sbAvatar').textContent = initials;
+
+        // Site data
+        if (siteData && siteData.site) {
+          const s = siteData.site;
+          document.getElementById('sbSiteName').textContent = s.name || s.clientName || 'Mi Sitio';
+          document.getElementById('sbSiteUrl').textContent = s.url || '—';
+          document.getElementById('sbThumb').textContent = (s.name || 'S').substring(0, 2).toUpperCase();
+          document.getElementById('sbFootRole').textContent = s.name || 'SiteDesk';
+          document.getElementById('previewUrl').textContent = s.url || '—';
+          document.getElementById('statSiteName').textContent = s.name || '—';
+          document.getElementById('statSiteUrl').textContent = s.url || '—';
+
+          // Preview: load hero content
+          try {
+            const content = await SiteDeskApi.content();
+            if (content && content.sections && content.sections.hero) {
+              const hero = content.sections.hero;
+              const fields = hero.draft || hero.published || hero;
+              if (typeof fields === 'object') {
+                renderPreview(fields);
+              }
+            }
+          } catch (e) {
+            // Preview stays as loading placeholder if content fails
+            console.warn('Could not load content for preview:', e);
+          }
+        } else {
+          document.getElementById('greetingSub').textContent = 'No tenés un sitio asignado todavía.';
+          document.getElementById('sbSiteName').textContent = 'Sin sitio';
+          document.getElementById('sbSiteUrl').textContent = '—';
+          document.getElementById('sbThumb').textContent = '—';
+          document.getElementById('statSiteName').textContent = 'Sin sitio';
+          document.getElementById('statSiteUrl').textContent = '—';
+          document.getElementById('previewUrl').textContent = '—';
+        }
+
+        // History timeline
+        if (historyData && historyData.items && historyData.items.length > 0) {
+          renderTimeline(historyData.items.slice(0, 5));
+        }
+
+        // Count drafts (items without publish action as proxy)
+        const draftCount = (historyData && historyData.items)
+          ? historyData.items.filter(i => i.action === 'content_patch').length
+          : 0;
+        updateDraftCount(draftCount);
+
+        // Update stat: last update
+        if (historyData && historyData.items && historyData.items.length > 0) {
+          const last = historyData.items[0];
+          document.getElementById('statLastUpdate').textContent = 'Hoy';
+          const d = new Date(last.createdAt);
+          document.getElementById('statLastUpdateMeta').textContent =
+            d.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' }) + ' · ' + (last.action || 'cambio');
+        }
+
+      } catch (err) {
+        console.error('Failed to load index:', err);
+        if (err.status === 401 || (err.detail && err.detail.includes('Token'))) {
+          SiteDeskAuth.clear();
+          window.location.href = 'login.html?redirect=index.html';
+          return;
+        }
+        document.getElementById('greetingSub').textContent = 'Error al conectar con el servidor.';
+      }
+    }
+
+    function renderPreview(fields) {
+      const body = document.getElementById('previewBody');
+      const eyebrow = fields.eyebrow || '';
+      const title = fields.title || '';
+      const subtitle = fields.subtitle || '';
+      body.innerHTML = `
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #1a1410, #2d1f15); color: white; padding: 32px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 11px; letter-spacing: 0.3em; color: rgba(255,200,150,0.6); margin-bottom: 8px;">${eyebrow}</div>
+          <div style="font-size: 42px; font-weight: 700; line-height: 1.05; margin-bottom: 10px; max-width: 60%;">${title}</div>
+          <div style="font-size: 14px; opacity: 0.75; max-width: 50%; margin-bottom: 20px;">${subtitle}</div>
+          <div style="display: flex; gap: 10px;">
+            <div style="padding: 10px 20px; background: #f87171; border-radius: 8px; font-size: 13px; font-weight: 600;">📱 Pedir por WhatsApp</div>
+            <div style="padding: 10px 20px; background: rgba(255,255,255,0.10); border-radius: 8px; font-size: 13px; font-weight: 600;">Ver menú</div>
+          </div>
+        </div>
+        <div style="position: absolute; top: 14px; right: 14px; padding: 5px 11px; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); color: white; border-radius: 999px; font-size: 10.5px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+          <span style="width: 6px; height: 6px; border-radius: 999px; background: #34d399;"></span>
+          En vivo
+        </div>
+      `;
+    }
+
+    function renderTimeline(items) {
+      const container = document.getElementById('timelineWidget');
+      if (!items || items.length === 0) {
+        container.innerHTML = '<div class="tl-item"><div class="tl-body"><div class="tl-msg" style="color:var(--muted);">Sin cambios todavía.</div></div></div>';
+        return;
+      }
+      container.innerHTML = items.map(i => {
+        const d = new Date(i.createdAt);
+        const time = d.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+        const date = d.toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
+        const detail = typeof i.detail === 'string' ? i.detail : JSON.stringify(i.detail || {});
+        const label = i.action === 'publish' ? 'Publicado' : 'Editado';
+        const dotClass = i.action === 'publish' ? 'ai' : '';
+        return `
+          <div class="tl-item">
+            <div class="tl-dot ${dotClass}"></div>
+            <div class="tl-body">
+              <div class="tl-msg">${escapeHtml(detail)}</div>
+              <div class="tl-meta">
+                <span class="src">SiteDesk</span>
+                ${date} · ${time}
+                <span class="chip live">${label}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateDraftCount(count) {
+      const el = document.getElementById('statDrafts');
+      const banner = document.getElementById('publishBanner');
+      el.textContent = count;
+      if (count > 0) {
+        banner.style.display = 'flex';
+      }
+      // Also update drafts pill
+      const pills = document.querySelectorAll('.drafts-pill .num');
+      pills.forEach(p => { p.textContent = count; });
+    }
+
+    window.publishSite = async function() {
+      const btn = document.getElementById('btnPublish');
+      btn.disabled = true;
+      btn.textContent = 'Publicando…';
+      try {
+        await SiteDeskApi.publish();
+        alert('✅ Sitio publicado exitosamente.');
+        document.getElementById('statDrafts').textContent = '0';
+        document.getElementById('publishBanner').style.display = 'none';
+        loadIndex(); // Refresh
+      } catch (err) {
+        alert('Error: ' + apiErrorMessage(err));
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7 6 11l5-8"/></svg>Publicar ahora';
+      }
+    };
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    loadIndex();
+  </script>
+</body>
+</html>

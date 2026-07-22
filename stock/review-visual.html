@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stock App — Review Visual</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #14141f;
+    --bg3: #1a1a2e;
+    --text: #eeeef2;
+    --text2: #a0a0b0;
+    --text3: #6b7280;
+    --accent: #3b82f6;
+    --accent2: #8b5cf6;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #ef4444;
+    --border: rgba(255,255,255,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  
+  header { padding: 40px 0 32px; border-bottom: 1px solid var(--border); }
+  header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+  header p { color: var(--text2); margin-top: 8px; font-size: 15px; }
+  
+  .score-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .score-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-num {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .score-label { font-size: 13px; color: var(--text2); margin-top: 4px; }
+  
+  .section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .section h2 .badge { 
+    font-size: 12px; 
+    padding: 4px 10px; 
+    border-radius: 999px; 
+    background: rgba(52,211,153,0.15);
+    color: var(--success);
+    font-weight: 600;
+  }
+  .section-desc { color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+  
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .screenshot-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .screenshot-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+  .screenshot-meta {
+    padding: 14px 16px;
+  }
+  .screenshot-meta h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .screenshot-meta p { font-size: 12px; color: var(--text3); }
+  
+  .review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .review-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .review-item h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .review-item h3 .icon { font-size: 18px; }
+  .review-item p { font-size: 13.5px; color: var(--text2); line-height: 1.7; }
+  .review-item ul { margin: 10px 0 0 18px; font-size: 13px; color: var(--text2); }
+  .review-item li { margin: 6px 0; }
+  
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: auto;
+  }
+  .tag-good { background: rgba(52,211,153,0.15); color: var(--success); }
+  .tag-warn { background: rgba(251,191,36,0.15); color: var(--warning); }
+  .tag-info { background: rgba(59,130,246,0.15); color: var(--accent); }
+  
+  .phone-mockups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .phone-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+  }
+  .phone-item .num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .phone-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .phone-item p { font-size: 11px; color: var(--text3); }
+  
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .comparison-col {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .comparison-col h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison-col ul { list-style: none; }
+  .comparison-col li {
+    font-size: 13px;
+    color: var(--text2);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .comparison-col li:last-child { border-bottom: none; }
+  
+  @media (max-width: 768px) {
+    .comparison { grid-template-columns: 1fr; }
+    .screenshot-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>📱 Stock App — Review Visual</h1>
+    <p>Evaluación de diseño, UX y consistencia entre mockups y paneles funcionales</p>
+    
+    <div class="score-card">
+      <div class="score-item">
+        <div class="score-num">8.2</div>
+        <div class="score-label">Diseño Visual</div>
+      </div>
+      <div class="score-item">
+        <div class="score-num">7.5</div>
+        <div class="score-label">UX / Flujo</div>
+      </div>
+      <div class="score-item">
+        <div class="score-num">6.8</div>
+        <div class="score-label">Consistencia</div>
+      </div>
+      <div class="score-item">
+        <div class="score-num">8.0</div>
+        <div class="score-label">Código / Estructura</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- SECCIÓN 1: Mockups vs Funcional -->
+  <div class="section">
+    <h2>🎨 Mockups de Diseño <span class="badge">12 pantallas</span></h2>
+    <p class="section-desc">Galería visual en <code>index.html</code> — representación estática de la experiencia móvil completa</p>
+    
+    <div class="phone-mockups">
+      <div class="phone-item"><div class="num">01</div><h4>Onboarding</h4><p>Escanea. Vende. Listo.</p></div>
+      <div class="phone-item"><div class="num">02</div><h4>Dashboard</h4><p>Stats + alertas + ventas</p></div>
+      <div class="phone-item"><div class="num">03</div><h4>Escáner</h4><p>Cámara + frame visual</p></div>
+      <div class="phone-item"><div class="num">04</div><h4>Producto Encontrado</h4><p>Qty + venta presencial/online</p></div>
+      <div class="phone-item"><div class="num">05</div><h4>Catálogo</h4><p>Grid + filtros + chips</p></div>
+      <div class="phone-item"><div class="num">06</div><h4>Agregar Producto</h4><p>Formulario completo</p></div>
+      <div class="phone-item"><div class="num">07</div><h4>Detalle Producto</h4><p>Stock + gráfico + historial</p></div>
+      <div class="phone-item"><div class="num">08</div><h4>Alertas Stock</h4><p>Lista + reponer</p></div>
+      <div class="phone-item"><div class="num">09</div><h4>Geos Chat</h4><p>IA conversacional</p></div>
+      <div class="phone-item"><div class="num">10</div><h4>Ventas</h4><p>Historial + exportar</p></div>
+      <div class="phone-item"><div class="num">11</div><h4>Cobro Rápido</h4><p>Carrito + métodos pago</p></div>
+      <div class="phone-item"><div class="num">12</div><h4>Configuración</h4><p>Alertas + datos</p></div>
+    </div>
+    
+    <div style="margin-top: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
+      <h3 style="font-size: 15px; font-weight: 600; margin-bottom: 12px;">📊 Screenshot real de los mockups</h3>
+      <img src="01-index-mockups.png" style="width: 100%; border-radius: 8px; border: 1px solid var(--border);" alt="Mockups Stock"/>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: Paneles Funcionales -->
+  <div class="section">
+    <h2>⚡ Paneles Funcionales <span class="badge">Web App Real</span></h2>
+    <p class="section-desc">Páginas operativas con API, auth y lógica de negocio</p>
+    
+    <div class="comparison">
+      <div class="comparison-col">
+        <h3>✅ Lo que funciona bien</h3>
+        <ul>
+          <li><span style="color: var(--success);">✓</span> Sidebar consistente en todas las páginas</li>
+          <li><span style="color: var(--success);">✓</span> Sistema de auth con redirección</li>
+          <li><span style="color: var(--success);">✓</span> Escáner con html5-qrcode integrado</li>
+          <li><span style="color: var(--success);">✓</span> Navegación mobile con tabbar</li>
+          <li><span style="color: var(--success);">✓</span> Labels verticales dinámicos</li>
+          <li><span style="color: var(--success);">✓</span> Toast notifications</li>
+          <li><span style="color: var(--success);">✓</span> Modales para crear/editar</li>
+          <li><span style="color: var(--success);">✓</span> Chat con Geo integrado</li>
+        </ul>
+      </div>
+      <div class="comparison-col">
+        <h3>⚠️ Oportunidades de mejora</h3>
+        <ul>
+          <li><span style="color: var(--warning);">△</span> Dashboard: falta el gráfico de stock (solo en mockups)</li>
+          <li><span style="color: var(--warning);">△</span> Catálogo: no hay vista de detalle con historial</li>
+          <li><span style="color: var(--warning);">△</span> Cobro rápido: no implementado en funcional</li>
+          <li><span style="color: var(--warning);">△</span> Alertas: solo badge, no página dedicada</li>
+          <li><span style="color: var(--warning);">△</span> Onboarding: no existe flujo de primera vez</li>
+          <li><span style="color: var(--warning);">△</span> Exportar CSV: no implementado</li>
+          <li><span style="color: var(--warning);">△</span> Notificaciones push: solo en mockups</li>
+          <li><span style="color: var(--warning);">△</span> Foto de producto: no implementada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3: Detalle por Pantalla -->
+  <div class="section">
+    <h2>🔍 Análisis Detallado por Pantalla</h2>
+    <p class="section-desc">Evaluación visual y funcional de cada sección</p>
+    
+    <div class="review-list">
+      <div class="review-item">
+        <h3><span class="icon">🏠</span> Dashboard / Inicio <span class="tag tag-good">Bien</span></h3>
+        <p>El panel funcional (<code>app.html</code>) replica bien la estructura del mockup: stats cards, alerta de stock bajo, lista de ventas recientes. <strong>Falta:</strong> el FAB (botón flotante) del mockup no está en la versión funcional; el gráfico de stock de 30 días solo existe en el mockup de detalle.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">📷</span> Escáner <span class="tag tag-good">Muy bien</span></h3>
+        <p>Implementación sólida: cámara con html5-qrcode, soporte múltiples formatos (EAN, UPC, Code128), vibración al detectar, fallback a input manual. El panel visual negro con línea de escaneo es atractivo. <strong>Nota:</strong> requiere HTTPS o localhost para cámara.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">📦</span> Catálogo / Productos <span class="tag tag-warn">Regular</span></h3>
+        <p>Grid de productos con cards funciona bien. Categorías como chips, búsqueda en tiempo real, modal de edición. <strong>Falta:</strong> vista de detalle completa (solo modal de edición), no hay gráfico de stock histórico, no se puede ver historial de ventas por producto.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">🛍</span> Ventas <span class="tag tag-warn">Básico</span></h3>
+        <p>Formulario de venta funcional con select de producto. Historial de ventas recientes. <strong>Falta:</strong> cobro rápido con carrito (mockup #11), múltiples métodos de pago, exportar CSV, filtros por fecha (hoy/semana/mes).</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">✨</span> Geos Chat <span class="tag tag-good">Bien</span></h3>
+        <p>Chat funcional con streaming de respuestas, sugerencias rápidas, historial de conversación. El banner de "Modelo local" da confianza. <strong>Podría mejorar:</strong> indicador de "pensando" más elegante, soporte para markdown en respuestas.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">⚙️</span> Configuración <span class="tag tag-warn">Mínimo</span></h3>
+        <p>Cambio de vertical/rubro funciona. <strong>Falta:</strong> toggles de notificaciones push, configuración de WhatsApp, umbral global, exportar base de datos — todo presente en el mockup #12.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">🔐</span> Login <span class="tag tag-good">Bien</span></h3>
+        <p>Limpio y funcional. Google OAuth + email/password. Mensaje claro de "misma cuenta que Geo App". <strong>Mejora sugerida:</strong> animación de carga en el botón de Google.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">🌐</span> Landing Page <span class="tag tag-good">Excelente</span></h3>
+        <p>Visualmente impactante: gradientes animados, orbs, grid de fondo, secciones bien estructuradas (hero, features, pricing, FAQ). Badges de App Store/Google Play. <strong>Nota:</strong> los badges llevan a URLs genéricas, no a la app real.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4: Consistencia Visual -->
+  <div class="section">
+    <h2>🎯 Consistencia Visual</h2>
+    <p class="section-desc">Comparación entre mockups y paneles funcionales</p>
+    
+    <div class="review-list">
+      <div class="review-item">
+        <h3><span class="icon">🎨</span> Paleta de colores <span class="tag tag-good">Consistente</span></h3>
+        <p>Mismo sistema de variables CSS en ambos: <code>--bg: #0D1117</code>, <code>--grad: linear-gradient(135deg, #3b82f6, #8b5cf6)</code>, <code>--success: #34d399</code>. El landing usa una variante más vibrante (<code>--grad-vibrant</code>) que funciona bien para marketing.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">📐</span> Tipografía <span class="tag tag-good">Consistente</span></h3>
+        <p>Inter en todo el sistema. Jerarquía clara: 22px títulos, 13-14px body, 11px labels. Monospace para códigos de barras. Buen uso de letter-spacing y font-weight.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">🔲</span> Componentes <span class="tag tag-warn">Parcial</span></h3>
+        <p>Botones, inputs, cards, chips consistentes. <strong>Falta:</strong> toggles/switches (solo en mockups), date pickers, select estilizado (usa native), drag & drop para fotos.</p>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">📱</span> Responsive <span class="tag tag-good">Bien</span></h3>
+        <p>Sidebar colapsa en mobile, tabbar aparece, grid de productos adapta columnas. Scanner funciona en móvil (cámara). <strong>Nota:</strong> algunas tablas/podrían necesitar scroll horizontal en pantallas muy pequeñas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5: Recomendaciones -->
+  <div class="section">
+    <h2>💡 Recomendaciones Prioritarias</h2>
+    <p class="section-desc">Qué implementar para acercar los paneles funcionales a los mockups</p>
+    
+    <div class="review-list">
+      <div class="review-item">
+        <h3><span class="icon">1️⃣</span> Alta Prioridad</h3>
+        <ul>
+          <li><strong>Vista de detalle de producto:</strong> Historial de ventas, gráfico de stock, margen de ganancia</li>
+          <li><strong>Cobro rápido con carrito:</strong> Agregar múltiples productos y pagar en una transacción</li>
+          <li><strong>Página de alertas de stock:</strong> Lista dedicada con botón "+ Stock" rápido</li>
+          <li><strong>Onboarding de primera vez:</strong> Flujo de 3 pasos para nuevos usuarios</li>
+        </ul>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">2️⃣</span> Media Prioridad</h3>
+        <ul>
+          <li><strong>Exportar datos:</strong> CSV de ventas y productos</li>
+          <li><strong>Filtros de fecha en ventas:</strong> Hoy, semana, mes, todo</li>
+          <li><strong>Notificaciones:</strong> Configurar WhatsApp para alertas</li>
+          <li><strong>Foto de producto:</strong> Upload de imagen (no solo emoji)</li>
+        </ul>
+      </div>
+      
+      <div class="review-item">
+        <h3><span class="icon">3️⃣</span> Baja Prioridad / Polish</h3>
+        <ul>
+          <li><strong>Animaciones:</strong> Transiciones suaves entre páginas</li>
+          <li><strong>Skeleton loaders:</strong> Mientras carga data de la API</li>
+          <li><strong>Dark mode toggle:</strong> Aunque ya es dark por defecto</li>
+          <li><strong>PWA:</strong> Service worker para offline básico</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 6: Conclusión -->
+  <div class="section" style="border-bottom: none;">
+    <h2>🏁 Veredicto</h2>
+    <p class="section-desc">Evaluación general del estado visual de Stock</p>
+    
+    <div style="background: linear-gradient(135deg, rgba(59,130,246,0.10), rgba(139,92,246,0.06)); border: 1px solid rgba(59,130,246,0.22); border-radius: 16px; padding: 28px;">
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text2);">
+        <strong style="color: var(--text);">Stock tiene una base visual sólida.</strong> Los mockups de <code>index.html</code> muestran una visión clara y atractiva de la experiencia completa. Los paneles funcionales (<code>scanner.html</code>, <code>app.html</code>, etc.) implementan bien el core: auth, escáner, catálogo básico, ventas y chat.
+      </p>
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text2); margin-top: 16px;">
+        <strong style="color: var(--text);">El gap principal</strong> está en las funcionalidades "avanzadas" que están en los mockups pero no en los paneles: detalle de producto con historial, cobro rápido con carrito, página de alertas dedicada, onboarding, y exportación de datos.
+      </p>
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text2); margin-top: 16px;">
+        <strong style="color: var(--text);">Recomendación:</strong> Priorizar la vista de detalle de producto y el cobro rápido. Son las funcionalidades que más valor añaden al flujo diario de un negocio. El escáner ya está muy bien implementado.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<footer style="border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text3); font-size: 13px;">
+  <div class="container">
+    Review generado por Kimi 🧿 · Átomo Studio · 2026
+  </div>
+</footer>
+
+</body>
+</html>

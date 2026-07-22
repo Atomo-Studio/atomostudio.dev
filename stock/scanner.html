@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Escáner · Stock</title>
+<link rel="icon" type="image/svg+xml" href="../atomostudio/img/logo-atomo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="../js/geo-api-bridge.js"></script>
+<script src="verticals.js"></script>
+<script src="api.js"></script>
+</head>
+<body data-st-page="scanner">
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-h"><img class="logo" src="../atomostudio/img/logo-atomo.svg" width="28" height="28" alt=""/><div class="sb-h-name">Stock<small>by Átomo</small></div></div>
+    <div class="sb-site"><div class="sb-site-thumb st-business-thumb">—</div><div class="sb-site-meta"><div class="sb-site-name st-business-name">Mi negocio</div><div class="sb-site-url st-business-type">—</div></div></div>
+    <nav class="sb-nav">
+      <a href="app.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="5" height="5" rx="1"/><rect x="10.5" y="2.5" width="5" height="5" rx="1"/><rect x="2.5" y="10.5" width="5" height="5" rx="1"/><rect x="10.5" y="10.5" width="5" height="5" rx="1"/></svg></span>Inicio</a>
+      <a href="productos.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="12" height="10" rx="1.5"/><path d="M3 8h12"/></svg></span><span class="st-catalog-nav">Catálogo</span></a>
+      <a href="scanner.html" class="sb-item active"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h2V4H3v2zm10 0h2V4h-2v2zM3 14h2v-2H3v2zm10 0h2v-2h-2v2z"/><rect x="6" y="7" width="6" height="4" rx="0.5"/></svg></span>Escáner</a>
+      <a href="ventas.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6.5"/><path d="M6 9h6M9 6v6"/></svg></span>Ventas</a>
+      <a href="chat.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5c0-3 2.5-5.5 5.5-5.5h1c3 0 5.5 2.5 5.5 5.5v.5c0 3-2.5 5.5-5.5 5.5H7l-3 2v-2.7a5.5 5.5 0 0 1-.5-2.3v-3z"/></svg></span>Geos</a>
+      <a href="configuracion.html" class="sb-item"><span class="ico"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="2.5"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2"/></svg></span>Configuración</a>
+    </nav>
+    <div class="sb-foot"><div class="sb-foot-avatar st-foot-avatar">—</div><div class="sb-foot-meta"><div class="sb-foot-name st-client-name">—</div><div class="sb-foot-role st-business-name">—</div></div><button type="button" class="btn btn-ghost st-logout" style="padding:6px 10px;font-size:12px;">↪</button></div>
+  </aside>
+  <main class="main st-page-main">
+    <header class="topbar"><div class="top-title">Escáner</div></header>
+    <div class="content">
+      <div class="scanner-panel">
+        <div class="scanner-visual">
+          <div class="scanner-frame"><div class="scanner-line"></div></div>
+          <div class="scanner-help" id="st-scanner-help">Usá la cámara o ingresá el código manualmente<small>También funciona con lector USB</small></div>
+          <div class="scanner-help" id="st-scanner-fallback" hidden>Usá un lector USB o escribí el código manualmente</div>
+          <button type="button" class="btn btn-primary btn-block st-btn-camera" id="st-btn-escanear" style="position:absolute;bottom:24px;left:24px;right:24px;max-width:320px;margin:0 auto;">
+            📷 Escanear con cámara
+          </button>
+        </div>
+        <div class="scanner-side">
+          <div class="card">
+            <h3>Buscar producto</h3>
+            <form id="st-barcode-form" style="display:flex;gap:8px;margin-bottom:14px;">
+              <input class="input" id="st-barcode-input" placeholder="Código de barras" autocomplete="off"/>
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+            <button type="button" class="btn btn-ghost btn-block" id="st-scanner-add">+ Agregar producto nuevo</button>
+            <p class="form-hint" style="margin-top:14px;">Tip: con lector USB el código se ingresa automáticamente al enfocar el campo.</p>
+          </div>
+          <div id="st-scanner-result" hidden style="margin-top:16px;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<nav class="mobile-nav" aria-label="Navegación principal">
+  <a href="app.html" data-st-nav="dashboard"><span class="ico">🏠</span>Inicio</a>
+  <a href="productos.html" data-st-nav="productos"><span class="ico">📦</span>Catálogo</a>
+  <a href="scanner.html" data-st-nav="scanner"><span class="ico">📷</span>Escanear</a>
+  <a href="ventas.html" data-st-nav="ventas"><span class="ico">🛍</span>Ventas</a>
+  <a href="chat.html" data-st-nav="chat"><span class="ico">✨</span>Geos</a>
+</nav>
+<div id="st-camera-modal" class="modal-backdrop st-camera-modal" hidden>
+  <div class="st-camera-panel">
+    <div id="st-camera-reader" class="st-camera-reader"></div>
+    <p id="st-camera-status" class="st-camera-status">Apuntá el código de barras…</p>
+    <button type="button" class="btn btn-ghost st-camera-cancel" id="st-camera-cancel">Volver</button>
+  </div>
+</div>
+<div id="st-product-modal" class="modal-backdrop" hidden>
+  <div class="modal"><div class="modal-h"><h2>Agregar producto</h2><button type="button" class="btn btn-ghost st-modal-close" data-modal="st-product-modal">×</button></div>
+    <form id="st-product-form">
+      <div class="form-group"><label class="form-label">Nombre</label><input class="input" name="name" required/></div>
+      <div class="form-group"><label class="form-label">Código de barras</label><input class="input" name="barcode"/></div>
+      <div class="form-group"><label class="form-label">Categoría</label><input class="input" name="category"/></div>
+      <div class="form-group"><label class="form-label">Emoji</label><input class="input" name="emoji" value="📦"/></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div class="form-group"><label class="form-label">Precio</label><input class="input" name="price" type="number" min="0"/></div>
+        <div class="form-group"><label class="form-label">Stock</label><input class="input" name="stock" type="number" min="0" value="0"/></div>
+        <div class="form-group"><label class="form-label">Mínimo</label><input class="input" name="stockMin" type="number" min="0" value="5"/></div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px;">Guardar</button>
+      <button type="button" class="btn btn-ghost btn-block st-modal-close" data-modal="st-product-modal" style="margin-top:10px;">Cancelar</button>
+    </form>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

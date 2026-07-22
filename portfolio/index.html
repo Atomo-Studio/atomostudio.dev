@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio · Átomo Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{font-family:'Inter',sans-serif;background:#06060c;color:#eeeef2;overflow-x:hidden}
+ ::-webkit-scrollbar{width:6px}
+ ::-webkit-scrollbar-track{background:#06060c}
+ ::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:3px}
+ .gradient-text{background:linear-gradient(135deg,#fff 0%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+ .gradient-accent{background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+ .section-label{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#3b82f6;display:inline-flex;align-items:center;gap:10px}
+ .section-label::before{content:'';width:20px;height:1px;background:#3b82f6}
+ .site-card{background:#121220;border:1px solid rgba(255,255,255,0.04);border-radius:16px;overflow:hidden;transition:all .4s;text-decoration:none;color:inherit;display:block}
+ .site-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+ .site-card-img{width:100%;height:180px;object-fit:cover;background:#0a0a16;display:flex;align-items:center;justify-content:center;font-size:48px}
+ .site-card-body{padding:20px}
+ .site-card-tag{font-size:10px;padding:3px 10px;border-radius:20px;font-weight:500;display:inline-block;margin-bottom:8px}
+ .site-card h3{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:4px}
+ .site-card p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:12px}
+ .site-card .btn-visit{padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:6px}
+ .btn-visit.blue{background:rgba(59,130,246,0.15);color:#60a5fa}
+ .btn-visit.blue:hover{background:rgba(59,130,246,0.25)}
+ .btn-visit.purple{background:rgba(139,92,246,0.15);color:#a78bfa}
+ .btn-visit.purple:hover{background:rgba(139,92,246,0.25)}
+ .btn-visit.cyan{background:rgba(6,182,212,0.15);color:#22d3ee}
+ .btn-visit.cyan:hover{background:rgba(6,182,212,0.25)}
+ .btn-visit.green{background:rgba(52,211,153,0.15);color:#34d399}
+ .btn-visit.green:hover{background:rgba(52,211,153,0.25)}
+ .btn-visit.amber{background:rgba(245,158,11,0.15);color:#f59e0b}
+ .btn-visit.amber:hover{background:rgba(245,158,11,0.25)}
+ @media(max-width:768px){.site-card-img{height:140px}}
+</style>
+</head>
+<body>
+
+<div style="max-width:1200px;margin:0 auto;padding:40px 24px">
+  <!-- Header -->
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+    <a href="/" style="color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none">← Átomo Studio</a>
+  </div>
+  <div style="margin-bottom:48px">
+    <div class="section-label" style="margin-bottom:12px">Portafolio</div>
+    <h1 class="font-orbitron text-3xl md:text-4xl font-bold gradient-text" style="margin-bottom:8px">Nuestros trabajos</h1>
+    <p style="color:rgba(255,255,255,0.5);font-size:14px">Sitios web profesionales organizados por categoría.</p>
+  </div>
+
+  <!-- ===== BLOG / PERSONAL ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">👨‍💻 Blog & Personal</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Portafolios y sitios personales</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Guillaume -->
+      <a href="/guillaume" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0a0a16,#1a1a30)">👨‍💻</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa">Blog / Personal</span>
+          <h3>Guillaume Lagier</h3>
+          <p>Portafolio personal · Desarrollador IA, creador de Geo y Átomo Studio. Santiago, Chile.</p>
+          <span class="btn-visit blue">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== PELUQUERÍA / BELLEZA ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">✂️ Peluquería & Belleza</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Barberías, salones y centros de estética</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- KABA -->
+      <a href="/kaba" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#1a0a1a,#2a1a30)">💇</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(139,92,246,0.1);color:#a78bfa">Salón de Belleza</span>
+          <h3>KABA · Karla Bastidas</h3>
+          <p>Salón de belleza profesional. Servicios de peluquería, estética y cuidado personal.</p>
+          <span class="btn-visit purple">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      <!-- Casa del Barbero -->
+      <a href="/casa-del-barbero" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#1a1008,#2a1a0a)">✂️</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b">Barbería</span>
+          <h3>Casa del Barbero</h3>
+          <p>Barbería profesional en Av. El Guanaco 4480, Conchalí. Cortes modernos y agendamiento por WhatsApp.</p>
+          <span class="btn-visit amber">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== COMIDA ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🍔 Comida & Gastronomía</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Restaurantes, pizzerías y locales de comida</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Redhouse -->
+      <a href="/redhouse" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#1a0a0a,#2a1010)">🍔</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(248,113,113,0.1);color:#f87171">Comida Rápida</span>
+          <h3>Redhouse</h3>
+          <p>Local de comida rápida en Conchalí. Menú digital, delivery y pedidos por WhatsApp.</p>
+          <span class="btn-visit" style="background:rgba(248,113,113,0.15);color:#f87171">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      <!-- Pizza -->
+      <a href="https://pizza.atomostudio.dev" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#1a1a08,#2a2a0a)">🍕</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b">Pizzería</span>
+          <h3>La Casa de la Pizza</h3>
+          <p>Pizzería artesanal en Conchalí. Masa tradicional, ingredientes frescos y pedidos por WhatsApp.</p>
+          <span class="btn-visit amber">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== SALUD & FITNESS ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">💪 Salud & Fitness</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Gimnasios, centros deportivos y bienestar</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Fitness Gym -->
+      <a href="/fitness-gym" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0a1a0a,#102a10)">💪</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(52,211,153,0.1);color:#34d399">Gimnasio</span>
+          <h3>Centro Fitness Gym</h3>
+          <p>Gimnasio en Dorsal 1736, Conchalí. Planes de membresía, horarios y contacto directo.</p>
+          <span class="btn-visit green">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== TIENDAS ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🌿 Tiendas & Productos</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Tiendas ecológicas, productos sustentables y comercio local</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Vitra -->
+      <a href="/vitra" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0a1a14,#102a1a)">🌿</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(6,182,212,0.1);color:#22d3ee">Tienda Ecológica</span>
+          <h3>EcoOrigen Chile · VITRA</h3>
+          <p>Productos ecológicos sustentables. Vasos únicos hechos de botellas recicladas.</p>
+          <span class="btn-visit cyan">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+    <!-- ===== CARNICERÍAS ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🥩 Carnicerías</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Carnicerías de barrio con delivery y atención personalizada</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Carnes Super Willy -->
+      <a href="/carnes-super-willy" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#1a0a0a,#2a1010)">🥩</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(248,113,113,0.1);color:#f87171">Carnicería</span>
+          <h3>Carnes Super Willy</h3>
+          <p>Carnicería en Av. Carrera Pinto 1380, Conchalí. Cortes frescos, delivery gratis. Más de 15 años.</p>
+          <span class="btn-visit" style="background:rgba(248,113,113,0.15);color:#f87171">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+    <!-- ===== ALMACENES ===== -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🛒 Almacenes & Abarrotes</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Almacenes de barrio con delivery y atención local</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="/almacen-annie" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0c1a0c,#0e0e18)">🛒</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(52,211,153,0.1);color:#34d399">Almacén</span>
+          <h3>Almacén Annie</h3>
+          <p>Almacén de barrio en Vascongados 4490, Conchalí. Frutas, verduras, abarrotes, bebidas y delivery.</p>
+          <span class="btn-visit" style="background:rgba(52,211,153,0.15);color:#34d399">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+    <!-- Ferretería -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🔧 Ferretería</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">En Conchalí</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+  <a href="/camilo-ferron" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0c0c1a,#0e0e18)">🔧</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa">Ferretería</span>
+          <h3>Camilo Ferron Chile</h3>
+          <p>Empresa líder en suministros eléctricos y automatización en Conchalí....</p>
+          <span class="btn-visit blue">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🚗 Taller Mecánico</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">Talleres mecánicos</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="/petrohue" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0c1a1c,#0e0e18)">🚗</div>
+        <div class="site-card-body"><span class="site-card-tag" style="background:rgba(6,182,212,0.1);color:#22d3ee">Taller Mecánico</span><h3>Petrohue</h3><p>Panamericana Norte 5001, Conchalí.</p><span style="display:inline-block;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;background:rgba(6,182,212,0.15);color:#22d3ee">Visitar</span></div>
+      </a>
+      <a href="/maestranza-jemo" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0c0c1a,#0e0e18)">🔧</div>
+        <div class="site-card-body"><span class="site-card-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa">Taller Mecánico</span><h3>Maestranza Jemo</h3><p>Av. Frei Montalva 3525, Conchalí.</p><span style="display:inline-block;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;background:rgba(59,130,246,0.15);color:#60a5fa">Visitar</span></div>
+      </a>
+    </div>
+  </div>
+  <!-- Ferretería -->
+  <div style="margin-bottom:48px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:4px">🔧 Ferretería</h2>
+    <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-bottom:16px">En Conchalí</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+  <a href="/camilo-ferron" target="_blank" class="site-card">
+        <div class="site-card-img" style="background:linear-gradient(135deg,#0c0c1a,#0e0e18)">🔧</div>
+        <div class="site-card-body">
+          <span class="site-card-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa">Ferretería</span>
+          <h3>Camilo Ferron Chile</h3>
+          <p>Empresa líder en suministros eléctricos y automatización en Conchalí....</p>
+          <span class="btn-visit blue">Visitar <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div style="border-top:1px solid rgba(255,255,255,0.04);padding:24px 0;margin-top:24px;text-align:center">
+    <p style="color:rgba(255,255,255,0.3);font-size:12px">© 2026 Átomo Studio — <a href="/" style="color:rgba(59,130,246,0.6);text-decoration:none">atomostudio.dev</a></p>
+  </div>
+</div>
+</body>
+</html>

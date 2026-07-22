@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>" />
+  <title data-i18n="casa_del_barbero_peluquería_barbería_en_conchalí">Casa del Barbero — Peluquería & Barbería en Conchalí ✂️</title>
+  <meta name="description" content="Casa del Barbero — Peluquería y barbería profesional en Av. El Guanaco 4480, Conchalí. Cortes modernos, afeitado tradicional, barba y más. Agenda tu hora por WhatsApp." />
+  <meta name="theme-color" content="#0d0d14" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://casadelbarbero.cl/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://casadelbarbero.cl/" />
+  <meta property="og:title" content="Casa del Barbero — Peluquería & Barbería en Conchalí" />
+  <meta property="og:description" content="Cortes modernos, afeitado tradicional y estilo clásico. Av. El Guanaco 4480, Conchalí." />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Casa del Barbero" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style data-i18n="before_after_margin_0_padding_0_box_sizing">
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+      color: #e0e0e0;
+      background: #0a0a0f;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --accent: #c49a6c;
+      --accent-light: #d4b48c;
+      --accent-dark: #a67c52;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a2e;
+      --text-muted: #888;
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3, h4 { font-weight: 800; line-height: 1.15; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    h3 { font-size: 1.35rem; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #1a1a1a;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(196,154,108,.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent-light);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #1a1a1a;
+      transform: translateY(-3px);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(37,211,102,.3);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,15,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding: 14px 0;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo .logo-icon {
+      display: inline-flex;
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #8b7355);
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,.7);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px; height: 2.5px;
+      background: #fff;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,10,15,.85), rgba(10,10,15,.6)),
+                  url('img/hero.jpg') center/cover fixed;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(196,154,108,.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 750px; padding: 20px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(196,154,108,.15);
+      backdrop-filter: blur(6px);
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-size: .82rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(196,154,108,.2);
+      color: var(--accent-light);
+    }
+    .hero h1 { margin-bottom: 12px; }
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 12px;
+    }
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-num { font-size: 2rem; font-weight: 800; color: #fff; }
+    .hero-stat-num span { color: var(--accent-light); }
+    .hero-stat-label { font-size: .82rem; color: var(--text-muted); margin-top: 2px; }
+
+    section { padding: 100px 0; }
+    .section-title { text-align: center; margin-bottom: 12px; }
+    .section-dark { background: #0d0d14; }
+
+    .dark-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,.04);
+      transition: var(--transition);
+    }
+    .dark-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(196,154,108,.15);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+
+    /* ── About Grid ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .about-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+    .about-image:hover img { transform: scale(1.04); }
+    .about-text p { margin-bottom: 16px; color: rgba(255,255,255,.7); font-size: 1.05rem; }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .about-feature .icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      background: rgba(196,154,108,.12);
+      color: var(--accent-light);
+    }
+
+    /* ── Services Grid ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .service-card { text-align: center; padding: 40px 28px; }
+    .service-icon {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+    }
+    .service-card h3 { margin-bottom: 12px; }
+    .service-card p { color: var(--text-muted); font-size: .95rem; }
+
+    /* ── Gallery ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/2;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    /* ── Location ── */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .location-detail {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .location-detail .icon {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .location-detail .icon.gold { background: rgba(196,154,108,.12); color: var(--accent-light); }
+    .location-detail .icon.green { background: rgba(37,211,102,.1); color: #25D366; }
+    .location-detail .icon.blue { background: rgba(66,165,245,.1); color: #42a5f5; }
+    .location-detail .info-label { font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600; }
+    .location-detail .info-value { font-weight: 600; font-size: 1.05rem; margin-top: 2px; color: rgba(255,255,255,.85); }
+    .location-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+    .location-map iframe {
+      width: 100%; height: 350px;
+      border: none;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(196,154,108,.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cta-section .container { position: relative; z-index: 2; }
+    .cta-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+    .cta-section p { color: var(--text-muted); max-width: 550px; margin: 0 auto 36px; font-size: 1.05rem; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .social-link {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: all .3s;
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.7);
+    }
+    .social-link:hover {
+      transform: translateY(-4px);
+      background: var(--accent);
+      color: #1a1a1a;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.04);
+      text-align: center;
+      padding: 40px 0;
+      color: rgba(255,255,255,.35);
+      font-size: .85rem;
+    }
+    footer a { color: rgba(255,255,255,.5); }
+    footer a:hover { color: var(--accent-light); }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,10,15,.97);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links .btn { width: 100%; text-align: center; }
+      .nav-toggle { display: flex; }
+      section { padding: 64px 0; }
+      .hero { min-height: 90vh; }
+      .about-grid, .location-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-image img { height: 280px; }
+      .about-features { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions, .cta-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn, .cta-actions .btn { width: 100%; justify-content: center; }
+    }
+  
+    /* WhatsApp Flotante */
+    .wa-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      z-index: 9999;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,.6);
+    }
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/casa-del-barbero/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/casa-del-barbero/?lang=en_US">
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo"><span class="logo-icon">✂️</span> Casa del Barbero</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" data-i18n="inicio">Inicio</a></li>
+        <li><a href="#nosotros" data-i18n="nosotros">Nosotros</a></li>
+        <li><a href="#servicios" data-i18n="servicios">Servicios</a></li>
+        <li><a href="#ubicacion" data-i18n="ubicación">Ubicación</a></li>
+        <li><a href="https://wa.me/56973994504?text=Hola%2C%20quiero%20agendar%20una%20hora%20en%20Casa%20del%20Barbero" class="btn btn-whatsapp btn-sm" target="_blank" data-i18n="agendar">📱 Agendar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="barbería_profesional_conchalí">✂️ Barbería Profesional — Conchalí</div>
+      <h1>Casa del <span class="gradient-text" data-i18n="barbero">Barbero</span></h1>
+      <p class="tagline" data-i18n="estilo_clásico_amp_cortes_modernos">Estilo clásico &amp; cortes modernos</p>
+      <p class="subtitle" data-i18n="peluquería_y_barbería_profesional_en_conchalí_cortes_de_cab">
+        Peluquería y barbería profesional en Conchalí. Cortes de cabello modernos,
+        afeitado tradicional con navaja, arreglo de barba y productos de cuidado
+        personal para el hombre de hoy.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/56973994504?text=Hola%2C%20quiero%20agendar%20una%20hora%20en%20Casa%20del%20Barbero" class="btn btn-whatsapp" target="_blank" rel="noopener" data-i18n="agenda_tu_hora">
+          📱 Agenda tu hora
+        </a>
+        <a href="#servicios" class="btn btn-outline" data-i18n="ver_servicios">Ver servicios ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>+</span>10</div>
+          <div class="hero-stat-label" data-i18n="años_de_experiencia">Años de experiencia</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>98</span>%</div>
+          <div class="hero-stat-label" data-i18n="clientes_satisfechos">Clientes satisfechos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>⭐</span>4.9</div>
+          <div class="hero-stat-label" data-i18n="calificación">Calificación</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="img/about.jpg" alt="Barbería Casa del Barbero" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <h2>Nuestra <span class="gradient-text" data-i18n="barbería">Barbería</span></h2>
+          <p>
+            <strong data-i18n="casa_del_barbero">Casa del Barbero</strong> es más que una peluquería: es un espacio
+            donde el estilo clásico se encuentra con las tendencias modernas. Desde
+            nuestros inicios en Conchalí, nos hemos dedicado a ofrecer cortes de
+            cabello impecables, afeitados tradicionales y arreglos de barba con
+            los mejores productos del mercado.
+          </p>
+          <p data-i18n="nuestro_equipo_de_barberos_profesionales_está_capacitado_en">
+            Nuestro equipo de barberos profesionales está capacitado en las técnicas
+            más actuales, desde degradados (fades) hasta cortes clásicos con tijera.
+            Cada servicio se realiza con atención al detalle y un trato cercano
+            que nos distingue.
+          </p>
+          <div class="about-features">
+            <div class="about-feature">
+              <span class="icon">✂️</span> Cortes modernos &amp; clásicos
+            </div>
+            <div class="about-feature">
+              <span class="icon">🪒</span> Afeitado con navaja
+            </div>
+            <div class="about-feature">
+              <span class="icon">🧔</span> Arreglo de barba
+            </div>
+            <div class="about-feature">
+              <span class="icon">✨</span> Productos premium
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="container">
+      <h2 class="section-title">Nuestros <span class="gradient-text" data-i18n="servicios">Servicios</span></h2>
+      <p class="section-subtitle" data-i18n="desde_el_clásico_corte_tradicional_hasta_los_estilos_más_mod">Desde el clásico corte tradicional hasta los estilos más modernos. Todos incluyen asesoría de imagen.</p>
+      <div class="services-grid">
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">✂️</div>
+          <h3 data-i18n="corte_de_cabello">Corte de Cabello</h3>
+          <p data-i18n="corte_moderno_o_clásico_con_tijera_y_máquina_degradados_fa">Corte moderno o clásico con tijera y máquina. Degradados, fades, peinados y lo que necesites. Incluye lavado y styling.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="desde_8_000">Desde $8.000</p>
+        </div>
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">🪒</div>
+          <h3 data-i18n="afeitado_tradicional">Afeitado Tradicional</h3>
+          <p data-i18n="afeitado_clásico_con_navaja_toalla_caliente_bálsamo_y_crem">Afeitado clásico con navaja, toalla caliente, bálsamo y crema de afeitar premium. La experiencia de barbería de toda la vida.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="desde_7_000">Desde $7.000</p>
+        </div>
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">🧔</div>
+          <h3 data-i18n="arreglo_de_barba">Arreglo de Barba</h3>
+          <p data-i18n="perfilado_recorte_y_delineado_de_barba_con_máquina_y_tijera">Perfilado, recorte y delineado de barba con máquina y tijera. Incluye toalla caliente y aceite hidratante para barba.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="desde_5_000">Desde $5.000</p>
+        </div>
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">👦</div>
+          <h3 data-i18n="corte_infantil">Corte Infantil</h3>
+          <p data-i18n="cortes_para_los_más_pequeños_con_paciencia_y_dedicación_amb">Cortes para los más pequeños con paciencia y dedicación. Ambiente amigable para que los niños se sientan cómodos.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="desde_5_000">Desde $5.000</p>
+        </div>
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">🎨</div>
+          <h3 data-i18n="diseño_amp_tintes">Diseño &amp; Tintes</h3>
+          <p data-i18n="diseños_personalizados_líneas_dibujos_y_tintes_para_quiene">Diseños personalizados, líneas, dibujos y tintes para quienes buscan un look único y atrevido. Consulta por colores.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="desde_10_000">Desde $10.000</p>
+        </div>
+        <div class="dark-card service-card">
+          <div class="service-icon" style="background:rgba(196,154,108,.12);color:var(--accent-light);">🧴</div>
+          <h3 data-i18n="productos_amp_cuidado">Productos &amp; Cuidado</h3>
+          <p data-i18n="venta_de_productos_profesionales_pomadas_ceras_aceites_pa">Venta de productos profesionales: pomadas, ceras, aceites para barba, shampoos y acondicionadores especializados.</p>
+          <p style="font-weight:700;color:var(--accent-light);margin-top:16px;font-size:1.1rem;" data-i18n="consúltenos">Consúltenos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container">
+      <h2 class="section-title">Nuestro <span class="gradient-text" data-i18n="trabajo">Trabajo</span></h2>
+      <p class="section-subtitle" data-i18n="resultados_que_hablan_por_sí_solos_cada_corte_es_una_obra_d">Resultados que hablan por sí solos. Cada corte es una obra de arte.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="img/service1.jpg" alt="Corte moderno degradado" loading="lazy" /></div>
+        <div class="gallery-item"><img src="img/service2.jpg" alt="Arreglo de barba profesional" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicacion">
+    <div class="container">
+      <h2 class="section-title" data-i18n="visítanos">Visítanos</h2>
+      <p class="section-subtitle" data-i18n="te_esperamos_en_av_el_guanaco_4480_conchalí_atención_de_l">Te esperamos en Av. El Guanaco 4480, Conchalí. Atención de lunes a sábado.</p>
+      <div class="location-grid">
+        <div>
+          <div class="location-detail">
+            <span class="icon gold">📍</span>
+            <div>
+              <div class="info-label" data-i18n="dirección">Dirección</div>
+              <div class="info-value" data-i18n="av_el_guanaco_4480_conchalí_santiago">Av. El Guanaco 4480, Conchalí, Santiago</div>
+            </div>
+          </div>
+          <div class="location-detail">
+            <span class="icon blue">🕐</span>
+            <div>
+              <div class="info-label" data-i18n="horario">Horario</div>
+              <div class="info-value" data-i18n="lunes_a_sábado_10_00_a_20_00_hrs">Lunes a Sábado — 10:00 a 20:00 hrs</div>
+            </div>
+          </div>
+          <div class="location-detail">
+            <span class="icon green">💬</span>
+            <div>
+              <div class="info-label" data-i18n="contacto">Contacto</div>
+              <div class="info-value" data-i18n="agenda_por_whatsapp_respuesta_rápida">Agenda por WhatsApp — Respuesta rápida</div>
+            </div>
+          </div>
+        </div>
+        <div class="location-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0!2d-70.675!3d-33.376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c00000000001%3A0x0000000000000001!2sAv.%20El%20Guanaco%204480%2C%20Conchal%C3%AD!5e0!3m2!1ses!2scl!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa - Casa del Barbero"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section-dark" id="contacto">
+    <div class="container">
+      <h2>¿Necesitas un <span class="gradient-text" data-i18n="cambio_de_look">cambio de look</span>?</h2>
+      <p data-i18n="agenda_tu_hora_por_whatsapp_y_ven_a_conocer_la_mejor_barberí">
+        Agenda tu hora por WhatsApp y ven a conocer la mejor barbería de Conchalí.
+        Te esperamos con toalla caliente y buena música.
+      </p>
+      <div class="cta-actions">
+        <a href="https://wa.me/56973994504?text=Hola%2C%20quiero%20agendar%20una%20hora%20en%20Casa%20del%20Barbero" class="btn btn-whatsapp" target="_blank" rel="noopener" data-i18n="agendar_por_whatsapp">
+          📱 Agendar por WhatsApp
+        </a>
+        <a href="https://www.instagram.com/" class="btn btn-outline" target="_blank" rel="noopener" data-i18n="instagram">
+          📸 Instagram
+        </a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+        <a href="https://wa.me/56973994504?text=Hola%2C%20quiero%20agendar%20una%20hora%20en%20Casa%20del%20Barbero" class="social-link" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>✂️ <strong data-i18n="casa_del_barbero">Casa del Barbero</strong> — Av. El Guanaco 4480, Conchalí, Santiago</p>
+      <p style="margin-top:6px;" data-i18n="2026_casa_del_barbero_hecho_con_por_átomo_studio">© 2026 Casa del Barbero. Hecho con ❤️ por Átomo Studio</p>
+    </div>
+  </footer>
+
+  <script data-i18n="const_toggle_document_getelementbyid_navtoggle_con">
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+
+  <!-- WhatsApp Flotante -->
+  <a href="https://wa.me/56973994504?text=Hola%2C%20quiero%20agendar%20una%20hora%20en%20Casa%20del%20Barbero" target="_blank" class="wa-float" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

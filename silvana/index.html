@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💇‍♀️</text></svg>" />
+<title data-i18n="silvana_sepúlveda_figuras_en_porcelana_fría">Silvana Sepúlveda · Figuras en Porcelana Fría</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style data-i18n="root_bg_06080a_bg2_0d1117_bg3_12181f">
+:root{
+  --bg:#06080a;
+  --bg2:#0d1117;
+  --bg3:#12181f;
+  --gold:#c9a44e;
+  --gold2:#e8c87a;
+  --rose:#d98fa0;
+  --green:#5a9e7a;
+  --cream:#f0e6d3;
+  --muted:rgba(240,230,211,0.45);
+  --border:rgba(201,164,78,0.12);
+  --border2:rgba(201,164,78,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;cursor:default}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+
+/* PARTICLES */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:float linear infinite;opacity:0}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-20px) scale(1);opacity:0}
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,8,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold2);letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all .25s;letter-spacing:0.3px}
+.nav-links a:hover,.nav-links a.active{color:var(--cream);background:var(--border)}
+.nav-cta{background:linear-gradient(135deg,#c9a44e,#e8c87a);color:#1a1000!important;border-radius:10px!important;font-weight:700!important;padding:9px 20px!important}
+.nav-cta:hover{box-shadow:0 4px 20px rgba(201,164,78,0.35);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:22px;height:2px;background:var(--cream);border-radius:2px;transition:all .3s}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:block}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:80px 40px 40px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,164,78,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(217,143,160,0.05) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 20% 70%,rgba(90,158,122,0.05) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:100px;border:1px solid var(--border2);background:rgba(201,164,78,0.06);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fadeUp .8s ease both}
+.hero-badge::before{content:'✦';font-size:10px}
+.hero-badge::after{content:'✦';font-size:10px}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;line-height:1.05;letter-spacing:-1px;animation:fadeUp .8s .15s ease both}
+h1.hero-title em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;line-height:1.7;color:var(--muted);max-width:520px;margin:24px auto 40px;animation:fadeUp .8s .3s ease both;font-weight:300}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .45s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:14px;background:linear-gradient(135deg,#c9a44e,#e8c87a);color:#1a1000;font-weight:700;font-size:14px;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{box-shadow:0 8px 30px rgba(201,164,78,0.4);transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:14px;background:transparent;color:var(--cream);font-weight:600;font-size:14px;text-decoration:none;transition:all .3s;border:1px solid var(--border2);cursor:pointer}
+.btn-secondary:hover{background:rgba(255,255,255,0.04);border-color:rgba(201,164,78,0.35)}
+.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:64px;animation:fadeUp .8s .6s ease both}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--gold2);line-height:1}
+.stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hero-divider{display:flex;align-items:center;gap:16px;margin-top:60px;animation:fadeUp .8s .75s ease both;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.hero-divider::before,.hero-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border2))}
+.hero-divider::after{background:linear-gradient(270deg,transparent,var(--border2))}
+.scrollhint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;cursor:pointer}
+.scrollhint svg{width:24px;height:24px;color:var(--gold);opacity:.5}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* FEATURED CATEGORIES */
+.section{padding:100px 40px}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:block}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:16px}
+.section-sub{color:var(--muted);font-size:15px;line-height:1.7;max-width:520px;font-weight:300}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px}
+.cat-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s;position:relative;group}
+.cat-card:hover{transform:translateY(-6px);border-color:var(--border2);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.cat-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;transition:transform .5s;filter:brightness(0.9) saturate(1.1)}
+.cat-card:hover .cat-img{transform:scale(1.05);filter:brightness(1) saturate(1.2)}
+.cat-img-placeholder{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:80px;background:var(--bg3)}
+.cat-body{padding:24px}
+.cat-icon{font-size:28px;margin-bottom:10px}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:6px}
+.cat-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;font-weight:300}
+.cat-price{font-size:13px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:6px}
+.cat-price-from{font-size:11px;color:var(--muted);font-weight:400}
+.cat-badge{position:absolute;top:16px;right:16px;background:rgba(201,164,78,0.9);color:#1a1000;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px}
+
+/* CATALOG PAGE */
+.catalog-header{padding:60px 40px 40px;text-align:center}
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:32px 0}
+.filter-btn{padding:9px 22px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;font-family:'Nunito',sans-serif;letter-spacing:0.3px}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);border-color:var(--gold);color:#1a1000}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;padding:0 40px 80px;max-width:1200px;margin:0 auto}
+.prod-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .4s;position:relative}
+.prod-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 16px 50px rgba(0,0,0,0.4)}
+.prod-card.hidden{display:none}
+.prod-img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;filter:brightness(0.92) saturate(1.15) contrast(1.05)}
+.prod-card:hover .prod-img{filter:brightness(1.02) saturate(1.25) contrast(1.08)}
+.prod-img-wrap{position:relative;overflow:hidden}
+.prod-badge-occasion{position:absolute;top:14px;left:14px;padding:5px 14px;border-radius:100px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;backdrop-filter:blur(8px)}
+.badge-bautizo{background:rgba(90,158,122,0.85);color:#fff}
+.badge-comunion{background:rgba(255,255,255,0.85);color:#1a1000}
+.badge-navidad{background:rgba(197,50,50,0.85);color:#fff}
+.badge-jardin{background:rgba(90,140,80,0.85);color:#fff}
+.badge-hadas{background:rgba(217,143,160,0.85);color:#1a1000}
+.badge-personalizado{background:rgba(201,164,78,0.85);color:#1a1000}
+.prod-fav{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(6,8,10,0.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;border:1px solid var(--border);font-size:16px}
+.prod-fav:hover{background:rgba(201,164,78,0.2);border-color:var(--gold)}
+.prod-info{padding:20px 22px 22px}
+.prod-occasion{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;line-height:1.2;margin-bottom:8px}
+.prod-desc{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:16px;font-weight:300}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.prod-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold2)}
+.prod-price small{font-size:13px;font-family:'Nunito',sans-serif;color:var(--muted);font-weight:400}
+.btn-wa{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:10px;background:#25D366;color:#fff;font-size:12px;font-weight:700;text-decoration:none;transition:all .3s}
+.btn-wa:hover{background:#1db954;box-shadow:0 4px 16px rgba(37,211,102,0.35);transform:scale(1.03)}
+
+/* OCCASIONS STRIP */
+.occasions{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 40px}
+.occasions-inner{max-width:1140px;margin:0 auto}
+.occ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:32px}
+.occ-item{text-align:center;padding:24px 16px;border-radius:16px;border:1px solid var(--border);background:var(--bg3);transition:all .3s;cursor:pointer}
+.occ-item:hover{border-color:var(--border2);background:rgba(201,164,78,0.05);transform:translateY(-3px)}
+.occ-emoji{font-size:36px;margin-bottom:10px}
+.occ-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.occ-price{font-size:11px;color:var(--gold);font-weight:700}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto;padding:100px 40px}
+.about-img-area{position:relative}
+.about-img-frame{width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;border:1px solid var(--border);position:relative}
+.about-img-frame img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9) saturate(1.1)}
+.about-accent{position:absolute;bottom:-20px;right:-20px;width:140px;height:140px;border-radius:16px;background:var(--bg2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;font-family:'Cormorant Garamond',serif}
+.about-accent-num{font-size:42px;font-weight:600;color:var(--gold2);line-height:1}
+.about-accent-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-align:center}
+.about-content{}
+.features{display:flex;flex-direction:column;gap:20px;margin-top:40px}
+.feature{display:flex;gap:16px;align-items:flex-start}
+.feature-icon{width:44px;height:44px;border-radius:12px;background:rgba(201,164,78,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.feature-title{font-size:14px;font-weight:700;margin-bottom:3px}
+.feature-desc{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:56px}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative}
+.step-num{position:absolute;top:-14px;left:24px;width:28px;height:28px;border-radius:8px;background:var(--gold);color:#1a1000;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step-icon{font-size:32px;margin-bottom:14px;margin-top:4px}
+.step-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.step-desc{font-size:12.5px;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1100px;margin:0 auto;padding:0 40px 80px;align-items:start}
+.contact-info{}
+.contact-cards{display:flex;flex-direction:column;gap:16px;margin-top:40px}
+.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
+.contact-card:hover{border-color:var(--border2);transform:translateX(4px)}
+.contact-card-icon{width:44px;height:44px;border-radius:12px;background:rgba(201,164,78,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-card-title{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+.contact-card-val{font-size:14px;font-weight:500;margin-bottom:4px}
+.contact-card-link{font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.contact-card-link:hover{color:var(--gold)}
+.wa-big{display:flex;align-items:center;gap:12px;padding:20px 28px;border-radius:16px;background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;font-size:16px;font-weight:700;text-decoration:none;transition:all .3s;justify-content:center;margin-top:24px}
+.wa-big:hover{transform:scale(1.02);box-shadow:0 8px 32px rgba(37,211,102,0.4)}
+.contact-form-area{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:40px}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin-bottom:8px}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:32px;font-weight:300}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg3);color:var(--cream);font-size:14px;font-family:'Nunito',sans-serif;transition:all .3s;outline:none}
+.form-input:focus{border-color:var(--border2);box-shadow:0 0 0 3px rgba(201,164,78,0.08)}
+.form-input::placeholder{color:rgba(240,230,211,0.25)}
+textarea.form-input{resize:vertical;min-height:120px}
+select.form-input option{background:var(--bg3)}
+.form-send{width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,#c9a44e,#e8c87a);color:#1a1000;font-weight:800;font-size:14px;border:none;cursor:pointer;transition:all .3s;font-family:'Nunito',sans-serif;letter-spacing:0.5px}
+.form-send:hover{box-shadow:0 6px 25px rgba(201,164,78,0.4);transform:translateY(-1px)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;padding:0 40px 80px;max-width:1200px;margin:0 auto}
+.gal-item{border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;position:relative;border:1px solid var(--border);transition:all .4s}
+.gal-item:hover{transform:scale(1.02);border-color:var(--border2);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+.gal-item img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.9) saturate(1.1) contrast(1.05);transition:all .4s}
+.gal-item:hover img{filter:brightness(1.05) saturate(1.3) contrast(1.08);transform:scale(1.08)}
+.gal-item:first-child,.gal-item:nth-child(5){grid-column:span 2}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 40px 40px}
+.footer-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px}
+.footer-brand .brand-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold2);margin-bottom:12px}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.7;max-width:280px;font-weight:300}
+.footer-col h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:20px}
+.footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;margin-bottom:10px;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:var(--cream)}
+.footer-bottom{max-width:1140px;margin:40px auto 0;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(240,230,211,0.25)}
+.social-links{display:flex;gap:12px}
+.social-link{width:36px;height:36px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;font-size:16px}
+.social-link:hover{border-color:var(--border2);background:rgba(201,164,78,0.08);transform:translateY(-2px)}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.5);cursor:pointer;transition:all .3s;text-decoration:none;animation:waPulse 3s infinite}
+.wa-float:hover{transform:scale(1.12)}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 4px 40px rgba(37,211,102,0.7),0 0 0 12px rgba(37,211,102,0.08)}}
+
+/* MOBILE NAV */
+.mobile-menu{position:fixed;top:68px;left:0;right:0;background:rgba(6,8,10,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px;z-index:99;display:none;flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:all .25s}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--cream);background:var(--border)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .about-grid{grid-template-columns:1fr;padding:60px 20px}
+  .contact-grid{grid-template-columns:1fr;padding:0 20px 60px}
+  .footer-inner{grid-template-columns:1fr;gap:36px}
+  .section{padding:60px 20px}
+  .products-grid{padding:0 20px 60px}
+  .gallery-grid{padding:0 20px 60px}
+  .gal-item:first-child,.gal-item:nth-child(5){grid-column:span 1}
+  .occasions{padding:40px 20px}
+}
+@media(max-width:600px){
+  #hero{padding:60px 20px 40px}
+  .hero-stats{gap:24px}
+  .hero-stats .stat-num{font-size:28px}
+  .cat-grid{grid-template-columns:1fr}
+  .occ-grid{grid-template-columns:repeat(2,1fr)}
+  .catalog-header{padding:40px 20px 20px}
+  .filter-bar{padding:0 20px}
+  .products-grid{padding:0 20px 60px;grid-template-columns:1fr}
+}
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/silvana/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/silvana/?lang=en_US">
+</head>
+<body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/56985341107?text=Hola%20Silvana%2C%20vi%20tu%20web%20y%20quisiera%20consultar%20sobre%20tus%20figuras%20✨" target="_blank" class="wa-float">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home')">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 2 L18 10 L26 11 L20 17 L22 25 L14 21 L6 25 L8 17 L2 11 L10 10 Z" fill="currentColor" opacity="0.2"/>
+      <path d="M14 4 L17 10 L24 11 L19 16 L21 23 L14 20 L7 23 L9 16 L4 11 L11 10 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="14" cy="14" r="3" fill="currentColor"/>
+    </svg>
+    Silvana
+  </a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home')" id="nav-home" class="active" data-i18n="inicio">Inicio</a>
+    <a href="#" onclick="showPage('catalog')" id="nav-catalog" data-i18n="catálogo">Catálogo</a>
+    <a href="#" onclick="showPage('gallery')" id="nav-gallery" data-i18n="galería">Galería</a>
+    <a href="#" onclick="showPage('about')" id="nav-about" data-i18n="nosotros">Nosotros</a>
+    <a href="#" onclick="showPage('contact')" id="nav-contact" class="nav-cta" data-i18n="pedir">Pedir ✨</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" onclick="showPage('home');toggleMenu()" data-i18n="inicio">🏠 Inicio</a>
+  <a href="#" onclick="showPage('catalog');toggleMenu()" data-i18n="catálogo">🛍️ Catálogo</a>
+  <a href="#" onclick="showPage('gallery');toggleMenu()" data-i18n="galería">📸 Galería</a>
+  <a href="#" onclick="showPage('about');toggleMenu()" data-i18n="nosotros">✨ Nosotros</a>
+  <a href="#" onclick="showPage('contact');toggleMenu()" data-i18n="contacto">💬 Contacto</a>
+</div>
+
+<!-- =================== HOME PAGE =================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="porcelana_fría_hecho_a_mano_los_andes_chile">Porcelana Fría · Hecho a Mano · Los Andes, Chile</div>
+      <h1 class="hero-title">
+        Figuras <em data-i18n="mágicas">mágicas</em><br>para cada momento
+      </h1>
+      <p class="hero-sub" data-i18n="duendes_hadas_y_ángeles_artesanales_hechos_con_amor_en_porc">Duendes, hadas y ángeles artesanales hechos con amor en porcelana fría. Piezas únicas para bautizos, comuniones, jardines y decoración especial.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('catalog')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Ver Catálogo
+        </button>
+        <a href="https://wa.me/56985341107" target="_blank" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar ahora
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">+500</div><div class="stat-label" data-i18n="figuras_creadas">Figuras creadas</div></div>
+        <div class="stat"><div class="stat-num">8+</div><div class="stat-label" data-i18n="años_de_arte">Años de arte</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label" data-i18n="personalizables">Personalizables</div></div>
+      </div>
+      <div class="hero-divider" data-i18n="descubre_las_colecciones">Descubre las colecciones</div>
+    </div>
+    <div class="scrollhint" onclick="document.getElementById('home-cats').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="home-cats">
+    <div class="section-inner">
+      <div class="fade-in">
+        <span class="section-label" data-i18n="colecciones">✦ Colecciones</span>
+        <h2 class="section-title">Cada figura, una historia<br>única e irrepetible</h2>
+        <p class="section-sub" data-i18n="artesanía_en_porcelana_fría_para_las_ocasiones_más_especiale">Artesanía en porcelana fría para las ocasiones más especiales de tu vida.</p>
+      </div>
+      <div class="cat-grid">
+
+        <div class="cat-card fade-in" onclick="filterAndShow('angeles')">
+          <img src="img/producto1.jpg" class="cat-img" alt="Ángeles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cat-img-placeholder" style="display:none">👼</div>
+          <div class="cat-body">
+            <div class="cat-icon">👼</div>
+            <div class="cat-name" data-i18n="ángeles_sagrados">Ángeles Sagrados</div>
+            <div class="cat-desc" data-i18n="hermosos_ángeles_con_luz_led_para_bautizos_primera_comunión">Hermosos ángeles con luz LED para bautizos, primera comunión y confirmación. Personalizables con nombre.</div>
+            <div class="cat-price"><span class="cat-price-from" data-i18n="desde">Desde</span> $15.000 CLP</div>
+          </div>
+          <div class="cat-badge" data-i18n="popular">⭐ Popular</div>
+        </div>
+
+        <div class="cat-card fade-in" onclick="filterAndShow('hadas')">
+          <img src="img/producto2.jpg" class="cat-img" alt="Hadas" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cat-img-placeholder" style="display:none">🧚</div>
+          <div class="cat-body">
+            <div class="cat-icon">🧚</div>
+            <div class="cat-name" data-i18n="mi_haditas">Mi Haditas</div>
+            <div class="cat-desc" data-i18n="delicadas_haditas_en_colores_vibrantes_con_tutú_de_tul_y_ala">Delicadas haditas en colores vibrantes con tutú de tul y alas de mariposa. Perfectas como recuerdos.</div>
+            <div class="cat-price"><span class="cat-price-from" data-i18n="desde">Desde</span> $8.000 CLP</div>
+          </div>
+        </div>
+
+        <div class="cat-card fade-in" onclick="filterAndShow('duendes')">
+          <img src="img/producto5.jpg" class="cat-img" alt="Duendes Lectores" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cat-img-placeholder" style="display:none">📚</div>
+          <div class="cat-body">
+            <div class="cat-icon">📚</div>
+            <div class="cat-name" data-i18n="duendes_lectores">Duendes Lectores</div>
+            <div class="cat-desc" data-i18n="adorables_duendes_con_gafas_y_libros_sentados_sobre_tomos_a">Adorables duendes con gafas y libros, sentados sobre tomos antiguos. Ideal para amantes de la lectura.</div>
+            <div class="cat-price"><span class="cat-price-from" data-i18n="desde">Desde</span> $18.000 CLP</div>
+          </div>
+          <div class="cat-badge" data-i18n="nuevo">✨ Nuevo</div>
+        </div>
+
+        <div class="cat-card fade-in" onclick="filterAndShow('jardin')">
+          <img src="img/producto6.jpg" class="cat-img" alt="Duendes de Jardín" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="cat-img-placeholder" style="display:none">🌿</div>
+          <div class="cat-body">
+            <div class="cat-icon">🌿</div>
+            <div class="cat-name" data-i18n="duendes_de_jardín">Duendes de Jardín</div>
+            <div class="cat-desc" data-i18n="grandes_duendes_con_ropa_artesanal_setas_y_detalles_mágicos">Grandes duendes con ropa artesanal, setas y detalles mágicos. Piezas únicas para decorar tu hogar.</div>
+            <div class="cat-price"><span class="cat-price-from" data-i18n="desde">Desde</span> $25.000 CLP</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OCCASIONS -->
+  <div class="occasions fade-in">
+    <div class="occasions-inner">
+      <span class="section-label" data-i18n="ocasiones_especiales">✦ Ocasiones Especiales</span>
+      <h2 class="section-title" style="margin-bottom:0" data-i18n="figuras_para_cada_celebración">Figuras para cada celebración</h2>
+    </div>
+    <div class="occasions-inner">
+      <div class="occ-grid">
+        <div class="occ-item" onclick="filterAndShow('angeles')"><div class="occ-emoji">🕊️</div><div class="occ-name" data-i18n="bautizo">Bautizo</div><div class="occ-price" data-i18n="desde_15_000">Desde $15.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('angeles')"><div class="occ-emoji">⛪</div><div class="occ-name" data-i18n="1_comunión">1ª Comunión</div><div class="occ-price" data-i18n="desde_15_000">Desde $15.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('angeles')"><div class="occ-emoji">✝️</div><div class="occ-name" data-i18n="confirmación">Confirmación</div><div class="occ-price" data-i18n="desde_18_000">Desde $18.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('hadas')"><div class="occ-emoji">🎂</div><div class="occ-name" data-i18n="cumpleaños">Cumpleaños</div><div class="occ-price" data-i18n="desde_8_000">Desde $8.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('duendes')"><div class="occ-emoji">🎄</div><div class="occ-name" data-i18n="navidad">Navidad</div><div class="occ-price" data-i18n="desde_20_000">Desde $20.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('personalizado')"><div class="occ-emoji">🎁</div><div class="occ-name" data-i18n="regalo">Regalo</div><div class="occ-price" data-i18n="desde_12_000">Desde $12.000</div></div>
+        <div class="occ-item" onclick="filterAndShow('jardin')"><div class="occ-emoji">🌸</div><div class="occ-name" data-i18n="decoración">Decoración</div><div class="occ-price" data-i18n="desde_25_000">Desde $25.000</div></div>
+        <div class="occ-item" onclick="showPage('contact')"><div class="occ-emoji">💌</div><div class="occ-name" data-i18n="personalizado">Personalizado</div><div class="occ-price" data-i18n="consultar">Consultar</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST SECTION -->
+  <section class="section">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+        <div class="fade-in" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center">
+          <div style="font-size:40px;margin-bottom:12px">🎨</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:8px" data-i18n="100_artesanal">100% Artesanal</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;font-weight:300" data-i18n="cada_figura_moldeada_y_pintada_a_mano_con_porcelana_fría_de">Cada figura moldeada y pintada a mano con porcelana fría de alta calidad</div>
+        </div>
+        <div class="fade-in" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center">
+          <div style="font-size:40px;margin-bottom:12px">✏️</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:8px" data-i18n="personalizable">Personalizable</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;font-weight:300" data-i18n="nombres_colores_y_detalles_únicos_para_cada_cliente_y_ocasi">Nombres, colores y detalles únicos para cada cliente y ocasión especial</div>
+        </div>
+        <div class="fade-in" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center">
+          <div style="font-size:40px;margin-bottom:12px">📦</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:8px" data-i18n="envíos_a_chile">Envíos a Chile</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;font-weight:300" data-i18n="despacho_seguro_a_todo_chile_retiro_disponible_en_los_andes">Despacho seguro a todo Chile. Retiro disponible en Los Andes, V Región</div>
+        </div>
+        <div class="fade-in" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center">
+          <div style="font-size:40px;margin-bottom:12px">💛</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:8px" data-i18n="con_amor">Con Amor</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;font-weight:300" data-i18n="más_de_8_años_creando_recuerdos_únicos_para_familias_de_todo">Más de 8 años creando recuerdos únicos para familias de todo Chile</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="fade-in" style="background:linear-gradient(135deg,rgba(201,164,78,0.08),rgba(217,143,160,0.06));border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 40px;text-align:center">
+    <span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:16px" data-i18n="tienes_una_idea_en_mente">✦ ¿Tienes una idea en mente?</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:400;margin-bottom:16px">Hagamos tu figura<br><em style="color:var(--gold2)" data-i18n="soñada_realidad">soñada realidad</em></h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:36px;font-weight:300" data-i18n="escríbeme_y_coordinamos_tu_pedido_personalizado">Escríbeme y coordinamos tu pedido personalizado</p>
+    <a href="https://wa.me/56985341107?text=Hola%20Silvana%2C%20quisiera%20encargar%20una%20figura%20personalizada%20🌟" target="_blank" class="btn-primary" style="font-size:16px;padding:16px 40px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Consultar por WhatsApp
+    </a>
+  </div>
+
+</div>
+<!-- END HOME PAGE -->
+
+<!-- =================== CATALOG PAGE =================== -->
+<div class="page" id="page-catalog">
+  <div class="catalog-header">
+    <span class="section-label" data-i18n="catálogo_completo">✦ Catálogo Completo</span>
+    <h2 class="section-title" data-i18n="todas_las_colecciones">Todas las colecciones</h2>
+    <p style="color:var(--muted);font-size:15px;font-weight:300" data-i18n="figuras_únicas_para_cada_ocasión_especial_envíos_a_todo_ch">Figuras únicas para cada ocasión especial · Envíos a todo Chile</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all',this)" data-i18n="todas">Todas</button>
+    <button class="filter-btn" onclick="filterProducts('angeles',this)" data-i18n="ángeles">👼 Ángeles</button>
+    <button class="filter-btn" onclick="filterProducts('hadas',this)" data-i18n="hadas">🧚 Hadas</button>
+    <button class="filter-btn" onclick="filterProducts('duendes',this)" data-i18n="duendes_lectores">📚 Duendes Lectores</button>
+    <button class="filter-btn" onclick="filterProducts('jardin',this)" data-i18n="duendes_de_jardín">🌿 Duendes de Jardín</button>
+    <button class="filter-btn" onclick="filterProducts('personalizado',this)" data-i18n="personalizados">✨ Personalizados</button>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- ÁNGELES -->
+    <div class="prod-card" data-cat="angeles">
+      <div class="prod-img-wrap">
+        <img src="img/producto1.jpg" class="prod-img" alt="Ángel Clásico LED" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-bautizo" data-i18n="bautizo">Bautizo</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="ángeles_sagrados">Ángeles Sagrados</div>
+        <div class="prod-name" data-i18n="ángel_clásico_con_luz_led">Ángel Clásico con Luz LED</div>
+        <div class="prod-desc" data-i18n="hermoso_ángel_en_blanco_y_dorado_con_luz_led_interior_ideal">Hermoso ángel en blanco y dorado con luz LED interior. Ideal para bautizo, primera comunión y confirmación. Personalizable con nombre.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$15.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Ángel%20Clásico%20con%20Luz%20LED%20💫" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="angeles">
+      <div class="prod-img-wrap">
+        <img src="img/producto4.jpg" class="prod-img" alt="Ángel con Trenzas LED" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-comunion" data-i18n="1_comunión">1ª Comunión</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="ángeles_sagrados">Ángeles Sagrados</div>
+        <div class="prod-name" data-i18n="ángel_con_trenzas_led">Ángel con Trenzas LED</div>
+        <div class="prod-desc" data-i18n="ángel_con_hermosas_trenzas_doradas_y_luz_led_personalizable">Ángel con hermosas trenzas doradas y luz LED. Personalizable con el nombre de la niña. Perfecta para primera comunión o confirmación.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$18.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Ángel%20con%20Trenzas%20LED%20🙏" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HADAS -->
+    <div class="prod-card" data-cat="hadas">
+      <div class="prod-img-wrap">
+        <img src="img/producto2.jpg" class="prod-img" alt="Hadita Verde" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-hadas" data-i18n="hadas">Hadas</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="mi_haditas">Mi Haditas</div>
+        <div class="prod-name" data-i18n="hadita_verde_primavera">Hadita Verde Primavera</div>
+        <div class="prod-desc" data-i18n="delicada_hadita_con_tutú_de_tul_verde_y_alas_de_mariposa_bri">Delicada hadita con tutú de tul verde y alas de mariposa brillantes. Ideal como recuerdo de cumpleaños o decoración infantil.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$8.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20la%20Hadita%20Verde%20🧚‍♀️" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="hadas">
+      <div class="prod-img-wrap">
+        <img src="img/producto7.jpg" class="prod-img" alt="Hadita Rosada" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-hadas" data-i18n="hadas">Hadas</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="mi_haditas">Mi Haditas</div>
+        <div class="prod-name" data-i18n="hadita_rosada_estrellada">Hadita Rosada Estrellada</div>
+        <div class="prod-desc" data-i18n="encantadora_hadita_en_tonos_rosados_con_alas_glitter_y_tutú">Encantadora hadita en tonos rosados con alas glitter y tutú con estrellitas. Un regalo mágico para las pequeñas del hogar.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$8.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20la%20Hadita%20Rosada%20🩷" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUENDES -->
+    <div class="prod-card" data-cat="duendes">
+      <div class="prod-img-wrap">
+        <img src="img/producto5.jpg" class="prod-img" alt="Duende Lector Verde" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-jardin" data-i18n="duendes">Duendes</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="duendes_lectores">Duendes Lectores</div>
+        <div class="prod-name" data-i18n="duende_lector_gorro_verde">Duende Lector Gorro Verde</div>
+        <div class="prod-desc" data-i18n="encantador_duende_con_gorro_verde_gafas_de_alambre_y_libro">Encantador duende con gorro verde, gafas de alambre y libro abierto. Sentado sobre una pila de tomos. Un regalo único para biblióferos.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$20.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Duende%20Lector%20Gorro%20Verde%20📚" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="duendes">
+      <div class="prod-img-wrap">
+        <img src="img/producto3.jpg" class="prod-img" alt="Duende Lector Bordeaux" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-jardin" data-i18n="duendes">Duendes</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="duendes_lectores">Duendes Lectores</div>
+        <div class="prod-name" data-i18n="duende_lector_gorro_burdeo">Duende Lector Gorro Burdeo</div>
+        <div class="prod-desc" data-i18n="majestuoso_duende_lector_con_gorro_vino_y_gafas_redondas_pla">Majestuoso duende lector con gorro vino y gafas redondas plateadas. Un elegante adorno para biblioteca o escritorio de colección.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$20.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Duende%20Lector%20Gorro%20Burdeo%20🎩" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="duendes">
+      <div class="prod-img-wrap">
+        <img src="img/producto8.jpg" class="prod-img" alt="Duende Lector Azul" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-jardin" data-i18n="duendes">Duendes</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="duendes_lectores">Duendes Lectores</div>
+        <div class="prod-name" data-i18n="duende_lector_gorro_azul">Duende Lector Gorro Azul</div>
+        <div class="prod-desc" data-i18n="carismático_duende_con_gorro_azul_y_gafas_celeste_sentado_l">Carismático duende con gorro azul y gafas celeste, sentado leyendo sobre un tocón de árbol. Pieza de alta colección artesanal.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$22.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Duende%20Lector%20Gorro%20Azul%20📖" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- JARDÍN -->
+    <div class="prod-card" data-cat="jardin">
+      <div class="prod-img-wrap">
+        <img src="img/producto6.jpg" class="prod-img" alt="Duende Jardinero" onerror="this.style.display='none'">
+        <div class="prod-badge-occasion badge-jardin" data-i18n="jardín">Jardín</div>
+        <div class="prod-fav">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="duendes_de_jardín">Duendes de Jardín</div>
+        <div class="prod-name" data-i18n="duende_jardinero_con_hadita">Duende Jardinero con Hadita</div>
+        <div class="prod-desc" data-i18n="gran_duende_vestido_en_jeans_con_sombrero_de_paja_sostenien">Gran duende vestido en jeans con sombrero de paja, sosteniendo una canastita con una hadita dentro. Setas y flores a sus pies. Obra de arte.</div>
+        <div class="prod-footer">
+          <div class="prod-price">$35.000 <small data-i18n="clp">CLP</small></div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Me%20interesa%20el%20Duende%20Jardinero%20con%20Hadita%20🌿" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONALIZADOS -->
+    <div class="prod-card" data-cat="personalizado">
+      <div class="prod-img-wrap" style="background:linear-gradient(135deg,rgba(201,164,78,0.12),rgba(217,143,160,0.08));aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+        <div style="font-size:64px">✨</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold2);text-align:center;padding:0 20px">Tu Idea,<br>Nuestra Magia</div>
+      </div>
+      <div class="prod-badge-occasion badge-personalizado" data-i18n="personalizado">Personalizado</div>
+      <div class="prod-fav">♡</div>
+      <div class="prod-info">
+        <div class="prod-occasion" data-i18n="pedido_especial">Pedido Especial</div>
+        <div class="prod-name" data-i18n="figura_personalizada">Figura Personalizada</div>
+        <div class="prod-desc" data-i18n="tienes_una_idea_en_mente_creamos_la_figura_que_imaginas_p">¿Tienes una idea en mente? Creamos la figura que imaginas: personajes personalizados, recuerdos únicos, figuras de ocasiones especiales.</div>
+        <div class="prod-footer">
+          <div class="prod-price" data-i18n="consultar">Consultar</div>
+          <a class="btn-wa" href="https://wa.me/56985341107?text=Hola%20Silvana!%20Quisiera%20encargar%20una%20figura%20personalizada%20🌟%20Mi%20idea%20es..." target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- END CATALOG PAGE -->
+
+<!-- =================== GALLERY PAGE =================== -->
+<div class="page" id="page-gallery">
+  <div class="catalog-header">
+    <span class="section-label" data-i18n="galería">✦ Galería</span>
+    <h2 class="section-title">El trabajo habla<br>por sí mismo</h2>
+    <p style="color:var(--muted);font-size:15px;font-weight:300" data-i18n="todas_las_figuras_son_únicas_y_hechas_a_mano_en_porcelana_fr">Todas las figuras son únicas y hechas a mano en porcelana fría</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gal-item"><img src="img/producto1.jpg" alt="Ángel LED" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto2.jpg" alt="Hadita Verde" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto3.jpg" alt="Duende Burdeo" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto4.jpg" alt="Ángel Trenzas" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto5.jpg" alt="Duende Verde" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto6.jpg" alt="Duende Jardín" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto7.jpg" alt="Hadita Rosa" onerror="this.style.display='none'"></div>
+    <div class="gal-item"><img src="img/producto8.jpg" alt="Duende Azul" onerror="this.style.display='none'"></div>
+  </div>
+  <div style="text-align:center;padding:0 40px 80px">
+    <p style="color:var(--muted);font-size:14px;margin-bottom:24px" data-i18n="te_enamoraste_de_alguna_pieza">¿Te enamoraste de alguna pieza?</p>
+    <a href="https://wa.me/56985341107?text=Hola%20Silvana!%20Vi%20tu%20galería%20y%20quisiera%20consultar%20por%20una%20figura%20🌟" target="_blank" class="btn-primary" data-i18n="consultar_por_whatsapp">
+      Consultar por WhatsApp
+    </a>
+  </div>
+</div>
+<!-- END GALLERY PAGE -->
+
+<!-- =================== ABOUT PAGE =================== -->
+<div class="page" id="page-about">
+  <div class="about-grid">
+    <div class="about-img-area">
+      <div class="about-img-frame">
+        <img src="img/producto6.jpg" alt="Silvana Sepúlveda" onerror="this.style.background='var(--bg3)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,8,10,0.6) 0%,transparent 50%)"></div>
+        <div style="position:absolute;bottom:20px;left:20px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--gold2)" data-i18n="silvana_sepúlveda">Silvana Sepúlveda</div>
+          <div style="font-size:12px;color:rgba(240,230,211,0.6);letter-spacing:1px" data-i18n="artesana_los_andes_chile">Artesana · Los Andes, Chile</div>
+        </div>
+      </div>
+      <div class="about-accent">
+        <div class="about-accent-num">8+</div>
+        <div class="about-accent-label">años<br>creando</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-label" data-i18n="nuestra_historia">✦ Nuestra Historia</span>
+      <h2 class="section-title">Arte que nace<br>del <em style="color:var(--gold2)" data-i18n="corazón">corazón</em></h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:20px;font-weight:300" data-i18n="soy_silvana_sepúlveda_herrera_artesana_apasionada_con_más_d">
+        Soy Silvana Sepúlveda Herrera, artesana apasionada con más de 8 años moldeando sueños en porcelana fría. Cada figura que creo lleva una parte de mí: paciencia, dedicación y el deseo de hacer sonreír a las personas.
+      </p>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;font-weight:300" data-i18n="desde_los_andes_chile_mis_creaciones_han_llegado_a_hogares">
+        Desde Los Andes, Chile, mis creaciones han llegado a hogares de todo el país para celebrar los momentos más importantes de la vida: bautizos, comuniones, cumpleaños y mucho más.
+      </p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🏡</div>
+          <div>
+            <div class="feature-title" data-i18n="taller_propio_en_los_andes">Taller Propio en Los Andes</div>
+            <div class="feature-desc" data-i18n="cada_figura_se_elabora_en_mi_taller_en_los_andes_puedes_vis">Cada figura se elabora en mi taller en Los Andes. Puedes visitarme y ver el proceso de cerca.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <div>
+            <div class="feature-title" data-i18n="porcelana_fría_premium">Porcelana Fría Premium</div>
+            <div class="feature-desc" data-i18n="trabajo_con_los_mejores_materiales_para_garantizar_durabilid">Trabajo con los mejores materiales para garantizar durabilidad, colores vivos y acabados profesionales.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💌</div>
+          <div>
+            <div class="feature-title" data-i18n="atención_personalizada">Atención Personalizada</div>
+            <div class="feature-desc" data-i18n="te_acompaño_en_todo_el_proceso_desde_el_diseño_hasta_la_ent">Te acompaño en todo el proceso: desde el diseño hasta la entrega de tu figura terminada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section" style="padding-top:0">
+    <div class="section-inner">
+      <div class="fade-in" style="text-align:center;margin-bottom:16px">
+        <span class="section-label" data-i18n="proceso">✦ Proceso</span>
+        <h2 class="section-title" data-i18n="cómo_se_crea_tu_figura">¿Cómo se crea tu figura?</h2>
+      </div>
+      <div class="process-steps fade-in">
+        <div class="step"><div class="step-num">1</div><div class="step-icon">💬</div><div class="step-title" data-i18n="consulta">Consulta</div><div class="step-desc" data-i18n="me_escribes_por_whatsapp_o_instagram_con_tu_idea_conversamo">Me escribes por WhatsApp o Instagram con tu idea. Conversamos sobre detalles, colores y ocasión.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-icon">✏️</div><div class="step-title" data-i18n="diseño">Diseño</div><div class="step-desc" data-i18n="planifico_la_figura_según_tus_requerimientos_defino_materia">Planifico la figura según tus requerimientos. Defino materiales, proporciones y detalles especiales.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-icon">🖐️</div><div class="step-title" data-i18n="moldeado">Moldeado</div><div class="step-desc" data-i18n="trabajo_la_porcelana_fría_a_mano_moldeando_cada_parte_con_p">Trabajo la porcelana fría a mano, moldeando cada parte con precisión y amor por el detalle.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-icon">🎨</div><div class="step-title" data-i18n="pintura">Pintura</div><div class="step-desc" data-i18n="pinto_y_detallo_cada_figura_con_pinturas_especiales_los_ros">Pinto y detallo cada figura con pinturas especiales. Los rostros, texturas y acabados se trabajan uno a uno.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-icon">📦</div><div class="step-title" data-i18n="entrega">Entrega</div><div class="step-desc" data-i18n="tu_figura_se_empaca_con_cuidado_para_entrega_presencial_en_l">Tu figura se empaca con cuidado para entrega presencial en Los Andes o envío seguro a todo Chile.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END ABOUT PAGE -->
+
+<!-- =================== CONTACT PAGE =================== -->
+<div class="page" id="page-contact">
+  <div class="catalog-header">
+    <span class="section-label" data-i18n="contacto">✦ Contacto</span>
+    <h2 class="section-title">Hablemos y creemos<br>algo <em style="color:var(--gold2)" data-i18n="especial">especial</em></h2>
+    <p style="color:var(--muted);font-size:15px;font-weight:300" data-i18n="respondo_rápido_por_whatsapp_lunes_a_sábado">Respondo rápido por WhatsApp · Lunes a Sábado</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-label" data-i18n="encuéntrame_aquí">✦ Encuéntrame aquí</span>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin-bottom:8px">Información<br>de contacto</h3>
+      <p style="color:var(--muted);font-size:14px;line-height:1.7;font-weight:300" data-i18n="la_forma_más_rápida_de_contactarme_es_por_whatsapp_respondo">La forma más rápida de contactarme es por WhatsApp. Respondo todos los días para coordinar pedidos, consultas y detalles de personalización.</p>
+
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">📱</div>
+          <div>
+            <div class="contact-card-title" data-i18n="whatsapp">WhatsApp</div>
+            <div class="contact-card-val">+56 9 8534 1107</div>
+            <a href="https://wa.me/56985341107" target="_blank" class="contact-card-link" data-i18n="abrir_chat">Abrir chat →</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📧</div>
+          <div>
+            <div class="contact-card-title" data-i18n="correo_electrónico">Correo electrónico</div>
+            <div class="contact-card-val" data-i18n="sebsilserg8_hotmail_com">sebsilserg8@hotmail.com</div>
+            <a href="mailto:sebsilserg8@hotmail.com" class="contact-card-link" data-i18n="enviar_correo">Enviar correo →</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div>
+            <div class="contact-card-title" data-i18n="ubicación_retiro">Ubicación & Retiro</div>
+            <div class="contact-card-val" data-i18n="santa_rosa_225_a_los_andes">Santa Rosa 225-A, Los Andes</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Los+Andes+Chile" target="_blank" class="contact-card-link" data-i18n="ver_en_mapa">Ver en mapa →</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📸</div>
+          <div>
+            <div class="contact-card-title" data-i18n="instagram">Instagram</div>
+            <div class="contact-card-val" data-i18n="silvana_sepulveda_herrera">@silvana_sepulveda_herrera</div>
+            <a href="https://www.instagram.com/silvana_sepulveda_herrera" target="_blank" class="contact-card-link" data-i18n="ver_perfil">Ver perfil →</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/56985341107?text=Hola%20Silvana!%20Quisiera%20hacer%20un%20pedido%20🌟" target="_blank" class="wa-big">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribir por WhatsApp ahora
+      </a>
+    </div>
+
+    <div class="contact-form-area">
+      <div class="form-title" data-i18n="envíame_tu_idea">Envíame tu idea</div>
+      <div class="form-sub" data-i18n="cuéntame_qué_figura_quieres_y_te_respondo_con_un_presupuesto">Cuéntame qué figura quieres y te respondo con un presupuesto.</div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="tu_nombre">Tu nombre</label>
+        <input type="text" class="form-input" placeholder="Ej: María González">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="teléfono_whatsapp">Teléfono / WhatsApp</label>
+        <input type="tel" class="form-input" placeholder="+56 9 ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="qué_tipo_de_figura_necesitas">¿Qué tipo de figura necesitas?</label>
+        <select class="form-input">
+          <option value="" data-i18n="selecciona_una_categoría">Selecciona una categoría</option>
+          <option data-i18n="ángel_con_luz_led_bautizo_comunión_confirmación">👼 Ángel con Luz LED (Bautizo/Comunión/Confirmación)</option>
+          <option data-i18n="hadita_cumpleaños_recuerdo">🧚 Hadita (Cumpleaños / Recuerdo)</option>
+          <option data-i18n="duende_lector">📚 Duende Lector</option>
+          <option data-i18n="duende_de_jardín">🌿 Duende de Jardín</option>
+          <option data-i18n="figura_personalizada">✨ Figura Personalizada</option>
+          <option data-i18n="otro_no_sé_aún">💌 Otro / No sé aún</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="para_cuándo_necesitas_la_figura">¿Para cuándo necesitas la figura?</label>
+        <input type="date" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="cuéntame_tu_idea">Cuéntame tu idea</label>
+        <textarea class="form-input" placeholder="Describe los detalles: colores, nombre para poner, ocasión, tamaño aproximado..."></textarea>
+      </div>
+      <button class="form-send" onclick="sendWhatsApp()" data-i18n="enviar_por_whatsapp">
+        ✨ Enviar por WhatsApp
+      </button>
+      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px" data-i18n="al_enviar_se_abrirá_whatsapp_con_tu_mensaje_listo">Al enviar, se abrirá WhatsApp con tu mensaje listo 💬</p>
+    </div>
+  </div>
+</div>
+<!-- END CONTACT PAGE -->
+
+<!-- FOOTER (shown on all pages) -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name" data-i18n="silvana_sepúlveda">✦ Silvana Sepúlveda</div>
+      <p data-i18n="artesanía_en_porcelana_fría_desde_los_andes_chile_figuras">Artesanía en porcelana fría desde Los Andes, Chile. Figuras únicas hechas con amor para tus momentos especiales.</p>
+      <div class="social-links" style="margin-top:20px">
+        <a href="https://www.instagram.com/silvana_sepulveda_herrera" target="_blank" class="social-link">📸</a>
+        <a href="https://wa.me/56985341107" target="_blank" class="social-link">💬</a>
+        <a href="mailto:sebsilserg8@hotmail.com" class="social-link">✉️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="catálogo">Catálogo</h4>
+      <a href="#" onclick="filterAndShow('angeles')" data-i18n="ángeles_sagrados">Ángeles Sagrados</a>
+      <a href="#" onclick="filterAndShow('hadas')" data-i18n="mi_haditas">Mi Haditas</a>
+      <a href="#" onclick="filterAndShow('duendes')" data-i18n="duendes_lectores">Duendes Lectores</a>
+      <a href="#" onclick="filterAndShow('jardin')" data-i18n="duendes_de_jardín">Duendes de Jardín</a>
+      <a href="#" onclick="filterAndShow('personalizado')" data-i18n="personalizados">Personalizados</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="información">Información</h4>
+      <a href="#" onclick="showPage('about')" data-i18n="sobre_silvana">Sobre Silvana</a>
+      <a href="#" onclick="showPage('gallery')" data-i18n="galería">Galería</a>
+      <a href="#" onclick="showPage('contact')" data-i18n="contacto">Contacto</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Los+Andes+Chile" target="_blank" data-i18n="los_andes_v_región">Los Andes, V Región</a>
+      <a href="https://wa.me/56985341107" target="_blank">+56 9 8534 1107</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="2026_silvana_sepúlveda_figuras_en_porcelana_fría_los_a">© 2026 Silvana Sepúlveda · Figuras en Porcelana Fría · Los Andes, Chile</span>
+    <span style="color:rgba(240,230,211,0.15)">Creado por <span style="color:var(--rose)" data-i18n="átomo_studio">Átomo Studio</span></span>
+  </div>
+</footer>
+
+<script>
+// ============ PARTICLES ============
+function createParticles(){
+  const c=document.getElementById('particles');
+  const colors=['rgba(201,164,78,0.6)','rgba(232,200,122,0.5)','rgba(217,143,160,0.4)','rgba(255,255,255,0.3)'];
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*4+1;
+    p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*20+10}s;animation-delay:${Math.random()*20}s`;
+    c.appendChild(p);
+  }
+}
+createParticles();
+
+// ============ PAGE NAVIGATION ============
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const navEl=document.getElementById('nav-'+page);
+  if(navEl)navEl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  observeFadeIns();
+}
+
+// ============ MOBILE MENU ============
+function toggleMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ============ FILTER PRODUCTS ============
+function filterProducts(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){c.classList.remove('hidden')}
+    else{c.classList.add('hidden')}
+  });
+}
+
+function filterAndShow(cat){
+  showPage('catalog');
+  setTimeout(()=>{
+    const btn=document.querySelector(`.filter-btn[onclick*="'${cat}'"]`);
+    if(btn)filterProducts(cat,btn);
+  },100);
+}
+
+// ============ SCROLL ANIMATIONS ============
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+
+function observeFadeIns(){
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>io.observe(el));
+}
+observeFadeIns();
+
+// ============ WHATSAPP FORM ============
+function sendWhatsApp(){
+  const name=document.querySelector('input[placeholder*="María"]')?.value||'';
+  const phone=document.querySelector('input[type="tel"]')?.value||'';
+  const type=document.querySelector('select')?.value||'';
+  const msg=document.querySelector('textarea')?.value||'';
+  const text=`Hola Silvana! 👋 Soy ${name||'un cliente interesado'}${phone?', mi número es '+phone:''}.\n\n*Tipo de figura:* ${type||'(sin especificar)'}\n\n*Mi idea:* ${msg||'(sin descripción)'}\n\n¡Espero tu respuesta! ✨`;
+  window.open('https://wa.me/56985341107?text='+encodeURIComponent(text),'_blank');
+}
+
+// ============ PROD FAV TOGGLE ============
+document.querySelectorAll('.prod-fav').forEach(f=>{
+  f.addEventListener('click',()=>{
+    f.textContent=f.textContent==='♡'?'♥':'♡';
+    f.style.color=f.textContent==='♥'?'#e8909a':'';
+  });
+});
+
+// Trigger initial animations
+setTimeout(()=>{
+  document.querySelectorAll('#page-home .fade-in').forEach(el=>el.classList.add('visible'));
+},200);
+</script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

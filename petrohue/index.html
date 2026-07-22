@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>" />
+<title data-i18n="petrohue_servicio_técnico_automotriz_conchalí">Petrohue — Servicio Técnico Automotriz · Conchalí</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style data-i18n="root_b_0ea5e9_b2_38bdf8_b3_0284c7_bd_b_082f4">
+:root{
+  --b:#0ea5e9;--b2:#38bdf8;--b3:#0284c7;--bd-b:#082f49;
+  --bg:#04090f;--bg2:#060d17;--bg3:#091525;
+  --bd:#0f2240;--tx:#e8f4fd;--tx2:#5c8aac;
+  --g:#10b981;
+  --font:'Syne',sans-serif;--body:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--b)}
+
+/* AMBIENT GLOW */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%,rgba(14,165,233,.07) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%,rgba(14,165,233,.04) 0%,transparent 50%)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 48px;
+  background:rgba(4,9,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--b),var(--b3));
+  display:flex;align-items:center;justify-content:center;font-size:18px}
+.logo-name{font-family:var(--font);font-size:20px;font-weight:800;color:var(--tx);letter-spacing:-.5px}
+.logo-sub{font-size:10px;color:var(--tx2);letter-spacing:2px;text-transform:uppercase;margin-left:2px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:13px;color:var(--tx2);text-decoration:none;transition:color .3s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--b)}
+.nav-pill{padding:10px 24px;background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.3);color:var(--b2);
+  border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;transition:all .3s;letter-spacing:.5px}
+.nav-pill:hover{background:rgba(14,165,233,.2);border-color:var(--b);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+
+/* Animated grid */
+.hero-grid{position:absolute;inset:0;z-index:0;overflow:hidden;opacity:.04}
+.hero-grid::before{content:'';position:absolute;inset:-50%;
+  background-image:
+    linear-gradient(rgba(14,165,233,1) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(14,165,233,1) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridPan 20s linear infinite}
+
+.hero-content{position:relative;z-index:2;max-width:680px}
+.hero-status{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;
+  background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:100px;
+  font-size:11px;color:var(--g);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;
+  animation:fadeUp .6s ease both}
+.hero-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g);animation:blink 2s infinite}
+
+h1.htitle{font-family:var(--font);font-size:clamp(48px,7vw,96px);font-weight:800;line-height:.95;
+  letter-spacing:-2px;margin-bottom:24px;animation:fadeUp .6s ease both .15s}
+h1.htitle .blue{color:var(--b2)}
+h1.htitle .outline{-webkit-text-stroke:1px rgba(14,165,233,.4);color:transparent}
+
+.hero-desc{font-size:16px;color:var(--tx2);line-height:1.8;max-width:500px;margin-bottom:40px;font-weight:300;
+  animation:fadeUp .6s ease both .25s}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;animation:fadeUp .6s ease both .35s}
+.btn-blue{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;
+  background:linear-gradient(135deg,var(--b),var(--b3));color:#fff;border-radius:10px;
+  font-size:14px;font-weight:600;text-decoration:none;transition:all .3s;letter-spacing:.3px}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(14,165,233,.3)}
+.btn-out{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;
+  background:transparent;color:var(--tx);border:1px solid var(--bd);border-radius:10px;
+  font-size:14px;text-decoration:none;transition:all .3s}
+.btn-out:hover{border-color:var(--b);color:var(--b)}
+
+.hero-kpis{display:flex;gap:0;animation:fadeUp .6s ease both .45s}
+.kpi{padding:24px 36px;border-right:1px solid var(--bd);first-child{border-left:1px solid var(--bd)}}
+.kpi:first-child{padding-left:0}
+.kpi:last-child{border-right:none}
+.kpi .kn{font-family:var(--font);font-size:36px;font-weight:800;color:var(--b2);letter-spacing:-1px;line-height:1}
+.kpi .kl{font-size:11px;color:var(--tx2);letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+
+/* Hero visual */
+.hero-visual{position:absolute;right:0;top:50%;transform:translateY(-50%);width:42%;z-index:1;
+  opacity:.9;animation:fadeIn .8s ease both .3s}
+.hero-visual-bg{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative}
+/* Concentric rings */
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(14,165,233,.08)}
+.ring-1{width:400px;height:400px;animation:rotateRing 20s linear infinite}
+.ring-2{width:300px;height:300px;border-color:rgba(14,165,233,.12);animation:rotateRing 14s linear infinite reverse}
+.ring-3{width:200px;height:200px;border-color:rgba(14,165,233,.18);animation:rotateRing 8s linear infinite}
+.ring-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--b);top:-4px;left:50%;transform:translateX(-50%)}
+.hero-car{font-size:120px;opacity:.1;position:relative;z-index:2;animation:float 3s ease-in-out infinite}
+.hero-card-badge{position:absolute;bottom:40px;right:40px;padding:20px 24px;
+  background:var(--bg2);border:1px solid var(--bd);border-radius:12px;
+  backdrop-filter:blur(10px);min-width:200px;animation:fadeUp .8s ease both .6s}
+.hcb-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--tx2);margin-bottom:6px}
+.hcb-value{font-family:var(--font);font-size:22px;font-weight:800;color:var(--b2);margin-bottom:4px}
+.hcb-sub{font-size:11px;color:var(--g);display:flex;align-items:center;gap:4px}
+
+/* SERVICES */
+.section{padding:100px 48px;position:relative;z-index:1}
+.sec-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--b);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-eyebrow::before{content:'';width:24px;height:1px;background:var(--b)}
+.sec-title{font-family:var(--font);font-size:clamp(36px,4.5vw,56px);font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:48px}
+.sec-title .dim{color:var(--tx2);font-weight:400}
+
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.srv-card{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:36px;
+  position:relative;overflow:hidden;transition:all .4s;cursor:default}
+.srv-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,165,233,.04),transparent);opacity:0;transition:opacity .4s}
+.srv-card:hover{border-color:rgba(14,165,233,.25);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.srv-card:hover::before{opacity:1}
+.srv-card .corner{position:absolute;top:0;right:0;width:0;height:0;
+  border-style:solid;border-width:0 40px 40px 0;border-color:transparent rgba(14,165,233,.15) transparent transparent;
+  transition:border-width .4s}
+.srv-card:hover .corner{border-width:0 60px 60px 0}
+.srv-ico{width:52px;height:52px;border-radius:12px;background:rgba(14,165,233,.08);
+  border:1px solid rgba(14,165,233,.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.srv-name{font-family:var(--font);font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
+.srv-desc{font-size:13px;color:var(--tx2);line-height:1.7}
+
+/* WHY */
+.why{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:100px 48px}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.why-left{}
+.why-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.2);border-radius:100px;font-size:11px;color:var(--b2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px}
+.why-headline{font-family:var(--font);font-size:clamp(36px,4.5vw,52px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.why-headline span{color:var(--b2)}
+.why-body{font-size:14px;color:var(--tx2);line-height:1.9;margin-bottom:32px;font-weight:300}
+.why-right{display:flex;flex-direction:column;gap:16px}
+.why-item{padding:24px;background:var(--bg3);border:1px solid var(--bd);border-radius:12px;
+  display:flex;align-items:flex-start;gap:16px;transition:all .4s}
+.why-item:hover{border-color:rgba(14,165,233,.2);transform:translateX(6px)}
+.why-item-ico{width:40px;height:40px;border-radius:10px;background:rgba(14,165,233,.08);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.why-item-title{font-family:var(--font);font-size:15px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px}
+.why-item-desc{font-size:12px;color:var(--tx2);line-height:1.6}
+
+/* TESTIMONIALS */
+.tests{padding:100px 48px}
+.tests-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.test{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:32px;transition:all .4s}
+.test:hover{border-color:rgba(14,165,233,.2);transform:translateY(-3px)}
+.test-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,rgba(14,165,233,.2),rgba(14,165,233,.05));
+  display:flex;align-items:center;justify-content:center;font-size:20px;border:1px solid rgba(14,165,233,.15)}
+.test-author-name{font-family:var(--font);font-size:14px;font-weight:700;letter-spacing:-.2px}
+.test-stars{color:var(--b);font-size:11px;margin-top:2px}
+.test-text{font-size:13px;color:var(--tx2);line-height:1.8;font-style:italic}
+
+/* CONTACT */
+.contact{padding:100px 48px;background:var(--bg2);border-top:1px solid var(--bd)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-title{font-family:var(--font);font-size:clamp(36px,4.5vw,60px);font-weight:800;letter-spacing:-1.5px;line-height:1;margin-bottom:20px}
+.contact-title span{color:var(--b2)}
+.contact-desc{font-size:14px;color:var(--tx2);line-height:1.9;margin-bottom:32px}
+.contact-item{display:flex;align-items:center;gap:16px;padding:18px 20px;
+  background:var(--bg3);border:1px solid var(--bd);border-radius:12px;margin-bottom:10px;
+  text-decoration:none;color:var(--tx);transition:all .3s}
+.contact-item:hover{border-color:rgba(14,165,233,.3);transform:translateX(6px)}
+.ci-ico{width:38px;height:38px;border-radius:10px;background:rgba(14,165,233,.08);
+  display:flex;align-items:center;justify-content:center;color:var(--b);font-size:14px;flex-shrink:0}
+.ci-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:2px}
+.ci-value{font-size:14px}
+.contact-visual{background:var(--bg3);border:1px solid var(--bd);border-radius:16px;
+  aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  font-size:80px;opacity:.08;position:relative;overflow:hidden}
+.contact-visual::after{content:'Panamericana Norte 5001, Conchalí';position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  font-size:12px;color:var(--tx2);opacity:1;white-space:nowrap;font-size:12px}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--bd);padding:60px 48px}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--font);font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:12px;color:var(--tx)}
+.ft-logo span{color:var(--b2)}
+.ft-desc{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:16px}
+.ft-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--b);margin-bottom:16px}
+.ft-link{display:block;font-size:13px;color:var(--tx2);text-decoration:none;margin-bottom:8px;transition:color .3s}
+.ft-link:hover{color:var(--b2)}
+.ft-bot{border-top:1px solid var(--bd);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:var(--tx2);letter-spacing:.3px}
+.ft-bot span{color:var(--b2)}
+
+/* WA */
+.wa{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;border-radius:16px;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:#fff;text-decoration:none;
+  box-shadow:0 4px 24px rgba(37,211,102,.3);transition:all .3s}
+.wa:hover{transform:scale(1.1);border-radius:50%}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes gridPan{from{transform:translate(0,0)}to{transform:translate(60px,60px)}}
+@keyframes rotateRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:900px){
+  .nav{padding:0 20px}
+  .hero{padding:100px 20px 60px;flex-direction:column}
+  .hero-visual{display:none}
+  .section,.tests,.contact{padding:60px 20px}
+  .why{padding:60px 20px}
+  .srv-grid,.tests-inner,.why-inner,.contact-inner,.ft-top{grid-template-columns:1fr}
+  .kpi{padding:16px 20px}
+  footer{padding:40px 20px}
+  .ft-bot{flex-direction:column;gap:8px}
+}
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/petrohue/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/petrohue/?lang=en_US">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">🚗</div>
+    <div><div class="logo-name" data-i18n="petrohue">Petrohue</div><div class="logo-sub" data-i18n="servicio_técnico">Servicio técnico</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="#servicios" data-i18n="servicios">Servicios</a>
+    <a href="#nosotros" data-i18n="nosotros">Nosotros</a>
+    <a href="#contacto" data-i18n="contacto">Contacto</a>
+    <a href="https://wa.me/5623346003" target="_blank" class="nav-pill"><i class="fab fa-whatsapp"></i> Contactar</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-status" data-i18n="atendiendo_en_conchalí">Atendiendo en Conchalí</div>
+    <h1 class="htitle"><span class="outline" data-i18n="tu_auto">Tu auto</span><br>en las<br><span class="blue" data-i18n="mejores_manos">mejores manos</span></h1>
+    <p class="hero-desc" data-i18n="servicio_técnico_automotriz_especializado_en_panamericana_no">Servicio técnico automotriz especializado en Panamericana Norte 5001, Conchalí. Diagnóstico, mantención y reparación con estándares profesionales.</p>
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-blue"><i class="fas fa-tools"></i> Ver servicios</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Panamericana+Norte+5001,+Conchalí" target="_blank" class="btn-out"><i class="fas fa-map-marker-alt"></i> Cómo llegar</a>
+    </div>
+    <div class="hero-kpis">
+      <div class="kpi"><div class="kn">📍</div><div class="kl" data-i18n="conchalí">Conchalí</div></div>
+      <div class="kpi"><div class="kn">🔧</div><div class="kl" data-i18n="especialistas">Especialistas</div></div>
+      <div class="kpi"><div class="kn">✓</div><div class="kl" data-i18n="diagnóstico">Diagnóstico</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-bg">
+      <div class="ring ring-1"><div class="ring-dot"></div></div>
+      <div class="ring ring-2"><div class="ring-dot"></div></div>
+      <div class="ring ring-3"><div class="ring-dot"></div></div>
+      <div class="hero-car">🚗</div>
+    </div>
+    <div class="hero-card-badge">
+      <div class="hcb-label" data-i18n="estado_del_taller">Estado del taller</div>
+      <div class="hcb-value" data-i18n="abierto_ahora">Abierto ahora</div>
+      <div class="hcb-sub"><i class="fas fa-circle" style="font-size:8px"></i> Atención personalizada</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="servicios">
+  <div class="reveal"><div class="sec-eyebrow" data-i18n="servicios">Servicios</div></div>
+  <div class="reveal d1"><h2 class="sec-title">Lo que <span class="dim" data-i18n="hacemos_por_tu_auto">hacemos por tu auto</span></h2></div>
+  <div class="srv-grid">
+    <div class="srv-card reveal">
+      <div class="corner"></div>
+      <div class="srv-ico">📍</div>
+      <div class="srv-name" data-i18n="ubicación_central">Ubicación central</div>
+      <div class="srv-desc" data-i18n="en_panamericana_norte_5001_conchalí_de_fácil_acceso_y_con">En Panamericana Norte 5001, Conchalí. De fácil acceso y con estacionamiento disponible.</div>
+    </div>
+    <div class="srv-card reveal d1">
+      <div class="corner"></div>
+      <div class="srv-ico">💬</div>
+      <div class="srv-name" data-i18n="atención_personalizada">Atención personalizada</div>
+      <div class="srv-desc" data-i18n="te_explicamos_todo_lo_que_necesita_tu_vehículo_sin_tecnicis">Te explicamos todo lo que necesita tu vehículo, sin tecnicismos innecesarios.</div>
+    </div>
+    <div class="srv-card reveal d2">
+      <div class="corner"></div>
+      <div class="srv-ico">🤝</div>
+      <div class="srv-name" data-i18n="confianza_garantizada">Confianza garantizada</div>
+      <div class="srv-desc" data-i18n="años_en_el_barrio_construyendo_relaciones_de_confianza_con_n">Años en el barrio construyendo relaciones de confianza con nuestros clientes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="nosotros">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="why-pill" data-i18n="nuestras_ventajas">Nuestras ventajas</div>
+      <h2 class="why-headline">Expertos en<br><span data-i18n="tu_vehículo">tu vehículo</span></h2>
+      <p class="why-body" data-i18n="en_petrohue_combinamos_experiencia_técnica_con_un_trato_cerc">En Petrohue combinamos experiencia técnica con un trato cercano. Tu auto está en manos de profesionales que entienden lo que necesitas.</p>
+      <a href="#contacto" class="btn-blue">Contáctanos <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="why-right reveal d1">
+      <div class="why-item">
+        <div class="why-item-ico">🔧</div>
+        <div><div class="why-item-title" data-i18n="diagnóstico_preciso">Diagnóstico preciso</div><div class="why-item-desc" data-i18n="identificamos_el_problema_a_la_primera_sin_diagnósticos_inn">Identificamos el problema a la primera, sin diagnósticos innecesarios.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-ico">⏱️</div>
+        <div><div class="why-item-title" data-i18n="tiempos_de_entrega">Tiempos de entrega</div><div class="why-item-desc" data-i18n="respetamos_los_plazos_acordados_tu_tiempo_vale">Respetamos los plazos acordados. Tu tiempo vale.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-ico">💰</div>
+        <div><div class="why-item-title" data-i18n="precios_transparentes">Precios transparentes</div><div class="why-item-desc" data-i18n="presupuesto_previo_sin_sorpresas_al_momento_de_retirar">Presupuesto previo sin sorpresas al momento de retirar.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-item-ico">🏅</div>
+        <div><div class="why-item-title" data-i18n="calidad_garantizada">Calidad garantizada</div><div class="why-item-desc" data-i18n="usamos_repuestos_de_calidad_y_garantizamos_nuestro_trabajo">Usamos repuestos de calidad y garantizamos nuestro trabajo.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="tests">
+  <div class="reveal"><div class="sec-eyebrow" data-i18n="clientes">Clientes</div></div>
+  <div class="reveal d1"><h2 class="sec-title">Lo que dicen <span class="dim" data-i18n="nuestros_clientes">nuestros clientes</span></h2></div>
+  <div class="tests-inner">
+    <div class="test reveal">
+      <div class="test-head">
+        <div class="test-avatar">👤</div>
+        <div><div class="test-author-name" data-i18n="pedro_rojas">Pedro Rojas</div><div class="test-stars">★★★★★</div></div>
+      </div>
+      <p class="test-text" data-i18n="excelente_atención_y_precios_justos_me_explicaron_todo_el">"Excelente atención y precios justos. Me explicaron todo el proceso. 100% recomendado."</p>
+    </div>
+    <div class="test reveal d1">
+      <div class="test-head">
+        <div class="test-avatar">👤</div>
+        <div><div class="test-author-name" data-i18n="ana_morales">Ana Morales</div><div class="test-stars">★★★★★</div></div>
+      </div>
+      <p class="test-text" data-i18n="entregaron_mi_auto_antes_de_lo_prometido_muy_profesionales">"Entregaron mi auto antes de lo prometido. Muy profesionales y cumplidores."</p>
+    </div>
+    <div class="test reveal d2">
+      <div class="test-head">
+        <div class="test-avatar">👤</div>
+        <div><div class="test-author-name" data-i18n="carlos_vega">Carlos Vega</div><div class="test-stars">★★★★★</div></div>
+      </div>
+      <p class="test-text" data-i18n="llevo_años_viniendo_aquí_la_confianza_que_te_dan_es_invalu">"Llevo años viniendo aquí. La confianza que te dan es invaluable. Los recomiendo."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="sec-eyebrow" data-i18n="contacto">Contacto</div>
+      <h2 class="contact-title">Agenda<br>tu visita<br><span data-i18n="hoy">hoy</span></h2>
+      <p class="contact-desc" data-i18n="comunícate_por_whatsapp_o_visítanos_directamente_en_panameri">Comunícate por WhatsApp o visítanos directamente en Panamericana Norte 5001, Conchalí.</p>
+      <a href="https://wa.me/5623346003" target="_blank" class="contact-item">
+        <div class="ci-ico"><i class="fab fa-whatsapp"></i></div>
+        <div><div class="ci-label" data-i18n="whatsapp">WhatsApp</div><div class="ci-value">+56 2 3346 003</div></div>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Panamericana+Norte+5001,+Conchalí" target="_blank" class="contact-item">
+        <div class="ci-ico"><i class="fas fa-map-marker-alt"></i></div>
+        <div><div class="ci-label" data-i18n="dirección">Dirección</div><div class="ci-value" data-i18n="panamericana_norte_5001_conchalí">Panamericana Norte 5001, Conchalí</div></div>
+      </a>
+    </div>
+    <div class="reveal d1">
+      <div class="contact-visual">🚗</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo">Petro<span data-i18n="hue">hue</span></div>
+      <p class="ft-desc" data-i18n="servicio_técnico_especializado_en_panamericana_norte_5001_c">Servicio técnico especializado en Panamericana Norte 5001, Conchalí. Diagnóstico, mantención y reparación.</p>
+      <a href="https://wa.me/5623346003" target="_blank" style="color:#25D366;font-size:13px;text-decoration:none"><i class="fab fa-whatsapp"></i> +56 2 3346 003</a>
+    </div>
+    <div>
+      <div class="ft-title" data-i18n="servicios">Servicios</div>
+      <a href="#servicios" class="ft-link" data-i18n="diagnóstico">Diagnóstico</a>
+      <a href="#servicios" class="ft-link" data-i18n="mantención">Mantención</a>
+      <a href="#servicios" class="ft-link" data-i18n="reparación">Reparación</a>
+    </div>
+    <div>
+      <div class="ft-title" data-i18n="ubicación">Ubicación</div>
+      <p style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:10px">Panamericana Norte 5001<br>Conchalí, Santiago</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Panamericana+Norte+5001,+Conchalí" target="_blank" style="color:#34d399;font-size:12px;text-decoration:none" data-i18n="ver_en_maps">📍 Ver en Maps</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span data-i18n="2026_petrohue_conchalí_santiago">© 2026 Petrohue · Conchalí, Santiago</span>
+    <span>Creado por <span data-i18n="átomo_studio">Átomo Studio</span></span>
+  </div>
+<p style="text-align:center;font-size:0.75rem;opacity:0.4;padding:8px 24px 16px;margin:0;" data-i18n="sitio_conceptual_ejemplo_representativo_no_un_negocio_r">⚡ Sitio conceptual — ejemplo representativo, no un negocio real.</p>
+</footer>
+
+<a href="https://wa.me/5623346003" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
+
+<script data-i18n="const_obs_new_intersectionobserver_es_es_foreach_e_if_e_i">
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+</script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

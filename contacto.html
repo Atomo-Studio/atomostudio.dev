@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Contacto · Átomo Studio — Cotiza tu web o e-commerce</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Contacta a Átomo Studio. WhatsApp, email o formulario. Te respondemos en menos de 24h. Santiago, Chile.">
-<title data-i18n="contacto_atomo_studio">Contacto · Átomo Studio</title>
+
 <meta property="og:title" content="Contacto · Átomo Studio">
 <meta property="og:description" content="Contacto Átomo Studio. WhatsApp +56 9 7399 4504. Te respondemos en 24h. Santiago, Chile.">
 <meta property="og:image" content="https://atomostudio.dev/img/logo-og.png">
-<meta property="og:url" content="https://atomostudio.dev">
+<meta property="og:url" content="https://atomostudio.dev/contacto.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -986,6 +987,8 @@ footer{
   .hero-btns{flex-direction:column}
   .hero-stats{gap:20px}
 }
+/* sr-only — screen reader only accessible text */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
@@ -999,12 +1002,13 @@ footer{
 </script>
 
   <!-- hreflang for SEO multi-language -->
-  <link rel="alternate" hreflang="es-CL" href="https://atomostudio.dev/">
-  <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/">
-  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/?lang=en_US">
-  <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/?lang=fr_FR">
-  <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/?lang=pt_BR">
-  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/">
+  <link rel="alternate" hreflang="es-CL" href="https://atomostudio.dev/contacto.html">
+  <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/contacto.html">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/contacto.html?lang=en_US">
+  <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/contacto.html?lang=fr_FR">
+  <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/contacto.html?lang=pt_BR">
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/contacto.html">
+    <link rel="canonical" href="https://atomostudio.dev/contacto.html">
 </head>
 <body>
 
@@ -1020,33 +1024,36 @@ footer{
 <!-- ═══════════════════════════
      NAV
 ═══════════════════════════ -->
-<nav id="navbar">
+<nav role="navigation" aria-label="Navegación principal" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
       <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
-        <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
+        <a href="index.html" data-i18n="inicio">Inicio</a>
+        <a href="servicios.html" data-i18n="servicios">Servicios</a>
         <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
-        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
-        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="modelos.html" data-i18n="modelos_ia">Modelos IA</a>
+        <a href="geo-pricing.html" data-i18n="precios">Precios</a>
         <a href="contacto.html" class="active" data-i18n="contacto">Contacto</a>
     </div>
-      <div class="nav-mobile" id="menuToggle">
+      <div class="nav-mobile" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
         <span></span><span></span><span></span>
       </div>
-      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
+      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Cotiza gratis</a>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
+  <a href="index.html" onclick="closeMobile()" data-i18n="inicio">Inicio</a>
+  <a href="servicios.html" onclick="closeMobile()" data-i18n="servicios">Servicios</a>
   <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
-  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
-  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
-  <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
+  <a href="modelos.html" onclick="closeMobile()" data-i18n="modelos_ia">Modelos IA</a>
+  <a href="geo-pricing.html" onclick="closeMobile()" data-i18n="precios">Precios</a>
+  <a href="contacto.html" class="active" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
 </div>
-    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Contacto · Átomo Studio</h1>
+    <h1 class="sr-only">Contacto · Átomo Studio</h1>
 <div class="contact-grid">
       <div>
         <div class="label label-cyan" data-i18n="contacto_directo">Contacto directo</div>
@@ -1057,35 +1064,35 @@ footer{
         </p>
         <div class="contact-info-items">
           <div class="ci">
-            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="ci-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
             <div>
               <div class="ci-label" data-i18n="whatsapp">WhatsApp</div>
               <div class="ci-val"><strong>+56 9 7399 4504</strong> — Escríbenos ahora</div>
             </div>
           </div>
           <div class="ci">
-            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div class="ci-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
             <div>
               <div class="ci-label" data-i18n="email">Email</div>
               <div class="ci-val">Contact@atomostudio.dev</div>
             </div>
           </div>
           <div class="ci">
-            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="ci-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
             <div>
               <div class="ci-label" data-i18n="dónde_estamos">Dónde estamos</div>
               <div class="ci-val" data-i18n="santiago_chile">Santiago, Chile 🇨🇱<br>Atendemos a toda LATAM</div>
             </div>
           </div>
           <div class="ci">
-            <div class="ci-icon"><i class="fas fa-clock"></i></div>
+            <div class="ci-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
             <div>
               <div class="ci-label" data-i18n="horario_de_respuesta">Horario de respuesta</div>
               <div class="ci-val" data-i18n="lunes_a_viernes_09_00_20_00_hrs">Lunes a Viernes: 09:00 – 20:00 hrs<br>Respuesta promedio: menos de 24h</div>
             </div>
           </div>
         </div>
-        <a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Quiero%20conversar%20sobre%20un%20proyecto" target="_blank" class="wa-cta">
+        <a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="wa-cta">
           <i class="fab fa-whatsapp" style="font-size:20px"></i>
           <span data-i18n="escribir_por_whatsapp_ahora">Escribir por WhatsApp ahora</span>
         </a>
@@ -1122,13 +1129,18 @@ footer{
           <label class="form-label" data-i18n="cuéntanos_más_opcional">Cuéntanos más (opcional)</label>
           <textarea class="form-textarea" placeholder="Tengo un negocio de... / Necesito... / Mi presupuesto es..."></textarea>
         </div>
-        <button onclick="sendContact()" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px" data-i18n="enviar_mensaje">
-          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        <button onclick="sendContact()" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px" id="contactSubmitBtn" data-i18n="enviar_mensaje">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i> <span id="btnLabel">Enviar mensaje</span>
         </button>
+        <div id="formStatus" style="display:none;align-items:center;justify-content:center;gap:10px;margin-top:16px;font-size:14px;font-family:'Space Grotesk',sans-serif;font-weight:500">
+          <span class="spinner" id="formSpinner" style="display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.1);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite"></span>
+          <span id="statusMessage" style="font-size:13px"></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+<style>@keyframes spin{to{transform:rotate(360deg)}}#formStatus.success span:last-child{color:#10b981}#formStatus.error span:last-child{color:#ef4444}</style>
 
 <!-- ═══════════════════════════
      FOOTER
@@ -1141,41 +1153,37 @@ footer{
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
       </div>
       <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">
-        Creamos software inteligente, sitios web profesionales y el primer modelo IA 
-        latinoamericano enfocado en tu crecimiento personal y económico.
+        Creamos software inteligente, sitios web profesionales y un modelo IA propio, hecho en Chile, 
+        enfocado en tu crecimiento personal y económico.
       </p>
       <div style="margin-top:20px;display:flex;gap:8px">
-        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="servicios">Servicios</h4>
+      <h3 data-i18n="servicios">Servicios</h3>
       <a href="servicios.html" data-i18n="landing_page">Landing Page</a>
       <a href="servicios.html" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</a>
-      <a href="ecommerce.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="servicios.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
       <a href="servicios.html" data-i18n="actualización_web">Actualización Web</a>
       <a href="contacto.html" data-i18n="presupuesto_gratis">Presupuesto gratis</a>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="productos_ia">Productos IA</h4>
-      <a href="geos.html" data-i18n="geos_2_1">Geos 2.1</a>
-      <a href="geo-pricing.html" data-i18n="precios">Precios</a>
-      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm 🦙</a>
-      <a href="geo-app-completa.html" data-i18n="geo_app">Geo App</a>
-      <a href="modelos.html" data-i18n="modelos_disponibles">Modelos disponibles</a>
-      <a href="modelos.html" data-i18n="claude_gpt_deepseek">Claude · GPT · DeepSeek</a>
-      <a href="modelos.html" data-i18n="groq_llama">Groq · Llama</a>
-    </div>
+      <h3 data-i18n="productos_ia">Productos IA</h3>
+      
+      <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes Somos</a>
+      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
+      <a href="servicios.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="privacidad.html" data-i18n="privacidad">Privacidad</a></div>
     <div class="footer-col">
-      <h4 data-i18n="empresa">Empresa</h4>
-      <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+      <h3 data-i18n="empresa">Empresa</h3>
       <a href="contacto.html" data-i18n="contacto">Contacto</a>
       <a href="privacidad.html" data-i18n="política_de_privacidad">Política de Privacidad</a>
       <a href="contacto.html">Contact@atomostudio.dev</a>
-      <a href="https://wa.me/56973994504" target="_blank" data-i18n="whatsapp">WhatsApp</a>
+      <a href="https://wa.me/56973994504" target="_blank" rel="noopener noreferrer" data-i18n="whatsapp">WhatsApp</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1187,8 +1195,8 @@ footer{
 </footer>
 
 <!-- WA FLOAT -->
-<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20su%20web" target="_blank" class="wa-float">
-  <i class="fab fa-whatsapp"></i>
+<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20su%20web" target="_blank" rel="noopener noreferrer" class="wa-float">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
 
 <script>
@@ -1274,23 +1282,51 @@ sections.forEach(s=>sectionObs.observe(s));
 
 // ─── CONTACT FORM ───
 function sendContact(){
+  var btn=document.getElementById('contactSubmitBtn');
+  var status=document.getElementById('formStatus');
+  var spinner=document.getElementById('formSpinner');
+  var msgEl=document.getElementById('statusMessage');
+  var label=document.getElementById('btnLabel');
+  if(!btn||btn.disabled)return;
+  // Validate required fields
   const inputs=document.querySelectorAll('.form-input,.form-textarea');
+  var hasValue=false;
+  inputs.forEach(function(inp){if(inp.value.trim())hasValue=true;});
+  if(!hasValue){
+    status.style.display='flex';status.className='error';
+    msgEl.textContent='Completa al menos un campo para enviar tu mensaje.';
+    setTimeout(function(){status.style.display='none';},4000);
+    return;
+  }
+  // Show spinner
+  btn.disabled=true;spinner.style.display='inline-block';
+  label.textContent='Abriendo WhatsApp...';
+  status.style.display='flex';status.className='';
+  msgEl.textContent='Preparando tu mensaje...';
   let msg='Hola Átomo Studio!%0A%0A';
-  const labels=['Nombre','Contacto','Tipo de proyecto'];
-  inputs.forEach((inp,i)=>{
+  inputs.forEach(function(inp,i){
     if(inp.value&&i<4){
       if(inp.tagName==='SELECT'){
-        msg+=`Proyecto: ${inp.value}%0A`;
+        msg+='Proyecto: '+inp.value+'%0A';
       } else if(i===0){
-        msg+=`Nombre: ${inp.value}%0A`;
+        msg+='Nombre: '+inp.value+'%0A';
       } else if(i===1){
-        msg+=`Contacto: ${inp.value}%0A`;
+        msg+='Contacto: '+inp.value+'%0A';
       } else {
-        msg+=`Mensaje: ${inp.value}%0A`;
+        msg+='Mensaje: '+inp.value+'%0A';
       }
     }
   });
-  window.open(`https://wa.me/56973994504?text=${msg}`,'_blank');
+  window.open('https://wa.me/56973994504?text='+msg,'_blank');
+  setTimeout(function(){
+    spinner.style.display='none';
+    status.className='success';
+    msgEl.textContent='¡WhatsApp abierto! Te responderemos en menos de 24h.';
+    setTimeout(function(){
+      status.style.display='none';
+      btn.disabled=false;label.textContent='Enviar mensaje';
+    },5000);
+  },1500);
 }
 
 // ─── SMOOTH SCROLL ───

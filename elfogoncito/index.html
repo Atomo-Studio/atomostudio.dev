@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>" />
+<title data-i18n="el_fogoncito_restobar_cocina_chilena_venezolana_en_conch">El Fogoncito Restobar — Cocina Chilena & Venezolana en Conchalí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style data-i18n="root_fire_e85d04_ember_dc2f02_gold_f48c06">
+:root{
+  --fire:#e85d04;
+  --ember:#dc2f02;
+  --gold:#f48c06;
+  --smoke:#1a1008;
+  --ash:#2d1f0e;
+  --cream:#fdf0e0;
+  --parch:#f5deb3;
+  --muted:#a08060;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--smoke);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* FIRE TEXTURE BG */
+.fire-bg{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(232,93,4,.08) 0%,transparent 70%);
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(26,16,8,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(232,93,4,.2);
+  padding:0 40px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;
+}
+.logo-icon{font-size:28px;line-height:1}
+.logo-text{
+  font-family:'Abril Fatface',serif;font-size:22px;color:var(--fire);letter-spacing:.5px;
+}
+.logo-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  font-size:13px;font-weight:500;letter-spacing:.5px;
+  color:rgba(253,240,224,.6);transition:.3s;
+}
+.nav-links a:hover{color:var(--fire)}
+.nav-cta{
+  background:var(--fire);color:#fff;padding:10px 24px;
+  font-size:13px;font-weight:600;letter-spacing:.5px;border-radius:4px;transition:.3s;
+}
+.nav-cta:hover{background:var(--ember)}
+
+/* HERO */
+.hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;margin-top:68px;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:brightness(.35) saturate(1.3);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(26,16,8,.9) 30%,rgba(26,16,8,.4) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;
+  padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  width:100%;
+}
+.hero-left .eyebrow{
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:20px;display:flex;align-items:center;gap:12px;
+}
+.hero-left .eyebrow::before{content:'🔥';font-size:16px}
+.hero h1{
+  font-family:'Abril Fatface',serif;
+  font-size:clamp(56px,6vw,100px);line-height:.9;
+  color:var(--cream);margin-bottom:16px;
+}
+.hero h1 span{
+  display:block;color:var(--fire);
+  text-shadow:0 0 60px rgba(232,93,4,.5);
+}
+.hero-tagline{
+  font-family:'Libre Baskerville',serif;font-style:italic;
+  font-size:20px;color:var(--muted);margin-bottom:32px;
+}
+.hero-desc{
+  font-size:15px;line-height:1.8;color:rgba(253,240,224,.65);
+  max-width:440px;margin-bottom:40px;
+}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-fire{
+  background:var(--fire);color:#fff;padding:15px 36px;
+  font-size:14px;font-weight:600;letter-spacing:.5px;
+  border-radius:4px;transition:.3s;display:inline-flex;align-items:center;gap:10px;
+}
+.btn-fire:hover{background:var(--ember);transform:translateY(-2px)}
+.btn-ghost{
+  border:1.5px solid rgba(253,240,224,.2);color:var(--cream);
+  padding:15px 36px;font-size:14px;font-weight:500;
+  border-radius:4px;transition:.3s;
+}
+.btn-ghost:hover{border-color:var(--fire);color:var(--fire)}
+.hero-flags{display:flex;gap:16px;margin-top:40px}
+.flag-badge{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(232,93,4,.08);border:1px solid rgba(232,93,4,.15);
+  padding:10px 18px;border-radius:4px;
+}
+.flag-badge span{font-size:12px;color:rgba(253,240,224,.7)}
+.hero-right{
+  display:flex;flex-direction:column;gap:16px;
+}
+.mini-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini-card{
+  background:rgba(253,240,224,.04);border:1px solid rgba(232,93,4,.12);
+  padding:20px;border-radius:8px;text-align:center;
+}
+.mini-card .val{
+  font-family:'Abril Fatface',serif;font-size:36px;color:var(--fire);line-height:1;
+}
+.mini-card .lbl{font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
+
+/* FLAME DIVIDER */
+.flame-div{
+  text-align:center;padding:32px 0;background:var(--ash);font-size:32px;
+  position:relative;z-index:1;
+  letter-spacing:16px;
+}
+
+/* MENU SECTION */
+.menu-section{background:var(--ash);padding:80px 0;position:relative;z-index:1}
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+.section-eyebrow{
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:8px;display:flex;align-items:center;gap:12px;
+}
+.section-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.section-title{
+  font-family:'Abril Fatface',serif;font-size:clamp(40px,4vw,64px);
+  color:var(--cream);margin-bottom:8px;line-height:1;
+}
+.section-title em{color:var(--fire);font-style:normal}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.6;margin-bottom:48px;max-width:500px}
+
+/* TABS */
+.menu-tabs{display:flex;gap:4px;margin-bottom:40px;flex-wrap:wrap}
+.tab-btn{
+  padding:10px 24px;font-size:13px;font-weight:500;
+  background:rgba(253,240,224,.04);border:1px solid rgba(232,93,4,.1);
+  color:rgba(253,240,224,.5);cursor:pointer;transition:.3s;border-radius:4px;
+}
+.tab-btn.active,.tab-btn:hover{background:var(--fire);border-color:var(--fire);color:#fff}
+
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.menu-card{
+  background:rgba(253,240,224,.03);border:1px solid rgba(232,93,4,.08);
+  border-radius:8px;overflow:hidden;transition:.4s;
+}
+.menu-card:hover{border-color:rgba(232,93,4,.25);transform:translateY(-4px);background:rgba(253,240,224,.05)}
+.menu-card-img{
+  height:180px;overflow:hidden;position:relative;
+}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.menu-card:hover .menu-card-img img{transform:scale(1.08)}
+.menu-card-flag{
+  position:absolute;top:12px;left:12px;
+  background:rgba(26,16,8,.8);backdrop-filter:blur(8px);
+  padding:4px 10px;border-radius:20px;font-size:12px;
+}
+.menu-card-body{padding:20px}
+.menu-name{
+  font-family:'Abril Fatface',serif;font-size:20px;color:var(--cream);margin-bottom:6px;
+}
+.menu-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.menu-price{font-family:'Abril Fatface',serif;font-size:24px;color:var(--gold)}
+.menu-price span{font-size:12px;font-family:'DM Sans',sans-serif;color:var(--muted)}
+
+/* ABOUT */
+.about-section{background:var(--smoke);padding:80px 0;position:relative;z-index:1}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.about-imgs img{width:100%;height:280px;object-fit:cover;border-radius:4px}
+.about-imgs img:first-child{height:380px;grid-column:1/-1}
+.about-text .section-eyebrow{margin-bottom:12px}
+.about-text p{font-size:16px;line-height:1.8;color:rgba(253,240,224,.65);margin-bottom:16px}
+.about-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.tag{
+  padding:6px 16px;background:rgba(232,93,4,.08);border:1px solid rgba(232,93,4,.15);
+  border-radius:20px;font-size:12px;color:var(--fire);font-weight:500;
+}
+
+/* GALLERY */
+.gallery-section{background:var(--ash);padding:80px 0;position:relative;z-index:1}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  grid-template-rows:280px 280px;
+  gap:6px;
+}
+.gallery-item{overflow:hidden;position:relative;border-radius:4px;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item.big{grid-row:1/3}
+.gallery-item::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,16,8,.7) 0%,transparent 50%);
+}
+.gallery-item-label{
+  position:absolute;bottom:16px;left:16px;z-index:2;
+  font-size:12px;color:var(--cream);letter-spacing:1px;text-transform:uppercase;
+}
+
+/* LOCATION */
+.location-section{background:var(--smoke);padding:80px 0;position:relative;z-index:1}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.location-info{background:var(--ash);padding:60px 48px}
+.location-map{min-height:400px;overflow:hidden}
+.location-map iframe{width:100%;height:100%;border:none;min-height:400px;filter:sepia(40%) saturate(.8) brightness(.9)}
+.info-item{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:20px 0;border-bottom:1px solid rgba(232,93,4,.08);
+}
+.info-item:last-of-type{border:none}
+.info-icon{
+  width:44px;height:44px;background:rgba(232,93,4,.1);border:1px solid rgba(232,93,4,.2);
+  display:flex;align-items:center;justify-content:center;color:var(--fire);font-size:16px;flex-shrink:0;
+  border-radius:4px;
+}
+.info-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.info-val{font-size:15px;color:rgba(253,240,224,.7);line-height:1.6}
+
+/* CTA FIRE BANNER */
+.cta-fire{
+  background:linear-gradient(135deg,var(--ember) 0%,var(--fire) 50%,var(--gold) 100%);
+  padding:80px 40px;text-align:center;position:relative;z-index:1;overflow:hidden;
+}
+.cta-fire::before{content:'🔥';position:absolute;font-size:300px;opacity:.05;right:-60px;bottom:-100px}
+.cta-fire h2{
+  font-family:'Abril Fatface',serif;font-size:clamp(40px,5vw,72px);
+  color:#fff;margin-bottom:12px;
+}
+.cta-fire p{font-size:18px;color:rgba(255,255,255,.85);margin-bottom:36px}
+.btn-dark{
+  background:var(--smoke);color:var(--cream);padding:16px 40px;
+  font-size:15px;font-weight:600;border-radius:4px;
+  display:inline-flex;align-items:center;gap:12px;transition:.3s;
+}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:var(--smoke);border-top:1px solid rgba(232,93,4,.1);
+  padding:60px 40px 40px;position:relative;z-index:1;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
+}
+.footer-brand-name{font-family:'Abril Fatface',serif;font-size:28px;color:var(--fire);margin-bottom:8px}
+.footer-brand-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.footer-col h4{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:var(--muted);margin-bottom:8px;transition:.3s}
+.footer-col a:hover{color:var(--fire)}
+.footer-bottom{
+  max-width:1200px;margin:40px auto 0;padding-top:24px;
+  border-top:1px solid rgba(232,93,4,.08);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:12px;color:rgba(253,240,224,.25)}
+
+/* WA */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:150;
+  width:56px;height:56px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.3s;
+}
+.wa-float:hover{transform:scale(1.1)}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.4,0,.2,1)}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+
+/* HIDDEN TABS */
+.menu-tab-content{display:none}
+.menu-tab-content.active{display:grid}
+
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:40px}
+  .mini-cards{grid-template-columns:repeat(4,1fr)}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-item.big{grid-row:auto}
+  .location-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  nav{padding:0 20px}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .menu-grid{grid-template-columns:1fr}
+  .mini-cards{grid-template-columns:1fr 1fr}
+  .container{padding:0 20px}
+}
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/elfogoncito/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/elfogoncito/?lang=en_US">
+</head>
+<body>
+<div class="fire-bg"></div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🔥</div>
+    <div>
+      <div class="logo-text" data-i18n="fogoncito">FOGONCITO</div>
+      <div class="logo-sub" data-i18n="restobar_conchalí">Restobar · Conchalí</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#nosotros" data-i18n="nosotros">Nosotros</a>
+    <a href="#menu" data-i18n="carta">Carta</a>
+    <a href="#galeria" data-i18n="galería">Galería</a>
+    <a href="#ubicacion" data-i18n="ubicación">Ubicación</a>
+    <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20pedir%20en%20El%20Fogoncito" target="_blank" class="nav-cta" data-i18n="pedir">🍽 Pedir</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=85" alt="Comida El Fogoncito">
+  </div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="eyebrow" data-i18n="restobar_conchalí_santiago">Restobar — Conchalí, Santiago</div>
+      <h1>El<br><span data-i18n="fogoncito">Fogoncito</span></h1>
+      <p class="hero-tagline" data-i18n="donde_el_fuego_encuentra_su_sabor">Donde el fuego encuentra su sabor</p>
+      <p class="hero-desc" data-i18n="cocina_chilena_y_venezolana_auténtica_en_conchalí_arepas_p">
+        Cocina chilena y venezolana auténtica en Conchalí. Arepas, pabellón criollo, 
+        empanadas, pastel de choclo y cerveza artesanal. Todo hecho al momento.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="btn-fire">
+          <i class="fab fa-whatsapp"></i> Pedir Ahora
+        </a>
+        <a href="#menu" class="btn-ghost" data-i18n="ver_carta">Ver Carta</a>
+      </div>
+      <div class="hero-flags">
+        <div class="flag-badge">🇨🇱 <span data-i18n="cocina_chilena">Cocina Chilena</span></div>
+        <div class="flag-badge">🇻🇪 <span data-i18n="cocina_venezolana">Cocina Venezolana</span></div>
+        <div class="flag-badge">🍺 <span data-i18n="cerveza_artesanal">Cerveza Artesanal</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mini-cards">
+        <div class="mini-card"><div class="val">40+</div><div class="lbl" data-i18n="platos_en_carta">Platos en carta</div></div>
+        <div class="mini-card"><div class="val" data-i18n="4_9">★4.9</div><div class="lbl" data-i18n="google_reviews">Google Reviews</div></div>
+        <div class="mini-card"><div class="val">2</div><div class="lbl" data-i18n="cocinas_fusión">Cocinas fusión</div></div>
+        <div class="mini-card"><div class="val">🔥</div><div class="lbl" data-i18n="al_momento">Al momento</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flame-div">🔥🔥🔥</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="nuestra_carta">Nuestra Carta</div>
+    <h2 class="section-title">Sabores que <em data-i18n="enamoran">enamoran</em></h2>
+    <p class="section-sub" data-i18n="platos_típicos_chilenos_y_venezolanos_preparados_al_instante">Platos típicos chilenos y venezolanos preparados al instante con ingredientes frescos y recetas de generación en generación.</p>
+    
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="showTab('todos',this)" data-i18n="todos">🔥 Todos</button>
+      <button class="tab-btn" onclick="showTab('chilena',this)" data-i18n="chilena">🇨🇱 Chilena</button>
+      <button class="tab-btn" onclick="showTab('venezolana',this)" data-i18n="venezolana">🇻🇪 Venezolana</button>
+      <button class="tab-btn" onclick="showTab('bebestibles',this)" data-i18n="bebestibles">🍺 Bebestibles</button>
+    </div>
+
+    <!-- TODOS -->
+    <div class="menu-tab-content menu-grid active" id="tab-todos">
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80" alt="Pastel de choclo"><div class="menu-card-flag" data-i18n="chileno">🇨🇱 Chileno</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="pastel_de_choclo">Pastel de Choclo</div><p class="menu-desc" data-i18n="con_pino_de_carne_pollo_huevo_duro_aceitunas_y_pasas_gra">Con pino de carne, pollo, huevo duro, aceitunas y pasas. Gratinado al horno.</p><div class="menu-price">$8.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1604908177453-7462950a6a3b?w=500&q=80" alt="Arepa"><div class="menu-card-flag" data-i18n="venezolano">🇻🇪 Venezolano</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="arepa_reina_pepiada">Arepa Reina Pepiada</div><p class="menu-desc" data-i18n="arepa_de_maíz_rellena_de_pollo_mechado_con_aguacate_mayones">Arepa de maíz rellena de pollo mechado con aguacate, mayonesa y aliño.</p><div class="menu-price">$5.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=500&q=80" alt="Pabellón Criollo"><div class="menu-card-flag" data-i18n="venezolano">🇻🇪 Venezolano</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="pabellón_criollo">Pabellón Criollo</div><p class="menu-desc" data-i18n="arroz_caraotas_negras_carne_mechada_tajadas_de_plátano_ma">Arroz, caraotas negras, carne mechada, tajadas de plátano maduro y huevo frito.</p><div class="menu-price">$8.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=80" alt="Empanadas"><div class="menu-card-flag" data-i18n="chileno">🇨🇱 Chileno</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="empanadas_fritas">Empanadas Fritas</div><p class="menu-desc" data-i18n="artesanales_opciones_queso_pino_mariscos_o_mixtas_con_p">Artesanales. Opciones: queso, pino, mariscos o mixtas. Con pebre de la casa.</p><div class="menu-price">$3.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&q=80" alt="Chorrillana"><div class="menu-card-flag" data-i18n="chileno">🇨🇱 Chileno</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="chorrillana">Chorrillana</div><p class="menu-desc" data-i18n="papas_fritas_con_carne_cebolla_caramelizada_huevo_frito_y">Papas fritas con carne, cebolla caramelizada, huevo frito y chorizo. La clásica chilena.</p><div class="menu-price">$9.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1532347231146-80afc9e3df2b?w=500&q=80" alt="Tequeños"><div class="menu-card-flag" data-i18n="venezolano">🇻🇪 Venezolano</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="tequeños_8_unid">Tequeños (8 unid.)</div><p class="menu-desc" data-i18n="palitos_de_queso_en_masa_frita_con_salsa_de_ajo_o_guasacaca">Palitos de queso en masa frita. Con salsa de ajo o guasacaca.</p><div class="menu-price">$5.000 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=500&q=80" alt="Completo"><div class="menu-card-flag" data-i18n="chileno">🇨🇱 Chileno</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="completo_fogoncito">Completo Fogoncito</div><p class="menu-desc" data-i18n="completo_gigante_con_tomate_palta_mayo_chucrut_salsa_ame">Completo gigante con tomate, palta, mayo, chucrut, salsa americana, queso y chorizo artesanal.</p><div class="menu-price">$4.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1565180075950-9f05d9b13ac6?w=500&q=80" alt="Cachapa"><div class="menu-card-flag" data-i18n="venezolano">🇻🇪 Venezolano</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="cachapa_con_queso">Cachapa con Queso</div><p class="menu-desc" data-i18n="cachapa_de_maíz_dulce_rellena_de_queso_de_mano_dulce_y_sala">Cachapa de maíz dulce rellena de queso de mano. Dulce y salada a la vez.</p><div class="menu-price">$5.000 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+      <div class="menu-card fade-up">
+        <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=500&q=80" alt="Lomo a lo Pobre"><div class="menu-card-flag" data-i18n="chileno">🇨🇱 Chileno</div></div>
+        <div class="menu-card-body"><div class="menu-name" data-i18n="lomo_a_lo_pobre">Lomo a lo Pobre</div><p class="menu-desc" data-i18n="lomo_liso_con_papas_fritas_huevo_frito_cebolla_caramelizad">Lomo liso con papas fritas, huevo frito, cebolla caramelizada y arroz.</p><div class="menu-price">$10.500 <span data-i18n="clp">CLP</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs fade-up">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=85" alt="Interior El Fogoncito">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=400&q=85" alt="Comida">
+        <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=400&q=85" alt="Familia cocinando">
+      </div>
+      <div class="about-text">
+        <div class="section-eyebrow" data-i18n="dos_culturas_un_solo_fogón">Dos culturas, un solo fogón</div>
+        <h2 class="section-title" style="color:var(--cream)">Nuestra <em data-i18n="historia">Historia</em></h2>
+        <p style="font-size:16px;line-height:1.8;color:rgba(253,240,224,.65);margin-top:16px;margin-bottom:16px" data-i18n="el_fogoncito_nació_en_conchalí_con_la_idea_de_unir_lo_mejor">
+          El Fogoncito nació en Conchalí con la idea de unir lo mejor de dos mundos: 
+          la cocina tradicional chilena y los sabores auténticos de Venezuela. Aquí el 
+          fuego es el protagonista — todo se prepara al momento, con ingredientes frescos.
+        </p>
+        <p style="font-size:16px;line-height:1.8;color:rgba(253,240,224,.65);margin-bottom:24px" data-i18n="ya_sea_que_vengas_por_unas_empanadas_fritas_un_pabellón_cri">
+          Ya sea que vengas por unas empanadas fritas, un pabellón criollo, unas arepas 
+          rellenas o un pastel de choclo como el de la abuela, encuentras sabor casero 
+          y un ambiente acogedor para compartir con familia y amigos.
+        </p>
+        <div class="about-tags">
+          <span class="tag" data-i18n="hecho_al_momento">🔥 Hecho al momento</span>
+          <span class="tag" data-i18n="ingredientes_frescos">🌿 Ingredientes frescos</span>
+          <span class="tag" data-i18n="cocina_chilena">🇨🇱 Cocina chilena</span>
+          <span class="tag" data-i18n="cocina_venezolana">🇻🇪 Cocina venezolana</span>
+          <span class="tag" data-i18n="cerveza_artesanal">🍺 Cerveza artesanal</span>
+        </div>
+        <div style="margin-top:32px">
+          <a href="https://wa.me/56973994504" target="_blank" class="btn-fire">
+            <i class="fab fa-whatsapp"></i> Hacer Pedido
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="galeria">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="galería">Galería</div>
+    <h2 class="section-title" style="margin-bottom:32px">El <em data-i18n="fogón">Fogón</em> en imágenes</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item big">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85" alt="Restaurante">
+        <div class="gallery-item-label" data-i18n="el_ambiente">El Ambiente</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=85" alt="Plato">
+        <div class="gallery-item-label" data-i18n="cocina_chilena">Cocina Chilena</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1604908177453-7462950a6a3b?w=500&q=85" alt="Arepa">
+        <div class="gallery-item-label" data-i18n="cocina_venezolana">Cocina Venezolana</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1532347231146-80afc9e3df2b?w=500&q=85" alt="Tequeños">
+        <div class="gallery-item-label" data-i18n="tequeños">Tequeños</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&q=85" alt="Cerveza">
+        <div class="gallery-item-label" data-i18n="cerveza_artesanal">Cerveza Artesanal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="ubicacion">
+  <div class="container">
+    <div class="section-eyebrow" style="margin-bottom:12px" data-i18n="dónde_estamos">Dónde estamos</div>
+    <h2 class="section-title" style="margin-bottom:40px">Visítanos o <em data-i18n="pide_a_domicilio">pide a domicilio</em></h2>
+  </div>
+  <div class="location-grid" style="max-width:1200px;margin:0 auto">
+    <div class="location-info">
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <div class="info-label" data-i18n="dirección">Dirección</div>
+          <div class="info-val">Conchalí, Santiago<br>Consultar dirección exacta por WhatsApp</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <div class="info-label" data-i18n="horario">Horario</div>
+          <div class="info-val">Martes a Domingo: 12:00 – 23:00 hrs<br>Lunes: Cerrado</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-motorcycle"></i></div>
+        <div>
+          <div class="info-label" data-i18n="delivery">Delivery</div>
+          <div class="info-val">Delivery propio en Conchalí<br>Pedidos por WhatsApp</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <div class="info-label" data-i18n="pedir">Pedir</div>
+          <div class="info-val">WhatsApp: respuesta inmediata<br>Retiro o delivery disponible</div>
+        </div>
+      </div>
+      <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20pedir%20en%20El%20Fogoncito" target="_blank" class="btn-fire" style="margin-top:24px;border-radius:4px">
+        <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+      </a>
+    </div>
+    <div class="location-map">
+      <iframe src="https://maps.google.com/maps?q=Conchal%C3%AD,+Santiago&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-fire">
+  <h2 data-i18n="se_te_antojó">¿Se te antojó? 🔥</h2>
+  <p data-i18n="pide_por_whatsapp_y_te_lo_llevamos_a_la_casa_o_ven_a_vivir">Pide por WhatsApp y te lo llevamos a la casa. O ven a vivir la experiencia.</p>
+  <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20pedir" target="_blank" class="btn-dark">
+    <i class="fab fa-whatsapp"></i> Pedir Ahora
+  </a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name" data-i18n="fogoncito">🔥 Fogoncito</div>
+      <p class="footer-brand-desc" data-i18n="restobar_de_cocina_chilena_y_venezolana_en_conchalí_sabores">Restobar de cocina chilena y venezolana en Conchalí. Sabores auténticos, preparados al momento.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="carta">Carta</h4>
+      <a href="#menu" data-i18n="cocina_chilena">Cocina Chilena</a>
+      <a href="#menu" data-i18n="cocina_venezolana">Cocina Venezolana</a>
+      <a href="#menu" data-i18n="bebidas">Bebidas</a>
+      <a href="#menu" data-i18n="combos">Combos</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="navegación">Navegación</h4>
+      <a href="#inicio" data-i18n="inicio">Inicio</a>
+      <a href="#nosotros" data-i18n="nosotros">Nosotros</a>
+      <a href="#galeria" data-i18n="galería">Galería</a>
+      <a href="#ubicacion" data-i18n="ubicación">Ubicación</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="contacto">Contacto</h4>
+      <a href="https://wa.me/56973994504" target="_blank" data-i18n="whatsapp">WhatsApp</a>
+      <a href="#" data-i18n="instagram">Instagram</a>
+      <a href="#" data-i18n="facebook">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="2026_el_fogoncito_restobar_conchalí_santiago">© 2026 El Fogoncito Restobar · Conchalí, Santiago</p>
+    <p>Hecho con ❤️ por <span style="color:var(--fire)" data-i18n="átomo_studio">Átomo Studio</span></p>
+  </div>
+</footer>
+
+<a href="https://wa.me/56973994504" target="_blank" class="wa-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script data-i18n="function_showtab_tab_btn_document_queryselectorall_men">
+function showTab(tab,btn){
+  document.querySelectorAll('.menu-tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  btn.classList.add('active');
+}
+document.querySelectorAll('.fade-up').forEach((el,i)=>{
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)setTimeout(()=>el.classList.add('vis'),i%3*100)},{threshold:.1}).observe(el);
+});
+</script>
+  <script src="/widget/atomo-ecommerce.min.js" data-store="elfogoncito" data-primary="#e85d04" data-accent="#f48c06" data-whatsapp="56973994504" data-position="bottom-right"></script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

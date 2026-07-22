@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Fogoncito Restobar — Nuestra Carta | Comida Chilena y Venezolana</title>
+  <meta name="description" content="Carta de El Fogoncito Restobar en Conchalí. Arepas, pabellón criollo, pastel de choclo, empanadas, cerveza artesanal y más." />
+  <meta name="theme-color" content="#1a0505" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elfogoncito.cl/carta/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://elfogoncito.cl/carta/" />
+  <meta property="og:title" content="El Fogoncito — Carta Completa" />
+  <meta property="og:description" content="Descubre nuestra carta con lo mejor de Chile y Venezuela." />
+  <meta property="og:image" content="https://elfogoncito.cl/img/gallery/elfogoncito_02.webp" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="El Fogoncito Restobar" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="El Fogoncito — Carta Completa" />
+  <meta name="twitter:description" content="Descubre nuestra carta con lo mejor de Chile y Venezuela." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="../base.css" />
+
+  <style>
+    :root {
+      --at-blue: #f97316;
+      --at-purple: #dc2626;
+      --at-cyan: #ea580c;
+      --at-pink: #ef4444;
+      --at-red: #dc2626;
+      --at-green: #10b981;
+      --at-gold: #f59e0b;
+      --at-orange: #f97316;
+      --grad-primary: linear-gradient(135deg, #f97316, #dc2626);
+      --grad-surface: linear-gradient(135deg, rgba(249, 115, 22, 0.06), transparent, rgba(220, 38, 38, 0.06));
+      --shadow-sm: 0 4px 25px rgba(249, 115, 22, 0.25);
+      --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    .gradient-text { background: var(--grad-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    body { background: #080610; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding-top: 100px;
+      padding-bottom: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(249,115,22,.04) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; font-family: 'Space Grotesk', sans-serif; }
+    .page-header p { color: rgba(255,255,255,.5); max-width: 600px; margin: 12px auto 0; font-size: 1.05rem; }
+
+    /* ─── MENU SECTION ─── */
+    .menu-category-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--at-border);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .menu-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .menu-card-full {
+      background: var(--at-card);
+      border: 1px solid var(--at-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-card-full:hover {
+      border-color: rgba(249,115,22,.12);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .menu-card-full .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .menu-card-full .top h3 { font-size: 1.1rem; font-weight: 700; }
+    .menu-card-full .top .price { font-size: 1.15rem; font-weight: 800; color: #fb923c; white-space: nowrap; font-family: 'Space Grotesk', sans-serif; }
+    .menu-card-full .desc { color: rgba(255,255,255,.5); font-size: 14px; line-height: 1.6; margin-top: 8px; flex: 1; }
+    .menu-card-full .tags { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+    .menu-card-full .tags span { font-size: 11px; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
+
+    .nav-link::after { background: var(--grad-primary); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.5);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+      margin-bottom: 20px;
+    }
+    .back-link:hover { color: #fb923c; }
+
+    .cta-mini {
+      text-align: center;
+      padding: 60px 0;
+    }
+    .cta-mini h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .cta-mini p { color: rgba(255,255,255,.5); margin-bottom: 24px; }
+
+    @media (max-width: 768px) {
+      .menu-full-grid { grid-template-columns: 1fr; }
+      .page-header { padding-top: 80px; padding-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-glass">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;font-family:'Space Grotesk',sans-serif;">
+        <span style="display:inline-flex;width:34px;height:34px;border-radius:10px;background:var(--grad-primary);align-items:center;justify-content:center;font-size:.9rem;color:#fff;">🔥</span>
+        FOGONCITO
+      </a>
+      <ul class="nav-links" id="navLinks" style="display:flex;gap:24px;list-style:none;align-items:center;">
+        <li><a href="../" class="nav-link">Inicio</a></li>
+        <li><a href="../#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="../#menu" class="nav-link active">Menú</a></li>
+        <li><a href="../#galeria" class="nav-link">Galería</a></li>
+        <li><a href="../#ubicacion" class="nav-link">Ubicación</a></li>
+        <li>
+          <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+      <h1>Nuestra <span class="gradient-text">Carta</span></h1>
+      <p>Platos chilenos y venezolanos preparados al momento. Ingredientes frescos, recetas tradicionales.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+
+      <!-- ── CHILENA ── -->
+      <h3 class="menu-category-title" data-aos="fade-right"><span>🇨🇱</span> Cocina Chilena</h3>
+      <div class="menu-full-grid">
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500">
+          <div class="top"><h3>Pastel de Choclo</h3><span class="price">$8.500</span></div>
+          <p class="desc">Pastel de choclo con pino de carne y pollo, huevo duro, aceitunas y pasas. Gratinado al horno.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span><span style="background:rgba(249,115,22,.1);color:#fb923c;">🔥 Tradicional</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">
+          <div class="top"><h3>Empanadas Fritas (x2)</h3><span class="price">$3.500</span></div>
+          <p class="desc">Empanadas fritas artesanales. Opciones: queso, pino, mariscos o mixtas. Acompañadas de pebre casero.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span><span style="background:rgba(16,185,129,.1);color:#34d399;">🌿 Pebre incluido</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+          <div class="top"><h3>Completo Fogoncito</h3><span class="price">$4.500</span></div>
+          <p class="desc">Completo gigante con tomate, palta, mayo, chucrut, salsa americana, queso derretido y chorizo artesanal.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
+          <div class="top"><h3>Chorrillana</h3><span class="price">$9.500</span></div>
+          <p class="desc">Papas fritas con carne, cebolla caramelizada, huevo frito y chorizo. La clásica chilena para compartir.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span><span style="background:rgba(249,115,22,.1);color:#fb923c;">👥 Para 2</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+          <div class="top"><h3>Lomo a lo Pobre</h3><span class="price">$10.500</span></div>
+          <p class="desc">Lomo liso con papas fritas, huevo frito, cebolla caramelizada y arroz. Plato completo y contundente.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+          <div class="top"><h3>Cazuela de Vacuno</h3><span class="price">$7.500</span></div>
+          <p class="desc">Cazuela tradicional con carne de vacuno, papas, zapallo, choclo y arroz. Como en la casa.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span><span style="background:rgba(16,185,129,.1);color:#34d399;">🍲 Casero</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+          <div class="top"><h3>Paila Marina</h3><span class="price">$9.000</span></div>
+          <p class="desc">Paila marina con machas, almejas, camarones, pescado y caldo de mariscos. Ideal para el frío.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span><span style="background:rgba(96,165,250,.1);color:#60a5fa;">🐟 Mariscos</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
+          <div class="top"><h3>Sopaipillas (x6)</h3><span class="price">$2.500</span></div>
+          <p class="desc">Sopaipillas caseras con chancaca. El clásico chileno que nunca falla.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+      </div>
+
+      <!-- ── VENEZOLANA ── -->
+      <h3 class="menu-category-title" data-aos="fade-right"><span>🇻🇪</span> Cocina Venezolana</h3>
+      <div class="menu-full-grid">
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500">
+          <div class="top"><h3>Arepa Reina Pepiada</h3><span class="price">$5.500</span></div>
+          <p class="desc">Arepa de maíz rellena de pollo mechado con aguacate, mayonesa y aliños.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">
+          <div class="top"><h3>Arepa Pelúa</h3><span class="price">$6.000</span></div>
+          <p class="desc">Arepa rellena de carne mechada y queso amarillo rallado. Una de las favoritas.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+          <div class="top"><h3>Arepa Catira</h3><span class="price">$5.500</span></div>
+          <p class="desc">Arepa rellena de pollo mechado y queso amarillo. Sencilla pero deliciosa.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
+          <div class="top"><h3>Pabellón Criollo</h3><span class="price">$8.500</span></div>
+          <p class="desc">Arroz, caraotas negras, carne mechada, tajadas de plátano maduro frito y huevo frito.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span><span style="background:rgba(249,115,22,.1);color:#fb923c;">⭐ Plato bandera</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+          <div class="top"><h3>Cachapa con Queso</h3><span class="price">$5.000</span></div>
+          <p class="desc">Cachapa de maíz dulce rellena de queso de mano. Dulce y salada, acompañada de mantequilla.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+          <div class="top"><h3>Tequeños (8 unid.)</h3><span class="price">$5.000</span></div>
+          <p class="desc">Palitos de queso envueltos en masa y fritos. Servidos con salsa de ajo o guasacaca.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span><span style="background:rgba(16,185,129,.1);color:#34d399;">🥑 Con guasacaca</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+          <div class="top"><h3>Patacón Mixto</h3><span class="price">$7.000</span></div>
+          <p class="desc">Sándwich de plátano verde frito (patacón) relleno de carne mechada, pollo, queso y lechuga.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
+          <div class="top"><h3>Mandocas (6 unid.)</h3><span class="price">$4.000</span></div>
+          <p class="desc">Mandocas de plátano maduro con queso. Dulces, crujientes por fuera y suaves por dentro.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span></div>
+        </div>
+      </div>
+
+      <!-- ── BEBESTIBLES ── -->
+      <h3 class="menu-category-title" data-aos="fade-right"><span>🍺</span> Bebestibles</h3>
+      <div class="menu-full-grid">
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500">
+          <div class="top"><h3>Cerveza Artesanal</h3><span class="price">$4.000</span></div>
+          <p class="desc">Variedad rotativa de cervezas artesanales chilenas. Pregunta por la disponible del mes.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.1);color:#fb923c;">🍺 Artesanal</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">
+          <div class="top"><h3>Terremoto</h3><span class="price">$4.500</span></div>
+          <p class="desc">Clásico cóctel chileno: pipeño, helado de piña, granadina y fernet. Refrescante.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+          <div class="top"><h3>Piscola</h3><span class="price">$4.000</span></div>
+          <p class="desc">Piscola con pisco chileno de primera calidad. Con hielo y tu bebida favorita.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
+          <div class="top"><h3>Vino Tinto / Chicha</h3><span class="price">$3.500</span></div>
+          <p class="desc">Vino tinto de la casa, chicha artesanal o vino blanco. Tubo o jarra.</p>
+          <div class="tags"><span style="background:rgba(220,38,38,.12);color:#ef4444;">🇨🇱 Chileno</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+          <div class="top"><h3>Jugos Naturales</h3><span class="price">$2.500</span></div>
+          <p class="desc">Jugos de fruta natural: parchita, mango, piña, naranja. Combínalos a tu gusto.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.12);color:#fb923c;">🇻🇪 Venezolano</span><span style="background:rgba(16,185,129,.1);color:#34d399;">🥤 Natural</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+          <div class="top"><h3>Bebidas y Agua</h3><span class="price">$1.500</span></div>
+          <p class="desc">Gaseosas, aguas minerales y saborizadas. Variedad completa.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.1);color:#fb923c;">🥤 Variedad</span></div>
+        </div>
+        <div class="menu-card-full" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
+          <div class="top"><h3>Café / Té</h3><span class="price">$1.500</span></div>
+          <p class="desc">Café de filtro, espresso o té. Perfecto para después de la comida.</p>
+          <div class="tags"><span style="background:rgba(249,115,22,.1);color:#fb923c;">☕ Clásico</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="section section-dark cta-mini">
+    <div class="container">
+      <h3>🔥 ¿Listo para pedir?</h3>
+      <p>Haz tu pedido por WhatsApp o ven a visitarnos en Conchalí.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+        <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Pedir ahora
+        </a>
+        <a href="../" class="btn btn-secondary">
+          <i class="fas fa-home"></i> Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="font-weight:700;">🔥 <strong>El Fogoncito Restobar</strong></p>
+      <p style="margin-top:4px;color:rgba(255,255,255,.4);">Comida chilena &amp; venezolana — Conchalí</p>
+      <p style="margin-top:12px;font-size:12px;">© 2026 El Fogoncito Restobar. Átomo Studio</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../app.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+  </script>
+</body>
+</html>

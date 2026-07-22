@@ -1,0 +1,184 @@
+// api.js — SiteDesk backend service layer
+// Mismo patrón que Geo App (../api.js). Comparte JWT en localStorage (geo_token).
+// ────────────────────────────────────────────────────────────────
+
+function resolveSiteDeskApiUrl() {
+  const explicit =
+    (typeof window !== "undefined" && window.__SITEDESK_CONFIG__?.apiUrl) ||
+    (typeof document !== "undefined" &&
+      document.querySelector('meta[name="geo-api-url"]')?.content);
+  const host = typeof window !== "undefined" ? window.location.hostname : "";
+  if (host === "geo.atomostudio.dev" || host === "sitedesk.atomostudio.dev") {
+    return "https://api.geo.atomostudio.dev";
+  }
+  if (explicit && !/localhost|127\.0\.0\.1/.test(explicit)) return explicit;
+  return explicit || "http://localhost:8000";
+}
+
+const API_URL = resolveSiteDeskApiUrl();
+const USE_MOCK = window.__SITEDESK_CONFIG__?.useMock ?? false;
+
+const TOKEN_KEY = "geo_token";
+const SiteDeskAuth = {
+  get: () => { try { return localStorage.getItem(TOKEN_KEY); } catch { return null; } },
+  set: (t) => { try { localStorage.setItem(TOKEN_KEY, t); } catch {} },
+  clear: () => { try { localStorage.removeItem(TOKEN_KEY); } catch {} },
+};
+
+class ApiError extends Error {
+  constructor(status, detail) {
+    super(detail || ("Error " + status));
+    this.status = status;
+    this.detail = detail;
+  }
+}
+
+async function apiFetch(path, { method = "GET", body, auth = true } = {}) {
+  const headers = { "Content-Type": "application/json" };
+  if (auth) {
+    const token = SiteDeskAuth.get();
+    if (token) headers["Authorization"] = "Bearer " + token;
+  }
+  let res;
+  try {
+    res = await fetch(API_URL + path, {
+      method,
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+  } catch {
+    throw new ApiError(0, "No se pudo conectar con el servidor.");
+  }
+  if (res.status === 204) return null;
+  let data = null;
+  try { data = await res.json(); } catch {}
+  if (!res.ok) {
+    const detail = (data && (data.detail || data.message)) || null;
+    throw new ApiError(res.status, detail);
+  }
+  return data;
+}
+
+function apiErrorMessage(err) {
+  if (!(err instanceof ApiError)) return "Ocurrió un error inesperado.";
+  switch (err.status) {
+    case 0:   return "Sin conexión con el servidor.";
+    case 401: return "Tu sesión expiró. Inicia sesión otra vez.";
+    case 404: return err.detail || "No tienes un sitio asignado.";
+    default:  return err.detail || "Ocurrió un error. Intenta de nuevo.";
+  }
+}
+
+const mockDelay = (ms = 400) => new Promise(r => setTimeout(r, ms));
+
+const MOCK_SITE = {
+  id: 1,
+  slug: "carniceria-rojas",
+  name: "Carnicería Rojas",
+  url: "carniceriarojas.cl",
+  clientName: "Don Rojas",
+  sitesPath: "carnes-super-willy",
+  pendingDrafts: 2,
+};
+
+const MOCK_SECTIONS = {
+  hero: {
+    published: { eyebrow: "CARNICERÍA · DESDE 1987", title: "Cortes premium en PAC", subtitle: "Vacuno, cerdo y aves frescos." },
+    draft: { eyebrow: "CARNICERÍA · DESDE 1987", title: "Cortes premium en Pedro Aguirre Cerda", subtitle: "Vacuno, cerdo y aves frescos. Pedidos por WhatsApp." },
+    hasDraft: true,
+  },
+};
+
+const MockApi = {
+  async login({ email, password }) {
+    await mockDelay();
+    SiteDeskAuth.set("mock-token");
+    return { token: "mock-token", user: { email, tier: 0 } };
+  },
+  async me() {
+    await mockDelay();
+    return { email: "don.rojas@example.cl", name: "Don Rojas", tier: 0 };
+  },
+  async site() {
+    await mockDelay();
+    return { needsSetup: false, site: MOCK_SITE };
+  },
+  async content() {
+    await mockDelay();
+    return { sections: MOCK_SECTIONS };
+  },
+  async saveContent({ section, fields }) {
+    await mockDelay();
+    return { ok: true, section };
+  },
+  async publish() {
+    await mockDelay(600);
+    return { ok: true, publishedSections: ["hero"] };
+  },
+  async history() {
+    await mockDelay();
+    return {
+      items: [
+        { id: 1, summary: "Publicada sección hero", sections: ["hero"], createdAt: "2026-06-06T14:30:00Z" },
+      ],
+    };
+  },
+  async chat({ message, conversationId }) {
+    await mockDelay(800);
+    return {
+      reply: "Entendido. Actualicé el borrador del hero. Revise el panel derecho antes de publicar.",
+      conversationId: conversationId || 1,
+      usage: { used: 1, limit: 50 },
+    };
+  },
+};
+
+const RealApi = {
+  login: ({ email, password }) =>
+    apiFetch("/auth/login", { method: "POST", auth: false, body: { email, password } })
+      .then(d => { if (d?.token) SiteDeskAuth.set(d.token); return d; }),
+
+  me: () => apiFetch("/me"),
+
+  site: () => apiFetch("/sitedesk/site"),
+
+  content: () => apiFetch("/sitedesk/content"),
+
+  saveContent: ({ section, fields }) =>
+    apiFetch("/sitedesk/content", { method: "PATCH", body: { section, fields } }),
+
+  publish: () => apiFetch("/sitedesk/publish", { method: "POST" }),
+
+  history: () => apiFetch("/sitedesk/history"),
+
+  // Chat compartido con Geo App (Geos 3.1 + historial geoapp.conversaciones)
+  chat: ({ message, conversationId }) => {
+    const body = { message };
+    if (conversationId != null) body.conversationId = conversationId;
+    return apiFetch("/chat", { method: "POST", body });
+  },
+};
+
+const SiteDeskApi = USE_MOCK ? MockApi : RealApi;
+
+function sitedeskOAuthReturnUrl(nextPage) {
+  const next = nextPage || "index.html";
+  return location.origin + location.pathname + "?next=" + encodeURIComponent(next);
+}
+
+function googleOAuthUrl(nextPage) {
+  if (USE_MOCK) return null;
+  const returnTo = encodeURIComponent(sitedeskOAuthReturnUrl(nextPage));
+  return API_URL + "/auth/google?return_to=" + returnTo;
+}
+
+Object.assign(window, {
+  SiteDeskApi,
+  SiteDeskAuth,
+  ApiError,
+  apiErrorMessage,
+  API_URL,
+  USE_MOCK,
+  googleOAuthUrl,
+  sitedeskOAuthReturnUrl,
+});

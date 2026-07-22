@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥩</text></svg>" />
+<title data-i18n="carnes_17_carnicería_de_barrio_conchalí">Carnes 17 — Carnicería de Barrio · Conchalí</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style data-i18n="root_r_e11d1d_r2_ff3333_r3_7f1d1d_o_f9731">
+:root{
+  --r:#e11d1d;--r2:#ff3333;--r3:#7f1d1d;
+  --o:#f97316;--y:#fbbf24;
+  --bg:#0f0000;--bg2:#170303;--bg3:#200505;
+  --bd:#3d0000;--tx:#fff5f5;--tx2:#a87070;
+  --font:'Barlow Condensed',sans-serif;--body:'Barlow',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--r)}
+
+/* AMBIENT */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(225,29,29,.06) 0%,transparent 60%)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:68px;
+  background:rgba(15,0,0,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bd);}
+.logo{font-family:var(--font);font-size:28px;font-weight:900;color:var(--tx);text-decoration:none;
+  letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.logo-num{color:var(--r)}
+.logo-dot{width:8px;height:8px;background:var(--r);border-radius:50%;animation:pulse 2s infinite}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:var(--font);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--r2)}
+.nav-cta{padding:10px 22px;background:var(--r);color:#fff;font-family:var(--font);font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);transition:all .25s}
+.nav-cta:hover{background:var(--r2)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:68px}
+.hero-left{padding:80px 40px 80px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-number{font-family:var(--font);font-size:clamp(120px,18vw,280px);font-weight:900;color:rgba(225,29,29,.08);
+  line-height:1;position:absolute;top:50%;left:-20px;transform:translateY(-50%);pointer-events:none;letter-spacing:-10px;
+  animation:fadeIn 1s ease both}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;animation:slideRight .6s ease both .2s}
+.hero-eyebrow-line{width:40px;height:2px;background:var(--r)}
+.hero-eyebrow-text{font-family:var(--font);font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--r)}
+h1.htitle{font-family:var(--font);font-size:clamp(64px,9vw,110px);font-weight:900;line-height:.9;
+  text-transform:uppercase;letter-spacing:-2px;margin-bottom:28px;animation:slideRight .6s ease both .3s}
+h1.htitle .line2{color:var(--r);-webkit-text-stroke:0px;display:block}
+h1.htitle .line3{font-style:italic;color:rgba(255,255,255,.25);display:block;font-size:70%}
+.hero-sub{font-size:15px;color:var(--tx2);line-height:1.8;max-width:400px;margin-bottom:36px;font-weight:300;animation:slideRight .6s ease both .4s}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:slideRight .6s ease both .5s}
+.btn-main{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--r);color:#fff;
+  font-family:var(--font);font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:all .3s}
+.btn-main:hover{background:var(--r2);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;background:transparent;color:var(--tx);
+  font-family:var(--font);font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--bd);transition:all .3s}
+.btn-ghost:hover{border-color:var(--r);color:var(--r)}
+
+.hero-right{position:relative;background:var(--bg2);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-right-bg{position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,rgba(225,29,29,.03) 0,rgba(225,29,29,.03) 1px,transparent 1px,transparent 20px)}
+.hero-img-big{font-size:clamp(120px,20vw,220px);opacity:.12;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  animation:float 4s ease-in-out infinite}
+.hero-price-badge{position:absolute;bottom:40px;right:40px;padding:20px 28px;background:var(--r);text-align:center;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);animation:fadeIn 1s ease both .7s}
+.hero-price-badge .pb-label{font-family:var(--font);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-price-badge .pb-price{font-family:var(--font);font-size:36px;font-weight:900;color:#fff;line-height:1}
+.hero-price-badge .pb-unit{font-family:var(--font);font-size:12px;color:rgba(255,255,255,.7)}
+
+.hero-stats{position:absolute;bottom:0;left:0;right:0;display:flex;border-top:1px solid var(--bd)}
+.hstat{flex:1;padding:20px 32px;border-right:1px solid var(--bd)}
+.hstat:last-child{border-right:none}
+.hstat .hn{font-family:var(--font);font-size:36px;font-weight:900;color:var(--r);line-height:1}
+.hstat .hl{font-family:var(--font);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--tx2);margin-top:4px}
+
+/* TICKER */
+.ticker{background:var(--r);padding:12px 0;overflow:hidden;border-top:2px solid var(--r3);border-bottom:2px solid var(--r3)}
+.ticker-inner{display:flex;gap:0;animation:marquee2 20s linear infinite;white-space:nowrap}
+.tick-item{display:flex;align-items:center;gap:0;font-family:var(--font);font-size:16px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;padding:0 40px}
+.tick-sep{color:rgba(255,255,255,.4);padding:0 8px}
+
+/* CUTS */
+.section{padding:100px 40px;position:relative;z-index:1}
+.sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px}
+.sec-label{font-family:var(--font);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--r);margin-bottom:8px}
+.sec-title{font-family:var(--font);font-size:clamp(40px,5vw,64px);font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-1px}
+.sec-title .dim{color:rgba(255,255,255,.2)}
+.sec-link{font-family:var(--font);font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--r);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s}
+.sec-link:hover{gap:16px}
+
+.cuts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd)}
+.cut-card{background:var(--bg2);padding:36px 28px;cursor:pointer;position:relative;overflow:hidden;transition:background .3s}
+.cut-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--r);transition:height .4s}
+.cut-card:hover{background:var(--bg3)}
+.cut-card:hover::before{height:100%}
+.cut-emoji{font-size:48px;margin-bottom:20px;display:block;transition:transform .3s}
+.cut-card:hover .cut-emoji{transform:scale(1.15) rotate(-5deg)}
+.cut-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.cut-tag{font-family:var(--font);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);
+  padding:3px 10px;border:1px solid var(--r3)}
+.cut-name{font-family:var(--font);font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:-1px;margin-bottom:6px}
+.cut-desc{font-size:12px;color:var(--tx2);line-height:1.6;margin-bottom:20px}
+.cut-price{font-family:var(--font);font-size:32px;font-weight:900;color:var(--y)}
+.cut-arrow{position:absolute;bottom:28px;right:28px;width:36px;height:36px;border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--tx2);
+  transition:all .3s}
+.cut-card:hover .cut-arrow{border-color:var(--r);color:var(--r);transform:rotate(-45deg)}
+
+/* WHY */
+.why{background:var(--bg2);padding:100px 40px;border-top:1px solid var(--bd)}
+.why-layout{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
+.why-headline{font-family:var(--font);font-size:clamp(48px,7vw,90px);font-weight:900;text-transform:uppercase;
+  line-height:.9;letter-spacing:-2px;position:sticky;top:100px}
+.why-headline .red{color:var(--r)}
+.why-items{display:flex;flex-direction:column;gap:1px}
+.why-row{padding:36px 0;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:24px;
+  transition:padding .3s;cursor:default}
+.why-row:hover{padding-left:16px}
+.why-row-num{font-family:var(--font);font-size:64px;font-weight:900;color:rgba(225,29,29,.12);line-height:1;min-width:80px}
+.why-row-ico{font-size:32px;min-width:44px;margin-top:4px}
+.why-row-content{}
+.why-row-title{font-family:var(--font);font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.why-row-desc{font-size:13px;color:var(--tx2);line-height:1.7}
+
+/* TESTIMONIALS */
+.tests{padding:100px 40px}
+.tests-grid{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;margin-top:48px}
+.test-big{background:var(--bg2);border:1px solid var(--bd);padding:40px;position:relative}
+.test-big::before{content:'"';font-family:var(--font);font-size:160px;font-weight:900;color:var(--r);
+  position:absolute;top:-20px;left:20px;line-height:1;opacity:.2}
+.test-big-text{font-family:var(--font);font-size:28px;font-weight:600;line-height:1.3;margin-bottom:20px;position:relative;z-index:1;font-style:italic}
+.test-big-stars{color:var(--y);margin-bottom:8px;font-size:14px}
+.test-big-author{font-family:var(--font);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--r)}
+.test-stack{display:flex;flex-direction:column;gap:16px}
+.test-small{padding:24px;background:var(--bg3);border-left:3px solid var(--r)}
+.test-small-text{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:10px;font-style:italic}
+.test-small-author{font-family:var(--font);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--tx)}
+
+/* CTA BANNER */
+.cta-banner{background:var(--r);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'17';font-family:var(--font);font-size:400px;font-weight:900;
+  color:rgba(0,0,0,.1);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;line-height:1}
+.cta-banner-title{font-family:var(--font);font-size:clamp(40px,6vw,80px);font-weight:900;text-transform:uppercase;
+  letter-spacing:-2px;line-height:.9;margin-bottom:24px;position:relative;z-index:1}
+.cta-banner-sub{font-size:16px;margin-bottom:36px;opacity:.85;position:relative;z-index:1;font-family:var(--font);font-weight:400;letter-spacing:1px}
+.cta-banner .btn-white{display:inline-flex;align-items:center;gap:10px;padding:18px 48px;background:#fff;color:var(--r);
+  font-family:var(--font);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:2px;text-decoration:none;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:all .3s;position:relative;z-index:1}
+.cta-banner .btn-white:hover{transform:scale(1.03)}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:2px solid var(--r);padding:48px 40px}
+.ft-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+.ft-brand{font-family:var(--font);font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.ft-brand .r{color:var(--r)}
+.ft-desc{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:16px}
+.ft-title{font-family:var(--font);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tx);margin-bottom:14px}
+.ft-link{display:block;font-size:13px;color:var(--tx2);text-decoration:none;margin-bottom:8px;transition:color .3s}
+.ft-link:hover{color:var(--r)}
+.ft-bottom{border-top:1px solid var(--bd);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--tx2);letter-spacing:.5px}
+.ft-bottom span{color:var(--y)}
+
+/* WA */
+.wa{position:fixed;bottom:28px;right:28px;z-index:200;
+  display:flex;align-items:center;gap:10px;padding:14px 20px;
+  background:#25D366;color:#fff;border-radius:40px;text-decoration:none;
+  font-family:var(--font);font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  box-shadow:0 4px 24px rgba(37,211,102,.35);transition:all .3s}
+.wa:hover{transform:scale(1.05);background:#1ebe5a}
+.wa i{font-size:20px}
+
+/* ANIMATIONS */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translate(-50%,-50%) rotate(-5deg)}50%{transform:translate(-50%,-53%) rotate(5deg)}}
+@keyframes marquee2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:900px){
+  .nav{padding:0 20px}.logo{font-size:22px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:100px 20px 40px}
+  .hero-right{display:none}
+  .hero-stats{position:static;flex-wrap:wrap}
+  .hstat{padding:16px 20px}
+  .section{padding:60px 20px}
+  .sec-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .cuts-grid,.tests-grid,.why-layout,.ft-inner{grid-template-columns:1fr}
+  .why-headline{position:static;font-size:48px}
+  footer{padding:40px 20px}
+  .ft-bottom{flex-direction:column;gap:8px;text-align:center}
+  .wa{bottom:20px;right:20px;padding:12px 16px;font-size:13px}
+}
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/carnes-17/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/carnes-17/?lang=en_US">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo"><span class="logo-dot"></span>Carnes <span class="logo-num">17</span></a>
+  <div class="nav-links">
+    <a href="#cortes" data-i18n="cortes">Cortes</a>
+    <a href="#nosotros" data-i18n="nosotros">Nosotros</a>
+    <a href="#contacto" data-i18n="contacto">Contacto</a>
+    <a href="https://wa.me/56931720562?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="nav-cta" data-i18n="pedir_ya">Pedir ya</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-number">17</div>
+    <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="hero-eyebrow-text" data-i18n="carnicería_de_barrio_conchalí">Carnicería de Barrio · Conchalí</span></div>
+    <h1 class="htitle">Carne<span class="line2" data-i18n="de_verdad">de verdad</span><span class="line3" data-i18n="como_la_de_antes">como la de antes</span></h1>
+    <p class="hero-sub" data-i18n="carnicería_tradicional_en_gral_sandino_3926_frescos_diario">Carnicería tradicional en Gral. Sandino 3926. Frescos diarios, atención de barrio y delivery a domicilio.</p>
+    <div class="hero-btns">
+      <a href="#cortes" class="btn-main"><i class="fas fa-eye"></i> Ver cortes</a>
+      <a href="https://wa.me/56931720562?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="btn-ghost"><i class="fab fa-whatsapp"></i> Pedir ahora</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-img-big">🥩</div>
+    <div class="hero-price-badge">
+      <div class="pb-label" data-i18n="lomo_liso_desde">Lomo liso desde</div>
+      <div class="pb-price">$8.990</div>
+      <div class="pb-unit" data-i18n="por_kilogramo">por kilogramo</div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hn">15+</div><div class="hl" data-i18n="años_en_el_barrio">Años en el barrio</div></div>
+    <div class="hstat"><div class="hn">8</div><div class="hl" data-i18n="cortes_frescos">Cortes frescos</div></div>
+    <div class="hstat"><div class="hn">🚚</div><div class="hl" data-i18n="delivery_gratis">Delivery gratis</div></div>
+    <div class="hstat"><div class="hn">★★★★★</div><div class="hl" data-i18n="clientes_felices">Clientes felices</div></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick-item">Carne fresca todos los días <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Delivery gratis <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Vacuno · Cerdo · Pollo <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Gral. Sandino 3926, Conchalí <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Carne fresca todos los días <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Delivery gratis <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Vacuno · Cerdo · Pollo <span class="tick-sep">✦</span></span>
+    <span class="tick-item">Gral. Sandino 3926, Conchalí <span class="tick-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- CORTES -->
+<section class="section" id="cortes">
+  <div class="sec-header reveal">
+    <div>
+      <div class="sec-label" data-i18n="nuestros_cortes">Nuestros cortes</div>
+      <h2 class="sec-title">Selección <span class="dim" data-i18n="de_hoy">de hoy</span></h2>
+    </div>
+    <a href="#contacto" class="sec-link">Ver todos <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="cuts-grid">
+    <div class="cut-card reveal">
+      <span class="cut-emoji">🥩</span>
+      <div class="cut-tags"><span class="cut-tag" data-i18n="premium">Premium</span><span class="cut-tag" data-i18n="vacuno">Vacuno</span></div>
+      <div class="cut-name" data-i18n="lomo_liso">Lomo Liso</div>
+      <div class="cut-desc" data-i18n="corte_premium_ideal_para_bistec_y_parrilla_tierno_y_jugoso">Corte premium, ideal para bistec y parrilla. Tierno y jugoso.</div>
+      <div class="cut-price" data-i18n="8_990_kg">$8.990/kg</div>
+      <div class="cut-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="cut-card reveal d1">
+      <span class="cut-emoji">🥩</span>
+      <div class="cut-tags"><span class="cut-tag" data-i18n="vacuno">Vacuno</span></div>
+      <div class="cut-name" data-i18n="posta">Posta</div>
+      <div class="cut-desc" data-i18n="versátil_y_jugosa_perfecta_para_guisos_y_cazuelas">Versátil y jugosa, perfecta para guisos y cazuelas.</div>
+      <div class="cut-price" data-i18n="6_490_kg">$6.490/kg</div>
+      <div class="cut-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+    <div class="cut-card reveal d2">
+      <span class="cut-emoji">🥩</span>
+      <div class="cut-tags"><span class="cut-tag" data-i18n="vacuno">Vacuno</span></div>
+      <div class="cut-name" data-i18n="asiento">Asiento</div>
+      <div class="cut-desc" data-i18n="tierno_con_buena_veta_ideal_para_la_parrilla_del_domingo">Tierno, con buena veta, ideal para la parrilla del domingo.</div>
+      <div class="cut-price" data-i18n="7_490_kg">$7.490/kg</div>
+      <div class="cut-arrow"><i class="fas fa-arrow-right"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="nosotros">
+  <div class="why-layout">
+    <div class="why-headline reveal">¿Por<br>qué<br><span class="red" data-i18n="el_17">el 17?</span></div>
+    <div class="why-items">
+      <div class="why-row reveal">
+        <div class="why-row-num">01</div>
+        <div class="why-row-ico">🚚</div>
+        <div class="why-row-content">
+          <div class="why-row-title" data-i18n="delivery_rápido">Delivery rápido</div>
+          <div class="why-row-desc" data-i18n="te_llevamos_el_pedido_a_casa_sin_recargo_adicional_rápido_y">Te llevamos el pedido a casa sin recargo adicional. Rápido y confiable.</div>
+        </div>
+      </div>
+      <div class="why-row reveal d1">
+        <div class="why-row-num">02</div>
+        <div class="why-row-ico">🥩</div>
+        <div class="why-row-content">
+          <div class="why-row-title" data-i18n="frescura_diaria">Frescura diaria</div>
+          <div class="why-row-desc" data-i18n="todo_llega_fresco_cada_mañana_nunca_vendemos_carne_de_días">Todo llega fresco cada mañana. Nunca vendemos carne de días anteriores.</div>
+        </div>
+      </div>
+      <div class="why-row reveal d2">
+        <div class="why-row-num">03</div>
+        <div class="why-row-ico">🤝</div>
+        <div class="why-row-content">
+          <div class="why-row-title" data-i18n="atención_de_barrio">Atención de barrio</div>
+          <div class="why-row-desc" data-i18n="el_trato_cercano_y_de_confianza_que_nos_caracteriza_desde_ha">El trato cercano y de confianza que nos caracteriza desde hace más de 15 años.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="tests">
+  <div class="reveal"><div class="sec-label" data-i18n="lo_que_dicen">Lo que dicen</div></div>
+  <div class="reveal d1"><h2 class="sec-title">Clientes <span class="dim" data-i18n="felices">felices</span></h2></div>
+  <div class="tests-grid">
+    <div class="test-big reveal">
+      <div class="test-big-stars">★★★★★</div>
+      <p class="test-big-text" data-i18n="buena_carne_buenos_precios_y_mejor_atención_siempre_compro">Buena carne, buenos precios y mejor atención. Siempre compro aquí.</p>
+      <div class="test-big-author" data-i18n="pedro_lópez">— Pedro López</div>
+    </div>
+    <div class="test-stack">
+      <div class="test-small reveal d1">
+        <p class="test-small-text" data-i18n="el_delivery_es_rápido_y_la_carne_siempre_llega_fresca_nunca">El delivery es rápido y la carne siempre llega fresca. Nunca me ha fallado.</p>
+        <div class="test-small-author" data-i18n="laura_rojas">— Laura Rojas</div>
+      </div>
+      <div class="test-small reveal d2">
+        <p class="test-small-text" data-i18n="la_mejor_carnicería_del_barrio_los_cortes_son_de_primera_ca">La mejor carnicería del barrio. Los cortes son de primera calidad.</p>
+        <div class="test-small-author" data-i18n="juan_torres">— Juan Torres</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner" id="contacto">
+  <h2 class="cta-banner-title">¿Listo para<br>hacer tu pedido?</h2>
+  <p class="cta-banner-sub" data-i18n="escríbenos_por_whatsapp_o_visítanos_en_gral_sandino_3926_c">Escríbenos por WhatsApp o visítanos en Gral. Sandino 3926, Conchalí · Lun–Sáb 9:00–20:00</p>
+  <a href="https://wa.me/56931720562?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="btn-white"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</a>
+</div>
+
+<footer>
+  <div class="ft-inner">
+    <div>
+      <div class="ft-brand">Carnes <span class="r">17</span></div>
+      <p class="ft-desc" data-i18n="carnicería_tradicional_en_gral_sandino_3926_conchalí_fres">Carnicería tradicional en Gral. Sandino 3926, Conchalí. Frescos diarios, atención de barrio y delivery.</p>
+      <a href="https://wa.me/56931720562" target="_blank" style="color:#25D366;font-size:13px;text-decoration:none"><i class="fab fa-whatsapp"></i> +56 9 3172 0562</a>
+    </div>
+    <div>
+      <div class="ft-title" data-i18n="cortes">Cortes</div>
+      <a href="#" class="ft-link" data-i18n="vacuno">Vacuno</a>
+      <a href="#" class="ft-link" data-i18n="cerdo">Cerdo</a>
+      <a href="#" class="ft-link" data-i18n="pollo">Pollo</a>
+    </div>
+    <div>
+      <div class="ft-title" data-i18n="visítanos">Visítanos</div>
+      <p style="font-size:13px;color:var(--tx2);line-height:1.8">Gral. Sandino 3926<br>Conchalí, Santiago<br>Lun–Sáb 9:00–20:00</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Gral.+Sandino+3926,+Conchalí" target="_blank" style="color:#34d399;font-size:12px;margin-top:8px;display:block;text-decoration:none" data-i18n="ver_en_google_maps">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-i18n="2026_carnes_17_conchalí">© 2026 Carnes 17 · Conchalí</span>
+    <span>Creado por <span data-i18n="átomo_studio">Átomo Studio</span></span>
+  </div>
+<p style="text-align:center;font-size:0.75rem;opacity:0.4;padding:8px 24px 16px;margin:0;" data-i18n="sitio_conceptual_ejemplo_representativo_no_un_negocio_r">⚡ Sitio conceptual — ejemplo representativo, no un negocio real.</p>
+</footer>
+
+<a href="https://wa.me/56931720562?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="wa"><i class="fab fa-whatsapp"></i> Pedir ahora</a>
+
+<script data-i18n="const_obs_new_intersectionobserver_es_es_foreach_e_if_e_i">
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+</script>
+  <script src="/widget/atomo-ecommerce.min.js" data-store="carnes-17" data-primary="#dc2626" data-accent="#fb923c" data-whatsapp="56931720562" data-position="bottom-right"></script>
+<script src="../js/i18n.js"></script>
+</body>
+</html>

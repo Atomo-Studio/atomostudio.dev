@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Fogoncito Restobar — Contacto | WhatsApp, Delivery, Ubicación</title>
+  <meta name="description" content="Contacta a El Fogoncito Restobar en Conchalí. Pedidos por WhatsApp, delivery, reservas, dirección y horarios." />
+  <meta name="theme-color" content="#1a0505" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elfogoncito.cl/contacto/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://elfogoncito.cl/contacto/" />
+  <meta property="og:title" content="El Fogoncito — Contacto" />
+  <meta property="og:description" content="Contáctanos por WhatsApp y haz tu pedido." />
+  <meta property="og:image" content="https://elfogoncito.cl/img/gallery/elfogoncito_08.webp" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="El Fogoncito Restobar" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="El Fogoncito — Contacto" />
+  <meta name="twitter:description" content="Contáctanos por WhatsApp y haz tu pedido." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="../base.css" />
+
+  <style>
+    :root {
+      --at-blue: #f97316;
+      --at-purple: #dc2626;
+      --at-cyan: #ea580c;
+      --at-pink: #ef4444;
+      --at-red: #dc2626;
+      --at-green: #10b981;
+      --at-gold: #f59e0b;
+      --at-orange: #f97316;
+      --grad-primary: linear-gradient(135deg, #f97316, #dc2626);
+      --grad-surface: linear-gradient(135deg, rgba(249, 115, 22, 0.06), transparent, rgba(220, 38, 38, 0.06));
+      --shadow-sm: 0 4px 25px rgba(249, 115, 22, 0.25);
+      --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    .gradient-text { background: var(--grad-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    body { background: #080610; }
+    .nav-link::after { background: var(--grad-primary); }
+
+    .page-header {
+      padding-top: 100px;
+      padding-bottom: 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(249,115,22,.04) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; font-family: 'Space Grotesk', sans-serif; }
+    .page-header p { color: rgba(255,255,255,.5); max-width: 600px; margin: 12px auto 0; font-size: 1.05rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: var(--at-card);
+      border: 1px solid var(--at-border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+    .contact-card:hover { border-color: rgba(249,115,22,.08); }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.04);
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+    .contact-method:hover {
+      background: rgba(249,115,22,.04);
+      border-color: rgba(249,115,22,.1);
+      transform: translateX(4px);
+    }
+    .contact-method .icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .contact-method .icon-wrap.green { background: rgba(37,211,102,.12); color: #25D366; }
+    .contact-method .icon-wrap.orange { background: rgba(249,115,22,.12); color: #fb923c; }
+    .contact-method .icon-wrap.blue { background: rgba(96,165,250,.1); color: #60a5fa; }
+    .contact-method .icon-wrap.purple { background: rgba(167,139,250,.1); color: #a78bfa; }
+    .contact-method .info .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.35); font-weight: 600; }
+    .contact-method .info .value { font-weight: 600; font-size: 1rem; color: rgba(255,255,255,.85); margin-top: 2px; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-form label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.6); }
+    .contact-form .form-input { background: rgba(255,255,255,.02); border-color: rgba(255,255,255,.06); }
+    .contact-form .form-input:focus { border-color: rgba(249,115,22,.3); box-shadow: 0 0 0 3px rgba(249,115,22,.06); }
+
+    .contact-info-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .info-block {
+      background: var(--at-card);
+      border: 1px solid var(--at-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+    .info-block:hover { border-color: rgba(249,115,22,.08); }
+    .info-block h4 { font-size: 14px; color: rgba(255,255,255,.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .info-block .value { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,.85); }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .sched-item { text-align: center; padding: 12px; border-radius: 12px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04); }
+    .sched-item .day { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5); }
+    .sched-item .time { font-size: 14px; font-weight: 700; margin-top: 4px; color: #fb923c; }
+    .sched-item .closed .time { color: #ef4444; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.5);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
+      margin-bottom: 20px;
+    }
+    .back-link:hover { color: #fb923c; }
+
+    .wa-large {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px 32px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-info-section { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: repeat(3, 1fr); }
+      .page-header { padding-top: 80px; padding-bottom: 40px; }
+    }
+    @media (max-width: 480px) {
+      .schedule-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-glass">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;font-family:'Space Grotesk',sans-serif;">
+        <span style="display:inline-flex;width:34px;height:34px;border-radius:10px;background:var(--grad-primary);align-items:center;justify-content:center;font-size:.9rem;color:#fff;">🔥</span>
+        FOGONCITO
+      </a>
+      <ul class="nav-links" id="navLinks" style="display:flex;gap:24px;list-style:none;align-items:center;">
+        <li><a href="../" class="nav-link">Inicio</a></li>
+        <li><a href="../#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="../#menu" class="nav-link">Menú</a></li>
+        <li><a href="../#galeria" class="nav-link">Galería</a></li>
+        <li><a href="../#ubicacion" class="nav-link">Ubicación</a></li>
+        <li>
+          <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+      <h1><span class="gradient-text">Contáctanos</span></h1>
+      <p>Estamos listos para atenderte. Pide por WhatsApp, visítanos o escríbenos.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- INFO -->
+        <div data-aos="fade-right" data-aos-duration="800">
+          <h2 class="mb-lg" style="font-size:1.4rem;">Hablemos <span class="gradient-text">🔥</span></h2>
+
+          <div class="contact-method">
+            <span class="icon-wrap green"><i class="fab fa-whatsapp"></i></span>
+            <div class="info">
+              <div class="label">WhatsApp — Pedidos</div>
+              <div class="value">+56 9 7399 4504</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" target="_blank" rel="noopener" class="btn btn-whatsapp wa-large" style="width:100%;margin-bottom:12px;">
+            <i class="fab fa-whatsapp"></i> Enviar mensaje por WhatsApp
+          </a>
+
+          <div class="contact-method">
+            <span class="icon-wrap orange"><i class="fas fa-location-dot"></i></span>
+            <div class="info">
+              <div class="label">Dirección</div>
+              <div class="value">Conchalí, Santiago</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <span class="icon-wrap purple"><i class="fas fa-credit-card"></i></span>
+            <div class="info">
+              <div class="label">Medios de pago</div>
+              <div class="value">Efectivo · Débito · Crédito · Transferencia</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <span class="icon-wrap blue"><i class="fas fa-truck"></i></span>
+            <div class="info">
+              <div class="label">Delivery</div>
+              <div class="value">Delivery propio — Consulta cobertura por WhatsApp</div>
+            </div>
+          </div>
+
+          <!-- Horarios compactos -->
+          <div style="margin-top:24px;">
+            <h4 style="font-size:13px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Horarios</h4>
+            <div class="schedule-grid">
+              <div class="sched-item">
+                <div class="day">Lunes</div>
+                <div class="time" style="color:#ef4444;">Cerrado</div>
+              </div>
+              <div class="sched-item" style="background:rgba(249,115,22,.06);border-color:rgba(249,115,22,.12);">
+                <div class="day" style="color:#fb923c;">Mar—Sáb</div>
+                <div class="time">18:00—00:00</div>
+              </div>
+              <div class="sched-item">
+                <div class="day">Domingo</div>
+                <div class="time">13:00—22:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM / MAP -->
+        <div data-aos="fade-left" data-aos-duration="800">
+          <div class="contact-card">
+            <h3 style="margin-bottom:20px;">Envíanos un mensaje</h3>
+            <p style="color:rgba(255,255,255,.5);font-size:14px;margin-bottom:20px;">
+              Escríbenos y te responderemos a la brevedad. También puedes contactarnos directo por WhatsApp.
+            </p>
+            <form class="contact-form" action="https://formsubmit.co/elfogoncito@atomostudio.cl" method="POST">
+              <div>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required />
+              </div>
+              <div>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="correo@ejemplo.cl" />
+              </div>
+              <div>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+56 9 XXXX XXXX" />
+              </div>
+              <div>
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" class="form-input" placeholder="¿Qué te gustaría pedir o consultar?" required></textarea>
+              </div>
+              <input type="hidden" name="_next" value="https://elfogoncito.cl/contacto/" />
+              <input type="hidden" name="_captcha" value="false" />
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;">
+                <i class="fas fa-paper-plane"></i> Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+          <!-- Mapa -->
+          <div style="margin-top:20px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0!2d-70.675!3d-33.376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c00000000001%3A0x0000000000000001!2sConchal%C3%AD!5e0!3m2!1ses!2scl!4v1"
+              width="100%"
+              height="280"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa - El Fogoncito Restobar, Conchalí"
+              style="border:none;display:block;"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO EXTRA -->
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="text-center" style="font-size:1.6rem;margin-bottom:32px;">Más <span class="gradient-text">información</span></h2>
+      <div class="contact-info-section">
+        <div class="info-block" data-aos="fade-up" data-aos-duration="500">
+          <h4>📍 Delivery</h4>
+          <div class="value">Hacemos delivery en Conchalí y sectores cercanos. Consulta la cobertura por WhatsApp.</div>
+        </div>
+        <div class="info-block" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">
+          <h4>🎉 Eventos</h4>
+          <div class="value">¿Quieres celebrar algo? Contáctanos para reservas grupales y eventos especiales.</div>
+        </div>
+        <div class="info-block" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+          <h4>💳 Métodos de pago</h4>
+          <div class="value">Aceptamos efectivo, tarjetas de débito y crédito, y transferencias bancarias.</div>
+        </div>
+        <div class="info-block" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
+          <h4>⭐ Calificación</h4>
+          <div class="value">★ 4.9 en Google. Nuestros comensales nos respaldan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-fire section" style="text-align:center;">
+    <div class="container">
+      <h2>🔥 ¿Quieres algo rico?</h2>
+      <p style="color:rgba(255,255,255,.5);max-width:550px;margin:12px auto 28px;">
+        Pide ahora por WhatsApp y disfruta de los mejores sabores de Chile y Venezuela.
+      </p>
+      <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Pedir ahora
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p style="font-weight:700;">🔥 <strong>El Fogoncito Restobar</strong></p>
+      <p style="margin-top:4px;color:rgba(255,255,255,.4);">Comida chilena &amp; venezolana — Conchalí</p>
+      <p style="margin-top:12px;font-size:12px;">© 2026 El Fogoncito Restobar. Creado con ❤️ por Átomo Studio</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/56973994504?text=¡Hola%20El%20Fogoncito!%20Quiero%20hacer%20un%20pedido%20🍻🔥" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="../app.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic' });
+  </script>
+</body>
+</html>

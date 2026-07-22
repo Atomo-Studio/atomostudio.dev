@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios · KABA Peluquería | Cortes, Color, Uñas y Tratamientos</title>
+<meta name="description" content="Conoce todos los servicios de KABA: cortes personalizados, balayage, mechas, corrección de color, manicure, pedicure y tratamientos capilares. Consulta precios por WhatsApp.">
+<meta name="keywords" content="servicios peluquería, balayage, mechas, cortes de cabello, manicure, pedicure, tratamientos capilares, Pedro Aguirre Cerda, KABA">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Servicios · KABA Peluquería">
+<meta property="og:description" content="Cortes, coloración, uñas y tratamientos. Todo lo que necesitas para brillar, en un solo lugar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaba.atomostudio.dev/servicios/">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="canonical" href="https://kaba.atomostudio.dev/servicios/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/animations.css">
+
+<style>
+/* ─── SERVICES PAGE ─── */
+.services-page {
+  padding: 5rem 8vw;
+  background: var(--ivory);
+}
+
+/* ─── CONSULTAR PRECIO LINK ─── */
+.consultar-link {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #25D366 !important;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #25D366;
+  padding-bottom: 1px;
+  margin-top: 6px;
+  transition: opacity 0.3s;
+}
+.consultar-link:hover {
+  opacity: 0.7;
+}
+
+/* ─── SERVICE CATEGORY ─── */
+.service-category {
+  margin-bottom: 4rem;
+  padding: 3rem;
+  background: white;
+  border: 1px solid var(--border);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.service-category:nth-child(even) {
+  background: var(--beige-base);
+}
+.service-category:last-child { margin-bottom: 0; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gold);
+}
+.cat-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--espresso);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.cat-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  font-style: italic;
+}
+.cat-intro {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* ─── SERVICE CARDS ─── */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.service-card-detailed {
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--border);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.service-category:nth-child(even) .service-card-detailed {
+  background: var(--ivory);
+}
+.service-card-detailed:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+.svc-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+.svc-name .badge-star,
+.svc-name .badge-crown {
+  display: inline-block;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+.badge-star {
+  background: var(--gold);
+  color: var(--espresso);
+}
+.badge-crown {
+  background: var(--rose-gold);
+  color: var(--espresso);
+}
+.svc-desc {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+.svc-price {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 500;
+}
+.svc-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── CTA ─── */
+.servicios-cta {
+  background: var(--espresso);
+  padding: 3rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+.servicios-cta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+.servicios-cta h3 em { font-style: italic; color: var(--gold); }
+.servicios-cta p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1.5rem;
+}
+.servicios-cta .cta-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .services-page { padding: 3rem 6vw; }
+  .service-category { padding: 2rem 1.5rem; }
+  .service-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../img/logo-oficial.webp" alt="KABA Peluquería" width="180" height="50" class="nav-logo-img" loading="eager">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/servicios/" class="active">Servicios</a></li>
+    <li><a href="/cortes/">Cortes</a></li>
+    <li><a href="/galeria/">Galería</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+    <li><a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="nav-cta">Reservar Cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+  <a href="/" onclick="toggleMenu()">Inicio</a>
+  <a href="/servicios/" onclick="toggleMenu()" class="active">Servicios</a>
+  <a href="/cortes/" onclick="toggleMenu()">Cortes</a>
+  <a href="/galeria/" onclick="toggleMenu()">Galería</a>
+  <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+  <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" style="color:#25D366;">📱 Reservar Cita</a>
+</div>
+
+<!-- ─── PAGE HEADER ─── -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a>
+    <span>/</span>
+    <span class="current">Servicios</span>
+  </div>
+  <div class="page-header-content">
+    <h1 class="page-header-title">Todo lo que necesitas<br>para <em>brillar</em></h1>
+    <p class="page-header-sub">En Kaba ofrecemos servicios completos de peluquería, coloración y estética. Desde un corte que renueva tu energía hasta una corrección de color que salva cualquier emergencia capilar. Todo con cariño, profesionalismo y el toque cálido que nos caracteriza.</p>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-page">
+
+  <!-- 1. Cortes de Cabello -->
+  <div class="service-category fade-in" id="cortes">
+    <div class="cat-header">
+      <div class="cat-icon">✂️</div>
+      <h2 class="cat-title">Cortes de Cabello</h2>
+    </div>
+    <p class="cat-intro">No hay dos cabezas iguales, por eso no hacemos cortes genéricos. Analizamos tu tipo de cabello, la forma de tu rostro y tu estilo de vida para diseñar un corte que te haga sentir única.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Cortes Personalizados para Mujer</h3>
+        <p class="svc-desc">No hay dos cabezas iguales, por eso no hacemos cortes genéricos. Analizamos tu tipo de cabello, la forma de tu rostro y tu estilo de vida para diseñar un corte que te haga sentir única.</p>
+        <span class="svc-price">$9.000</span>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Corte Varón</h3>
+        <p class="svc-desc">Corte profesional para hombre, con acabado impecable. Fresco, moderno y al gusto de cada uno.</p>
+        <span class="svc-price">$8.500</span>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Corte + Fusión Creativa</h3>
+        <p class="svc-desc">¿Quieres algo diferente, con personalidad, con diseño? Este servicio es para ti. Cortes con estilo, textura y movimiento que marcan la diferencia.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Coloración -->
+  <div class="service-category fade-in" id="coloracion">
+    <div class="cat-header">
+      <div class="cat-icon">🎨</div>
+      <h2 class="cat-title">Coloración</h2>
+    </div>
+    <p class="cat-intro">Técnicas profesionales de coloración para cada tipo de cabello. Desde balayage naturales hasta mechas creativas.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Balayage — Rubio Beige <span class="badge-star">⭐ Servicio estrella</span></h3>
+        <p class="svc-desc">La técnica más solicitada de Kaba. Un rubio beige suave, natural y elegante que ilumina tu rostro sin ser agresivo. Perfecto para quienes quieren un cambio sutil pero con personalidad. Resultado: pelo sano, brillante y lleno de movimiento.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Balayage — Rubio Cobrizo</h3>
+        <p class="svc-desc">Para las que quieren soltar lo clásico y atreverse con un tono vibrante. El cobrizo ilumina, da calidez y se ve espectacular en todo tipo de bases.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Balayage — Rubio Sutil</h3>
+        <p class="svc-desc">Un rubio suavecito, apenas perceptible, como si el sol te hubiera besado el pelo. Ideal para primerizas en el mundo del color.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Mechas Iluminadas</h3>
+        <p class="svc-desc">Reflejos estratégicos que aportan luz y dimensión a tu cabello. Naturales, elegantes, perfectas para un cambio sin drama.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Mechas Doradas / Chao Canas <span class="badge-crown">👑</span></h3>
+        <p class="svc-desc">¿Canas que ya no quieres ver? Las disimulamos con mechas doradas que cubren, iluminan y rejuvenecen. Resultado: pelo con brillo, sin rastro de canas.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Mechas Creativas / Animal Print 🐆</h3>
+        <p class="svc-desc">¿Te gusta ser diferente? Mechas con diseño, contrastes marcados, animal print capilar. Un estilo atrevido para personalidades que no pasan desapercibidas.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Rubias Perfectas — Platinadas</h3>
+        <p class="svc-desc">El rubio más puro, más intenso. Trabajamos con técnicas que cuidan la fibra capilar para que tu rubio platinado luzca sano, brillante y espectacular.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Rubias Perfectas — Rubio Beige</h3>
+        <p class="svc-desc">El equilibrio perfecto entre rubio y calidez. Un rubio beige elegante, moderno y favorecedor para todo tipo de piel.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Corrección de Color 🔧</h3>
+        <p class="svc-desc">¿Tinte naranja? ¿Color que no era? ¿Decoloración mal hecha? No entres en pánico — en Kaba arreglamos desastres capilares. Evaluamos tu cabello, neutralizamos los tonos no deseados y te devolvemos un color que amarás.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Tintes Completos</h3>
+        <p class="svc-desc">¿Quieres cambiar completamente tu color? Aplicamos tintes de alta calidad en todo el cabello, con resultados parejos, brillantes y duraderos.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Babylights</h3>
+        <p class="svc-desc">Mechas ultrafinas y delicadas que iluminan el cabello de forma sutil y natural. Perfectas para un efecto "baby hair" — como si el sol te hubiera pintado mechones minúsculos llenos de luz.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Visos (Técnica con Gorro)</h3>
+        <p class="svc-desc">La técnica clásica que nunca pasa de moda. Con gorro y aguja, logramos reflejos precisos y parejos. Ideal para un rubio parejo o mechas muy definidas.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Bloque de Color</h3>
+        <p class="svc-desc">Secciones de color contrastante para un look moderno y audaz. Ideal para quienes quieren destacar con bloques de color estratégicos.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Contorno</h3>
+        <p class="svc-desc">Técnica de color que enmarca el rostro iluminando los mechones frontales. Como un contouring para tu cabello — realza tus facciones al instante.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Manicure & Pedicure -->
+  <div class="service-category fade-in" id="unas">
+    <div class="cat-header">
+      <div class="cat-icon">💅</div>
+      <h2 class="cat-title">Manicure & Pedicure</h2>
+    </div>
+    <p class="cat-intro">Porque unas manos y pies hermosos también son parte del look.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Manicura</h3>
+        <p class="svc-desc">Uñas impecables, manos cuidadas y esmaltado perfecto. Un detalle que marca la diferencia en tu look diario.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Pedicura</h3>
+        <p class="svc-desc">Porque los pies también merecen mimos. Pedicura profesional con acabado impecable.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+    <div class="svc-quote" style="margin-top:1.5rem">
+      "No olviden regalonearse un poquito — agenda tu hora para tus uñitas y luce unas manos hermosas" 💖
+    </div>
+  </div>
+
+  <!-- 4. Alisados y Permanentes -->
+  <div class="service-category fade-in" id="alisados">
+    <div class="cat-header">
+      <div class="cat-icon">✨</div>
+      <h2 class="cat-title">Alisados & Permanentes</h2>
+    </div>
+    <p class="cat-intro">¿Quieres un cambio de textura? Alisados profesionales para un look liso impecable, o permanentes para darle cuerpo y ondas a tu cabello.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Alisados</h3>
+        <p class="svc-desc">Alisado profesional que domina el frizz y deja tu cabello liso, sedoso y manejable. Ideal para quienes buscan un look pulcro sin esfuerzo diario.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Permanentes</h3>
+        <p class="svc-desc">Rizos, ondas, volumen. La permanente bien hecha transforma completamente la textura de tu cabello. Resultados naturales y duraderos.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Peinados -->
+  <div class="service-category fade-in" id="peinados">
+    <div class="cat-header">
+      <div class="cat-icon">👑</div>
+      <h2 class="cat-title">Peinados</h2>
+    </div>
+    <p class="cat-intro">Peinados para toda ocasión: desde un look casual para el día a día hasta peinados de fiesta, matrimonios, graduaciones y eventos especiales.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Peinados para Toda Ocasión</h3>
+        <p class="svc-desc">Semirecogidos, trenzas, ondas, moños elegantes, peinados con volumen… Digamos que sueñas el look y nosotras lo hacemos realidad. Ideal para matrimonios, graduaciones, cumpleaños o simplemente porque quieres sentirte especial.</p>
+        <span class="svc-price">Consultar precio</span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Tratamientos Capilares -->
+  <div class="service-category fade-in" id="tratamientos">
+    <div class="cat-header">
+      <div class="cat-icon">🌿</div>
+      <h2 class="cat-title">Tratamientos Capilares</h2>
+    </div>
+    <p class="cat-intro">Nutrición, hidratación, reparación… El tratamiento que tu cabello necesita según su estado. Ideal después de coloraciones o decoloraciones para mantenerlo sano y brillante.</p>
+    <div class="service-cards">
+      <div class="service-card-detailed">
+        <h3 class="svc-name">Tratamientos Capilares Profesionales</h3>
+        <p class="svc-desc">Nutrición, hidratación, reparación… El tratamiento que tu cabello necesita según su estado. Ideal después de coloraciones o decoloraciones para mantenerlo sano y brillante.</p>
+        <span class="svc-price"></span>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20los%20servicios%20en%20KABA." target="_blank" class="consultar-link">💬 Consultar precio →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="servicios-cta fade-in">
+    <h3>¿No sabes cuál <em>elegir</em>?</h3>
+    <p>Escríbenos y te orientamos sin compromiso. Te ayudamos a encontrar el servicio perfecto para ti.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/56929710382?text=Hola!%20Quisiera%20consultar%20por%20los%20servicios%20de%20KABA." target="_blank" class="btn-wa">💬 Consulta por WhatsApp</a>
+      <a href="https://agendapro.com/mp/cl/pl/peluqueria-kaba/241214" target="_blank" class="btn-primary">📅 Agenda tu hora</a>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.75rem;color:rgba(255,255,255,0.4)">
+      Trabajamos con productos profesionales <strong style="color:var(--gold)">Elgon</strong> y <strong style="color:var(--gold)">Salerm</strong> — calidad que se nota en cada servicio ✨
+    </p>
+  </div>
+
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">KABA</span>
+      <p class="footer-brand-desc">Peluquería y estilismo profesional por Karla Bastidas. Especialistas en cortes personalizados, coloración, manicure y más en Pedro Aguirre Cerda, Santiago.</p>
+      <div style="margin-top:1.5rem">
+        <a href="https://www.instagram.com/kaba_peluqueria/" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">📸 @kaba_peluqueria</a><br>
+        <a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">🎵 @kaba_karlita</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="/servicios/#cortes">Cortes</a></li>
+        <li><a href="/servicios/#coloracion">Coloración</a></li>
+        <li><a href="/servicios/#alisados">Alisados & Permanentes</a></li>
+        <li><a href="/servicios/#peinados">Peinados</a></li>
+        <li><a href="/servicios/#unas">Manicure & Pedicure</a></li>
+        <li><a href="/servicios/#tratamientos">Tratamientos</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Enlaces</div>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/cortes/">Cortes</a></li>
+        <li><a href="/galeria/">Galería</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="/contacto/">Ubicación</a></li>
+        <li><a href="/contacto/">Horarios</a></li>
+        <li><a href="https://www.instagram.com/kaba_peluqueria/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/people/Peluquer%C3%ADa-Kaba/100063737491420/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank">TikTok</a></li>
+        <li><a href="https://wa.me/56929710382" target="_blank">WhatsApp</a></li>
+      </ul>
+      <div style="margin-top:2rem">
+        <div class="footer-col-title">Horario</div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.25);line-height:1.8">
+          Lun–Sáb: 08:00 – 19:00<br>
+          Domingo: Cerrado
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 KABA Peluquería · Karla Bastidas · Santiago, Chile</span>
+    <span class="footer-credit">Sitio web creado por <a href="https://atomostudio.dev">Átomo Studio</a></span>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOTANTE ─── -->
+<a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="wa-float" title="Reservar cita por WhatsApp">
+  <div class="wa-tooltip">Reservar cita ahora ✨</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>

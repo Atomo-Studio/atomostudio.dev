@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stock · Inventario con IA · Átomo Studio</title>
+<meta name="description" content="Stock by Átomo Studio — App de inventario con escáner de códigos de barras y Geos 2.1. Pago único. iOS · Android · Web.">
+<meta name="theme-color" content="#06060c">
+
+<link rel="icon" type="image/svg+xml" href="../atomostudio/img/logo-atomo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3b82f6;
+    --blue-2: #60a5fa;
+    --purple: #8b5cf6;
+    --cyan: #06b6d4;
+    --green: #34d399;
+    --grad: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --grad-vibrant: linear-gradient(135deg, #06b6d4 0%, #3b82f6 35%, #8b5cf6 100%);
+
+    --bg: #06060c;
+    --bg2: #0a0a14;
+    --bg3: #14141f;
+    --card: #0f0f1e;
+
+    --text: #eeeef2;
+    --text2: #a0a0b0;
+    --muted: #6b7280;
+    --dim: #4a4a5e;
+
+    --border: rgba(255,255,255,0.06);
+    --border-strong: rgba(255,255,255,0.10);
+    --border-blue: rgba(59,130,246,0.22);
+    --border-green: rgba(52,211,153,0.30);
+
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #f87171;
+
+    --nav-h: 64px;
+    --container: 1240px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Atmosphere */
+  .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(52,211,153,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.025) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 30%, transparent 80%); }
+  .orb { position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; opacity: 0.55; }
+  .orb-1 { width: 700px; height: 700px; background: rgba(52,211,153,0.14); top: -240px; left: -100px; animation: orb 22s ease-in-out infinite; }
+  .orb-2 { width: 600px; height: 600px; background: rgba(59,130,246,0.16); top: -160px; right: -120px; animation: orb 26s ease-in-out infinite reverse; }
+  .orb-3 { width: 500px; height: 500px; background: rgba(139,92,246,0.10); bottom: -160px; left: 40%; animation: orb 32s ease-in-out infinite; }
+  @keyframes orb { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(60px, 80px); } }
+
+  /* Nav */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--nav-h); background: rgba(6,6,12,0.7); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+  .nav-in { max-width: var(--container); margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+  .brand small { display: block; font-size: 10.5px; color: var(--text2); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin-top: 1px; }
+  .nav-links { display: flex; gap: 6px; flex: 1; }
+  .nav-links a { padding: 8px 14px; font-size: 13.5px; color: var(--text2); border-radius: 8px; font-weight: 500; }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+  .nav-actions { display: flex; gap: 8px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px; font-size: 13.5px; font-weight: 600; border: 1px solid transparent; cursor: pointer; transition: transform .15s, filter .15s, box-shadow .15s; }
+  .btn-primary { background: var(--grad-vibrant); color: white; box-shadow: 0 6px 20px rgba(59,130,246,0.30); }
+  .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.08); }
+  .btn-ghost { background: rgba(255,255,255,0.04); color: var(--text); border-color: var(--border-strong); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .btn-lg { padding: 14px 24px; font-size: 15px; }
+
+  /* Container */
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  .section { padding: 96px 0; position: relative; }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  .eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: rgba(52,211,153,0.10); border: 1px solid var(--border-green); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+
+  /* Hero */
+  .hero { padding: 140px 0 80px; text-align: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: linear-gradient(135deg, rgba(52,211,153,0.10), rgba(59,130,246,0.10)); border: 1px solid var(--border-green); font-size: 12px; color: var(--text2); margin-bottom: 28px; }
+  .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .hero h1 { font-size: clamp(44px, 7vw, 96px); font-weight: 700; letter-spacing: -0.035em; line-height: 1; max-width: 980px; margin: 0 auto 24px; }
+  .hero h1 .grad { background: var(--grad-vibrant); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shift 8s ease-in-out infinite; }
+  @keyframes shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .hero p.desc { font-size: 18px; color: var(--text2); max-width: 640px; margin: 0 auto 36px; line-height: 1.7; }
+  .hero p.desc strong { color: var(--text); }
+  .hero-sub { font-size: 12.5px; color: var(--dim); margin-top: 8px; }
+
+  /* Download badges */
+  .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 18px auto 0; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 11px;
+    padding: 11px 22px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    transition: background .15s, transform .15s;
+  }
+  .badge:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  .badge-icon { font-size: 26px; }
+  .badge-text { text-align: left; line-height: 1.2; }
+  .badge-text .small { font-size: 10px; opacity: 0.7; }
+  .badge-text .big { font-size: 15px; font-weight: 700; }
+  .badge.featured { background: var(--grad-vibrant); border-color: transparent; color: white; box-shadow: 0 8px 22px rgba(59,130,246,0.35); }
+  .badge.featured:hover { filter: brightness(1.08); }
+
+  /* Phone showcase */
+  .phone-showcase {
+    max-width: 1100px; margin: 60px auto 0;
+    position: relative;
+    display: flex; justify-content: center; align-items: flex-end; gap: 24px;
+    perspective: 1200px;
+  }
+  .phone-showcase::before {
+    content: ''; position: absolute; inset: -40px;
+    background: radial-gradient(closest-side, rgba(52,211,153,0.18), transparent 70%);
+    z-index: -1;
+  }
+  .phone-mini { width: 220px; height: 460px; background: #1a1a24; border-radius: 28px; padding: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.55); flex-shrink: 0; }
+  .phone-mini.center { width: 260px; height: 540px; z-index: 2; }
+  .phone-mini.left { transform: translateY(20px) rotate(-5deg); }
+  .phone-mini.right { transform: translateY(20px) rotate(5deg); }
+  .phone-mini-screen { width: 100%; height: 100%; background: var(--bg); border-radius: 22px; overflow: hidden; position: relative; padding: 24px 14px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* Section title */
+  .section-title { font-size: clamp(34px, 4.5vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 16px; }
+  .section-title .grad { background: var(--grad-vibrant); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .section-sub { font-size: 17px; color: var(--text2); max-width: 680px; line-height: 1.7; }
+
+  /* Features grid */
+  .feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 48px; }
+  .feat { padding: 26px; background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; transition: border-color .2s, transform .2s; }
+  .feat:hover { border-color: var(--border-green); transform: translateY(-3px); }
+  .feat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(52,211,153,0.10); color: var(--green); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; }
+  .feat h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .feat p { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+
+  /* Screenshots strip */
+  .screens { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+  .screen-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform .15s, border-color .15s; }
+  .screen-card:hover { transform: translateY(-3px); border-color: var(--border-green); }
+  .screen-img { aspect-ratio: 9 / 19; background: linear-gradient(135deg, #0a0a14, #06060c); padding: 12px; display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden; }
+  .screen-body { padding: 14px 16px; }
+  .screen-num { font-size: 11px; color: var(--text2); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .screen-title { font-size: 14px; font-weight: 600; }
+
+  /* Pricing */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; max-width: 920px; margin-left: auto; margin-right: auto; }
+  .price-card { padding: 32px; background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; }
+  .price-card.featured { background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(59,130,246,0.04)); border-color: var(--border-green); position: relative; }
+  .price-card.featured::before { content: 'Recomendado'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); padding: 4px 12px; background: var(--grad-vibrant); color: white; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; }
+  .price-name { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .price-amount { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  .price-amount small { font-size: 14px; color: var(--text2); font-weight: 500; margin-left: 6px; }
+  .price-tagline { font-size: 13px; color: var(--text2); margin-top: 10px; line-height: 1.5; }
+  .price-features { list-style: none; margin: 22px 0; display: flex; flex-direction: column; gap: 8px; }
+  .price-features li { font-size: 13.5px; padding: 4px 0; display: flex; gap: 8px; }
+  .price-features li::before { content: ''; flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2334d399' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m3 8 3.5 3.5L13 5'/%3E%3C/svg%3E") no-repeat center / contain; }
+
+  /* Stats */
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(10,10,20,0.5); position: relative; z-index: 1; }
+  .stat { padding: 32px 20px; text-align: center; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: 0; }
+  .stat-num { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; background: var(--grad-vibrant); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; }
+  .stat-label { font-size: 12.5px; color: var(--text2); margin-top: 8px; }
+
+  /* Footer */
+  .footer { border-top: 1px solid var(--border); padding: 56px 0 28px; position: relative; z-index: 1; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 32px; }
+  .footer-brand p { font-size: 13px; color: var(--text2); margin-top: 14px; max-width: 320px; line-height: 1.7; }
+  .footer-col h4 { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 14px; }
+  .footer-col a { display: block; padding: 5px 0; font-size: 13.5px; opacity: 0.75; }
+  .footer-col a:hover { opacity: 1; color: var(--green); }
+  .footer-bot { border-top: 1px solid var(--border); padding-top: 20px; font-size: 12px; color: var(--dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 880px) {
+    .nav-links, .nav-actions .btn-ghost { display: none; }
+    .feats, .screens, .stats-row, .pricing-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
+    .phone-mini.left, .phone-mini.right { display: none; }
+    .section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .feats, .screens, .stats-row, .pricing-grid, .footer-grid { grid-template-columns: 1fr; }
+    .stats-row .stat { border-right: 0; border-bottom: 1px solid var(--border); }
+    .container, .nav-in { padding: 0 18px; }
+  }
+</style>
+<script src="../js/geo-api-bridge.js"></script>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <img src="../atomostudio/img/logo-atomo.svg" width="28" height="28" alt="Átomo"/>
+      <span>Stock<small>by Átomo Studio</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screens">Pantallas</a>
+      <a href="#download">Descargar</a>
+      <a href="https://atomostudio.dev">Átomo Studio ↗</a>
+    </div>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost">Entrar</a>
+      <a href="/atomostudio/pagar.html?plan=stock" class="btn btn-primary btn-comprar">Comprar $39.990</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Pago único · Modelo Geos 2.1 local
+    </div>
+    <h1>Escanea. Vende.<br><span class="grad">Listo.</span></h1>
+    <p class="desc">
+      <strong>App de inventario</strong> con escáner de códigos de barras desde la cámara de tu celular — sin equipos extra — y chatbot Geos 2.1 integrado. Pagás una vez. <strong>$39.990 CLP</strong> de por vida. Sin mensualidad. Sin sorpresas.
+    </p>
+    <div class="badges" id="download">
+      <a href="login.html" class="badge featured">
+        <div class="badge-icon">🌐</div>
+        <div class="badge-text"><div class="small">o pruébala</div><div class="big">en la web</div></div>
+      </a>
+    </div>
+    <div class="hero-sub">Sin tarjeta de crédito · Funciona offline · 100% chileno 🇨🇱</div>
+
+    <!-- Phone showcase -->
+    <div class="phone-showcase">
+      <!-- LEFT phone: dashboard mini -->
+      <div class="phone-mini left">
+        <div class="phone-mini-screen">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom: 10px;">
+            <div style="width:30px; height:30px; border-radius:8px; background: var(--grad); display:flex; align-items:center; justify-content:center;"><img src="../atomostudio/img/logo-atomo.svg" width="18" height="18" alt="" style="filter: brightness(0) invert(1);"/></div>
+            <div style="flex:1;"><div style="font-size:13px; font-weight:700;">Don Pancho</div><div style="font-size:9px; color: var(--text2);">Hoy</div></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap: 6px; margin-bottom: 10px;">
+            <div style="padding: 8px 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px;"><div style="font-size: 8px; color: var(--text2); text-transform: uppercase;">Productos</div><div style="font-size: 16px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;">142</div></div>
+            <div style="padding: 8px 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px;"><div style="font-size: 8px; color: var(--text2); text-transform: uppercase;">Ventas hoy</div><div style="font-size: 16px; font-weight: 700;">$148k</div></div>
+          </div>
+          <div style="padding: 10px; background: linear-gradient(135deg, rgba(239,68,68,0.10), transparent); border: 1px solid rgba(239,68,68,0.30); border-radius: 8px; font-size: 10px;">⚠️ 5 productos bajo stock</div>
+          <div style="margin-top: auto; display: flex; align-items: center; justify-content: center; padding: 16px 0;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--grad); box-shadow: 0 8px 20px rgba(59,130,246,0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;">📷</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER phone: scanner -->
+      <div class="phone-mini center">
+        <div class="phone-mini-screen" style="background: #000; padding: 24px 14px;">
+          <div style="position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 100px; height: 22px; background: #06060a; border-radius: 12px;"></div>
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="width: 180px; height: 130px; position: relative;">
+              <div style="position: absolute; top: 0; left: 0; width: 30px; height: 30px; border-top: 3px solid var(--success); border-left: 3px solid var(--success); border-radius: 6px 0 0 0;"></div>
+              <div style="position: absolute; top: 0; right: 0; width: 30px; height: 30px; border-top: 3px solid var(--success); border-right: 3px solid var(--success); border-radius: 0 6px 0 0;"></div>
+              <div style="position: absolute; bottom: 0; left: 0; width: 30px; height: 30px; border-bottom: 3px solid var(--success); border-left: 3px solid var(--success); border-radius: 0 0 0 6px;"></div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-bottom: 3px solid var(--success); border-right: 3px solid var(--success); border-radius: 0 0 6px 0;"></div>
+              <div style="position: absolute; top: 50%; left: 12%; right: 12%; height: 2px; background: var(--success); box-shadow: 0 0 12px var(--success); animation: scan 1.8s ease-in-out infinite; transform: translateY(-50%);"></div>
+            </div>
+          </div>
+          <div style="text-align: center; color: white; font-size: 12px; padding-bottom: 20px;">Escaneá productos con tu cámara o ingresalos manualmente</div>
+        </div>
+      </div>
+
+      <!-- RIGHT phone: chat -->
+      <div class="phone-mini right">
+        <div class="phone-mini-screen">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom: 12px;">
+            <div style="width: 26px; height: 26px; border-radius: 7px; background: var(--grad); display:flex; align-items:center; justify-content:center;"><img src="../atomostudio/img/logo-atomo.svg" width="14" height="14" alt="" style="filter: brightness(0) invert(1);"/></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700;">Geos 2.1</div><div style="font-size:8px; color: var(--text2);">Conoce tu negocio</div></div>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <div style="width: 20px; height: 20px; border-radius: 5px; background: rgba(255,255,255,0.08); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">P</div>
+            <div style="font-size: 9.5px; padding: 6px 9px; background: rgba(59,130,246,0.10); border: 1px solid var(--border-blue); border-radius: 9px;">¿Qué vendí más esta semana?</div>
+          </div>
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <div style="width: 20px; height: 20px; border-radius: 5px; background: var(--grad); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px;">⚛</div>
+            <div style="font-size: 9.5px; padding: 6px 9px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 9px; line-height: 1.5;">Tornillos · 18 cajas · $81k. Pintura · 7 unid · $174k.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes scan { 0%, 100% { top: 10%; } 50% { top: 88%; } }</style>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat"><div class="stat-num">$39.990</div><div class="stat-label">Pago único · CLP · de por vida</div></div>
+  <div class="stat"><div class="stat-num">⚡</div><div class="stat-label">Escáner instantáneo · sin IA por scan</div></div>
+  <div class="stat"><div class="stat-num">🇨🇱</div><div class="stat-label">Geos 2.1 local · sin APIs externas</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">iOS · Android · Web</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="eyebrow">Lo que hace Stock</div>
+    <h2 class="section-title">Inventario como <span class="grad">debería ser</span></h2>
+    <p class="section-sub">Sin curvas de aprendizaje. Abrís la app, escaneás un producto, registrás la venta. Si tenés una duda, le preguntás a Geos.</p>
+
+    <div class="feats">
+      <div class="feat">
+        <div class="feat-icon">📷</div>
+        <h3>Escáner instantáneo</h3>
+        <p>En tu celular usá la cámara para escanear códigos de barras. En tu computadora usá la webcam o escribí el código directamente.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚛</div>
+        <h3>Geos 2.1 que conoce tu negocio</h3>
+        <p>Pregúntale: "¿qué vendí más esta semana?", "¿cuánto gané?", "¿qué reponer?". Responde con tus datos reales, sin enviarlos a OpenAI.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚠️</div>
+        <h3>Alertas de stock bajo</h3>
+        <p>Definís umbral por producto. Cuando un producto baja, te llega push y mensaje por WhatsApp. Reponer es un click.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <h3>Ventas y márgenes</h3>
+        <p>Cada venta queda registrada con su margen calculado. Vista por día, semana o mes. Identificá tus productos más rentables.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💵</div>
+        <h3>Cobro rápido</h3>
+        <p>Modo "tienda de barrio": tocás los productos en pantalla, calcula total, eligen pago (efectivo / transferencia / QR), listo.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📱</div>
+        <h3>Donde estés</h3>
+        <p>App nativa para iPhone y Android. Versión web idéntica. Tus datos sincronizan automáticamente entre dispositivos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="section" id="screens">
+  <div class="container">
+    <div class="eyebrow">Pantallas</div>
+    <h2 class="section-title">Diseñada para <span class="grad">moverse rápido</span></h2>
+    <p class="section-sub">12 pantallas, una sola idea: que el dueño del negocio pase menos tiempo en la app y más tiempo vendiendo.</p>
+
+    <div class="screens">
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #1a0f2e, #06060c);">
+          <div style="display:flex; justify-content: space-between; font-size: 8px; color: var(--text); font-weight: 600;"><span>9:41</span><span>●● ▌</span></div>
+          <div style="display:flex; align-items:center; gap:5px; margin-top: 4px;">
+            <div style="width: 22px; height: 22px; border-radius: 6px; background: var(--grad);"></div>
+            <div style="font-size: 11px; font-weight: 700;">Don Pancho</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap: 4px; margin-top: 6px;">
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2);">PRODUCTOS</div><div style="font-size: 13px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; color: transparent;">142</div></div>
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2);">HOY</div><div style="font-size: 13px; font-weight: 700;">$148k</div></div>
+          </div>
+          <div style="padding: 6px 8px; background: rgba(239,68,68,0.10); border: 1px solid rgba(239,68,68,0.30); border-radius: 6px; font-size: 8px; color: var(--text);">⚠ 5 bajo stock</div>
+        </div>
+        <div class="screen-body"><div class="screen-num">01</div><div class="screen-title">Dashboard</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: #000;">
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 100px; height: 70px; position: relative;">
+              <div style="position: absolute; top: 0; left: 0; width: 18px; height: 18px; border-top: 2px solid var(--success); border-left: 2px solid var(--success);"></div>
+              <div style="position: absolute; top: 0; right: 0; width: 18px; height: 18px; border-top: 2px solid var(--success); border-right: 2px solid var(--success);"></div>
+              <div style="position: absolute; bottom: 0; left: 0; width: 18px; height: 18px; border-bottom: 2px solid var(--success); border-left: 2px solid var(--success);"></div>
+              <div style="position: absolute; bottom: 0; right: 0; width: 18px; height: 18px; border-bottom: 2px solid var(--success); border-right: 2px solid var(--success);"></div>
+              <div style="position: absolute; top: 50%; left: 8%; right: 8%; height: 2px; background: var(--success); box-shadow: 0 0 8px var(--success);"></div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-body"><div class="screen-num">02</div><div class="screen-title">Escáner</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #1a1a24, #06060c);">
+          <div style="display:flex; gap:6px; margin-top: 24px;">
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, rgba(59,130,246,0.20), rgba(139,92,246,0.10)); display:flex; align-items:center; justify-content:center; font-size: 18px;">🔧</div>
+            <div style="flex:1;"><div style="font-size: 9.5px; font-weight: 700;">Taladro Bosch</div><div style="font-size: 7px; color: var(--text2); font-family: monospace;">7891234567890</div></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap: 4px;">
+            <div style="padding: 6px; background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.30); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2);">STOCK</div><div style="font-size: 14px; font-weight: 700; color: var(--warning);">4</div></div>
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2);">PRECIO</div><div style="font-size: 12px; font-weight: 700;">$89.990</div></div>
+          </div>
+          <div style="padding: 7px; background: var(--grad); color: white; border-radius: 5px; font-size: 9px; text-align: center; font-weight: 700;">🛍 Venta presencial</div>
+        </div>
+        <div class="screen-body"><div class="screen-num">04</div><div class="screen-title">Producto encontrado</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #1a1a24, #06060c);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 18px;">
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(59,130,246,0.20), rgba(139,92,246,0.10)); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 3px;">🔧</div><div style="font-size: 7.5px; font-weight: 600;">Taladro</div><div style="font-size: 9px; font-weight: 700;">$89k</div></div>
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(52,211,153,0.20), rgba(255,255,255,0.04)); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 3px;">🎨</div><div style="font-size: 7.5px; font-weight: 600;">Pintura</div><div style="font-size: 9px; font-weight: 700;">$24k</div></div>
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(251,191,36,0.20), rgba(255,255,255,0.04)); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 3px;">🔩</div><div style="font-size: 7.5px; font-weight: 600;">Tornillos</div><div style="font-size: 9px; font-weight: 700;">$4.5k</div></div>
+            <div style="padding: 6px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="aspect-ratio: 1; background: linear-gradient(135deg, rgba(239,68,68,0.20), rgba(255,255,255,0.04)); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 3px;">🔨</div><div style="font-size: 7.5px; font-weight: 600;">Martillo</div><div style="font-size: 9px; font-weight: 700;">$8.5k</div></div>
+          </div>
+        </div>
+        <div class="screen-body"><div class="screen-num">05</div><div class="screen-title">Catálogo</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #1a1a24, #06060c);">
+          <div style="display:flex; align-items:center; gap:5px; margin-top: 18px;">
+            <div style="width: 22px; height: 22px; border-radius: 6px; background: var(--grad); display:flex; align-items:center; justify-content:center; font-size: 10px;">⚛</div>
+            <div style="font-size: 9px; font-weight: 700;">Geos 2.1</div>
+          </div>
+          <div style="font-size: 7px; padding: 5px 7px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 7px; align-self: flex-end; max-width: 70%;">¿Qué vendí más esta semana?</div>
+          <div style="font-size: 7px; padding: 5px 7px; background: rgba(59,130,246,0.10); border: 1px solid var(--border-blue); border-radius: 7px; max-width: 80%; line-height: 1.45;"><strong>1. Tornillos</strong> · 18 cajas<br><strong>2. Pintura</strong> · 7 unid<br><strong>3. Set destornilladores</strong> · 5</div>
+        </div>
+        <div class="screen-body"><div class="screen-num">09</div><div class="screen-title">Chat con Geos</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #2a1410, #06060c);">
+          <div style="margin-top: 18px; padding: 7px; background: rgba(239,68,68,0.10); border: 1px solid rgba(239,68,68,0.30); border-radius: 5px; font-size: 7px; color: var(--text);">⚠️ <strong>5 productos llegaron al umbral</strong></div>
+          <div style="display: flex; gap: 5px; align-items: center; padding: 5px 7px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="width: 22px; height: 22px; background: rgba(255,255,255,0.06); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔨</div><div style="flex:1;"><div style="font-size: 7px; font-weight: 600;">Martillo 16oz</div><div style="font-size: 6px; color: var(--error);">queda 2</div></div></div>
+          <div style="display: flex; gap: 5px; align-items: center; padding: 5px 7px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="width: 22px; height: 22px; background: rgba(255,255,255,0.06); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🔧</div><div style="flex:1;"><div style="font-size: 7px; font-weight: 600;">Taladro Bosch</div><div style="font-size: 6px; color: var(--error);">queda 4</div></div></div>
+          <div style="display: flex; gap: 5px; align-items: center; padding: 5px 7px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="width: 22px; height: 22px; background: rgba(255,255,255,0.06); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px;">🎨</div><div style="flex:1;"><div style="font-size: 7px; font-weight: 600;">Pintura roja</div><div style="font-size: 6px; color: var(--error);">queda 3</div></div></div>
+        </div>
+        <div class="screen-body"><div class="screen-num">08</div><div class="screen-title">Alertas de stock</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(135deg, #1a1a24, #06060c);">
+          <div style="margin-top: 18px; padding: 7px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2); margin-bottom: 4px;">HOY · 14:32</div><div style="display: flex; gap: 4px; align-items: center;"><div style="width: 18px; height: 18px; background: rgba(255,255,255,0.06); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 10px;">🔧</div><div style="flex:1; font-size: 7px; font-weight: 600;">Llave inglesa</div><div style="font-size: 8px; font-weight: 700;">$17.980</div></div></div>
+          <div style="padding: 7px; background: rgba(255,255,255,0.04); border-radius: 5px;"><div style="font-size: 7px; color: var(--text2); margin-bottom: 4px;">14:18</div><div style="display: flex; gap: 4px; align-items: center;"><div style="width: 18px; height: 18px; background: rgba(255,255,255,0.06); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 10px;">🔩</div><div style="flex:1; font-size: 7px; font-weight: 600;">Tornillos</div><div style="font-size: 8px; font-weight: 700;">$4.500</div></div></div>
+        </div>
+        <div class="screen-body"><div class="screen-num">10</div><div class="screen-title">Historial de ventas</div></div>
+      </div>
+
+      <div class="screen-card">
+        <div class="screen-img" style="background: linear-gradient(180deg, rgba(59,130,246,0.10), #06060c);">
+          <div style="text-align: center; margin-top: 24px;">
+            <div style="display: inline-block; width: 36px; height: 36px; border-radius: 10px; background: var(--grad); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;"><span style="font-size: 18px;">⚙️</span></div>
+            <div style="font-size: 14px; font-weight: 700; letter-spacing: -0.02em;">Configuración</div>
+          </div>
+          <div style="padding: 8px; background: rgba(255,255,255,0.04); border-radius: 8px; text-align: center; font-size: 8px; color: var(--text2);">Alertas · moneda · exportar</div>
+        </div>
+        <div class="screen-body"><div class="screen-num">12</div><div class="screen-title">Configuración</div></div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 36px;">
+      <a href="../stock/index.html" class="btn btn-ghost btn-lg">Ver las 12 pantallas →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container" style="text-align: center;">
+    <div class="eyebrow">Precio</div>
+    <h2 class="section-title">Un solo pago.<br><span class="grad">De por vida.</span></h2>
+    <p class="section-sub" style="margin: 0 auto;">Sin mensualidad. Sin renovación. Sin “versión gratis con límites”. Pagás <strong style="color: var(--text)">una sola vez</strong> y la app es tuya.</p>
+
+    <div style="max-width: 480px; margin: 48px auto 0; padding: 36px; background: var(--bg2); border: 1px solid var(--border-green); border-radius: 20px; text-align: center; position: relative; background: linear-gradient(180deg, rgba(52,211,153,0.06), rgba(59,130,246,0.04));">
+      <span style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); padding: 4px 12px; background: var(--grad-vibrant); color: white; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px;">Pago único</span>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; margin-top: 8px;">Stock · completa</div>
+      <div style="font-size: 44px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; background: var(--grad-vibrant); -webkit-background-clip: text; background-clip: text; color: transparent;">$39.990 <small style="font-size: 14px; color: var(--text2); font-weight: 500; margin-left: 6px;">CLP</small></div>
+      <p style="font-size: 13px; color: var(--text2); margin: 10px 0 0;">Lo pagás una vez. Lo usás de por vida. Sin renovación, sin upsells.</p>
+      <ul class="price-features" style="text-align: left; margin: 24px 0;">
+        <li>Productos ilimitados</li>
+        <li>Escáner ilimitado (no consume IA)</li>
+        <li>Multi-usuario · tu equipo</li>
+        <li>Alertas push + WhatsApp</li>
+        <li>Reportes de ventas y márgenes</li>
+        <li>Exportar CSV / Excel</li>
+        <li>Geos 2.1 completo · local</li>
+        <li>iOS · Android · Web</li>
+        <li>Actualizaciones de por vida</li>
+      </ul>
+      <a href="/atomostudio/pagar.html?plan=stock" class="btn btn-primary btn-comprar" style="width: 100%; justify-content: center; padding: 13px;">Comprar $39.990</a>
+      <p style="font-size: 10.5px; color: var(--dim); margin-top: 10px;">Webpay · Transferencia · Tarjeta · Factura electrónica</p>
+      <p style="font-size: 10.5px; color: var(--text2); margin-top: 8px; line-height: 1.5;">Acceso con Gmail o número de teléfono asociado a tu cuenta Átomo Studio. Mismo sistema de ingreso que Geo App.</p>
+    </div>
+
+    <!-- Modos de compra -->
+    <div style="margin: 36px auto 0; max-width: 720px; text-align: left;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 12px; text-align: center;">Cómo se compra</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div style="padding: 16px 18px; background: var(--bg2); border: 1px solid var(--border-green); border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"><span style="width: 22px; height: 22px; border-radius: 7px; background: rgba(52,211,153,0.15); color: var(--success); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">A</span><strong style="font-size: 13px;">Con tu sitio Átomo</strong></div>
+          <p style="font-size: 12px; color: var(--text2); line-height: 1.55;">Se incluye al comprar nuestro servicio E-commerce. Se activa automáticamente con tu sitio.</p>
+        </div>
+        <div style="padding: 16px 18px; background: var(--bg2); border: 1px solid var(--border-blue); border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"><span style="width: 22px; height: 22px; border-radius: 7px; background: rgba(59,130,246,0.15); color: var(--blue-2); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">B</span><strong style="font-size: 13px;">Independiente</strong></div>
+          <p style="font-size: 12px; color: var(--text2); line-height: 1.55;">Si ya tienes un sitio externo, la compras directamente. Pago inmediato.</p>
+        </div>
+      </div>
+      <div style="margin-top: 12px; padding: 12px 14px; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.30); border-radius: 10px; display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--text2);">
+        <span style="font-size: 16px; line-height: 1;">⏱</span>
+        <div><strong style="color: var(--text);">Compra independiente:</strong> la app no se activa sola. Átomo Studio realiza la integración manual en tu sitio E-commerce. Plazo estimado: <strong style="color: var(--text);">48–72 horas hábiles según la plataforma del sitio</strong> desde que nos entregues acceso (sujeto al tamaño y plataforma).</div>
+      </div>
+      <!-- Plataformas compatibles -->
+      <div style="margin-top: 14px; padding: 16px 18px; background: var(--bg2); border: 1px solid var(--border-strong); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 12.5px; font-weight: 700;">
+          <span style="font-size: 14px;">⚠️</span>
+          Plataformas compatibles para integración
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <div style="font-size: 10.5px; font-weight: 600; color: var(--success); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">✅ Sí integramos</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text2);">
+              <li>· WordPress / WooCommerce</li>
+              <li>· Webflow</li>
+              <li>· HTML estático</li>
+              <li>· Sitios de Átomo Studio</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size: 10.5px; font-weight: 600; color: var(--error); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">❌ No gestionamos</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text2);">
+              <li>· Shopify</li>
+              <li>· Wix</li>
+              <li>· Squarespace</li>
+              <li>· Tiendanube</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--text2); line-height: 1.55;">¿Tu sitio está en otra plataforma? <a href="https://atomostudio.dev/contacto?tema=compatibilidad" style="color: var(--blue-2);">Contáctanos antes de comprar</a> — evaluamos caso a caso.</p>
+      </div>
+    </div>
+
+    <!-- Multi-site footnote -->
+    <div style="margin: 22px auto 0; max-width: 720px; padding: 14px 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 12px;">
+      <span style="font-size: 18px;">📄</span>
+      <div style="flex: 1; font-size: 12px; color: var(--text2);"><strong style="color: var(--text);">Licencia para 1 usuario · compatible con múltiples sitios.</strong> ¿Necesitas gestionar 2 sitios o más?</div>
+      <a href="https://atomostudio.dev/contacto?tema=stock-multi-sitio" class="btn btn-ghost" style="padding: 7px 12px; font-size: 11.5px;">Contáctanos</a>
+    </div>
+
+    <p style="font-size: 11.5px; color: var(--dim); margin-top: 20px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.55;">
+      El pago se procesa en atomostudio.dev. Sin App Store ni Google Play de intermediarios. Activación inmediata por email.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div style="background: linear-gradient(135deg, rgba(52,211,153,0.10), rgba(59,130,246,0.10)); border: 1px solid var(--border-green); border-radius: 24px; padding: 64px 48px; text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 14px;">Tu inventario, <span class="grad">en tu bolsillo</span>.</h2>
+      <p class="section-sub" style="margin: 0 auto 32px;">Entrá con tu cuenta Google y empezá a gestionar tu inventario.</p>
+      <div class="badges">
+        <a href="login.html" class="badge featured"><div class="badge-icon">🌐</div><div class="badge-text"><div class="small">o entrá</div><div class="big">desde la web</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="../atomostudio/img/logo-atomo.svg" width="28" height="28" alt="Átomo"/>
+          <span>Stock<small>by Átomo Studio</small></span>
+        </a>
+        <p>Inventario simple para PyMEs chilenas. Powered by Geos 2.1, nuestro modelo IA propio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <a href="#features">Features</a>
+        <a href="#screens">Pantallas</a>
+        <a href="#download">Descargar</a>
+        <a href="#download">Descargar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Más de Átomo</h4>
+        <a href="https://atomostudio.dev">Átomo Studio ↗</a>
+        <a href="https://geo.atomostudio.dev">Geo App ↗</a>
+        <a href="https://sitedesk.atomostudio.dev">SiteDesk ↗</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="mailto:Contact@atomostudio.dev">Contact@atomostudio.dev</a>
+        <a href="https://wa.me/56973994504">WhatsApp +56 9 7399 4504</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Átomo Studio · Hecho con ⚛ en Santiago</span>
+      <span>Geos 2.1 corre localmente · Sin APIs externas</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Átomo feature flags -->
+<script>
+  window.ATOMO_FLAGS = { asistenteIA24_7: false };
+  document.addEventListener('DOMContentLoaded', function() {
+    var on = window.ATOMO_FLAGS.asistenteIA24_7;
+    document.querySelectorAll('.flag-ia-soon').forEach(function(el) {
+      el.style.display = on ? 'none' : '';
+    });
+  });
+</script>
+</body>
+</html>

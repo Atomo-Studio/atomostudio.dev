@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Quiénes Somos · Átomo Studio — Historia y Equipo</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="Átomo Studio: tecnología e inteligencia artificial para PYMEs chilenas. Hecho en Chile, sin comisiones, sin letra chica. Conoce nuestro equipo.">
-<title data-i18n="quienes_somos_atomo_studio">Quiénes Somos · Átomo Studio — Tecnología e IA Chilena</title>
+
 <meta property="og:title" content="Quiénes Somos · Átomo Studio — Tecnología e IA Chilena">
 <meta property="og:description" content="Átomo Studio — tecnología chilena para PYMEs. IA, sitios web, e-commerce. Sin comisiones ni sorpresas.">
 <meta property="og:image" content="https://atomostudio.dev/img/logo-og.png">
-<meta property="og:url" content="https://atomostudio.dev">
+<meta property="og:url" content="https://atomostudio.dev/quienes-somos.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -986,6 +987,8 @@ footer{
   .hero-btns{flex-direction:column}
   .hero-stats{gap:20px}
 }
+/* sr-only — screen reader only accessible text */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛%3C/text%3E%3C/svg%3E" />
@@ -999,14 +1002,14 @@ footer{
 </script>
 
   <!-- hreflang for SEO multi-language -->
-  <link rel="alternate" hreflang="es-CL" href="https://atomostudio.dev/">
-  <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/">
-  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/?lang=en_US">
-  <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/?lang=fr_FR">
-  <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/?lang=pt_BR">
-  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/">
+  <link rel="alternate" hreflang="es-CL" href="https://atomostudio.dev/quienes-somos.html">
+  <link rel="alternate" hreflang="es-ES" href="https://atomostudio.dev/quienes-somos.html">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/quienes-somos.html?lang=en_US">
+  <link rel="alternate" hreflang="fr-FR" href="https://atomostudio.dev/quienes-somos.html?lang=fr_FR">
+  <link rel="alternate" hreflang="pt-BR" href="https://atomostudio.dev/quienes-somos.html?lang=pt_BR">
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/quienes-somos.html">
+    <link rel="canonical" href="https://atomostudio.dev/quienes-somos.html">
 </head>
-<body>
 <body>
 
 <!-- PROGRESS BAR -->
@@ -1021,38 +1024,41 @@ footer{
 <!-- ═══════════════════════════
      NAV
 ═══════════════════════════ -->
-<nav id="navbar">
+<nav role="navigation" aria-label="Navegación principal" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" data-i18n="átomo_studio">
       <img src="img/logo-atomo-studio.svg" alt="Átomo Studio" class="nav-logo-img">
       Átomo Studio
     </a>
     <div class="nav-links">
-        <a href="servicios.html" data-i18n="para_empresas">Para empresas</a>
+        <a href="index.html" data-i18n="inicio">Inicio</a>
+        <a href="servicios.html" data-i18n="servicios">Servicios</a>
         <a href="geo-app.html" data-i18n="geo_app">Geo App</a>
-        <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
-        <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+        <a href="modelos.html" data-i18n="modelos_ia">Modelos IA</a>
+        <a href="geo-pricing.html" data-i18n="precios">Precios</a>
         <a href="contacto.html" data-i18n="contacto">Contacto</a>
     </div>
-      <div class="nav-mobile" id="menuToggle">
+      <div class="nav-mobile" id="menuToggle" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
         <span></span><span></span><span></span>
       </div>
-      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp"></i> Cotiza gratis</a>
+      <a href="contacto.html" class="nav-cta"><i class="fab fa-whatsapp" aria-hidden="true"></i> Cotiza gratis</a>
   </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-  <a href="servicios.html" onclick="closeMobile()" data-i18n="para_empresas">Para empresas</a>
+  <a href="index.html" onclick="closeMobile()" data-i18n="inicio">Inicio</a>
+  <a href="servicios.html" onclick="closeMobile()" data-i18n="servicios">Servicios</a>
   <a href="geo-app.html" onclick="closeMobile()" data-i18n="geo_app">Geo App</a>
-  <a href="atomo-llm.html" onclick="closeMobile()" data-i18n="atomo_llm">atómo-llm</a>
-  <a href="portafolio.html" onclick="closeMobile()" data-i18n="portafolio">Portafolio</a>
+  <a href="modelos.html" onclick="closeMobile()" data-i18n="modelos_ia">Modelos IA</a>
+  <a href="geo-pricing.html" onclick="closeMobile()" data-i18n="precios">Precios</a>
   <a href="contacto.html" onclick="closeMobile()" data-i18n="contacto">Contacto</a>
 </div>
-      <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Quiénes somos · Átomo Studio</h1>
+      <h1 class="sr-only">Quiénes somos · Átomo Studio</h1>
 <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:36px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
           <div style="background:rgba(59,130,246,.06);border-radius:16px;padding:24px;text-align:center">
-            <div style="font-size:32px;font-weight:700;color:#ffc832">44</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:4px" data-i18n="agentes_ia">Agentes IA</div>
+            <div style="font-size:32px;font-weight:700;color:#ffc832">6</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px" data-i18n="proyectos">Proyectos</div>
           </div>
           <div style="background:rgba(59,130,246,.06);border-radius:16px;padding:24px;text-align:center">
             <div style="font-size:32px;font-weight:700;color:#ffc832">72h</div>
@@ -1073,7 +1079,7 @@ footer{
     <div class="about-values">
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px">
         <div style="font-size:28px;margin-bottom:8px">🎯</div>
-        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="mision">Misión</h4>
+        <h3 style="font-size:16px;margin-bottom:8px" data-i18n="mision">Misión</h3>
         <p style="font-size:13px;color:var(--muted);line-height:1.7" data-i18n="democratizar_la_tecnología_para_pymes_chilenas">
           Democratizar la tecnología para PYMEs chilenas, ofreciendo herramientas digitales profesionales 
           a precios justos, sin barreras ni compromisos escondidos.
@@ -1081,7 +1087,7 @@ footer{
       </div>
       <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px">
         <div style="font-size:28px;margin-bottom:8px">🔭</div>
-        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="vision">Visión</h4>
+        <h3 style="font-size:16px;margin-bottom:8px" data-i18n="vision">Visión</h3>
         <p style="font-size:13px;color:var(--muted);line-height:1.7" data-i18n="ser_el_aliado_tecnológico_número_uno_de_las_pymes_chilenas">
           Ser el aliado tecnológico número uno de las PYMEs chilenas, combinando inteligencia artificial 
           con precios accesibles para que cualquier negocio pueda competir digitalmente.
@@ -1091,8 +1097,8 @@ footer{
 
     <div style="text-align:center;margin-top:64px">
       <h3 style="font-size:20px;margin-bottom:24px" data-i18n="hablemos_de_tu_proyecto">Hablemos de tu proyecto</h3>
-      <a href="https://wa.me/56973994504?text=Hola%20%C3%81tomo%20Studio!%20Quiero%20informaci%C3%B3n" target="_blank" class="btn btn-primary btn-lg">
-        <i class="fab fa-whatsapp"></i> <span data-i18n="escribenos_al_whatsapp">Escríbenos al WhatsApp</span>
+      <a href="https://wa.me/56973994504?text=Hola%20%C3%81tomo%20Studio!%20Quiero%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> <span data-i18n="escribenos_al_whatsapp">Escríbenos al WhatsApp</span>
       </a>
     </div>
   </div>
@@ -1105,41 +1111,37 @@ footer{
         <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent" data-i18n="átomo_studio">Átomo Studio</span>
       </div>
       <p class="footer-brand-desc" data-i18n="creamos_software_inteligente_sitios_web_profesionales_y_el">
-        Creamos software inteligente, sitios web profesionales y el primer modelo IA 
-        latinoamericano enfocado en tu crecimiento personal y económico.
+        Creamos software inteligente, sitios web profesionales y un modelo IA propio, hecho en Chile, 
+        enfocado en tu crecimiento personal y económico.
       </p>
       <div style="margin-top:20px;display:flex;gap:8px">
-        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/atomo.studio.chile" target="_blank" rel="noopener" title="Instagram @atomostudio" class="social-btn"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://wa.me/56973994504" target="_blank" rel="noopener" title="WhatsApp Átomo Studio" class="social-btn"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/company/atomostudio" target="_blank" rel="noopener" title="LinkedIn Átomo Studio" class="social-btn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Atomo-Studio" target="_blank" rel="noopener" title="GitHub @atomostudio" class="social-btn"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="servicios">Servicios</h4>
+      <h3 data-i18n="servicios">Servicios</h3>
       <a href="servicios.html" data-i18n="landing_page">Landing Page</a>
       <a href="servicios.html" data-i18n="sitio_web_multi_página">Sitio Web Multi-página</a>
-      <a href="ecommerce.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="servicios.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
       <a href="servicios.html" data-i18n="actualización_web">Actualización Web</a>
       <a href="contacto.html" data-i18n="presupuesto_gratis">Presupuesto gratis</a>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="productos_ia">Productos IA</h4>
-      <a href="geos.html" data-i18n="geos_2_1">Geos 2.1</a>
-      <a href="geo-pricing.html" data-i18n="precios">Precios</a>
-      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm 🦙</a>
-      <a href="geo-app-completa.html" data-i18n="geo_app">Geo App</a>
-      <a href="modelos.html" data-i18n="modelos_disponibles">Modelos disponibles</a>
-      <a href="modelos.html" data-i18n="claude_gpt_deepseek">Claude · GPT · DeepSeek</a>
-      <a href="modelos.html" data-i18n="groq_llama">Groq · Llama</a>
-    </div>
+      <h3 data-i18n="productos_ia">Productos IA</h3>
+      
+      <a href="quienes-somos.html" data-i18n="quienes_somos">Quiénes Somos</a>
+      <a href="atomo-llm.html" data-i18n="atomo_llm">atómo-llm</a>
+      <a href="servicios.html" data-i18n="e_commerce_omnicanal">E-commerce Omnicanal</a>
+      <a href="privacidad.html" data-i18n="privacidad">Privacidad</a></div>
     <div class="footer-col">
-      <h4 data-i18n="empresa">Empresa</h4>
-      <a href="portafolio.html" data-i18n="portafolio">Portafolio</a>
+      <h3 data-i18n="empresa">Empresa</h3>
       <a href="contacto.html" data-i18n="contacto">Contacto</a>
       <a href="privacidad.html" data-i18n="política_de_privacidad">Política de Privacidad</a>
       <a href="contacto.html">Contact@atomostudio.dev</a>
-      <a href="https://wa.me/56973994504" target="_blank" data-i18n="whatsapp">WhatsApp</a>
+      <a href="https://wa.me/56973994504" target="_blank" rel="noopener noreferrer" data-i18n="whatsapp">WhatsApp</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1151,8 +1153,8 @@ footer{
 </footer>
 
 <!-- WA FLOAT -->
-<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20su%20web" target="_blank" class="wa-float">
-  <i class="fab fa-whatsapp"></i>
+<a href="https://wa.me/56973994504?text=Hola%20Átomo%20Studio!%20Vi%20su%20web" target="_blank" rel="noopener noreferrer" class="wa-float">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
 
 <script>

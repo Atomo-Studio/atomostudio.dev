@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería · KABA Peluquería | Transformaciones Reales</title>
+<meta name="description" content="Explora la galería de trabajos de KABA. Balayage, babylights, visos, bloque, contorno, decoloración y tintes. Transformaciones reales de nuestras clientas en Pedro Aguirre Cerda.">
+<meta name="keywords" content="galería peluquería, antes después cabello, trabajos balayage, galería KABA, Pedro Aguirre Cerda, babylights, visos, decoloración">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Galería · KABA Peluquería">
+<meta property="og:description" content="32 transformaciones reales de Karla. Esto no es stock. Esto es Kaba real.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaba.atomostudio.dev/galeria/">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="canonical" href="https://kaba.atomostudio.dev/galeria/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/animations.css">
+
+<style>
+/* ─── GALLERY ─── */
+.gallery-page {
+  padding: 1rem 8vw 0.5rem;
+  background: var(--beige-base);
+}
+
+/* ─── FILTERS ─── */
+.gallery-filters {
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+.filter-btn {
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+.filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.filter-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--espresso);
+}
+
+/* ─── MASONRY GRID ─── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--espresso);
+  aspect-ratio: 4/3;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.gallery-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-item.hidden {
+  display: none;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+
+/* ─── VIDEO SECTION ─── */
+.video-section {
+  padding: 2rem 0;
+  margin-top: 0;
+  border-top: 1px solid var(--border);
+}
+.video-section-header {
+  text-align: center;
+  
+margin-bottom: 0.5rem;
+}
+.video-section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+.video-section-header h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.video-section-header p {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.video-card {
+  background: white;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: var(--espresso);
+  overflow: hidden;
+  cursor: pointer;
+}
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(201,169,110,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+.video-play-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--espresso);
+  margin-left: 3px;
+}
+.video-wrapper:hover .video-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--gold);
+}
+.video-card-info {
+  padding: 1rem;
+  text-align: center;
+}
+.video-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+.video-card-sub {
+  font-size: 0.65rem;
+  color: var(--text-soft);
+  letter-spacing: 0.1em;
+}
+
+/* ─── BEFORE/AFTER FEATURED ─── */
+.ba-featured {
+  padding: 4rem 0;
+  
+margin-top: 1.5rem;
+}
+.ba-featured h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+}
+.ba-featured h2 em { font-style: italic; color: var(--gold); }
+.ba-slider-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── IG CTA ─── */
+.ig-cta {
+  text-align: center;
+  
+margin-top: 1.5rem;
+  padding: 2.5rem;
+  background: white;
+  border: 1px solid var(--border);
+}
+.ig-cta p {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 1.2rem;
+  line-height: 1.7;
+}
+
+/* ─── CTA ─── */
+.cta-galeria {
+  padding: 4rem 8vw;
+  background: var(--cream-warm);
+  text-align: center;
+}
+.cta-galeria h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  margin-bottom: 0.5rem;
+}
+.cta-galeria h2 em { font-style: italic; color: var(--gold); }
+.cta-galeria p {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .gallery-page { padding: 2rem 6vw 1rem; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .video-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .gallery-filters { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 8px; }
+  .gallery-filters::-webkit-scrollbar { display: none; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .video-grid { max-width: 100%; }
+}
+
+@media (hover: none) {
+  .gallery-item.tapped img { transform: scale(1.05); }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../img/logo-oficial.webp" alt="KABA Peluquería" width="180" height="50" class="nav-logo-img" loading="eager">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/servicios/">Servicios</a></li>
+    <li><a href="/cortes/">Cortes</a></li>
+    <li><a href="/galeria/" class="active">Galería</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+    <li><a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="nav-cta">Reservar Cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+  <a href="/" onclick="toggleMenu()">Inicio</a>
+  <a href="/servicios/" onclick="toggleMenu()">Servicios</a>
+  <a href="/cortes/" onclick="toggleMenu()">Cortes</a>
+  <a href="/galeria/" onclick="toggleMenu()" class="active">Galería</a>
+  <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+  <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" style="color:#25D366;">📱 Reservar Cita</a>
+</div>
+
+<!-- ─── PAGE HEADER ─── -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a>
+    <span>/</span>
+    <span class="current">Galería</span>
+  </div>
+  <div class="page-header-content">
+    <h1 class="page-header-title">32 transformaciones reales<br>y <em>contando</em> ✨</h1>
+    <p class="page-header-sub">Cada foto es una clienta real. Esto no es stock. Esto es Kaba.</p>
+  </div>
+</div>
+
+<!-- ─── GALLERY ─── -->
+<section class="gallery-page">
+
+
+  <!-- Filters -->
+  <div class="gallery-filters fade-in">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">🌟 Todas</button>
+    <button class="filter-btn" onclick="filterGallery('balayage', this)">✨ Balayage</button>
+    <button class="filter-btn" onclick="filterGallery('babylights', this)">💫 Babylights</button>
+    <button class="filter-btn" onclick="filterGallery('visos', this)">🎨 Visos</button>
+    <button class="filter-btn" onclick="filterGallery('bloque', this)">🟫 Bloque</button>
+    <button class="filter-btn" onclick="filterGallery('contorno', this)">🌊 Contorno</button>
+    <button class="filter-btn" onclick="filterGallery('decoloracion', this)">💇 Decoloración</button>
+    <button class="filter-btn" onclick="filterGallery('tintes', this)">🎯 Tintes</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery-grid" id="galleryGrid">
+
+    <!-- ✨ BALAYAGE (6) -->
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_01.webp" alt="Balayage rubio beige con acabado natural — transformación en Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_02.webp" alt="Balayage con reflejos dorados y movimiento — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_03.webp" alt="Balayage cobrizo con brillo natural — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_04.webp" alt="Balayage suave con luz natural — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_05.webp" alt="Balayage con degradado perfecto — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="balayage">
+      <img src="../img/kaba_balayage_06.webp" alt="Balayage miel con acabado glossy — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 💫 BABYLIGHTS (3) -->
+    <div class="gallery-item fade-in" data-category="babylights">
+      <img src="../img/kaba_babylights_01.webp" alt="Babylights sutiles para iluminar el rostro — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="babylights">
+      <img src="../img/kaba_babylights_02.webp" alt="Babylights con reflejos naturales — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="babylights">
+      <img src="../img/kaba_babylights_03.webp" alt="Babylights efecto sol — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 🎨 VISOS (3) -->
+    <div class="gallery-item fade-in" data-category="visos">
+      <img src="../img/kaba_visos_gorro_01.webp" alt="Visos con gorro — técnica de coloración con efecto degradado — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="visos">
+      <img src="../img/kaba_visos_gorro_02.webp" alt="Visos con efecto multidimensional — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="visos">
+      <img src="../img/kaba_visos_gorro_03.webp" alt="Visos con iluminación estratégica — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 🟫 BLOQUE (6) -->
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_01.webp" alt="Técnica bloque con color sólido y luminoso — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_02.webp" alt="Bloque de color con acabado glossy — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_03.webp" alt="Bloque color chocolate intenso — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_04.webp" alt="Bloque con reflejos cálidos — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_05.webp" alt="Bloque color avellana — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="bloque">
+      <img src="../img/kaba_bloque_06.webp" alt="Bloque oscuro con brillo natural — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 🌊 CONTORNO (3) -->
+    <div class="gallery-item fade-in" data-category="contorno">
+      <img src="../img/kaba_contorno_01.webp" alt="Contorno facial con técnica de color — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="contorno">
+      <img src="../img/kaba_contorno_02.webp" alt="Contorno con iluminación estratégica — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="contorno">
+      <img src="../img/kaba_contorno_03.webp" alt="Contorno suave para enmarcar el rostro — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 💇 DECOLORACIÓN (5) -->
+    <div class="gallery-item fade-in" data-category="decoloracion">
+      <img src="../img/kaba_decoloracion_global_01.webp" alt="Decoloración global con resultado parejo — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="decoloracion">
+      <img src="../img/kaba_decoloracion_global_02.webp" alt="Decoloración para rubio platinado — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="decoloracion">
+      <img src="../img/kaba_decoloracion_global_03.webp" alt="Decoloración suave para tonos claros — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="decoloracion">
+      <img src="../img/kaba_decoloracion_global_04.webp" alt="Decoloración técnica avanzada — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="decoloracion">
+      <img src="../img/kaba_decoloracion_global_05.webp" alt="Base decolorada para color fantasía — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+    <!-- 🎯 TINTES (6) -->
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_01.webp" alt="Tinte color cobrizo intenso — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_02.webp" alt="Tinte color rojo vibrante — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_03.webp" alt="Tinte marrón con reflejos cálidos — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_04.webp" alt="Tinte negro azabache brillante — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_05.webp" alt="Tinte castaño con luz — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+    <div class="gallery-item fade-in" data-category="tintes">
+      <img src="../img/kaba_tintes_06.webp" alt="Tinte caoba con brillo — Kaba Peluquería" width="600" height="600" loading="lazy">
+        
+    </div>
+
+  </div>
+
+  <!-- ─── VIDEOS SECTION ─── -->
+  <div class="video-section fade-in">
+    <div class="video-section-header">
+      <h2>Videos de <em>Kaba</em> 🎥</h2>
+      <p>Mira el resultado en movimiento. Técnicas, texturas y brillo que solo un video puede capturar.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-wrapper" onclick="toggleVideo(this)">
+          <video preload="none" poster="../img/video/kaba_video_01_thumb.webp" playsinline>
+            <source src="../img/video/kaba_video_01.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-title">Transformación Kaba</div>
+          <div class="video-card-sub">Resultado real ✨</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrapper" onclick="toggleVideo(this)">
+          <video preload="none" poster="../img/video/kaba_video_02_thumb.webp" playsinline>
+            <source src="../img/video/kaba_video_02.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-title">Brillo y Movimiento</div>
+          <div class="video-card-sub">Acabado glossy 💫</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrapper" onclick="toggleVideo(this)">
+          <video preload="none" poster="../img/video/kaba_video_03_thumb.webp" playsinline>
+            <source src="../img/video/kaba_video_03.mp4" type="video/mp4">
+          </video>
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+          </div>
+        </div>
+        <div class="video-card-info">
+          <div class="video-card-title">Antes y Después</div>
+          <div class="video-card-sub">La magia de Kaba 🎯</div>
+        </div>
+    </div>
+  </div>
+
+  <!-- IG CTA -->
+  <div class="ig-cta fade-in">
+    <p>📸 ¿Quieres ver más trabajos? Síguenos en Instagram para ver nuestro portafolio completo con fotos reales de nuestras clientas.</p>
+    <a href="https://www.instagram.com/kaba_peluqueria/" target="_blank" class="btn-primary" style="background:#e1306c;color:white;">Síguenos en Instagram</a>
+  </div>
+
+  <!-- Before/After Featured -->
+  <div class="ba-featured fade-in">
+    <h2>Nuestra sección <em>favorita</em> 💛</h2>
+    <p style="text-align:center;font-size:0.85rem;color:var(--text-soft);max-width:500px;margin:0 auto 2rem">Ver la cara de una clienta cuando se mira al espejo y le gusta lo que ve — eso no tiene precio.</p>
+    <div class="ba-slider-wrap">
+      <div class="before-after before-after-slider fade-in">
+        <img class="before" src="../img/destacados/kaba_Bendiciones_pa_too_el_mundo.webp" alt="Antes — transformación capilar en Kaba Peluquería" loading="lazy">
+        <img class="after" src="../img/destacados/kaba_Amooo.webp" alt="Después — resultado transformador en Kaba Peluquería" loading="lazy">
+        <div class="divider"></div>
+        <span class="label label-before">Antes</span>
+        <span class="label label-after">Después</span>
+      </div>
+      <p style="text-align:center;font-size:0.7rem;color:var(--text-light);margin-top:1rem;font-style:italic">Desliza para comparar — Resultados reales de Kaba</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-galeria">
+  <h2 class="fade-in">¿Quieres ser la próxima <em>transformación</em>?</h2>
+  <p class="fade-in">Cada foto aquí es de una clienta real que confió en Kaba. La próxima podrías ser tú.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="https://wa.me/56929710382?text=Hola!%20Vi%20la%20galer%C3%ADa%20de%20KABA%20y%20me%20gustar%C3%ADa%20agendar%20una%20hora." target="_blank" class="btn-primary fade-in" style="background:#25D366;color:white;">
+      💬 Agenda tu hora
+    </a>
+    <a href="https://wa.me/56929710382?text=Hola!%20Vi%20la%20galer%C3%ADa%20de%20KABA%20y%20quiero%20consultar%20precios." target="_blank" class="btn-primary fade-in" style="background:var(--espresso);color:var(--gold);border:1px solid var(--gold);">
+      💰 Consultar precio →
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">KABA</span>
+      <p class="footer-brand-desc">Peluquería y estilismo profesional por Karla Bastidas. Especialistas en cortes personalizados, coloración, manicure y más en Pedro Aguirre Cerda, Santiago.</p>
+      <div style="margin-top:1.5rem">
+        <a href="https://www.instagram.com/kaba_peluqueria/" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">📸 @kaba_peluqueria</a><br>
+        <a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">🎵 @kaba_karlita</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="/servicios/#cortes">Cortes</a></li>
+        <li><a href="/servicios/#coloracion">Coloración</a></li>
+        <li><a href="/servicios/#unas">Manicure & Pedicure</a></li>
+        <li><a href="/servicios/#tratamientos">Tratamientos</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Enlaces</div>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/cortes/">Cortes</a></li>
+        <li><a href="/galeria/">Galería</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="/contacto/">Ubicación</a></li>
+        <li><a href="/contacto/">Horarios</a></li>
+        <li><a href="https://www.instagram.com/kaba_peluqueria/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/people/Peluquer%C3%ADa-Kaba/100063737491420/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank">TikTok</a></li>
+        <li><a href="https://wa.me/56929710382" target="_blank">WhatsApp</a></li>
+      </ul>
+      <div style="margin-top:2rem">
+        <div class="footer-col-title">Horario</div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.25);line-height:1.8">
+          Lun–Sáb: 08:00 – 19:00<br>
+          Domingo: Cerrado
+        </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 KABA Peluquería · Karla Bastidas · Santiago, Chile</span>
+    <span class="footer-credit">Sitio web creado por <a href="https://atomostudio.dev">Átomo Studio</a></span>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOTANTE ─── -->
+<a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="wa-float" title="Reservar cita por WhatsApp">
+  <div class="wa-tooltip">Reservar cita ahora ✨</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="../js/main.js"></script>
+<script>
+// ─── Video toggle ───
+function toggleVideo(wrapper) {
+  var video = wrapper.querySelector('video');
+  var btn = wrapper.querySelector('.video-play-btn');
+  if (video.paused) {
+    video.play();
+    btn.style.display = 'none';
+    video.setAttribute('controls', '');
+  } else {
+    video.pause();
+    btn.style.display = 'flex';
+    video.removeAttribute('controls');
+  }
+}
+// Stop video when clicking elsewhere
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.video-wrapper')) {
+    document.querySelectorAll('.video-wrapper video').forEach(function(v) {
+      if (!v.paused) {
+        v.pause();
+        var wrapper = v.closest('.video-wrapper');
+        if (wrapper) {
+          wrapper.querySelector('.video-play-btn').style.display = 'flex';
+          v.removeAttribute('controls');
+        }
+      }
+    });
+  }
+});
+
+// ─── Gallery filter ───
+function filterGallery(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(function(item) {
+    if (category === 'all' || item.getAttribute('data-category') === category) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+// ─── Lightbox ───
+var currentLightboxIndex = 0;
+var galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+
+function openLightbox(index) {
+  currentLightboxIndex = index;
+  var data = galleryItems[index];
+  var title = data.querySelector('.service-name');
+  var content = document.getElementById('lightboxContent');
+  var imgSrc = data.querySelector('img').getAttribute('src');
+  var category = data.getAttribute('data-category');
+  var emojiMap = { balayage: '✨', babylights: '💫', visos: '🎨', bloque: '🟫', contorno: '🌊', decoloracion: '💇', tintes: '🎯' };
+  var emoji = emojiMap[category] || '🌟';
+  content.innerHTML = '<img src="' + imgSrc + '" alt="' + (title ? title.textContent : 'Trabajo KABA') + '" style="width:100%;max-height:80vh;object-fit:contain;background:var(--dark-warm)"><div class="lightbox-title">' + emoji + ' ' + (title ? title.textContent : 'Trabajo KABA') + '</div><div class="lightbox-sub">Kaba Peluquería — Resultado real</div>';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+  var visibleItems = galleryItems.filter(function(item) { return !item.classList.contains('hidden'); });
+  var visibleIndices = visibleItems.map(function(item) { return galleryItems.indexOf(item); });
+  var currentPos = visibleIndices.indexOf(currentLightboxIndex);
+  var nextPos = (currentPos + dir + visibleIndices.length) % visibleIndices.length;
+  openLightbox(visibleIndices[nextPos]);
+}
+
+galleryItems.forEach(function(item, i) {
+  item.addEventListener('click', function() {
+    if (!this.classList.contains('hidden')) openLightbox(i);
+  });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigateLightbox(-1);
+  if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) closeLightbox();
+});
+</script>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">‹</button>
+  <div class="lightbox-content" id="lightboxContent"></div>
+  <button class="lightbox-nav next" onclick="navigateLightbox(1)">›</button>
+</div>
+
+</body>
+</html>

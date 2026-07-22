@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KABA | Peluquería – Karla Bastidas · Pedro Aguirre Cerda</title>
+<meta name="description" content="KABA Peluquería by Karla Bastidas. Cortes personalizados, balayage, mechas, manicure y más en Pedro Aguirre Cerda, Santiago. Agenda tu hora por WhatsApp.">
+<meta name="keywords" content="peluquería, salón de belleza, balayage, mechas, cortes, Pedro Aguirre Cerda, Santiago, KABA, Karla Bastidas">
+<meta name="author" content="KABA Peluquería">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="KABA | Peluquería – Karla Bastidas">
+<meta property="og:description" content="Tu look, tu energía, tu momento. Cortes personalizados, balayage, coloración y uñas en Pedro Aguirre Cerda.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaba.atomostudio.dev/">
+<meta property="og:locale" content="es_CL">
+<meta property="og:image" content="https://kaba.atomostudio.dev/img/logo-oficial.webp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KABA | Peluquería">
+<meta name="twitter:description" content="Tu look, tu energía, tu momento.">
+
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="canonical" href="https://kaba.atomostudio.dev/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+
+<style>
+/* ─── HERO ─── */
+.hero {
+  min-height: auto;
+  padding: 5rem 8vw 2rem;
+  background: var(--dark-warm);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6vw 5vw 6vw 8vw;
+  position: relative;
+  z-index: 2;
+}
+.hero-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-tag::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+.hero-sub {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 3rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, transparent 60%);
+  z-index: 1;
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,169,110,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,110,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-big-k {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 40vw;
+  color: rgba(201,169,110,0.03);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  user-select: none;
+  z-index: 0;
+}
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  position: static;
+}
+.stat { text-align: left; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+.stat-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+/* ─── FEATURED SERVICES ─── */
+.featured-services {
+  padding: 8rem 8vw;
+  background: var(--ivory);
+}
+.featured-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  background: white;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+  text-align: center;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.service-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.2rem;
+  background: var(--espresso);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+.service-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+.service-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* ─── ABOUT PREVIEW ─── */
+.about-preview {
+  padding: 8rem 8vw;
+  background: var(--beige-base);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+  align-items: center;
+}
+.about-card {
+  background: var(--espresso);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.about-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--ivory);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.about-card-text {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.9;
+}
+.about-photo-wrap {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.about-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.about-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.about-badge {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: var(--espresso);
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 700;
+  box-shadow: 0 10px 40px rgba(201,169,110,0.4);
+}
+.about-text p {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--text-soft);
+  margin-bottom: 1.2rem;
+}
+.about-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  font-style: italic;
+  margin-top: 2rem;
+}
+.about-role {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+/* ─── TESTIMONIAL ─── */
+.testimonial-spotlight {
+  padding: 6rem 8vw;
+  background: var(--espresso);
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-spotlight::before {
+  content: '"';
+  position: absolute;
+  top: -3rem;
+  left: 5vw;
+  font-family: 'Playfair Display', serif;
+  font-size: 25rem;
+  color: rgba(201,169,110,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.testimonial-spotlight-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-spotlight-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+.testimonial-spotlight-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--espresso);
+  font-weight: 700;
+}
+.author-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  text-align: left;
+}
+.author-detail {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  padding: 5rem 8vw;
+  background: var(--cream-warm);
+  text-align: center;
+}
+.cta-banner-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+.cta-banner-title em { font-style: italic; color: var(--gold); }
+.cta-banner-sub {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+/* ─── MAPA ─── */
+.map-mini {
+  background: var(--espresso);
+  aspect-ratio: 3/1;
+  position: relative;
+  overflow: hidden;
+}
+.map-mini iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(40%) contrast(1.1);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 4rem; }
+  .hero-right { display: none; }
+  .hero-big-k { display: none; }
+  .hero-stats { position: static; margin-top: 3rem; gap: 2rem; }
+  .about-preview { grid-template-columns: 1fr; padding: 5rem 6vw; }
+  .services-grid { grid-template-columns: 1fr; }
+  .map-mini { aspect-ratio: 16/9; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { text-align: center; }
+}
+
+/* ─── CLIENT TESTIMONIALS ─── */
+.client-testimonials {
+  padding: 7rem 8vw;
+  background: var(--beige-base);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  position: relative;
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.testimonial-quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  opacity: 0.4;
+}
+.testimonial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  min-height: 3.5rem;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.testimonial-username {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.testimonial-ig-icon {
+  color: var(--text-soft);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card { padding: 2rem 1.5rem; }
+}
+
+/* ─── CONSULTAR PRECIO LINK INDEX ─── */
+.consultar-link-index {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #25D366 !important;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #25D366;
+  padding-bottom: 1px;
+  transition: opacity 0.3s;
+}
+.consultar-link-index:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="img/logo-oficial.webp" alt="KABA Peluquería" width="180" height="50" class="nav-logo-img" loading="eager">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" class="active">Inicio</a></li>
+    <li><a href="/servicios/">Servicios</a></li>
+    <li><a href="/cortes/">Cortes</a></li>
+    <li><a href="/galeria/">Galería</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+    <li><a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="nav-cta">Reservar Cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+  <a href="/" onclick="toggleMenu()" class="active">Inicio</a>
+  <a href="/servicios/" onclick="toggleMenu()">Servicios</a>
+  <a href="/cortes/" onclick="toggleMenu()">Cortes</a>
+  <a href="/galeria/" onclick="toggleMenu()">Galería</a>
+  <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+  <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" style="color:#25D366;">📱 Reservar Cita</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag fade-in">KABA · Peluquería & Estilismo</div>
+    <h1 class="hero-title fade-in">
+      Tu look, tu<br>
+      <em>energía, tu</em>
+      <br>momento ✨
+    </h1>
+    <p class="hero-sub fade-in">
+      En Kaba no solo transformamos tu cabello — transformamos cómo te sientes. Porque cuando te ves bien, todo cambia.
+    </p>
+    <div class="hero-actions fade-in">
+      <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="btn-primary">Agenda tu hora</a>
+      <a href="/servicios/" class="btn-outline">Ver servicios</a>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Años de experiencia profesional</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">+700</div>
+        <div class="stat-label">Seguidoras en Instagram</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">+600</div>
+        <div class="stat-label">Seguidores en TikTok</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-big-k">K</div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;">
+      <svg viewBox="0 0 400 500" width="380" height="480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#c9a96e" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#e8d5b0" stop-opacity="0.05"/>
+          </linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect x="40" y="40" width="320" height="420" fill="url(#goldGrad)" stroke="#c9a96e" stroke-width="0.5" rx="2"/>
+        <rect x="55" y="55" width="290" height="390" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" rx="1"/>
+        <text x="200" y="260" font-family="Playfair Display, serif" font-size="90" fill="#c9a96e" text-anchor="middle" dominant-baseline="middle" opacity="0.9" filter="url(#glow)">KABA</text>
+        <text x="200" y="310" font-family="Montserrat, sans-serif" font-size="11" fill="rgba(201,169,110,0.6)" text-anchor="middle" letter-spacing="6">PELUQUERÍA</text>
+        <line x1="80" y1="330" x2="150" y2="330" stroke="#c9a96e" stroke-width="0.5" opacity="0.5"/>
+        <line x1="250" y1="330" x2="320" y2="330" stroke="#c9a96e" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="200" cy="180" r="30" fill="none" stroke="rgba(201,169,110,0.4)" stroke-width="0.5"/>
+        <circle cx="200" cy="180" r="20" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5"/>
+        <path d="M185 175 L215 175 M200 162 L200 192" stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="200" cy="180" r="4" fill="#c9a96e" opacity="0.7"/>
+        <path d="M60 60 L80 60 L80 80" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+        <path d="M340 60 L320 60 L320 80" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+        <path d="M60 440 L80 440 L80 420" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+        <path d="M340 440 L320 440 L320 420" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.7"/>
+        <text x="200" y="410" font-family="Montserrat, sans-serif" font-size="8" fill="rgba(201,169,110,0.4)" text-anchor="middle" letter-spacing="4">KARLA BASTIDAS</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ¿POR QUÉ KABA? ─── -->
+<section class="featured-services">
+  <div class="featured-header fade-in">
+    <div class="section-tag center">¿Por qué Kaba?</div>
+    <h2 class="section-title">Tu estilo, nuestra <em>pasión</em></h2>
+    <p class="section-sub">No creemos en los servicios en serie. Cada experiencia es única, como tú.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">💖</div>
+      <h3 class="service-card-title">Estilo que nace de ti</h3>
+      <p class="service-card-desc">No creemos en los cortes en serie. Cada look lo diseñamos según tu personalidad, tu tipo de cabello y lo que quieres proyectar. Porque nadie es igual a nadie.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🎨</div>
+      <h3 class="service-card-title">Expertas en color</h3>
+      <p class="service-card-desc">Balayage, mechas, corrección de color, rubios perfectos… Lo que te imagines, lo hacemos realidad. Somos especialistas en transformaciones capilares que impactan.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">💛</div>
+      <h3 class="service-card-title">Amor propio en cada visita</h3>
+      <p class="service-card-desc">En Kaba te recibimos con cariño, te escuchamos y te acompañamos en todo el proceso. Porque regalonearse no es un lujo, es necesario.</p>
+    </div>
+  </div>
+
+  <div class="featured-header fade-in" style="margin-top:5rem">
+    <div class="section-tag center">10 Técnicas Especializadas</div>
+    <h2 class="section-title">Lo que <em>ofrecemos</em></h2>
+    <p class="section-sub">Desde balayage artesanal hasta decoloración global — cada técnica tiene un propósito y un resultado único.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">✂️</div>
+      <h3 class="service-card-title">Cortes Personalizados</h3>
+      <p class="service-card-desc">Diseñamos el corte ideal para tu rostro, tu estilo y tu vida. Cada mujer es única, y su corte también.</p>
+      <p style="font-size:0.8rem;font-weight:500;color:var(--text-dark);margin-bottom:0.5rem">Corte dama $9.000 · Corte varón $8.500</p>
+      <a href="/cortes/" class="btn-outline-dark">Ver detalle</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">✨</div>
+      <h3 class="service-card-title">Balayage</h3>
+      <p class="service-card-desc">Rubios beige, cobrizos, sutiles… El servicio estrella de Kaba. Cada balayage es pintado a mano, personalizado para ti. Resultados naturales con movimiento.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20balayage%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">💫</div>
+      <h3 class="service-card-title">Babylights</h3>
+      <p class="service-card-desc">Mechas súper sutiles que imitan el efecto del sol en el cabello de una niña. Iluminación natural, delicada y favorecedora para todo tipo de base.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20babylights%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🎨</div>
+      <h3 class="service-card-title">Visos</h3>
+      <p class="service-card-desc">Técnica de visos con gorro para crear reflejos estratégicos. Iluminación dimensional que enmarca el rostro y aporta profundidad al cabello.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20visos%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🟫</div>
+      <h3 class="service-card-title">Bloque</h3>
+      <p class="service-card-desc">Color sólido y uniforme con acabado profesional. Ideal para quienes buscan un cambio completo con tonos ricos y luminosos que duren.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20bloque%20de%20color%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🌊</div>
+      <h3 class="service-card-title">Contorno</h3>
+      <p class="service-card-desc">Técnica de iluminación facial estratégica. Aclara los mechones que enmarcan el rostro para un efecto lifting natural y radiante.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20contorno%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">💇</div>
+      <h3 class="service-card-title">Decoloración Global</h3>
+      <p class="service-card-desc">Base pareja y cuidada para rubios platinados, colores fantasía o cualquier transformación radical. Proceso profesional con cuidado capilar.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20decoloraci%C3%B3n%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🎯</div>
+      <h3 class="service-card-title">Tintes</h3>
+      <p class="service-card-desc">Desde cobrizos vibrantes hasta castaños profundos. Aplicación profesional con productos Elgon y Salerm para un color duradero y brillante.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20tintes%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🔧</div>
+      <h3 class="service-card-title">Corrección de Color</h3>
+      <p class="service-card-desc">¿Color que no resultó? Lo arreglamos con amor y técnica profesional. Desde naranjas no deseados hasta decoloraciones mal hechas.</p>
+      <a href="/servicios/#coloracion" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20el%20precio%20de%20correcci%C3%B3n%20de%20color%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">💅</div>
+      <h3 class="service-card-title">Manicure & Pedicure</h3>
+      <p class="service-card-desc">Porque unas manos y pies hermosos también son parte del look. Manicura y pedicura profesional para completar tu estilo.</p>
+      <a href="/servicios/#unas" class="btn-outline-dark">Ver detalle</a>
+      <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20consultar%20precio%20de%20manicure%20y%20pedicure%20en%20KABA." target="_blank" class="consultar-link-index" style="margin-top:8px">💬 Consultar precio →</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem">
+    <a href="/servicios/" class="btn-primary">Ver todos los servicios</a>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about-preview">
+  <div class="about-card fade-in">
+    <div class="about-badge">10+<br>años</div>
+    <div class="about-photo-wrap"><img src="img/karla-kaba.png" alt="Karla Bastidas — Kaba Peluquería" loading="lazy"></div>
+    <div class="about-card-title">Karla Bastidas</div>
+    <div class="about-subtitle">Estilista Chilena 🇨🇱 · +10 años de experiencia</div>
+    <p class="about-card-text">
+      Estilista profesional apasionada por las transformaciones. Especializada en balayage, colorimetría avanzada y cortes personalizados que realzan la belleza única de cada mujer.
+    </p>
+    <br>
+    <svg width="60" height="2" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="1" fill="#c9a96e" opacity="0.5"/>
+    </svg>
+    <br><br>
+    <p class="about-card-text">✂️ &nbsp; Cortes personalizados con propósito<br>🎨 &nbsp; Coloración artística — balayage, mechas<br>💆 &nbsp; Corrección de color y tratamientos<br>💅 &nbsp; Manicure y pedicure profesional</p>
+  </div>
+  <div class="about-text">
+    <div class="section-tag">Sobre Kaba</div>
+    <h2 class="section-title">Donde la <em>belleza</em><br>se encuentra con el <em>alma</em></h2>
+    <p>Kaba nació del sueño de Karla Bastidas de crear un espacio donde cada mujer se sienta escuchada, valorada y transformada. Más que una peluquería, somos un lugar de encuentro con una misma.</p>
+    <p>Trabajamos con técnicas profesionales y productos de alta calidad, pero lo que realmente nos distingue es el cariño con el que recibimos a cada clienta. Porque creemos que la belleza verdadera empieza por dentro.</p>
+    <p style="font-size:0.82rem;color:var(--gold)">✨ Usamos y recomendamos productos profesionales <strong>Elgon</strong> y <strong>Salerm</strong> — calidad que se nota en cada servicio.</p>
+    <p>Cada visita a Kaba es una experiencia: conversamos, reímos, y trabajamos juntas para lograr el look que te haga sentir espectacular. Porque cuando te ves bien, todo cambia.</p>
+    <div class="about-name">Karla Bastidas</div>
+    <div class="about-role">@kaba_karlita · Fundadora & Estilista Profesional</div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIAL ─── -->
+<section class="testimonial-spotlight">
+  <div class="testimonial-spotlight-inner fade-in">
+    <div class="testimonial-spotlight-text">
+      "Un cabello que impacta no solo cambia tu look… cambia tu energía. En Kaba no solo transformamos tu cabello — transformamos cómo te sientes."
+    </div>
+    <div class="testimonial-spotlight-author">
+      <div class="author-avatar">K</div>
+      <div>
+        <div class="author-name">Karla Bastidas</div>
+        <div class="author-detail">@kaba_karlita · Fundadora KABA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<section class="cta-banner">
+  <h2 class="cta-banner-title fade-in">
+    ¿Lista para tu <em>transformación</em>? 🌟
+  </h2>
+  <p class="cta-banner-sub fade-in">
+    No dejes para mañana lo lindo que puedes sentirte hoy.
+  </p>
+  <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="btn-primary fade-in" style="background:#25D366;color:white;">
+    💬 Agendar por WhatsApp
+  </a>
+</section>
+
+<!-- ─── MAPA ─── -->
+<div class="map-mini">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.7!2d-70.6763!3d-33.4971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c098b0e2a5a5%3A0x0!2sCarelmapu%202402%2C%20Pedro%20Aguirre%20Cerda%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1712000000000!5m2!1ses!2scl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<!-- ─── CLIENT TESTIMONIALS ─── -->
+<section class="client-testimonials">
+  <div class="featured-header fade-in">
+    <div class="section-tag center">@kaba_peluqueria</div>
+    <h2 class="section-title">Lo que dice la gente de <em>Kaba</em> 💬</h2>
+    <p class="section-sub">Comentarios reales de nuestras clientas en Instagram ❤️</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-quote-mark">❝</div>
+      <p class="testimonial-text">100% recomendado. Excelente servicio ❤️</p>
+      <div class="testimonial-author">
+        <span class="testimonial-username">@marianelolivares</span>
+        <svg class="testimonial-ig-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-quote-mark">❝</div>
+      <p class="testimonial-text">1000% recomendable y confiable ❣️</p>
+      <div class="testimonial-author">
+        <span class="testimonial-username">@creaciones_.suyai</span>
+        <svg class="testimonial-ig-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-quote-mark">❝</div>
+      <p class="testimonial-text">Me encantooo 😍💗💗</p>
+      <div class="testimonial-author">
+        <span class="testimonial-username">@anemonnna</span>
+        <svg class="testimonial-ig-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-quote-mark">❝</div>
+      <p class="testimonial-text">Hermoso 😍☺️</p>
+      <div class="testimonial-author">
+        <span class="testimonial-username">@mary_reka_</span>
+        <svg class="testimonial-ig-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-quote-mark">❝</div>
+      <p class="testimonial-text">Aaaay que hermosoooo, no me tientes jaajajaja</p>
+      <div class="testimonial-author">
+        <span class="testimonial-username">@susanallday</span>
+        <svg class="testimonial-ig-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">KABA</span>
+      <p class="footer-brand-desc">Peluquería y estilismo profesional por Karla Bastidas. Especialistas en cortes personalizados, coloración, manicure y más en Pedro Aguirre Cerda, Santiago.</p>
+      <div style="margin-top:1.5rem">
+        <a href="https://www.instagram.com/kaba_peluqueria/" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">📸 @kaba_peluqueria</a><br>
+        <a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">🎵 @kaba_karlita</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="/servicios/#cortes">Cortes</a></li>
+        <li><a href="/servicios/#coloracion">Coloración</a></li>
+        <li><a href="/servicios/#alisados">Alisados & Permanentes</a></li>
+        <li><a href="/servicios/#peinados">Peinados</a></li>
+        <li><a href="/servicios/#unas">Manicure & Pedicure</a></li>
+        <li><a href="/servicios/#tratamientos">Tratamientos</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Enlaces</div>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/cortes/">Cortes</a></li>
+        <li><a href="/galeria/">Galería</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="/contacto/">Ubicación</a></li>
+        <li><a href="/contacto/">Horarios</a></li>
+        <li><a href="https://www.instagram.com/kaba_peluqueria/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/people/Peluquer%C3%ADa-Kaba/100063737491420/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank">TikTok</a></li>
+        <li><a href="https://wa.me/56929710382" target="_blank">WhatsApp</a></li>
+      </ul>
+      <div style="margin-top:2rem">
+        <div class="footer-col-title">Horario</div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.25);line-height:1.8">
+          Lun–Sáb: 08:00 – 19:00<br>
+          Domingo: Cerrado
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 KABA Peluquería · Karla Bastidas · Santiago, Chile</span>
+    <span class="footer-credit">Sitio web creado por <a href="https://atomostudio.dev">Átomo Studio</a></span>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOTANTE ─── -->
+<a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20KABA." target="_blank" class="wa-float" title="Reservar cita por WhatsApp">
+  <div class="wa-tooltip">Reservar cita ahora ✨</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="js/main.js"></script>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "KABA Peluquería",
+  "image": "https://kaba.atomostudio.dev/img/logo-oficial.webp",
+  "url": "https://kaba.atomostudio.dev",
+  "telephone": "+56929710382",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carelmapu 2402",
+    "addressLocality": "Pedro Aguirre Cerda",
+    "addressRegion": "Región Metropolitana",
+    "postalCode": "8490000",
+    "addressCountry": "CL"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "19:00" }
+  ],
+  "founder": { "@type": "Person", "name": "Karla Bastidas" },
+  "priceRange": "$$"
+}
+</script>
+
+</body>
+</html>

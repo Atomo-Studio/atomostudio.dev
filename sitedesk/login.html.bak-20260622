@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Iniciar sesión · SiteDesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<script src="api.js"></script>
+</head>
+<body data-sd-page="login" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);">
+
+<div style="width:100%;max-width:400px;padding:24px;">
+  <div style="text-align:center;margin-bottom:28px;">
+    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" style="margin-bottom:12px;">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+      <rect x="3" y="6" width="26" height="20" rx="4" fill="url(#lg)"/>
+      <path d="M8 13h16M8 17h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <h1 style="font-size:22px;font-weight:700;margin-bottom:6px;">SiteDesk</h1>
+    <p style="font-size:13.5px;color:var(--text2);">Usa la misma cuenta que Geo App</p>
+  </div>
+
+  <form id="sd-login-form" class="card" style="padding:24px;display:flex;flex-direction:column;gap:14px;">
+    <div class="form-row" style="margin:0;">
+      <div class="form-label">Email</div>
+      <input class="input" type="email" name="email" required autocomplete="email" placeholder="tu@email.com"/>
+    </div>
+    <div class="form-row" style="margin:0;">
+      <div class="form-label">Contraseña</div>
+      <input class="input" type="password" name="password" required autocomplete="current-password" placeholder="••••••••"/>
+    </div>
+    <div id="sd-login-error" hidden style="font-size:13px;color:#b91c1c;padding:8px 12px;background:#fef2f2;border-radius:8px;"></div>
+    <button type="submit" class="btn btn-primary" style="justify-content:center;margin-top:4px;">Iniciar sesión</button>
+  </form>
+
+  <p style="text-align:center;margin-top:16px;font-size:12.5px;color:var(--muted);">
+    ¿No tienes cuenta? Regístrate en <a href="../Geo%20App%20Live.html" style="color:var(--blue);">Geo App</a>
+  </p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortes Personalizados · KABA Peluquería | Karla Bastidas</title>
+<meta name="description" content="Cortes personalizados para mujer en KABA. Clásicos, capas, asimétricos, flequillo, pixie y diseño creativo. Descubre el corte que nace de ti.">
+<meta name="keywords" content="cortes de cabello mujer, cortes personalizados, capas, asimétricos, flequillo, pixie, Pedro Aguirre Cerda, KABA peluquería">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Cortes Personalizados · KABA Peluquería">
+<meta property="og:description" content="Descubre el corte perfecto para ti. Cortes clásicos, en capas, asimétricos, flequillo, pixie y diseño creativo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kaba.atomostudio.dev/cortes/">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="canonical" href="https://kaba.atomostudio.dev/cortes/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/animations.css">
+
+<style>
+/* ─── CORTES PAGE ─── */
+.cortes-filosofia {
+  padding: 5rem 8vw;
+  background: var(--ivory);
+}
+.filosofia-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  margin-top: 3rem;
+}
+.filosofia-grid::before {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), var(--border), var(--gold));
+}
+.timeline-step {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: white;
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.timeline-step:hover {
+  transform: translateY(-4px);
+  background: var(--blush);
+}
+.step-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.timeline-step:hover .step-number {
+  transform: scale(1.1);
+  color: var(--gold);
+}
+.step-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+}
+.step-desc {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* ─── TIPOS DE CORTE ─── */
+.cortes-grid {
+  padding: 5rem 8vw;
+  background: var(--beige-base);
+}
+.grid-cortes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.corte-card {
+  background: white;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.corte-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+.corte-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+.corte-ideal {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.corte-card:hover .corte-ideal {
+  color: var(--gold);
+}
+.corte-desc {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* ─── ANTES/DESPUÉS ─── */
+.cortes-beforeafter {
+  padding: 5rem 8vw;
+  background: var(--ivory);
+}
+.ba-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.ba-card {
+  background: var(--dark-warm);
+  padding: 3rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.ba-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--ivory);
+  margin-bottom: 1.5rem;
+}
+.ba-card .btn-outline {
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+/* ─── CIERRE ─── */
+.cortes-cierre {
+  padding: 5rem 8vw;
+  background: var(--cream-warm);
+  text-align: center;
+}
+.cortes-cierre blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-style: italic;
+  color: var(--text-dark);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+.cortes-cierre .sub-cita {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-bottom: 2rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .grid-cortes { grid-template-columns: repeat(2, 1fr); }
+  .ba-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .filosofia-grid { grid-template-columns: 1fr; }
+  .filosofia-grid::before { display: none; }
+  .timeline-step { padding: 1.5rem; }
+  .timeline-step {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border);
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
+  .timeline-step .step-number { grid-column: 1; grid-row: 1/3; margin-bottom: 0; }
+  .timeline-step .step-icon { grid-column: 1; grid-row: 3; margin-bottom: 0; }
+  .timeline-step .step-title { grid-column: 2; grid-row: 1; }
+  .timeline-step .step-desc { grid-column: 2; grid-row: 2; }
+  .grid-cortes { grid-template-columns: 1fr; }
+  .cortes-filosofia,
+  .cortes-grid,
+  .cortes-beforeafter,
+  .cortes-cierre { padding: 3rem 6vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../img/logo-oficial.webp" alt="KABA Peluquería" width="180" height="50" class="nav-logo-img" loading="eager">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/servicios/">Servicios</a></li>
+    <li><a href="/cortes/" class="active">Cortes</a></li>
+    <li><a href="/galeria/">Galería</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+    <li><a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20hora%20en%20KABA." target="_blank" class="nav-cta">Reservar Cita</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" onclick="toggleMenu()">✕</button>
+  <a href="/" onclick="toggleMenu()">Inicio</a>
+  <a href="/servicios/" onclick="toggleMenu()">Servicios</a>
+  <a href="/cortes/" onclick="toggleMenu()" class="active">Cortes</a>
+  <a href="/galeria/" onclick="toggleMenu()">Galería</a>
+  <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+  <a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20hora%20en%20KABA." target="_blank" style="color:#25D366;">📱 Reservar Cita</a>
+</div>
+
+<!-- ─── PAGE HEADER ─── -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a>
+    <span>/</span>
+    <span class="current">Cortes</span>
+  </div>
+  <div class="page-header-content">
+    <h1 class="page-header-title">El corte perfecto existe —<br>y es el que <em>nace de ti</em></h1>
+    <p class="page-header-sub" style="font-style:italic;opacity:0.6">"Un cabello que impacta no solo cambia tu look… cambia tu energía."</p>
+  </div>
+</div>
+
+<!-- ─── FILOSOFÍA ─── -->
+<section class="cortes-filosofia">
+  <div class="section-tag center fade-in">Nuestra Filosofía</div>
+  <h2 class="section-title fade-in" style="text-align:center;max-width:600px;margin:0 auto 1.5rem">Cortes con <em>propósito</em></h2>
+  <p class="section-sub fade-in" style="text-align:center;margin:0 auto 2rem">
+    No creemos en los cortes en serie. Cada mujer tiene una historia, un rostro, una personalidad. Y el corte ideal es el que realza todo eso.
+  </p>
+
+  <div class="filosofia-grid">
+    <div class="timeline-step fade-in">
+      <div class="step-number">01</div>
+      <div class="step-icon">🙋‍♀️</div>
+      <h3 class="step-title">Te escuchamos</h3>
+      <p class="step-desc">¿Qué look tienes en mente? ¿Cómo te gusta peinarte en el día a día? ¿Cuánto tiempo le dedicas a tu pelo?</p>
+    </div>
+    <div class="timeline-step fade-in">
+      <div class="step-number">02</div>
+      <div class="step-icon">👀</div>
+      <h3 class="step-title">Analizamos</h3>
+      <p class="step-desc">Tu tipo de cabello, la forma de tu rostro, tu estilo de vida. Cada detalle importa para diseñar tu look ideal.</p>
+    </div>
+    <div class="timeline-step fade-in">
+      <div class="step-number">03</div>
+      <div class="step-icon">✂️</div>
+      <h3 class="step-title">Diseñamos</h3>
+      <p class="step-desc">Un corte hecho a tu medida, no al revés. Técnica profesional aplicada con precisión artesanal.</p>
+    </div>
+    <div class="timeline-step fade-in">
+      <div class="step-number">04</div>
+      <div class="step-icon">✨</div>
+      <h3 class="step-title">Te transformamos</h3>
+      <p class="step-desc">El resultado: un look que te queda bien, te queda cómodo y te hace brillar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TIPOS DE CORTE ─── -->
+<section class="cortes-grid">
+  <div class="section-tag center fade-in">Tipos de Corte</div>
+  <h2 class="section-title fade-in" style="text-align:center">Encuentra el <em>tuyo</em></h2>
+
+  <div style="text-align:center;margin-bottom:2rem" class="fade-in">
+    <p style="font-size:0.9rem;color:var(--text-soft);line-height:1.8">
+      💇‍♀️ <strong>Corte dama: $9.000</strong> &nbsp;·&nbsp; 💇 <strong>Corte varón: $8.500</strong>
+    </p>
+    <p style="font-size:0.78rem;color:var(--text-soft);margin-top:0.5rem">Karla realiza todos los tipos de corte — clásico, capas, asimétrico, flequillo, pixie y diseño creativo.</p>
+  </div>
+
+  <div class="grid-cortes">
+    <div class="corte-card fade-in">
+      <h3>Cortes Clásicos</h3>
+      <div class="corte-ideal">✦ Ideal para looks atemporales</div>
+      <p class="corte-desc">Elegantes y fáciles de mantener. El corte que nunca pasa de moda, perfecto para quienes buscan un estilo pulcro y sofisticado en el día a día.</p>
+    </div>
+    <div class="corte-card fade-in">
+      <h3>Cortes en Capas</h3>
+      <div class="corte-ideal">✦ Ideal para movimiento y volumen</div>
+      <p class="corte-desc">Capas estratégicas que aportan textura, movimiento y volumen. Perfecto para cabello largo o semi-largo que necesita vida y cuerpo.</p>
+    </div>
+    <div class="corte-card fade-in">
+      <h3>Cortes Asimétricos</h3>
+      <div class="corte-ideal">✦ Ideal para personalidad y actitud</div>
+      <p class="corte-desc">Un estilo contemporáneo con carácter. Líneas asimétricas que marcan la diferencia y reflejan una personalidad audaz y segura.</p>
+    </div>
+    <div class="corte-card fade-in">
+      <h3>Cortes con Flequillo</h3>
+      <div class="corte-ideal">✦ Ideal para enmarcar el rostro</div>
+      <p class="corte-desc">El flequillo perfecto suaviza facciones y realza tu mirada. Recto, desfilado, cortina o lateral — hay un flequillo para cada rostro.</p>
+    </div>
+    <div class="corte-card fade-in">
+      <h3>Cortes Cortos / Pixie</h3>
+      <div class="corte-ideal">✦ Ideal para un cambio radical</div>
+      <p class="corte-desc">Un corte con mucha personalidad. El pixie es libertad, actitud y estilo en su máxima expresión. ¿Te animas?</p>
+    </div>
+    <div class="corte-card fade-in">
+      <h3>Corte + Diseño Creativo</h3>
+      <div class="corte-ideal">✦ Ideal para algo único</div>
+      <p class="corte-desc">Líneas, texturas, degradados y diseños personalizados. Para las que quieren algo diferente, con identidad y sello propio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CIERRE INSPIRACIONAL ─── -->
+<section class="cortes-cierre">
+  <blockquote class="fade-in">"El amor propio es el comienzo de todo lo bonito en tu vida."</blockquote>
+  <p class="sub-cita fade-in">Y un buen corte es una excelente forma de empezar. 💇‍♀️</p>
+  <a href="https://wa.me/56929710382?text=Hola!%20Quiero%20agendar%20una%20consulta%20para%20un%20corte%20en%20KABA." target="_blank" class="btn-primary fade-in">Agenda tu consulta</a>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">KABA</span>
+      <p class="footer-brand-desc">Peluquería y estilismo profesional por Karla Bastidas. Especialistas en cortes personalizados, coloración y uñas en Pedro Aguirre Cerda, Santiago.</p>
+      <div style="margin-top:1.5rem">
+        <a href="https://wa.me/56929710382" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">📱 +56 9 2971 0382</a><br>
+        <a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank" style="color:rgba(255,255,255,0.3);font-size:0.7rem;text-decoration:none;letter-spacing:0.1em">🎵 @kaba_karlita</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="/servicios/#cortes">Cortes</a></li>
+        <li><a href="/servicios/#coloracion">Coloración</a></li>
+        <li><a href="/servicios/#alisados">Alisados & Permanentes</a></li>
+        <li><a href="/servicios/#peinados">Peinados</a></li>
+        <li><a href="/servicios/#unas">Manicure & Pedicure</a></li>
+        <li><a href="/servicios/#tratamientos">Tratamientos</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Enlaces</div>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/cortes/">Cortes</a></li>
+        <li><a href="/galeria/">Galería</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="/contacto/">Ubicación</a></li>
+        <li><a href="/contacto/">Horarios</a></li>
+        <li><a href="https://wa.me/56929710382" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/kaba_peluqueria/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@kaba_karlita?lang=es-419" target="_blank">TikTok</a></li>
+      </ul>
+      <div style="margin-top:2rem">
+        <div class="footer-col-title">Horario</div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.25);line-height:1.8">
+          Lun–Sáb: 08:00 – 19:00<br>
+          Domingo: Cerrado
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 KABA Peluquería · Karla Bastidas · Santiago, Chile</span>
+    <span class="footer-credit">Sitio web creado por <a href="https://atomostudio.dev">Átomo Studio</a></span>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOTANTE ─── -->
+<a href="https://wa.me/56929710382?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20hora%20en%20KABA." target="_blank" class="wa-float" title="Reservar cita por WhatsApp">
+  <div class="wa-tooltip">Reservar cita ahora ✨</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>

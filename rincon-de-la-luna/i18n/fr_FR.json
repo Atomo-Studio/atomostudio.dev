@@ -1,0 +1,18 @@
+{
+  "el_rincón_de_la_luna_tienda_local_en_conchalí": "El Rincón de la Luna — Tienda Local en Conchalí",
+  "margin_0_padding_0_box_sizing_border_box_body_font_family": "*{margin:0;padding:0;box-sizing:border-box}\nbody{font-family:Inter,sans-serif;background:#06060c;color:#eeeef2}\n::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#a855f744;border-radius:2px}\n.nav{position:sticky;top:0;z-index:100;background:rgba(6,6,12,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04);height:60px;display:flex;align-items:center}\n.ni{max-width:1100px;margin:0 auto;padding:0 20px;width:100%;display:flex;align-items:center;justify-content:space-between}\n.nav-links{display:flex;gap:16px;align-items:center}\n.nav-links a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none}\n.nav-links a:hover{color:#fff}\n.bp{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;background:#a855f7;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;text-decoration:none}\n.bp:hover{filter:brightness(1.12);transform:translateY(-2px)}\n.hero{min-height:70vh;display:flex;align-items:center;padding:40px 20px}\n.hi{max-width:900px;margin:0 auto;text-align:center}\n.hero h1{font-family:Space Grotesk,sans-serif;font-size:44px;font-weight:700;line-height:1.1;margin-bottom:14px}\n.ac{color:#a855f7}\n.sg{max-width:1100px;margin:0 auto;padding:60px 20px;width:100%}\n.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}\n.card{background:#121220;border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:24px;text-align:center;transition:all .3s;text-decoration:none;color:inherit;display:block}\n.card:hover{transform:translateY(-4px);border-color:#a855f733}\n.wf{position:fixed;bottom:20px;right:20px;z-index:99;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.3);text-decoration:none;color:#fff;font-size:22px}\n.wf:hover{transform:scale(1.1)}\n.fu{opacity:0;transform:translateY(20px);transition:all .6s ease-out}\n.fu.vis{opacity:1;transform:translateY(0)}\n@media(max-width:768px){.cg{grid-template-columns:1fr}}",
+  "inicio": "accueil",
+  "productos": "produits",
+  "servicios": "services",
+  "contacto": "contact",
+  "conchalí": "Conchalí",
+  "la_palmilla_3940_conchalí": "La Palmilla 3940, Conchalí",
+  "nosotros": "nosotros",
+  "ubicación": "Ubicación",
+  "atención": "Atención",
+  "local": "Local",
+  "confianza": "Confianza",
+  "años_en_el_rubro": "Años en el rubro",
+  "átomo_studio": "Átomo Studio",
+  "document_queryselectorall_fu_foreach_e_new_intersection": "document.querySelectorAll(\".fu\").forEach(e=>new IntersectionObserver(es=>es.forEach(ee=>ee.isIntersecting&&ee.target.classList.add(\"vis\"))).observe(e))"
+}

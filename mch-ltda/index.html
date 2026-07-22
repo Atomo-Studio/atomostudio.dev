@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>" />
+<title data-i18n="mch_ltda_servicios_industriales">MCH Ltda. — Servicios Industriales</title>
+<meta name="description" content="Empresa de confianza en productos y soluciones para la industria en Conchalí. Calle Aviador Acevedo 1580, Conchalí" />
+<meta name="theme-color" content="#06060c" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://mch-ltda.cl/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MCH Ltda. · Conchalí" />
+<meta property="og:description" content="Empresa de confianza en productos y soluciones para la industria en Conchalí. Calle Aviador Acevedo 1580, Conchalí" />
+<meta property="og:locale" content="es_CL" />
+<meta property="og:site_name" content="Átomo Studio" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="./base.css" />
+<style data-i18n="root_accent_1_0891b2_accent_2_0891b2_ac">
+:root {
+  --accent-1: #0891b2;
+  --accent-2: #0891b2;
+  --accent-light: #0891b2;
+  --accent-bg: rgba(8,145,178,0.08);
+  --bg-card: #121220;
+  --text-muted: rgba(255,255,255,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:#06060c;
+  color:#eeeef2;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#06060c}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.gradient-accent{
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.gradient-bg{
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+}
+.section-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:20px;font-size:12px;
+  background:var(--accent-bg);color:var(--accent-light);
+  border:1px solid rgba(255,255,255,0.06);
+  font-weight:500;letter-spacing:0.5px;
+}
+.section-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:700;line-height:1.15;
+}
+.section-subtitle{
+  color:var(--text-muted);
+  max-width:600px;margin:0 auto 48px;
+  text-align:center;font-size:0.95rem;line-height:1.7;
+}
+img{max-width:100%;display:block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:12px;
+  font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;
+  font-family:'Space Grotesk',sans-serif;transition:all .3s;border:none;}
+.btn-primary{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#fff;box-shadow:0 4px 20px rgba(8,145,178,0.25);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(8,145,178,0.35);}
+.btn-secondary{background:rgba(255,255,255,0.04);color:#eeeef2;border:1px solid rgba(255,255,255,0.08);}
+.btn-secondary:hover{background:rgba(255,255,255,0.08);}
+.btn-whatsapp{background:#25D366;color:#fff;}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.35);}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(6,6,12,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;}
+.nav-logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+  font-size:12px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center;}
+.nav-links a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .3s;font-weight:500;}
+.nav-links a:hover{color:#fff;}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-toggle span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:64px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#06060c 0%,#0c0c1a 50%,#06060c 100%);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 40%,rgba(8,145,178,0.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;width:100%;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;line-height:1.1;margin:16px 0;}
+.hero p{font-size:1.05rem;color:var(--text-muted);line-height:1.7;max-width:500px;margin-bottom:32px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;}
+.hero-stats{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap;}
+.hero-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.hero-visual{
+  border-radius:16px;overflow:hidden;
+  aspect-ratio:4/3;
+  background:linear-gradient(135deg,#0c0c1a,#0e0e18);
+  border:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+}
+.hero-visual-icon{font-size:80px;opacity:0.15;}
+.hero-visual-text{font-size:14px;color:rgba(255,255,255,0.2);margin-top:8px;}
+.card{
+  background:var(--bg-card);border:1px solid rgba(255,255,255,0.04);
+  border-radius:16px;padding:28px;
+  transition:all .3s;
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(8,145,178,0.15);}
+.card-icon{font-size:2rem;margin-bottom:12px;color:var(--accent-light);}
+.card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;margin-bottom:8px;}
+.card p{font-size:0.85rem;color:var(--text-muted);line-height:1.6;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.contact-item{display:flex;align-items:center;gap:16px;padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);margin-bottom:12px;text-decoration:none;color:#eeeef2;}
+.contact-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-label{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;}
+.contact-value{font-size:14px;font-weight:500;}
+.contact-small{font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px;}
+.map-placeholder{
+  background:linear-gradient(135deg,#0c0c1a,#0e0e18);border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;min-height:300px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+}
+.map-placeholder-icon{font-size:40px;color:rgba(255,255,255,0.15);margin-bottom:12px;}
+.map-placeholder-text{font-size:13px;color:rgba(255,255,255,0.3);}
+.map-iframe{width:100%;border:none;border-radius:16px;min-height:300px;}
+.whatsapp-float{
+  position:fixed;bottom:24px;right:24px;z-index:50;
+  width:56px;height:56px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.4);
+  transition:all .3s;cursor:pointer;text-decoration:none;color:#fff;font-size:24px;
+}
+.whatsapp-float:hover{transform:scale(1.1);}
+.social-links{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+.social-link{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.5);font-size:18px;text-decoration:none;
+  transition:all .3s;
+}
+.social-link:hover{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#fff;transform:translateY(-2px);}
+footer{border-top:1px solid rgba(255,255,255,0.04);padding:48px 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand-desc{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:300px;margin-top:12px;}
+.footer-col-title{font-size:11px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;font-weight:600;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:8px;}
+.footer-links a{font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color .3s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.3);}
+.footer-bottom a{color:var(--accent-light);text-decoration:none;}
+.fade-up{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1);}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+section{padding:96px 0;}
+.horarios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px;}
+.horario-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;text-align:center;}
+.horario-dia{font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.horario-hora{font-size:15px;font-weight:600;font-family:'Space Grotesk',sans-serif;}
+@media(max-width:768px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr;gap:32px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(6,6,12,0.98);flex-direction:column;padding:20px 24px;gap:12px;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:flex;}
+  section{padding:64px 0;}
+  .hero{min-height:auto;padding:120px 0 60px;}
+  .hero-stats{gap:20px;}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr;}
+  .hero-actions{flex-direction:column;}
+  .hero-actions .btn{width:100%;justify-content:center;}
+}
+</style>
+
+  <link rel="alternate" hreflang="x-default" href="https://atomostudio.dev/sites/mch-ltda/">
+  <link rel="alternate" hreflang="en-US" href="https://atomostudio.dev/sites/mch-ltda/?lang=en_US">
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-icon">🔩</span>
+      <span data-i18n="mch_ltda">MCH Ltda.</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicios" data-i18n="servicios">Servicios</a></li>
+      <li><a href="#nosotros" data-i18n="nosotros">Nosotros</a></li>
+      <li><a href="#horarios" data-i18n="horarios">Horarios</a></li>
+      <li><a href="#contacto" data-i18n="contacto">Contacto</a></li>
+      <li><a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" class="btn btn-whatsapp" style="padding:8px 18px;font-size:12px"><i class="fab fa-whatsapp"></i> Contactar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <span class="section-tag"><i class="fas fa-check-circle"></i> Productos Industriales</span>
+        <h1>MCH Ltda.<br><span class="gradient-accent" data-i18n="conchalí">🇨🇱 Conchalí</span></h1>
+        <p data-i18n="empresa_de_confianza_en_productos_y_soluciones_para_la_indus">Empresa de confianza en productos y soluciones para la industria en Conchalí.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Consultar ahora</a>
+          <a href="#servicios" class="btn btn-secondary">Ver servicios <i class="fas fa-arrow-down"></i></a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-num gradient-accent">10+</div><div class="hero-stat-label" data-i18n="años_de_experiencia">Años de experiencia</div></div>
+          <div><div class="hero-stat-num gradient-accent">100%</div><div class="hero-stat-label" data-i18n="satisfacción">Satisfacción</div></div>
+        </div>
+      </div>
+      <div class="hero-visual fade-up" style="transition-delay:.1s">
+        <div class="hero-visual-icon"><span>🔩</span></div>
+        <div class="hero-visual-text" data-i18n="mch_ltda">MCH Ltda.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-tag"><i class="fas fa-star"></i> SERVICIOS</span>
+      <h2 class="section-title mt-4 mb-2">Nuestros <span class="gradient-accent" data-i18n="servicios">servicios</span></h2>
+      <p class="section-subtitle" data-i18n="todo_lo_que_ofrecemos_para_ti">Todo lo que ofrecemos para ti.</p>
+    </div>
+    <div class="services-grid">
+      <div class="card fade-up">
+        <div class="card-icon"><i class="fas fa-cog"></i></div>
+        <h3 data-i18n="venta_industrial">Venta Industrial</h3>
+        <p data-i18n="amplio_stock_de_productos_para_la_industria">Amplio stock de productos para la industria.</p>
+      </div>
+      <div class="card fade-up" style="transition-delay:.1s">
+        <div class="card-icon"><i class="fas fa-cog"></i></div>
+        <h3 data-i18n="asesoría_comercial">Asesoría Comercial</h3>
+        <p data-i18n="te_ayudamos_a_encontrar_lo_que_necesitas">Te ayudamos a encontrar lo que necesitas.</p>
+      </div>
+      <div class="card fade-up" style="transition-delay:.2s">
+        <div class="card-icon"><i class="fas fa-cog"></i></div>
+        <h3 data-i18n="despacho">Despacho</h3>
+        <p data-i18n="entrega_oportuna_en_conchalí_y_zonas_aledañas">Entrega oportuna en Conchalí y zonas aledañas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros" style="background:rgba(14,14,24,0.5)">
+  <div class="container">
+    <div class="grid lg:grid-cols-2 gap-16 items-center" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div class="fade-up">
+        <span class="section-tag"><i class="fas fa-info-circle"></i> NOSOTROS</span>
+        <h2 class="section-title mt-4 mb-6">Nuestra <span class="gradient-accent" data-i18n="historia">historia</span></h2>
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--text-muted)" data-i18n="mch_ltda_es_una_empresa_dedicada_a_la_comercialización_de_p">
+          MCH Ltda. es una empresa dedicada a la comercialización de productos y soluciones para la industria. Nos ubicamos en Calle Aviador Acevedo 1580, Conchalí, con el compromiso de entregar calidad y buen servicio.
+        </p>
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--text-muted);margin-top:16px" data-i18n="nuestra_trayectoria_nos_respalda_trabajamos_para_ser_tu_mej">
+          Nuestra trayectoria nos respalda. Trabajamos para ser tu mejor opción en productos industriales, con atención personalizada y precios competitivos.
+        </p>
+        <div style="display:flex;gap:24px;margin-top:24px;flex-wrap:wrap">
+          <div>
+            <div class="hero-stat-num gradient-accent" style="font-size:1.5rem">📍</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px" data-i18n="conchalí">Conchalí</div>
+          </div>
+          <div>
+            <div class="hero-stat-num gradient-accent" style="font-size:1.5rem">💬</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px" data-i18n="atención_local">Atención Local</div>
+          </div>
+          <div>
+            <div class="hero-stat-num gradient-accent" style="font-size:1.5rem">🤝</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px" data-i18n="confianza">Confianza</div>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius:16px;overflow:hidden;transition-delay:.1s" class="fade-up">
+        <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#0c0c1a,#0e0e18);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;flex-direction:column">
+          <div style="font-size:60px;opacity:0.15">🔩</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.15);margin-top:8px" data-i18n="mch_ltda">MCH Ltda.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="section-tag"><i class="fas fa-clock"></i> HORARIOS</span>
+      <h2 class="section-title mt-4 mb-2">Horarios de <span class="gradient-accent" data-i18n="atención">atención</span></h2>
+      <p class="section-subtitle" data-i18n="estamos_listos_para_atenderte">Estamos listos para atenderte.</p>
+    </div>
+    <div class="horarios-grid" style="max-width:600px;margin:0 auto">
+      <div class="horario-item fade-up">
+        <div class="horario-dia" data-i18n="lunes_a_viernes">Lunes a Viernes</div>
+        <div class="horario-hora gradient-accent" data-i18n="09_00_19_00">09:00 – 19:00</div>
+      </div>
+      <div class="horario-item fade-up" style="transition-delay:.1s">
+        <div class="horario-dia" data-i18n="sábado">Sábado</div>
+        <div class="horario-hora gradient-accent" data-i18n="09_00_14_00">09:00 – 14:00</div>
+      </div>
+      <div class="horario-item fade-up" style="transition-delay:.2s">
+        <div class="horario-dia" data-i18n="domingo">Domingo</div>
+        <div class="horario-hora gradient-accent" data-i18n="cerrado">Cerrado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="background:rgba(14,14,24,0.3)">
+  <div class="container">
+    <div class="fade-up text-center mb-12">
+      <span class="section-tag"><i class="fas fa-phone-alt"></i> CONTACTO</span>
+      <h2 class="section-title mt-4">Visítanos o <span class="gradient-accent" data-i18n="escríbenos">escríbenos</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="contact-item">
+          <div class="contact-icon" style="background:rgba(8,145,178,0.08);color:var(--accent-light)"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-label" data-i18n="dirección">Dirección</div>
+            <div class="contact-value" data-i18n="calle_aviador_acevedo_1580_conchalí">Calle Aviador Acevedo 1580, Conchalí</div>
+            <div class="contact-small" data-i18n="conchalí_santiago">Conchalí, Santiago</div>
+          </div>
+        </div>
+        <a href="tel:+5627347253" class="contact-item">
+          <div class="contact-icon" style="background:rgba(8,145,178,0.08);color:var(--accent-light)"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-label" data-i18n="teléfono">Teléfono</div>
+            <div class="contact-value">(2) 2734 7253</div>
+            <div class="contact-small" data-i18n="llamada_directa">Llamada directa</div>
+          </div>
+        </a>
+        <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" class="contact-item">
+          <div class="contact-icon" style="background:rgba(37,211,102,0.08);color:#25D366"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div class="contact-label" data-i18n="whatsapp">WhatsApp</div>
+            <div class="contact-value" style="color:#25D366">+56 9 7399 4504</div>
+            <div class="contact-small" data-i18n="consulta_aquí">Consulta aquí</div>
+          </div>
+        </a>
+        <div class="mt-6">
+          <div class="contact-label mb-3" style="margin-bottom:12px" data-i18n="síguenos">Síguenos</div>
+          <div class="social-links">
+            <a href="#" class="social-link" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.1s">
+        <a href="https://www.google.com/maps/search/?api=1&query=Calle+Aviador+Acevedo+1580,+Conchalí" target="_blank" style="text-decoration:none">
+          <div class="map-placeholder">
+            <div class="map-placeholder-icon"><i class="fas fa-map-marked-alt" style="color:var(--accent-light)"></i></div>
+            <div class="map-placeholder-text" data-i18n="ver_en_google_maps">Ver en Google Maps</div>
+            <div style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.2)" data-i18n="calle_aviador_acevedo_1580_conchalí">Calle Aviador Acevedo 1580, Conchalí</div>
+            <div style="margin-top:12px"><span class="btn btn-primary" style="padding:10px 24px;font-size:13px"><i class="fas fa-external-link-alt"></i> Abrir Maps</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center">
+  <div class="container fade-up">
+    <h2 class="section-title mb-4">¿Listo para <span class="gradient-accent" data-i18n="consultar">consultar</span>?</h2>
+    <p style="color:var(--text-muted);max-width:500px;margin:0 auto 32px;font-size:0.95rem" data-i18n="contáctanos_hoy_y_descubre_por_qué_somos_la_mejor_opción_en">
+      Contáctanos hoy y descubre por qué somos la mejor opción en Conchalí.
+    </p>
+    <a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" class="btn btn-whatsapp" style="padding:16px 40px;font-size:16px">
+      <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo" style="margin-bottom:12px">
+          <span class="nav-logo-icon">🔩</span>
+          <span data-i18n="mch_ltda">MCH Ltda.</span>
+        </div>
+        <p class="footer-brand-desc" data-i18n="empresa_de_confianza_en_productos_y_soluciones_para_la_indus">Empresa de confianza en productos y soluciones para la industria en Conchalí.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="enlaces">Enlaces</div>
+        <ul class="footer-links">
+          <li><a href="#servicios" data-i18n="servicios">Servicios</a></li>
+          <li><a href="#nosotros" data-i18n="nosotros">Nosotros</a></li>
+          <li><a href="#horarios" data-i18n="horarios">Horarios</a></li>
+          <li><a href="#contacto" data-i18n="contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="contacto">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Calle+Aviador+Acevedo+1580,+Conchalí" target="_blank" data-i18n="calle_aviador_acevedo_1580_conchalí">Calle Aviador Acevedo 1580, Conchalí</a></li>
+          <li><a href="tel:+5627347253">(2) 2734 7253</a></li>
+          <li><a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" data-i18n="whatsapp">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MCH Ltda. · Hecho con ❤️ por <a href="https://atomo-studio.cl" data-i18n="átomo_studio">Átomo Studio</a></p>
+    </div>
+  </div>
+  <div style="margin-top:12px"><a href="https://www.instagram.com/atomostudio.cl/" target="_blank" style="color:rgba(255,255,255,0.3);text-decoration:none;font-size:12px" data-i18n="instagram">📸 Instagram</a></div>
+</footer>
+
+<a href="https://wa.me/56973994504?text=Hola!%20Quiero%20consultar" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="./app.js"></script>
+<script data-i18n="mobile_menu_toggle_const_toggle_document_getele">
+// ─── Mobile menu toggle ───
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+if(toggle && links){
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+}
+
+// ─── Fade-up observer ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<script src="../js/i18n.js"></script>
+</body>
+</html>

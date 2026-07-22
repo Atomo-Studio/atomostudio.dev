@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>" />
+  <title>Guillaume Mario Lagier — Desarrollador IA · Santiago, Chile</title>
+  <meta name="description" content="Desarrollo web, aplicaciones con IA y automatización. Creador de Geo OS. Santiago, Chile.">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guillaume Mario Lagier — Desarrollador IA · Santiago, Chile" />
+  <meta property="og:description" content="Desarrollo web, aplicaciones con IA y automatización. Creador de Geo OS. Santiago, Chile.">
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Átomo Studio" />
+  <meta name="theme-color" content="#06060c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Cabinet+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --bg2: #101010;
+      --bg3: #141414;
+      --surface: #1a1a1a;
+      --border: #222;
+      --border-light: #2a2a2a;
+      --text: #f0f0f0;
+      --text-dim: #888;
+      --text-muted: #444;
+      --gold: #d4a843;
+      --gold-light: #e8c46a;
+      --gold-dim: rgba(212,168,67,0.15);
+      --green: #4ade80;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN overlay ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(9,9,9,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    .nav-logo span { color: var(--gold); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--gold);
+      color: #000;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      text-align: center;
+    }
+
+    /* Profile card */
+    .profile-card {
+      background: var(--bg2);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+      max-width: 680px;
+      width: 100%;
+      animation: slideDown 0.8s ease forwards;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .profile-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #d4a843, #e8c46a, #c4882a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #000;
+      position: relative;
+    }
+    .profile-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), transparent, var(--gold));
+      z-index: -1;
+    }
+    .profile-info { flex: 1; text-align: left; }
+    .profile-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .verified { color: var(--gold); font-size: 1rem; }
+    .profile-handle {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.4rem;
+    }
+    .profile-bio {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+    .profile-bio strong { color: var(--text); }
+    .profile-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pbtn {
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+    }
+    .pbtn-gold { background: var(--gold); color: #000; }
+    .pbtn-gold:hover { background: var(--gold-light); }
+    .pbtn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-light); }
+    .pbtn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .profile-stats {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.8rem;
+    }
+    .pstat-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+    .pstat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Thumbnail strip */
+    .thumb-strip {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+    .thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* Hero title */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--border-light);
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease 0.3s both;
+    }
+    .green-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.9s ease 0.4s both;
+    }
+    .hero-title .italic-gold {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-title .italic-gold-light {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(25px)} to{opacity:1;transform:translateY(0)} }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 520px;
+      margin: 1.5rem auto 2.5rem;
+      animation: fadeUp 0.9s ease 0.5s both;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+    .btn-main {
+      background: var(--gold);
+      color: #000;
+      padding: 0.9rem 2.2rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-main:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,168,67,0.25); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      padding: 0.9rem 2.2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── TICKER ─── */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      background: var(--bg2);
+    }
+    .ticker-track {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    .ticker-dot { color: var(--gold); font-style: normal; font-size: 1.2rem; }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 7rem 3rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .section-h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .section-h2 em { font-style: italic; color: var(--gold); }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+    .service-item {
+      background: var(--bg2);
+      padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-item:hover { background: var(--bg3); }
+    .service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-item:hover::before { transform: scaleX(1); }
+    .service-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 3rem;
+      color: var(--text-muted);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .service-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .service-desc { color: var(--text-dim); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .service-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gold);
+      background: var(--gold-dim);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* ─── GEO OS SECTION ─── */
+    .geo-section { padding: 7rem 3rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .geo-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .geo-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold-dim);
+      border: 1px solid rgba(212,168,67,0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .geo-h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+    }
+    .geo-h2 em { font-style: italic; color: var(--gold); }
+    .geo-p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.9; margin-bottom: 2rem; }
+    .geo-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .geo-pillar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      background: var(--bg);
+      transition: border-color 0.3s;
+    }
+    .geo-pillar:hover { border-color: rgba(212,168,67,0.3); }
+    .gp-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .gp-title { font-weight: 700; font-size: 0.88rem; }
+    .gp-sub { color: var(--text-dim); font-size: 0.78rem; }
+
+    /* Terminal */
+    .geo-terminal {
+      background: #0a0a0a;
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+    }
+    .term-bar {
+      background: var(--surface);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .td-r { background: #ff5f57; }
+    .td-y { background: #febc2e; }
+    .td-g { background: #28c840; }
+    .term-title { color: var(--text-muted); font-size: 0.7rem; margin-left: auto; margin-right: auto; }
+    .term-body { padding: 1.5rem; line-height: 2.1; }
+    .tl { color: var(--text-muted); }
+    .tp { color: var(--gold); }
+    .to { color: #60a5fa; }
+    .ts { color: #4ade80; }
+    .te { color: #f87171; }
+    .tw { color: var(--text-dim); }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--gold);
+      vertical-align: middle;
+      animation: cur 1s step-end infinite;
+    }
+    @keyframes cur { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── METRICS / ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-left { position: sticky; top: 7rem; }
+    .about-avatar-big {
+      width: 220px;
+      height: 220px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #d4a843, #e8c46a, #c4882a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: rgba(0,0,0,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .about-name-big {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    .about-role-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .about-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .metric {
+      background: var(--bg2);
+      padding: 1.2rem;
+    }
+    .metric-num {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem; }
+    .about-text { color: var(--text-dim); font-size: 0.92rem; line-height: 1.9; margin-bottom: 1.5rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tech-tag {
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section { padding: 7rem 3rem; }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+    .contact-big-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+    }
+    .contact-big-text em { font-style: italic; color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 0.4rem;
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+      outline: none;
+      appearance: none;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: var(--gold); }
+    .form-field textarea { resize: none; height: 120px; }
+    .form-field select option { background: var(--bg2); }
+    .btn-submit {
+      background: var(--gold);
+      color: #000;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s;
+      align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* Direct contact */
+    .contact-direct {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .cd-item {
+      background: var(--bg2);
+      padding: 1.8rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .cd-item:hover { background: var(--bg3); }
+    .cd-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .cd-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .cd-value { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+    .footer-logo span { color: var(--gold); font-style: italic; }
+    .footer-text { font-size: 0.78rem; color: var(--text-muted); }
+    .footer-socials { display: flex; gap: 1.5rem; }
+    .footer-socials a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+    .footer-socials a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .profile-card { flex-direction: column; text-align: center; padding: 1.5rem; gap: 1.2rem; }
+      .profile-info { text-align: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .geo-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-left { position: static; }
+      .contact-top { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-direct { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .section { padding: 5rem 1.5rem; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-logo">Guillaume <span>Lagier</span></div>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#geo">Geo OS</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Contratar</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Profile card tipo Instagram -->
+    <div class="profile-card">
+      <div class="profile-avatar">GL</div>
+      <div class="profile-info">
+        <div class="profile-name">
+          Guillaume Mario Lagier
+          <span class="verified">✦</span>
+        </div>
+        <div class="profile-handle">@guillaumelagier00 · Santiago, Chile 🇨🇱</div>
+        <div class="profile-bio">
+          <strong>Desarrollador Full-Stack & Arquitecto IA.</strong><br>
+          Creador de <strong>Geo OS</strong> — el asistente que construye apps.<br>
+          Desarrollo web · IA · Automatización · Contenido digital.
+        </div>
+        <div class="profile-btns">
+          <a href="#contacto" class="pbtn pbtn-gold">Contratar</a>
+          <a href="#geo" class="pbtn pbtn-outline">Geo OS</a>
+          <a href="https://instagram.com/guillaumelagier00" target="_blank" class="pbtn pbtn-outline">Seguir</a>
+        </div>
+        <div class="profile-stats">
+          <div>
+            <div class="pstat-num">5+</div>
+            <div class="pstat-label">Proyectos</div>
+          </div>
+          <div>
+            <div class="pstat-num">5</div>
+            <div class="pstat-label">Modelos IA</div>
+          </div>
+          <div>
+            <div class="pstat-num">&lt;2s</div>
+            <div class="pstat-label">Respuesta</div>
+          </div>
+          <div>
+            <div class="pstat-num">24/7</div>
+            <div class="pstat-label">Disponible</div>
+          </div>
+        </div>
+        <div class="thumb-strip">
+          <div class="thumb"><div class="thumb-placeholder">🌐</div></div>
+          <div class="thumb"><div class="thumb-placeholder">🧠</div></div>
+          <div class="thumb"><div class="thumb-placeholder">⚡</div></div>
+          <div class="thumb"><div class="thumb-placeholder">📱</div></div>
+          <div class="thumb"><div class="thumb-placeholder">🤖</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="hero-badge">
+      <span class="green-dot"></span>
+      Disponible para proyectos · Santiago, Chile
+    </div>
+
+    <!-- Big title -->
+    <h1 class="hero-title">
+      No solo programo.<br>
+      <span class="italic-gold">Construyo</span> con IA.
+    </h1>
+    <p class="hero-sub">
+      Webs, aplicaciones personalizadas y automatizaciones que trabajan por vos. Impulsadas por inteligencia artificial real.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-main">Hablemos de tu proyecto →</a>
+      <a href="#geo" class="btn-ghost">Ver Geo OS</a>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Desarrollo Web <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Aplicaciones con IA <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Automatización de Negocios <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Creación de Contenido <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Consultoría Digital <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Geo OS <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Santiago, Chile <span class="ticker-dot">✦</span></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">Desarrollo Web <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Aplicaciones con IA <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Automatización de Negocios <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Creación de Contenido <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Consultoría Digital <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Geo OS <span class="ticker-dot">✦</span></span>
+      <span class="ticker-item">Santiago, Chile <span class="ticker-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">Servicios</div>
+        <h2 class="section-h2">Soluciones que<br><em>realmente funcionan.</em></h2>
+      </div>
+      <div class="services-grid reveal reveal-d1">
+        <div class="service-item">
+          <div class="service-num">01</div>
+          <div class="service-title">Páginas Web Profesionales</div>
+          <p class="service-desc">Sitios modernos, rápidos y optimizados que convierten visitas en clientes. Diseño a medida con tu identidad.</p>
+          <span class="service-price">Desde $350.000 CLP</span>
+        </div>
+        <div class="service-item">
+          <div class="service-num">02</div>
+          <div class="service-title">Apps con Inteligencia Artificial</div>
+          <p class="service-desc">Herramientas personalizadas que aprenden, responden y automatizan. Chatbots, asistentes y apps a medida.</p>
+          <span class="service-price">Desde $800.000 CLP</span>
+        </div>
+        <div class="service-item">
+          <div class="service-num">03</div>
+          <div class="service-title">Automatización de Negocios</div>
+          <p class="service-desc">Workflows inteligentes que conectan tus herramientas. CRM, email, redes sociales, facturación — en piloto automático.</p>
+          <span class="service-price">Desde $450.000 CLP</span>
+        </div>
+        <div class="service-item">
+          <div class="service-num">04</div>
+          <div class="service-title">Gestión de Contenido & Publicidad</div>
+          <p class="service-desc">Estrategia digital completa, contenido generado con IA y campañas publicitarias que entregan resultados medibles.</p>
+          <span class="service-price">Desde $250.000 CLP/mes</span>
+        </div>
+        <div class="service-item">
+          <div class="service-num">05</div>
+          <div class="service-title">Consultoría IA para Empresas</div>
+          <p class="service-desc">Diagnóstico digital completo. Qué automatizar, cómo implementar IA, plan concreto con tiempos y resultados esperados.</p>
+          <span class="service-price">Desde $180.000 CLP / sesión</span>
+        </div>
+        <div class="service-item" style="background: var(--gold-dim); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 1rem;">
+          <div style="font-family:'Fraunces',serif;font-weight:900;font-size:1.6rem;line-height:1.2;">¿Tenés un<br><em style="color:var(--gold)">proyecto en mente?</em></div>
+          <p style="font-size:0.85rem;color:var(--text-dim);">Cada proyecto es único. Hablemos y te doy una propuesta personalizada.</p>
+          <a href="#contacto" class="btn-main">Conversemos →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEO OS -->
+  <section id="geo" class="geo-section">
+    <div class="geo-inner">
+      <div class="reveal">
+        <div class="geo-label">✦ Mi creación más ambiciosa</div>
+        <h2 class="geo-h2">Geo OS<br><em>construye.</em></h2>
+        <p class="geo-p">Geo no es un chatbot más. Es un asistente personal de IA que <strong>te conoce</strong>, <strong>se adapta</strong> y <strong>construye aplicaciones funcionales</strong> según lo que necesitás. No es solo conversación — Geo genera código real, lo itera hasta que queda perfecto y lo ejecuta.</p>
+        <div class="geo-pillars">
+          <div class="geo-pillar">
+            <span class="gp-icon">🏗️</span>
+            <div>
+              <div class="gp-title">Genera apps en segundos</div>
+              <div class="gp-sub">Pedile una calculadora, landing page o script — Geo lo construye en código real.</div>
+            </div>
+          </div>
+          <div class="geo-pillar">
+            <span class="gp-icon">🔁</span>
+            <div>
+              <div class="gp-title">Itera hasta la perfección</div>
+              <div class="gp-sub">"Cambiale el color", "agregale monedas" — Geo modifica sin reescribir desde cero.</div>
+            </div>
+          </div>
+          <div class="geo-pillar">
+            <span class="gp-icon">🎙️</span>
+            <div>
+              <div class="gp-title">Habla con tu voz</div>
+              <div class="gp-sub">Voz clonada integrada. Geo responde con tu propia voz como si estuvieras ahí.</div>
+            </div>
+          </div>
+          <div class="geo-pillar">
+            <span class="gp-icon">🧠</span>
+            <div>
+              <div class="gp-title">Router de 5 modelos IA</div>
+              <div class="gp-sub">Groq, DeepSeek, Gemini, Z.ai, OpenRouter — cada tarea va al modelo ideal.</div>
+            </div>
+          </div>
+        </div>
+        <a href="#contacto" class="btn-main">Quiero Geo para mi negocio →</a>
+      </div>
+
+      <!-- Terminal -->
+      <div class="reveal reveal-d2">
+        <div class="geo-terminal">
+          <div class="term-bar">
+            <div class="term-dot td-r"></div>
+            <div class="term-dot td-y"></div>
+            <div class="term-dot td-g"></div>
+            <span class="term-title">geo-os · terminal</span>
+          </div>
+          <div class="term-body">
+            <div class="tl">$ geo chat --mode builder</div>
+            <div class="ts">✓ Geo OS v4 iniciado</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tp">Vos: "Necesito una calculadora de propinas"</div>
+            <div class="tl">&nbsp;</div>
+            <div class="to">[ROUTER] task: code → provider: zai (GLM-4.7)</div>
+            <div class="to">[TOOL]   generar_codigo → webapp</div>
+            <div class="to">[Z.ai]   Generando... 7.2 KB</div>
+            <div class="ts">✓  calc-propinas.html listo</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tp">Vos: "Agregale selector CLP / USD / EUR"</div>
+            <div class="tl">&nbsp;</div>
+            <div class="to">[TOOL]   iterar_codigo → iteración #1</div>
+            <div class="to">[Z.ai]   Modificando... temp: 0.2</div>
+            <div class="ts">✓  3.5 KB → 7.5 KB (+116%)</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tp">Vos: "Perfecto, guardalo"</div>
+            <div class="ts">✓  Artefacto: calc-propinas-x7k2p</div>
+            <div class="ts">✓  Disponible en: geoos.app/a/calc-propinas-x7k2p</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tw">Geo: ¿Querés que le agregue modo oscuro también?<span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <div class="about-avatar-big">GL</div>
+          <div class="about-name-big">Guillaume Mario Lagier</div>
+          <div class="about-role-tag">Full-Stack Developer · IA Architect · Santiago, Chile</div>
+          <div class="about-metrics">
+            <div class="metric">
+              <div class="metric-num">5+</div>
+              <div class="metric-label">Años en tech</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">5</div>
+              <div class="metric-label">LLMs integrados</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">1</div>
+              <div class="metric-label">Asistente IA propio</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">100%</div>
+              <div class="metric-label">Custom</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d2">
+          <div class="section-eyebrow">Sobre mí</div>
+          <h2 class="section-h2" style="margin-bottom:2rem;">Francés en Chile.<br><em>Builder de corazón.</em></h2>
+          <p class="about-text">
+            Llegué a Chile con un maletín lleno de curiosidad y un portátil. Hoy construyo herramientas digitales que combinan lo mejor del desarrollo web moderno con la inteligencia artificial más avanzada.
+          </p>
+          <p class="about-text">
+            Mi proyecto más ambicioso es <strong>Geo OS</strong> — un asistente personal IA que construí desde cero: arquitectura del router, integración de 5 modelos de lenguaje, clonación de voz, generación de código en tiempo real. No es un hobby, es un producto.
+          </p>
+          <p class="about-text">
+            También construyo webs y apps para empresas en Chile y LATAM. Mi filosofía: entender el problema real antes de escribir una línea de código. Entregar algo que funciona, no demos vacías.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Groq</span>
+            <span class="tech-tag">DeepSeek</span>
+            <span class="tech-tag">Gemini</span>
+            <span class="tech-tag">Z.ai</span>
+            <span class="tech-tag">n8n</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">ElevenLabs</span>
+            <span class="tech-tag">Whisper</span>
+            <span class="tech-tag">Telegram Bot</span>
+          </div>
+          <a href="#contacto" class="btn-main">Trabajemos juntos →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-inner">
+      <div class="contact-top reveal">
+        <div>
+          <div class="section-eyebrow">Contacto</div>
+          <h2 class="contact-big-text">¿Listo para<br>construir algo<br><em>increíble?</em></h2>
+        </div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Tu nombre</label>
+              <input type="text" placeholder="Juan Pérez">
+            </div>
+            <div class="form-field">
+              <label>Email</label>
+              <input type="email" placeholder="juan@empresa.cl">
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Servicio de interés</label>
+            <select>
+              <option value="">Selecciona un servicio...</option>
+              <option>Página web profesional</option>
+              <option>App con Inteligencia Artificial</option>
+              <option>Automatización de negocios</option>
+              <option>Gestión de contenido & publicidad</option>
+              <option>Consultoría IA</option>
+              <option>Geo OS para mi empresa</option>
+              <option>Otro / conversemos</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Cuéntame sobre tu proyecto</label>
+            <textarea placeholder="Qué necesitás, para cuándo, presupuesto orientativo..."></textarea>
+          </div>
+          <button class="btn-submit"
+            onclick="const name=this.closest('.contact-form').querySelector('input[type=text]').value;const email=this.closest('.contact-form').querySelector('input[type=email]').value;const msg=this.closest('.contact-form').querySelector('textarea').value;window.open('https://wa.me/56973994504?text='+encodeURIComponent('Hola Guillaume, soy '+name+' ('+email+'). '+msg))">
+            Enviar por WhatsApp →
+          </button>
+        </div>
+      </div>
+
+      <!-- Direct contact -->
+      <div class="contact-direct reveal reveal-d2">
+        <a href="https://wa.me/56973994504" target="_blank" class="cd-item">
+          <div class="cd-icon">💬</div>
+          <div class="cd-label">WhatsApp</div>
+          <div class="cd-value">+56 9 7399 4504</div>
+        </a>
+        <a href="mailto:guillaume.lagier.dev@gmail.com" class="cd-item">
+          <div class="cd-icon">✉️</div>
+          <div class="cd-label">Email</div>
+          <div class="cd-value">guillaume.lagier.dev@gmail.com</div>
+        </a>
+        <a href="https://instagram.com/guillaumelagier00" target="_blank" class="cd-item">
+          <div class="cd-icon">📸</div>
+          <div class="cd-label">Instagram</div>
+          <div class="cd-value">@guillaumelagier00</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Guillaume <span>Lagier</span></div>
+    <div class="footer-text">© 2026 · Hecho con IA y café en Santiago, Chile</div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/guillaumelagier00" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/TRIPASAS" target="_blank">Facebook</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
